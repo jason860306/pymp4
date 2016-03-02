@@ -42,13 +42,15 @@ class Box:
 
     def decode(self, file=None):
         if file:
-            self.size = Util(file).read_uint32_lit()
-            type_ = Util(file).read_uint32_lit()
+            file_strm = Util(file)
+
+            self.size = file_strm.read_uint32_lit()
+            type_ = file_strm.read_uint32_lit()
             self.type = str(type_)
             if self.size == 1:
-                self.large_size = Util(file).read_uint64_lit()
+                self.large_size = file_strm.read_uint64_lit()
             if self.type == self.__USER_TYPE:
-                user_type_ = Util(file).read_uint16_lit()
+                user_type_ = file_strm.read_uint16_lit()
                 self.user_type = str(user_type_)
 
     def size(self):

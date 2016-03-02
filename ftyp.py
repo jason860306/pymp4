@@ -36,17 +36,20 @@ class Ftyp(Box):
 
     def decode(self, file=None):
         Box.decode(self, file)
-        self.major_brand = Util(file).read_uint32_lit()
-        self.minor_brand = Util(file).read_uint32_lit()
+
+        file_strm = Util(file)
+
+        self.major_brand = file_strm.read_uint32_lit()
+        self.minor_brand = file_strm.read_uint32_lit()
         left_size = Box.size(self) - Box.get_size(self)
         count = left_size / UINT32_BYTE_LEN
         for idx in range(0, count):
-            compatible_brand = Util(file).read_uint32_lit()
+            compatible_brand = file_strm.read_uint32_lit()
             self.compatible_brands.append(str(compatible_brand))
 
     def __str__(self):
         logstr = "%s, major_brand = %d, minor_brand = %d" % \
                  (Box.__str__(self), self.major_brand, self.minor_brand)
         for brand in self.compatible_brands:
-            logstr += "%s" % brand
+            logstr += ", %s" % brand
         return logstr

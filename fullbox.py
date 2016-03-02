@@ -32,11 +32,17 @@ class FullBox(Box):
 
     def decode(self, file=None):
         Box.decode(self)
-        self.version = Util(file).read_uint8_lit()
-        self.flags = Util(file).read_buf(3)
 
-    def size(self):
-        return Box.size(self)
+        file_strm = Util(file)
+
+        self.version = file_strm.read_uint8_lit()
+        self.flags = file_strm.read_buf(3)
+
+    def get_size(self):
+        box_size = Box.get_size(self)
+        ver_size = struct.calcsize('!s')
+        flags_size = struct.calcsize('!3s')
+        return (box_size + ver_size + flags_size)
 
     def __str__(self):
         return "%s, version = %d, flags = %s" % (

@@ -97,9 +97,12 @@ class Util:
         return 0
 
     def read_buf(self, size):
+        __ENDIAN = '!%ds' % size
+
         buf = ''
         if self.file:
             buf = self.file.read(size)
+            buf = struct.unpack_from(__ENDIAN, buf)
         return buf
 
     def __str__(self):
