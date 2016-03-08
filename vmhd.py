@@ -6,18 +6,17 @@
 """
 
 __file__ = '$id$'
-__author__ = 'szj0306'  # user
-__date__ = '2016/3/4 22:39'
+__author__ = 'szj0306'  # 志杰
+__date__ = '2016/3/2 18:08'
 __license__ = "Public Domain"
 __version__ = '$Revision$'
 __email__ = "jason860306@gmail.com"
 # '$Source$'
 
+from fullbox import *
 
-from box import *
 
-
-class Vmhd(Box):
+class Vmhd(FullBox):
     """
     aligned(8) class VideoMediaHeaderBox extends FullBox(‘vmhd’, version = 0, 1) {
         template unsigned int(16) graphicsmode = 0; // copy, see below
@@ -26,24 +25,25 @@ class Vmhd(Box):
     """
 
     def __init__(self):
-        Box.__init__(self)
+        FullBox.__init__(self)
 
-        self.graphocsmode = 0
+        self.graphicsmode = 0
         self.opcolor = [0 for i in range(3)]
 
     def decode(self, file=None):
-        Box.decode(self, file)
+        FullBox.decode(self, file)
 
         file_strm = Util(file)
 
-        self.graphocsmode = file_strm.read_uint16_lit()
+        self.graphicsmode = file_strm.read_uint16_lit()
         for i in range(len(self.opcolor)):
-            self.opcolor[i] = file_strm.read_uint16_lit()
+            opcolor_ = file_strm.read_uint16_lit()
+            self.opcolor[i] = opcolor_
 
     def __str__(self):
         logstr = "%s, graphicsmode = %d, opcolor = [" % \
-                 (Box.__str__(self), self.graphocsmode)
-        for opcolor_ in self.opcolor:
-            logstr += "%s, " % opcolor_
+                 (FullBox.__str__(self), self.graphicsmode)
+        for i in range(len(self.opcolor)):
+            logstr += "%d " % self.opcolor[i]
         logstr += "]"
         return logstr

@@ -6,8 +6,8 @@
 """
 
 __file__ = '$id$'
-__author__ = 'szj0306'  # user
-__date__ = '2016/3/4 22:33'
+__author__ = 'szj0306'  # 志杰
+__date__ = '2016/3/2 18:06'
 __license__ = "Public Domain"
 __version__ = '$Revision$'
 __email__ = "jason860306@gmail.com"
