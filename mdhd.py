@@ -114,7 +114,7 @@ class Mdhd(FullBox):
                  (FullBox.__str__(self), self.creation_time, self.modification_time)
         logstr += "timescale = %d, duration = %d, language = [" % \
                   (self.timescale, self.duration)
-        for language in self.language:
-            logstr += "%s, " % language
+        for language_ in self.language:
+            logstr += "%s, " % language_
         logstr += "], pre_defined = %d" % self.pre_defined
         return logstr
