@@ -24,21 +24,24 @@ class Vmhd(FullBox):
     }
     """
 
-    def __init__(self):
-        FullBox.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
+        elif type(box) is FullBox:
+            FullBox.__init__(self, box)
 
         self.graphicsmode = 0
         self.opcolor = [0 for i in range(3)]
 
     def decode(self, file=None):
-        FullBox.decode(self, file)
+        file_strm = FullBox.decode(self, file)
 
-        file_strm = Util(file)
-
-        self.graphicsmode = file_strm.read_uint16_lit()
+        self.graphicsmode = file_strm.ReadUInt16()
         for i in range(len(self.opcolor)):
-            opcolor_ = file_strm.read_uint16_lit()
+            opcolor_ = file_strm.ReadUInt16()
             self.opcolor[i] = opcolor_
+
+        return file_strm
 
     def __str__(self):
         logstr = "%s, graphicsmode = %d, opcolor = [" % \

@@ -23,12 +23,25 @@ class Edts(Box):
     }
     """
 
-    def __init__(self):
-        Box.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
+
+        self.elst = None
 
     def decode(self, file=None):
-        Box.decode(self, file)
+        file_strm = Box.decode(self, file)
+
+        left_size = self.size() - self.get_size()
+        while left_size > 0:
+            tmp_box = Box()
+            if tmp_box.type == FourCCMp4Elst:
+                self.elst = MP4Boxes[tmp_box.type](tmp_box)
+                file_strm = self.elst.decode(file)
+            left_size -= tmp_box.size()
+
+        return file_strm
 
     def __str__(self):
-        logstr = "%s" % Box.__str__(self)
+        logstr = "%s, elst = %s" % (Box.__str__(self), self.elst)
         return logstr

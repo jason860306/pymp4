@@ -15,7 +15,6 @@ __email__ = "jason860306@gmail.com"
 
 
 from box import *
-from util import *
 from constdef import *
 
 
@@ -28,24 +27,26 @@ class Ftyp(Box):
     }
     """
 
-    def __init__(self):
-        Box.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
+
         self.major_brand = 0
         self.minor_brand = 0
         self.compatible_brands = []
 
     def decode(self, file=None):
-        Box.decode(self, file)
+        file_strm = Box.decode(self, file)
 
-        file_strm = Util(file)
-
-        self.major_brand = file_strm.read_uint32_lit()
-        self.minor_brand = file_strm.read_uint32_lit()
+        self.major_brand = file_strm.ReadUInt32()
+        self.minor_brand = file_strm.ReadUInt32()
         left_size = Box.size(self) - Box.get_size(self)
-        count = left_size / UINT32_BYTE_LEN
+        count = left_size / UInt32ByteLen
         for idx in range(0, count):
-            compatible_brand = file_strm.read_uint32_lit()
+            compatible_brand = file_strm.ReadUInt32()
             self.compatible_brands.append(str(compatible_brand))
+
+        return file_strm
 
     def __str__(self):
         logstr = "%s, major_brand = %d, minor_brand = %d" % \

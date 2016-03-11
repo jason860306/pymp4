@@ -16,12 +16,12 @@ __email__ = "jason860306@gmail.com"
 
 import struct
 
-INT8_BYTE_LEN = struct.calcsize('!s')
-INT16_BYTE_LEN = struct.calcsize('!h')
-INT32_BYTE_LEN = struct.calcsize('!i')
-INT64_BYTE_LEN = struct.calcsize('!q')
+Int8ByteLen = struct.calcsize('!s')
+Int16ByteLen = struct.calcsize('!h')
+Int32ByteLen = struct.calcsize('!i')
+Int64ByteLen = struct.calcsize('!q')
 
-UINT8_BYTE_LEN = INT8_BYTE_LEN
-UINT16_BYTE_LEN = struct.calcsize('!H')
-UINT32_BYTE_LEN = struct.calcsize('!I')
-UINT64_BYTE_LEN = struct.calcsize('!Q')
+UInt8ByteLen = Int8ByteLen
+UInt16ByteLen = struct.calcsize('!H')
+UInt32ByteLen = struct.calcsize('!I')
+UInt64ByteLen = struct.calcsize('!Q')

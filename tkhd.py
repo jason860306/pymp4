@@ -46,8 +46,11 @@ class Tkhd(FullBox):
     }
     """
 
-    def __init__(self):
-        FullBox.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
+        elif type(box) is FullBox:
+            FullBox.__init__(self, box)
 
         self.creation_time = 0
         self.modification_time = 0
@@ -66,38 +69,38 @@ class Tkhd(FullBox):
         self.height = 0
 
     def decode(self, file=None):
-        FullBox.decode(self, file)
-
-        file_strm = Util(file)
+        file_strm = FullBox.decode(self, file)
 
         if self.version == 1:
-            self.creation_time = file_strm.read_uint64_lit()
-            self.modification_time = file_strm.read_uint64_lit()
-            self.track_ID = file_strm.read_uint32_lit()
-            self.reserved = file_strm.read_uint32_lit()
-            self.duration = file_strm.read_uint64_lit()
+            self.creation_time = file_strm.ReadUint64()
+            self.modification_time = file_strm.ReadUint64()
+            self.track_ID = file_strm.ReadUInt32()
+            self.reserved = file_strm.ReadUInt32()
+            self.duration = file_strm.ReadUint64()
         else:
-            self.creation_time = file_strm.read_uint32_lit()
-            self.modification_time = file_strm.read_uint32_lit()
-            self.track_ID = file_strm.read_uint32_lit()
-            self.reserved = file_strm.read_uint32_lit()
+            self.creation_time = file_strm.ReadUInt32()
+            self.modification_time = file_strm.ReadUInt32()
+            self.track_ID = file_strm.ReadUInt32()
+            self.reserved = file_strm.ReadUInt32()
 
         for i in range(len(self.reserved1)):
-            reserved1_ = file_strm.read_uint32_lit()
+            reserved1_ = file_strm.ReadUInt32()
             self.reserved1[i] = reserved1_
 
-        self.layer = file_strm.read_uint16_lit()
-        self.alternate_group = file_strm.read_uint16_lit()
-        self.volume = file_strm.read_uint16_lit()
+        self.layer = file_strm.ReadUInt16()
+        self.alternate_group = file_strm.ReadUInt16()
+        self.volume = file_strm.ReadUInt16()
         self.volume_fmt = str(self.volume >> 8) + '.' + str(self.volume << 8)
-        self.reserved2 = file_strm.read_uint16_lit()
+        self.reserved2 = file_strm.ReadUInt16()
 
         for i in range(len(self.matrix)):
-            matrix_ = file_strm.read_uint32_lit()
+            matrix_ = file_strm.ReadUInt32()
             self.matrix[i] = matrix_
 
-        self.width = file_strm.read_uint32_lit()
-        self.height = file_strm.read_uint32_lit()
+        self.width = file_strm.ReadUInt32()
+        self.height = file_strm.ReadUInt32()
+
+        return file_strm
 
     def __str__(self):
         logstr = "%s, creation_time = %d, modification_time = %d, " % \

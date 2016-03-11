@@ -29,22 +29,25 @@ class Stts(FullBox):
     }
     """
 
-    def __init__(self):
-        FullBox.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
+        elif type(box) is FullBox:
+            FullBox.__init__(self, box)
 
         self.entry_count = 0
         self.sample_count = []  # 0 for i in range(self.entry_count)
         self.sample_delta = []  # 0 for i in range(self.entry_count)
 
     def decode(self, file=None):
-        FullBox.decode(self, file)
+        file_strm = FullBox.decode(self, file)
 
-        file_strm = Util(file)
-
-        self.entry_count = file_strm.read_uint32_lit()
+        self.entry_count = file_strm.ReadUInt32()
         for i in range(self.entry_count):
-            self.sample_count[i] = file_strm.read_uint32_lit()
-            self.sample_delta[i] = file_strm.read_uint32_lit()
+            self.sample_count[i] = file_strm.ReadUInt32()
+            self.sample_delta[i] = file_strm.ReadUInt32()
+
+        return file_strm
 
     def __str__(self):
         logstr = "%s, sample = [" % FullBox.__str__(self)

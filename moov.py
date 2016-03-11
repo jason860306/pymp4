@@ -14,7 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
-from box import Box
+from box import *
+from mp4boxes import *
 
 
 class Moov(Box):
@@ -23,12 +24,36 @@ class Moov(Box):
     }
     """
 
-    def __init__(self):
-        Box.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
+
+        self.mvhd = None
+        self.trak = []
 
     def decode(self, file=None):
-        Box.decode(self, file)
+        file_strm = Box.decode(self, file)
+
+        left_size = self.size() - self.get_size()
+        while left_size > 0:
+            tmp_box = Box()
+            if tmp_box.type == FourCCMp4Mvhd:
+                self.mvhd = MP4Boxes[tmp_box.type](tmp_box)
+                file_strm = self.mvhd.decode(file)
+            elif tmp_box.type == FourCCMp4Trak:
+                trak_ = MP4Boxes[tmp_box.type](tmp_box)
+                file_strm = trak_.decode(file)
+                self.trak.append(trak_)
+            elif tmp_box.type == FourCCMp4Mdia:
+                self.mdia = MP4Boxes[tmp_box.type](tmp_box)
+                file_strm = self.mdia.decode(file)
+            left_size -= tmp_box.size()
+
+        return file_strm
 
     def __str__(self):
-        logstr = "%s" % Box.__str__(self)
+        logstr = "%s, mvhd = %s, trak = [" % (Box.__str__(self), self.mvhd)
+        for i in range(len(self.trak)):
+            logstr += "[%d. %s], " % (i, self.trak[i])
+        logstr += "]"
         return logstr

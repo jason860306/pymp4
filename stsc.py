@@ -30,11 +30,11 @@ class SampleChunk:
         self.sample_description_index = 0
 
     def decode(self, file=None):
-        file_strm = Util(file)
+        file_strm = FileStream(file)
 
-        self.first_chunk = file_strm.read_uint32_lit()
-        self.samples_per_chunk = file_strm.read_uint32_lit()
-        self.sample_description_index = file_strm.read_uint32_lit()
+        self.first_chunk = file_strm.ReadUInt32()
+        self.samples_per_chunk = file_strm.ReadUInt32()
+        self.sample_description_index = file_strm.ReadUInt32()
 
     def __str__(self):
         logstr = "first_chunk = %d, samples_per_chunk = %d, " \
@@ -56,22 +56,25 @@ class Stsc(FullBox):
     }
     """
 
-    def __init__(self):
-        FullBox.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
+        elif type(box) is FullBox:
+            FullBox.__init__(self, box)
 
         self.entry_count = 0
         self.sample_chunks = []  # for i in range(self.entry_count)
 
     def decode(self, file=None):
-        FullBox.decode(self, file)
+        file_strm = FullBox.decode(self, file)
 
-        file_strm = Util(file)
-
-        self.entry_count = file_strm.read_uint32_lit()
+        self.entry_count = file_strm.ReadUInt32()
         for i in range(self.entry_count):
             sample_chunk_ = SampleChunk()
             sample_chunk_.decode(file)
             self.sample_chunks.append(sample_chunk_)
+
+        return file_strm
 
     def __str__(self):
         logstr = "%s, entry_count = %d, sample_chunks = [" % \

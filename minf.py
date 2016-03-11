@@ -23,12 +23,38 @@ class Minf(Box):
     }
     """
 
-    def __init__(self):
-        Box.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
+
+        self.vmhd = None
+        self.smhd = None
+        self.dinf = None
+        self.stbl = None
 
     def decode(self, file=None):
-        Box.decode(self, file)
+        file_strm = Box.decode(self, file)
+
+        left_size = self.size() - self.get_size()
+        while left_size > 0:
+            tmp_box = Box()
+            if tmp_box.type == FourCCMp4Vmhd:
+                self.vmhd = MP4Boxes[tmp_box.type](tmp_box)
+                file_strm = self.vmhd.decode(file)
+            elif tmp_box.type == FourCCMp4Smhd:
+                self.smhd = MP4Boxes[tmp_box.type](tmp_box)
+                file_strm = self.smhd.decode(file)
+            elif tmp_box.type == FourCCMp4Dinf:
+                self.dinf = MP4Boxes[tmp_box.type](tmp_box)
+                file_strm = self.dinf.decode(file)
+            elif tmp_box.type == FourCCMp4Stbl:
+                self.stbl = MP4Boxes[tmp_box.type](tmp_box)
+                file_strm = self.stbl.decode(file)
+            left_size -= tmp_box.size()
+
+        return file_strm
 
     def __str__(self):
-        logstr = "%s" % Box.__str__(self)
+        logstr = "%s, vmhd = %s, smhd = %s, dinf = %s, stbl = %s" % \
+                 (Box.__str__(self), self.vmhd, self.smhd, self.dinf, self.stbl)
         return logstr

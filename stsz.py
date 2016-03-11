@@ -30,24 +30,27 @@ class Stsz(FullBox):
     }
     """
 
-    def __init__(self):
-        FullBox.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
+        elif type(box) is FullBox:
+            FullBox.__init__(self, box)
 
         self.sample_size = 0
         self.sample_count = 0
         self.entry_size = []  # for i in range(self.sample_count) when sample_size==0
 
     def decode(self, file=None):
-        FullBox.decode(self, file)
+        file_strm = FullBox.decode(self, file)
 
-        file_strm = Util(file)
-
-        self.sample_size = file_strm.read_uint32_lit()
-        self.sample_count = file_strm.read_uint32_lit()
+        self.sample_size = file_strm.ReadUInt32()
+        self.sample_count = file_strm.ReadUInt32()
         if 0 == self.sample_size:
             for i in range(self.sample_count):
-                entry_size_ = file_strm.read_uint32_lit()
+                entry_size_ = file_strm.ReadUInt32()
                 self.entry_size.append(entry_size_)
+
+        return file_strm
 
     def __str__(self):
         logstr = "%s, sample_size = %d, sample_count = %d" % \

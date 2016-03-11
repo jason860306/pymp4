@@ -15,7 +15,6 @@ __email__ = "jason860306@gmail.com"
 
 
 from fullbox import *
-from util import *
 
 
 class DataEntryBox(FullBox):
@@ -36,9 +35,9 @@ class DataEntryUrlBox(DataEntryBox):
         self.location = ""
 
     def decode(self, file=None):
-        DataEntryBox.decode(self, file)
+        file_strm = DataEntryBox.decode(self, file)
 
-        file_strm = Util(file)
+        return file_strm
 
         # self.location
 
@@ -61,7 +60,9 @@ class DataEntryUrnBox(DataEntryBox):
         self.location = ""
 
     def decode(self, file=None):
-        DataEntryBox.decode(self, file)
+        file_strm = DataEntryBox.decode(self, file)
+
+        return file_strm
 
     def __str__(self):
         logstr = "%s, name = %s, location = %s" % \
@@ -79,21 +80,25 @@ class Dref(FullBox):
     }
     """
 
-    def __init__(self):
-        FullBox.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
+        elif type(box) is FullBox:
+            FullBox.__init__(self, box)
+
         self.entry_count = 0
         self.data_entries = []
 
     def decode(self, file=None):
-        FullBox.decode(self, file)
+        file_strm = FullBox.decode(self, file)
 
-        file_strm = Util(file)
-
-        self.entry_count = file_strm.read_uint32_lit()
+        self.entry_count = file_strm.ReadUInt32()
         for cnt in range(self.entry_count):
             data_entry = DataEntryBox()
             data_entry.decode(file_strm)
             self.data_entries.append(data_entry)
+
+        return file_strm
 
     def __str__(self):
         logstr = "%s, entry_count = %d, entries = [" % \

@@ -27,8 +27,11 @@ class Hdlr(FullBox):
     }
     """
 
-    def __init__(self):
-        FullBox.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
+        elif type(box) is FullBox:
+            FullBox.__init__(self, box)
 
         self.pre_defined = 0
         self.handler_type = ''
@@ -36,22 +39,22 @@ class Hdlr(FullBox):
         self.name = ''
 
     def decode(self, file=None):
-        FullBox.decode(self, file)
+        file_strm = FullBox.decode(self, file)
 
-        file_strm = Util(file)
-
-        self.pre_defined = file_strm.read_uint32_lit()
-        handler_type_ = file_strm.read_uint32_lit()
+        self.pre_defined = file_strm.ReadUInt32()
+        handler_type_ = file_strm.ReadUInt32()
         self.handler_type = str(handler_type_)
 
         for i in range(len(self.reserved)):
-            self.reserved[i] = file_strm.read_uint32_lit()
+            self.reserved[i] = file_strm.ReadUInt32()
 
         left_size = Box.size(self) - FullBox.get_size(self)
         left_size -= struct.calcsize('!I')  # sizeof(pre_defined)
         left_size -= struct.calcsize('!I')  # sizeof(handler_type)
         left_size -= 3 * struct.calcsize('!I')  # sizeof(reserved)
-        self.name = str(file_strm.read_buf(left_size))
+        self.name = str(file_strm.ReadByte(left_size))
+
+        return file_strm
 
     def __str__(self):
         logstr = "%s, pre_defined = %d, handler_type = %s, reserved = [" % \

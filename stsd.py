@@ -31,13 +31,13 @@ class SampeEntry(Box):
         self.data_reference_index = 0
 
     def decode(self, file=None):
-        Box.decode(self, file)
-
-        file_strm = Util(file)
+        file_strm = Box.decode(self, file)
 
         for i in range(len(self.reserved)):
-            self.reserved[i] = file_strm.read_uint8_lit()
-        self.data_reference_index = file_strm.read_uint16_lit()
+            self.reserved[i] = file_strm.ReadUInt8()
+        self.data_reference_index = file_strm.ReadUInt16()
+
+        return file_strm
 
     def __str__(self):
         logstr = "%s, reserved = [" % Box.__str__(self)
@@ -58,21 +58,25 @@ class Stsd(FullBox):
     }
     """
 
-    def __init__(self):
-        FullBox.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
+        elif type(box) is FullBox:
+            FullBox.__init__(self, box)
+
         self.entry_count = 0
         self.sample_entries = []
 
     def decode(self, file=None):
-        FullBox.decode(self, file)
+        file_strm = FullBox.decode(self, file)
 
-        file_strm = Util(file)
-
-        self.entry_count = file_strm.read_uint32_lit()
+        self.entry_count = file_strm.ReadUInt32()
         for i in range(self.entry_count):
             sample_entry = SampeEntry()
             sample_entry.decode(file)
             self.sample_entries.append(sample_entry)
+
+        return file_strm
 
     def __str__(self):
         logstr = "%s, entry_count = %d, sample_entries = [" % \

@@ -23,11 +23,14 @@ class Udat(Box):
     }
     """
 
-    def __init__(self):
-        Box.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
 
     def decode(self, file=None):
-        Box.decode(self, file)
+        file_strm = Box.decode(self, file)
+
+        return file_strm
 
     def __str__(self):
         logstr = "%s" % Box.__str__(self)

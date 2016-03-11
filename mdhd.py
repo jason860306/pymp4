@@ -37,8 +37,11 @@ class Mdhd(FullBox):
     }
     """
 
-    def __init__(self):
-        FullBox.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
+        elif type(box) is FullBox:
+            FullBox.__init__(self, box)
 
         self.creation_time = 0
         self.modification_time = 0
@@ -51,20 +54,18 @@ class Mdhd(FullBox):
         self.pre_defined = 0
 
     def decode(self, file=None):
-        FullBox.decode(self, file)
-
-        file_strm = Util(file)
+        file_strm = FullBox.decode(self, file)
 
         if self.version == 1:
-            self.creation_time = file_strm.read_uint64_lit()
-            self.modification_time = file_strm.read_uint64_lit()
-            self.timescale = file_strm.read_uint32_lit()
-            self.duration = file_strm.read_uint64_lit()
+            self.creation_time = file_strm.ReadUint64()
+            self.modification_time = file_strm.ReadUint64()
+            self.timescale = file_strm.ReadUInt32()
+            self.duration = file_strm.ReadUint64()
         else:
-            self.creation_time = file_strm.read_uint32_lit()
-            self.modification_time = file_strm.read_uint32_lit()
-            self.timescale = file_strm.read_uint32_lit()
-            self.duration = file_strm.read_uint32_lit()
+            self.creation_time = file_strm.ReadUInt32()
+            self.modification_time = file_strm.ReadUInt32()
+            self.timescale = file_strm.ReadUInt32()
+            self.duration = file_strm.ReadUInt32()
 
         """
         ISO Language Codes
@@ -102,12 +103,14 @@ class Mdhd(FullBox):
         This yields the values 0x2800, 0x200, 0xE. When added, this results in
         the 16-bit packed language code value of 0x2A0E
         """
-        self.language_code = file_strm.read_uint16_lit()
+        self.language_code = file_strm.ReadUInt16()
         self.pad = self.language_code >> 15 & 0x01
         for i in range(len(self.language)):
             self.language[i] = chr((self.language_code >> (2 - i) * 5) + 0x60)
 
-        self.pre_defined = file_strm.read_uint16_lit()
+        self.pre_defined = file_strm.ReadUInt16()
+
+        return file_strm
 
     def __str__(self):
         logstr = "%s, creation_time = %d, modification_time = %d, " % \

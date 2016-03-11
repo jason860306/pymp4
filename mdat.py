@@ -24,18 +24,19 @@ class Mdat(Box):
     }
     """
 
-    def __init__(self):
-        Box.__init__(self)
+    def __init__(self, box=None):
+        if type(box) is Box:
+            Box.__init__(self, box)
 
         self.data = ""
 
     def decode(self, file=None):
-        Box.decode(self, file)
-
-        file_strm = Util(file)
+        file_strm = Box.decode(self, file)
 
         left_size = Box.size(self) - Box.get_size(self)
-        self.data = file_strm.read_buf(left_size)
+        self.data = file_strm.ReadByte(left_size)
+
+        return file_strm
 
     def __str__(self):
         logstr = "%s, data = %s" % (Box.__str__(self), self.data)

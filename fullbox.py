@@ -25,18 +25,22 @@ class FullBox(Box):
     }
     """
 
-    def __init__(self):
-        Box.__init__(self)
-        self.version = 0
-        self.flags = ''
+    def __init__(self, box=None):
+        Box.__init__(self, box)
+        if type(box) is FullBox and box is not None:
+            self.large_size = box.large_size
+            self.user_type = box.user_type
+        else:
+            self.version = 0
+            self.flags = ''
 
     def decode(self, file=None):
-        Box.decode(self)
+        file_strm = Box.decode(self)
 
-        file_strm = Util(file)
+        self.version = file_strm.ReadUInt8()
+        self.flags = file_strm.ReadByte(3)
 
-        self.version = file_strm.read_uint8_lit()
-        self.flags = file_strm.read_buf(3)
+        return file_strm
 
     def get_size(self):
         box_size = Box.get_size(self)
