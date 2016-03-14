@@ -33,8 +33,10 @@ class MediaSegmentEntry:
         self.media_rate_integer = 0
         self.media_rate_fraction = 0
 
-    def decode(self, file=None):
-        file_strm = FileStream(file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
 
         if self.version == 1:
             self.segment_duration = file_strm.ReadUint64()
@@ -44,6 +46,8 @@ class MediaSegmentEntry:
             self.media_time = file_strm.ReadInt32()
         self.media_rate_integer = file_strm.ReadInt16()
         self.media_rate_fraction = file_strm.ReadInt16()
+
+        return file_strm
 
     def __str__(self):
         logstr = "segment_duration = %d, media_time = %d, " % \
@@ -80,13 +84,17 @@ class Elst(FullBox):
         self.entry_count = 0
         self.segment_entry = []
 
-    def decode(self, file=None):
-        file_strm = FullBox.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = FullBox.decode(self, file_strm)
 
         self.entry_count = file_strm.ReadUInt32()
         for i in range(self.entry_count):
             segment_entry_ = MediaSegmentEntry(self.version)
-            segment_entry_.decode(file)
+            segment_entry_.decode(file_strm)
             self.segment_entry[i] = segment_entry_
 
         return file_strm

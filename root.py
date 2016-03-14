@@ -15,7 +15,6 @@ __email__ = "jason860306@gmail.com"
 
 
 from box import *
-from filestream import *
 from mp4boxes import *
 
 
@@ -32,32 +31,32 @@ class Root():
         self.skip = None
         self.udat = None
 
-    def decode(self, file=None):
-        file_strm = None
-        if file:
-            file_strm = FileStream(file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return
 
         tmp_box = Box()
-        file_strm = tmp_box.decode(file)
+        file_strm = tmp_box.peek(file_strm)
 
         if tmp_box.type == FourCCMp4Moov:
             self.moov = MP4Boxes[tmp_box.type](tmp_box)
-            file_strm = self.moov.decode(file)
+            file_strm = self.moov.decode(file_strm)
         elif tmp_box.type == FourCCMp4Ftyp:
             self.ftyp = MP4Boxes[tmp_box.type](tmp_box)
-            file_strm = self.ftyp.decode(file)
+            file_strm = self.ftyp.decode(file_strm)
         elif tmp_box.type == FourCCMp4Mdat:
             self.mdat = MP4Boxes[tmp_box.type](tmp_box)
-            file_strm = self.mdat.decode(file)
+            file_strm = self.mdat.decode(file_strm)
         elif tmp_box.type == FourCCMp4Udat:
             self.udat = MP4Boxes[tmp_box.type](tmp_box)
-            file_strm = self.udat.decode(file)
+            file_strm = self.udat.decode(file_strm)
         elif tmp_box.type == FourCCMp4Free:
             self.free = MP4Boxes[tmp_box.type](tmp_box)
-            file_strm = self.free.decode(file)
+            file_strm = self.free.decode(file_strm)
         elif tmp_box.type == FourCCMp4Skip:
             self.skip = MP4Boxes[tmp_box.type](tmp_box)
-            file_strm = self.skip.decode(file)
+            file_strm = self.skip.decode(file_strm)
 
         return file_strm
 

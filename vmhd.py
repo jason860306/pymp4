@@ -33,8 +33,12 @@ class Vmhd(FullBox):
         self.graphicsmode = 0
         self.opcolor = [0 for i in range(3)]
 
-    def decode(self, file=None):
-        file_strm = FullBox.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = FullBox.decode(self, file_strm)
 
         self.graphicsmode = file_strm.ReadUInt16()
         for i in range(len(self.opcolor)):

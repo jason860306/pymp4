@@ -30,8 +30,12 @@ class Mdat(Box):
 
         self.data = ""
 
-    def decode(self, file=None):
-        file_strm = Box.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = Box.decode(self, file_strm)
 
         left_size = Box.size(self) - Box.get_size(self)
         self.data = file_strm.ReadByte(left_size)

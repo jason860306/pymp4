@@ -35,8 +35,12 @@ class Ftyp(Box):
         self.minor_brand = 0
         self.compatible_brands = []
 
-    def decode(self, file=None):
-        file_strm = Box.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = Box.decode(self, file_strm)
 
         self.major_brand = file_strm.ReadUInt32()
         self.minor_brand = file_strm.ReadUInt32()

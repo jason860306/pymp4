@@ -30,8 +30,12 @@ class SampeEntry(Box):
         self.reserved = [0 for i in range(6)]
         self.data_reference_index = 0
 
-    def decode(self, file=None):
-        file_strm = Box.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = Box.decode(self, file_strm)
 
         for i in range(len(self.reserved)):
             self.reserved[i] = file_strm.ReadUInt8()
@@ -67,13 +71,17 @@ class Stsd(FullBox):
         self.entry_count = 0
         self.sample_entries = []
 
-    def decode(self, file=None):
-        file_strm = FullBox.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = FullBox.decode(self, file_strm)
 
         self.entry_count = file_strm.ReadUInt32()
         for i in range(self.entry_count):
             sample_entry = SampeEntry()
-            sample_entry.decode(file)
+            sample_entry.decode(file_strm)
             self.sample_entries.append(sample_entry)
 
         return file_strm

@@ -30,8 +30,12 @@ class Nmhd(FullBox):
         elif type(box) is FullBox:
             FullBox.__init__(self, box)
 
-    def decode(self, file=None):
-        file_strm = FullBox.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = FullBox.decode(self, file_strm)
 
         return file_strm
 

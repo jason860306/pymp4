@@ -36,8 +36,12 @@ class Co64(FullBox):
         self.entry_count = 0
         self.chunk_offset = []
 
-    def decode(self, file=None):
-        file_strm = FullBox.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = FullBox.decode(self, file_strm)
 
         self.entry_count = file_strm.ReadUInt32()
         for i in range(self.entry_count):

@@ -15,6 +15,7 @@ __email__ = "jason860306@gmail.com"
 
 
 from box import *
+from mp4boxes import *
 
 
 class Edts(Box):
@@ -29,15 +30,20 @@ class Edts(Box):
 
         self.elst = None
 
-    def decode(self, file=None):
-        file_strm = Box.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = Box.decode(self, file_strm)
 
         left_size = self.size() - self.get_size()
         while left_size > 0:
             tmp_box = Box()
+            file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Elst:
                 self.elst = MP4Boxes[tmp_box.type](tmp_box)
-                file_strm = self.elst.decode(file)
+                file_strm = self.elst.decode(file_strm)
             left_size -= tmp_box.size()
 
         return file_strm

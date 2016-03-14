@@ -29,12 +29,16 @@ class SampleChunk:
         self.samples_per_chunk = 0
         self.sample_description_index = 0
 
-    def decode(self, file=None):
-        file_strm = FileStream(file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
 
         self.first_chunk = file_strm.ReadUInt32()
         self.samples_per_chunk = file_strm.ReadUInt32()
         self.sample_description_index = file_strm.ReadUInt32()
+
+        return file_strm
 
     def __str__(self):
         logstr = "first_chunk = %d, samples_per_chunk = %d, " \
@@ -65,13 +69,17 @@ class Stsc(FullBox):
         self.entry_count = 0
         self.sample_chunks = []  # for i in range(self.entry_count)
 
-    def decode(self, file=None):
-        file_strm = FullBox.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = FullBox.decode(self, file_strm)
 
         self.entry_count = file_strm.ReadUInt32()
         for i in range(self.entry_count):
             sample_chunk_ = SampleChunk()
-            sample_chunk_.decode(file)
+            sample_chunk_.decode(file_strm)
             self.sample_chunks.append(sample_chunk_)
 
         return file_strm

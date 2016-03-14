@@ -34,11 +34,27 @@ class FullBox(Box):
             self.version = 0
             self.flags = ''
 
-    def decode(self, file=None):
-        file_strm = Box.decode(self)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = Box.decode(self, file_strm)
 
         self.version = file_strm.ReadUInt8()
         self.flags = file_strm.ReadByte(3)
+
+        return file_strm
+
+    def peek(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = Box.peek(self, file_strm)
+
+        self.version = file_strm.PeekUInt8()
+        self.flags = file_strm.PeekByte(3)
 
         return file_strm
 

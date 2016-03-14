@@ -40,8 +40,12 @@ class Stsz(FullBox):
         self.sample_count = 0
         self.entry_size = []  # for i in range(self.sample_count) when sample_size==0
 
-    def decode(self, file=None):
-        file_strm = FullBox.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = FullBox.decode(self, file_strm)
 
         self.sample_size = file_strm.ReadUInt32()
         self.sample_count = file_strm.ReadUInt32()

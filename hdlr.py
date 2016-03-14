@@ -38,8 +38,12 @@ class Hdlr(FullBox):
         self.reserved = [0 for i in range(3)]
         self.name = ''
 
-    def decode(self, file=None):
-        file_strm = FullBox.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = FullBox.decode(self, file_strm)
 
         self.pre_defined = file_strm.ReadUInt32()
         handler_type_ = file_strm.ReadUInt32()

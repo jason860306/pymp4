@@ -40,23 +40,40 @@ class Box:
             self.large_size = box.large_size
             self.user_type = box.user_type
         else:
-            self.size = 0
+            self.size = int(0)
             self.type = ''
-            self.large_size = 0
+            self.large_size = int(0)
             self.user_type = ''
 
-    def decode(self, file=None):
-        file_strm = None
-        if file:
-            file_strm = FileStream(file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
 
-            self.size = file_strm.ReadUInt32()
-            type_ = file_strm.ReadUInt32()
-            self.type = ParseFourCC(type_)
-            if self.size == 1:
-                self.large_size = file_strm.ReadUint64()
-            if self.type == FourCCMp4Uuid:
-                self.user_type = file_strm.ReadUInt16()
+        self.size = file_strm.ReadUInt32()
+        type_ = file_strm.ReadUInt32()
+        self.type = ParseFourCC(type_)
+        if self.size == 1:
+            self.large_size = file_strm.ReadUint64()
+        if self.type == FourCCMp4Uuid:
+            self.user_type = file_strm.ReadUInt16()
+        return file_strm
+
+    def peek(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        self.size = file_strm.ReadUInt32()
+        type_ = file_strm.ReadUInt32()
+        self.type = ParseFourCC(type_)
+        if self.size == 1:
+            self.large_size = file_strm.ReadUint64()
+        if self.type == FourCCMp4Uuid:
+            self.user_type = file_strm.ReadUInt16()
+
+        file_strm.seek(self.get_size() * -1, os.SEEK_CUR)
+
         return file_strm
 
     def size(self):

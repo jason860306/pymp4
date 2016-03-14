@@ -34,8 +34,12 @@ class Smhd(FullBox):
         self.balance = 0
         self.reserved = 0
 
-    def decode(self, file=None):
-        file_strm = FullBox.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = FullBox.decode(self, file_strm)
 
         self.balance = file_strm.ReadInt16()
         self.reserved = file_strm.ReadUInt16()

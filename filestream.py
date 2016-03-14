@@ -14,10 +14,9 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import ctypes
+import os
 import struct
-
-global LittleEndian
-global BigEndian
 
 
 class FileStream:
@@ -25,118 +24,245 @@ class FileStream:
     some utility function
     """
 
-    LittleEndian = 0
-    BigEndian = 1
+    __LittleEndian = int(0)
+    __BigEndian = int(1)
 
-    def __init__(self, file=None, endian=LittleEndian):
-        self.file = None
+    def __init__(self, file, endian=__LittleEndian):
+        if file is None:
+            print "file is None"
+            return
+
+        self.file = file
         self.endian = endian
 
+    def tell(self):
+        if self.file is None:
+            return 0
+        return self.file.tell()
+
+    def seek(self, offset, whence=None):
+        if self.file is None:
+            return
+        self.file.seek(offset, whence)
+
     def ReadInt64(self):
-        __ENDIAN = '!q'
-        if self.endian == BigEndian:
-            __ENDIAN = '@q'
+        __FMT = '!q' if (self.endian == FileStream.__LittleEndian) else '@q'
 
         if self.file:
-            size = struct.calcsize(__ENDIAN)
+            size = struct.calcsize(__FMT)
             buf = self.file.read(size)
-            num = struct.unpack_from(__ENDIAN, buf)
-            return int(num)
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_int64(num[0]).value
+            # return int(num[0])
         return 0
 
     def ReadUint64(self):
-        __ENDIAN = '!Q'
-        if self.endian == BigEndian:
-            __ENDIAN = '@Q'
+        __FMT = '!Q' if (self.endian == FileStream.__LittleEndian) else '@Q'
 
         if self.file:
-            size = struct.calcsize(__ENDIAN)
+            size = struct.calcsize(__FMT)
             buf = self.file.read(size)
-            num = struct.unpack_from(__ENDIAN, buf)
-            return int(num)
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_uint64(num[0]).value
+            # return int(num[0])
         return 0
 
     def ReadInt32(self):
-        __ENDIAN = '!i'
-        if self.endian == BigEndian:
-            __ENDIAN = '@i'
+        __FMT = '!i' if (self.endian == FileStream.__LittleEndian) else '@i'
 
         if self.file:
-            size = struct.calcsize(__ENDIAN)
+            size = struct.calcsize(__FMT)
             buf = self.file.read(size)
-            num = struct.unpack_from(__ENDIAN, buf)
-            return int(num)
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_int32(num[0]).value
+            # return int(num[0])
         return 0
 
     def ReadUInt32(self):
-        __ENDIAN = '!I'
-        if self.endian == BigEndian:
-            __ENDIAN = '@I'
+        __FMT = '!I' if (self.endian == FileStream.__LittleEndian) else '@I'
 
         if self.file:
-            size = struct.calcsize(__ENDIAN)
+            size = struct.calcsize(__FMT)
             buf = self.file.read(size)
-            num = struct.unpack_from(__ENDIAN, buf)
-            return int(num)
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_uint32(num[0]).value
+            # return int(num[0])
         return 0
 
     def ReadInt16(self):
-        __ENDIAN = '!h'
-        if self.endian == BigEndian:
-            __ENDIAN = '@h'
+        __FMT = '!h' if (self.endian == FileStream.__LittleEndian) else '@h'
 
         if self.file:
-            size = struct.calcsize(__ENDIAN)
+            size = struct.calcsize(__FMT)
             buf = self.file.read(size)
-            num = struct.unpack_from(__ENDIAN, buf)
-            return int(num)
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_int16(num[0]).value
+            # return int(num[0])
         return 0
 
     def ReadUInt16(self):
-        __ENDIAN = '!H'
-        if self.endian == BigEndian:
-            __ENDIAN = '@H'
+        __FMT = '!H' if (self.endian == FileStream.__LittleEndian) else '@H'
 
         if self.file:
-            size = struct.calcsize(__ENDIAN)
+            size = struct.calcsize(__FMT)
             buf = self.file.read(size)
-            num = struct.unpack_from(__ENDIAN, buf)
-            return int(num)
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_uint16(num[0]).value
+            # return int(num[0])
         return 0
 
     def ReadInt8(self):
-        __ENDIAN = '!b'
-        if self.endian == BigEndian:
-            __ENDIAN = '@b'
+        __FMT = '!b' if (self.endian == FileStream.__LittleEndian) else '@b'
 
         if self.file:
-            size = struct.calcsize(__ENDIAN)
+            size = struct.calcsize(__FMT)
             buf = self.file.read(size)
-            num = struct.unpack_from(__ENDIAN, buf)
-            return int(num)
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_int8(num[0]).value
+            # return int(num[0])
         return 0
 
     def ReadUInt8(self):
-        __ENDIAN = '!B'
-        if self.endian == BigEndian:
-            __ENDIAN = '@B'
+        __FMT = '!B' if (self.endian == FileStream.__LittleEndian) else '@B'
 
         if self.file:
-            size = struct.calcsize(__ENDIAN)
+            size = struct.calcsize(__FMT)
             buf = self.file.read(size)
-            num = struct.unpack_from(__ENDIAN, buf)
-            return int(num)
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_uint8(num[0]).value
+            # return int(num[0])
         return 0
 
     def ReadByte(self, size):
-        __ENDIAN = '!%ds' % size
-        if self.endian == BigEndian:
-            __ENDIAN = '@%ds' % size
+        __FMT = '!%ds' % size if (self.endian == FileStream.__LittleEndian) else '@%ds' % size
 
         buf = ''
         if self.file:
             buf = self.file.read(size)
-            buf = struct.unpack_from(__ENDIAN, buf)
+            buf = struct.unpack_from(__FMT, buf)
+        return buf
+
+    def PeekInt64(self):
+        __FMT = '!q' if (self.endian == FileStream.__LittleEndian) else '@q'
+
+        if self.file:
+            size = struct.calcsize(__FMT)
+
+            buf = self.file.read(size)
+            self.file.seek(size * -1, os.SEEK_CUR)
+
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_int64(num[0]).value
+            # return int(num[0])
+        return 0
+
+    def PeekUint64(self):
+        __FMT = '!Q' if (self.endian == FileStream.__LittleEndian) else '@Q'
+
+        if self.file:
+            size = struct.calcsize(__FMT)
+
+            buf = self.file.read(size)
+            self.file.seek(size * -1, os.SEEK_CUR)
+
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_uint64(num[0]).value
+            # return int(num[0])
+        return 0
+
+    def PeekInt32(self):
+        __FMT = '!i' if (self.endian == FileStream.__LittleEndian) else '@i'
+
+        if self.file:
+            size = struct.calcsize(__FMT)
+
+            buf = self.file.read(size)
+            self.file.seek(size * -1, os.SEEK_CUR)
+
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_int32(num[0]).value
+            # return int(num[0])
+        return 0
+
+    def PeekUInt32(self):
+        __FMT = '!I' if (self.endian == FileStream.__LittleEndian) else '@I'
+
+        if self.file:
+            size = struct.calcsize(__FMT)
+
+            buf = self.file.read(size)
+            self.file.seek(size * -1, os.SEEK_CUR)
+
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_int32(num[0]).value
+            # return int(num[0])
+        return 0
+
+    def PeekInt16(self):
+        __FMT = '!h' if (self.endian == FileStream.__LittleEndian) else '@h'
+
+        if self.file:
+            size = struct.calcsize(__FMT)
+
+            buf = self.file.read(size)
+            self.file.seek(size * -1, os.SEEK_CUR)
+
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_int16(num[0]).value
+            # return int(num[0])
+        return 0
+
+    def PeekUInt16(self):
+        __FMT = '!H' if (self.endian == FileStream.__LittleEndian) else '@H'
+
+        if self.file:
+            size = struct.calcsize(__FMT)
+
+            buf = self.file.read(size)
+            self.file.seek(size * -1, os.SEEK_CUR)
+
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_uint16(num[0]).value
+            # return int(num[0])
+        return 0
+
+    def PeekInt8(self):
+        __FMT = '!b' if (self.endian == FileStream.__LittleEndian) else '@b'
+
+        if self.file:
+            size = struct.calcsize(__FMT)
+
+            buf = self.file.read(size)
+            self.file.seek(size * -1, os.SEEK_CUR)
+
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_int8(num[0]).value
+            # return int(num[0])
+        return 0
+
+    def PeekUInt8(self):
+        __FMT = '!B' if (self.endian == FileStream.__LittleEndian) else '@B'
+
+        if self.file:
+            size = struct.calcsize(__FMT)
+
+            buf = self.file.read(size)
+            self.file.seek(size * -1, os.SEEK_CUR)
+
+            num = struct.unpack_from(__FMT, buf)
+            return ctypes.c_uint8(num[0]).value
+            # return int(num[0])
+        return 0
+
+    def PeekByte(self, size):
+        __FMT = '!%ds' % size if (self.endian == FileStream.__LittleEndian) else '@%ds' % size
+
+        buf = ''
+        if self.file:
+            buf = self.file.read(size)
+            self.file.seek(size * -1, os.SEEK_CUR)
+
+            buf = struct.unpack_from(__FMT, buf)
         return buf
 
     def __str__(self):

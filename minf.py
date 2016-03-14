@@ -15,6 +15,7 @@ __email__ = "jason860306@gmail.com"
 
 
 from box import *
+from mp4boxes import *
 
 
 class Minf(Box):
@@ -32,24 +33,29 @@ class Minf(Box):
         self.dinf = None
         self.stbl = None
 
-    def decode(self, file=None):
-        file_strm = Box.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = Box.decode(self, file_strm)
 
         left_size = self.size() - self.get_size()
         while left_size > 0:
             tmp_box = Box()
+            file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Vmhd:
                 self.vmhd = MP4Boxes[tmp_box.type](tmp_box)
-                file_strm = self.vmhd.decode(file)
+                file_strm = self.vmhd.decode(file_strm)
             elif tmp_box.type == FourCCMp4Smhd:
                 self.smhd = MP4Boxes[tmp_box.type](tmp_box)
-                file_strm = self.smhd.decode(file)
+                file_strm = self.smhd.decode(file_strm)
             elif tmp_box.type == FourCCMp4Dinf:
                 self.dinf = MP4Boxes[tmp_box.type](tmp_box)
-                file_strm = self.dinf.decode(file)
+                file_strm = self.dinf.decode(file_strm)
             elif tmp_box.type == FourCCMp4Stbl:
                 self.stbl = MP4Boxes[tmp_box.type](tmp_box)
-                file_strm = self.stbl.decode(file)
+                file_strm = self.stbl.decode(file_strm)
             left_size -= tmp_box.size()
 
         return file_strm

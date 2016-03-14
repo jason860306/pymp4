@@ -68,8 +68,12 @@ class Tkhd(FullBox):
         self.width = 0
         self.height = 0
 
-    def decode(self, file=None):
-        file_strm = FullBox.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = FullBox.decode(self, file_strm)
 
         if self.version == 1:
             self.creation_time = file_strm.ReadUint64()

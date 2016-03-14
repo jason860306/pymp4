@@ -34,8 +34,12 @@ class DataEntryUrlBox(DataEntryBox):
         DataEntryBox.__init__(self)
         self.location = ""
 
-    def decode(self, file=None):
-        file_strm = DataEntryBox.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = DataEntryBox.decode(self, file_strm)
 
         return file_strm
 
@@ -59,8 +63,12 @@ class DataEntryUrnBox(DataEntryBox):
         self.name = ""
         self.location = ""
 
-    def decode(self, file=None):
-        file_strm = DataEntryBox.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = DataEntryBox.decode(self, file_strm)
 
         return file_strm
 
@@ -89,8 +97,12 @@ class Dref(FullBox):
         self.entry_count = 0
         self.data_entries = []
 
-    def decode(self, file=None):
-        file_strm = FullBox.decode(self, file)
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = FullBox.decode(self, file_strm)
 
         self.entry_count = file_strm.ReadUInt32()
         for cnt in range(self.entry_count):
