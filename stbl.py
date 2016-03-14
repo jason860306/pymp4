@@ -14,6 +14,7 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+from mp4boxes import *
 from stts import *
 
 

@@ -13,8 +13,8 @@ __version__ = '$Revision$'
 __email__ = "jason860306@gmail.com"
 # '$Source$'
 
+from constdef import *
 from filestream import *
-from mp4boxes import *
 
 
 class Box:

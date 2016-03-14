@@ -14,7 +14,7 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
-from box import *
+from free import *
 
 
 class Skip(Free):
