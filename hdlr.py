@@ -28,9 +28,9 @@ class Hdlr(FullBox):
     """
 
     def __init__(self, box=None):
-        if type(box) is Box:
+        if isinstance(box, Box):
             Box.__init__(self, box)
-        elif type(box) is FullBox:
+        elif isinstance(box, FullBox):
             FullBox.__init__(self, box)
 
         self.pre_defined = 0
@@ -52,7 +52,7 @@ class Hdlr(FullBox):
         for i in range(len(self.reserved)):
             self.reserved[i] = file_strm.ReadUInt32()
 
-        left_size = Box.size(self) - FullBox.get_size(self)
+        left_size = Box.Size(self) - FullBox.GetLength(self)
         left_size -= struct.calcsize('!I')  # sizeof(pre_defined)
         left_size -= struct.calcsize('!I')  # sizeof(handler_type)
         left_size -= 3 * struct.calcsize('!I')  # sizeof(reserved)

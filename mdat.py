@@ -25,7 +25,7 @@ class Mdat(Box):
     """
 
     def __init__(self, box=None):
-        if type(box) is Box:
+        if isinstance(box, Box):
             Box.__init__(self, box)
 
         self.data = ""
@@ -37,7 +37,7 @@ class Mdat(Box):
 
         file_strm = Box.decode(self, file_strm)
 
-        left_size = Box.size(self) - Box.get_size(self)
+        left_size = Box.Size(self) - Box.GetLength(self)
         self.data = file_strm.ReadByte(left_size)
 
         return file_strm

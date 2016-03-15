@@ -27,7 +27,7 @@ class FullBox(Box):
 
     def __init__(self, box=None):
         Box.__init__(self, box)
-        if type(box) is FullBox and box is not None:
+        if isinstance(box, FullBox) and box is not None:
             self.large_size = box.large_size
             self.user_type = box.user_type
         else:
@@ -58,8 +58,8 @@ class FullBox(Box):
 
         return file_strm
 
-    def get_size(self):
-        box_size = Box.get_size(self)
+    def GetLength(self):
+        box_size = Box.GetLength(self)
         ver_size = struct.calcsize('!s')
         flags_size = struct.calcsize('!3s')
         return (box_size + ver_size + flags_size)

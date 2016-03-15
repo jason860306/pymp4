@@ -14,8 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import mp4boxes
 from box import *
-from mp4boxes import *
 
 
 class Moov(Box):
@@ -25,7 +25,7 @@ class Moov(Box):
     """
 
     def __init__(self, box=None):
-        if type(box) is Box:
+        if isinstance(box, Box):
             Box.__init__(self, box)
 
         self.mvhd = None
@@ -38,21 +38,21 @@ class Moov(Box):
 
         file_strm = Box.decode(self, file_strm)
 
-        left_size = self.size() - self.get_size()
+        left_size = self.Size() - self.GetLength()
         while left_size > 0:
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Mvhd:
-                self.mvhd = MP4Boxes[tmp_box.type](tmp_box)
+                self.mvhd = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.mvhd.decode(file_strm)
             elif tmp_box.type == FourCCMp4Trak:
-                trak_ = MP4Boxes[tmp_box.type](tmp_box)
+                trak_ = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = trak_.decode(file_strm)
                 self.trak.append(trak_)
             elif tmp_box.type == FourCCMp4Mdia:
-                self.mdia = MP4Boxes[tmp_box.type](tmp_box)
+                self.mdia = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.mdia.decode(file_strm)
-            left_size -= tmp_box.size()
+            left_size -= tmp_box.Size()
 
         return file_strm
 

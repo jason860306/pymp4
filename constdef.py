@@ -60,8 +60,8 @@ FourCCMp4Skip = 'skip'
 
 
 def ParseFourCC(four_cc_num):
-    num1 = four_cc_num & 0xFF000000 >> 24
-    num2 = four_cc_num & 0x00FF0000 >> 16
-    num3 = four_cc_num & 0x0000FF00 >> 8
-    num4 = four_cc_num & 0x000000FF
-    return "%d%d%d%d" % (num1, num2, num3, num4)
+    num1 = (four_cc_num & 0xFF000000) >> 24
+    num2 = (four_cc_num & 0x00FF0000) >> 16
+    num3 = (four_cc_num & 0x0000FF00) >> 8
+    num4 = (four_cc_num & 0x000000FF)
+    return (chr(num1) + chr(num2) + chr(num3) + chr(num4))

@@ -25,7 +25,7 @@ class Trak(Box):
     """
 
     def __init__(self, box=None):
-        if type(box) is Box:
+        if isinstance(box, Box):
             Box.__init__(self, box)
 
         self.tkhd = None
@@ -39,7 +39,7 @@ class Trak(Box):
 
         file_strm = Box.decode(self, file_strm)
 
-        left_size = self.size() - self.get_size()
+        left_size = self.Size() - self.GetLength()
         while left_size > 0:
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)

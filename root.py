@@ -31,34 +31,39 @@ class Root():
         self.skip = None
         self.udat = None
 
-    def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+    def decode(self, filename):
+        if filename is None:
+            print "file is None"
             return
 
-        tmp_box = Box()
-        file_strm = tmp_box.peek(file_strm)
+        filesize = os.path.getsize(filename)
 
-        if tmp_box.type == FourCCMp4Moov:
-            self.moov = MP4Boxes[tmp_box.type](tmp_box)
-            file_strm = self.moov.decode(file_strm)
-        elif tmp_box.type == FourCCMp4Ftyp:
-            self.ftyp = MP4Boxes[tmp_box.type](tmp_box)
-            file_strm = self.ftyp.decode(file_strm)
-        elif tmp_box.type == FourCCMp4Mdat:
-            self.mdat = MP4Boxes[tmp_box.type](tmp_box)
-            file_strm = self.mdat.decode(file_strm)
-        elif tmp_box.type == FourCCMp4Udat:
-            self.udat = MP4Boxes[tmp_box.type](tmp_box)
-            file_strm = self.udat.decode(file_strm)
-        elif tmp_box.type == FourCCMp4Free:
-            self.free = MP4Boxes[tmp_box.type](tmp_box)
-            file_strm = self.free.decode(file_strm)
-        elif tmp_box.type == FourCCMp4Skip:
-            self.skip = MP4Boxes[tmp_box.type](tmp_box)
-            file_strm = self.skip.decode(file_strm)
+        with open(filename, 'rb') as mp4_file:
+            file_strm = FileStream(mp4_file)
+            while filesize > 0:
+                tmp_box = Box()
+                file_strm = tmp_box.peek(file_strm)
+                if tmp_box.type == FourCCMp4Moov:
+                    self.moov = MP4Boxes[tmp_box.type](tmp_box)
+                    file_strm = self.moov.decode(file_strm)
+                elif tmp_box.type == FourCCMp4Ftyp:
+                    self.ftyp = MP4Boxes[tmp_box.type](tmp_box)
+                    file_strm = self.ftyp.decode(file_strm)
+                elif tmp_box.type == FourCCMp4Mdat:
+                    self.mdat = MP4Boxes[tmp_box.type](tmp_box)
+                    file_strm = self.mdat.decode(file_strm)
+                elif tmp_box.type == FourCCMp4Udat:
+                    self.udat = MP4Boxes[tmp_box.type](tmp_box)
+                    file_strm = self.udat.decode(file_strm)
+                elif tmp_box.type == FourCCMp4Free:
+                    self.free = MP4Boxes[tmp_box.type](tmp_box)
+                    file_strm = self.free.decode(file_strm)
+                elif tmp_box.type == FourCCMp4Skip:
+                    self.skip = MP4Boxes[tmp_box.type](tmp_box)
+                    file_strm = self.skip.decode(file_strm)
+                filesize -= tmp_box.Size()
 
-        return file_strm
+            return file_strm
 
     def __str__(self):
         logstr = "moov = %s, ftyp = %s, mdat = %s, free = %s, " \

@@ -24,7 +24,7 @@ class Udat(Box):
     """
 
     def __init__(self, box=None):
-        if type(box) is Box:
+        if isinstance(box, Box):
             Box.__init__(self, box)
 
     def decode(self, file_strm):

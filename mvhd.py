@@ -14,6 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import time
+
 from fullbox import *
 
 
@@ -49,13 +51,15 @@ class Mvhd(FullBox):
     """
 
     def __init__(self, box=None):
-        if type(box) is Box:
+        if isinstance(box, Box):
             Box.__init__(self, box)
-        elif type(box) is FullBox:
+        elif isinstance(box, FullBox):
             FullBox.__init__(self, box)
 
         self.creation_time = 0
+        self.creation_time_fmt = ''
         self.modification_time = 0
+        self.modification_time_fmt = ''
         self.timescale = 0
         self.duration = 0
 
@@ -78,19 +82,23 @@ class Mvhd(FullBox):
 
         if self.version == 1:
             self.creation_time = file_strm.ReadUint64()
+            self.creation_time_fmt = time.ctime(self.creation_time)
             self.modification_time = file_strm.ReadUint64()
+            self.modification_time_fmt = time.ctime(self.modification_time)
             self.timescale = file_strm.ReadUInt32()
             self.duration = file_strm.ReadUint64()
         else:
             self.creation_time = file_strm.ReadUInt32()
+            self.creation_time_fmt = time.ctime(self.creation_time)
             self.modification_time = file_strm.ReadUInt32()
+            self.modification_time_fmt = time.ctime(self.modification_time)
             self.timescale = file_strm.ReadUInt32()
             self.duration = file_strm.ReadUInt32()
 
         self.rate = file_strm.ReadUInt32()
-        self.rate_fmt = str(self.rate >> 16) + '.' + str(self.rate << 16)
+        self.rate_fmt = "%d.%d" % (self.rate >> 16, self.rate & 0x0000FFFF)
         self.volume = file_strm.ReadUInt16()
-        self.volume_fmt = str(self.volume >> 8) + '.' + str(self.volume << 8)
+        self.volume_fmt = "%d.%d" % (self.volume >> 8, self.volume & 0x00FF)
         self.reserved = file_strm.ReadUInt16()
         for idx in range(len(self.reserved1)):
             reserved1_ = file_strm.ReadUInt32()

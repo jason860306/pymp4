@@ -25,7 +25,7 @@ class Dinf(Box):
     """
 
     def __init__(self, box=None):
-        if type(box) is Box:
+        if isinstance(box, Box):
             Box.__init__(self, box)
         self.dref = None
 
@@ -36,7 +36,7 @@ class Dinf(Box):
 
         file_strm = Box.decode(self, file_strm)
 
-        left_size = self.size() - self.get_size()
+        left_size = self.Size() - self.GetLength()
         while left_size > 0:
             tmp_box = Box()
             if tmp_box.type == FourCCMp4Dref:

@@ -34,7 +34,7 @@ class Box:
     """
 
     def __init__(self, box=None):
-        if type(box) is Box and box is not None:
+        if isinstance(box, Box) and box is not None:
             self.size = box.size
             self.type = box.type
             self.large_size = box.large_size
@@ -72,14 +72,14 @@ class Box:
         if self.type == FourCCMp4Uuid:
             self.user_type = file_strm.ReadUInt16()
 
-        file_strm.seek(self.get_size() * -1, os.SEEK_CUR)
+        file_strm.seek(self.GetLength() * -1, os.SEEK_CUR)
 
         return file_strm
 
-    def size(self):
-        return self.size if (self.size == 1) else self.large_size
+    def Size(self):
+        return self.large_size if (self.size == 1) else self.size
 
-    def get_size(self):
+    def GetLength(self):
         large_size_ = struct.calcsize('!Q') if (self.size == 1) else 0
         user_type_ = struct.calcsize('!16s') if (self.type == FourCCMp4Uuid) else 0
         size_ = struct.calcsize('!II') + large_size_ + user_type_
