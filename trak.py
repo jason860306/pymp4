@@ -14,8 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import mp4boxes
 from box import *
-from mp4boxes import *
 
 
 class Trak(Box):
@@ -44,15 +44,17 @@ class Trak(Box):
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Tkhd:
-                self.tkhd = MP4Boxes[tmp_box.type](tmp_box)
+                self.tkhd = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.tkhd.decode(file_strm)
             elif tmp_box.type == FourCCMp4Edts:
-                self.edts = MP4Boxes[tmp_box.type](tmp_box)
+                self.edts = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.edts.decode(file_strm)
             elif tmp_box.type == FourCCMp4Mdia:
-                self.mdia = MP4Boxes[tmp_box.type](tmp_box)
+                self.mdia = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.mdia.decode(file_strm)
-            left_size -= tmp_box.size()
+            else:
+                file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+            left_size -= tmp_box.Size()
 
         return file_strm
 

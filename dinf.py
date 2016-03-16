@@ -14,8 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import mp4boxes
 from box import *
-from mp4boxes import *
 
 
 class Dinf(Box):
@@ -39,10 +39,13 @@ class Dinf(Box):
         left_size = self.Size() - self.GetLength()
         while left_size > 0:
             tmp_box = Box()
+            file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Dref:
-                self.dref = MP4Boxes[tmp_box.type](tmp_box)
+                self.dref = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.dref.decode(file_strm)
-            left_size -= tmp_box.size()
+            else:
+                file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+            left_size -= tmp_box.Size()
 
         return file_strm
 

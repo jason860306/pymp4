@@ -44,7 +44,9 @@ class Edts(Box):
             if tmp_box.type == FourCCMp4Elst:
                 self.elst = MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.elst.decode(file_strm)
-            left_size -= tmp_box.size()
+            else:
+                file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+            left_size -= tmp_box.Size()
 
         return file_strm
 

@@ -29,6 +29,9 @@ UInt64ByteLen = struct.calcsize('!Q')
 FourCCMp4Root = 'root'
 FourCCMp4Uuid = 'uuid'
 
+FourCCMp4Url = 'url '
+FourCCMp4Urn = 'urn '
+
 FourCCMp4Moov = 'moov'
 FourCCMp4Mvhd = 'mvhd'
 FourCCMp4Trak = 'trak'

@@ -47,7 +47,7 @@ class Hdlr(FullBox):
 
         self.pre_defined = file_strm.ReadUInt32()
         handler_type_ = file_strm.ReadUInt32()
-        self.handler_type = str(handler_type_)
+        self.handler_type = ParseFourCC(handler_type_)
 
         for i in range(len(self.reserved)):
             self.reserved[i] = file_strm.ReadUInt32()
@@ -56,7 +56,7 @@ class Hdlr(FullBox):
         left_size -= struct.calcsize('!I')  # sizeof(pre_defined)
         left_size -= struct.calcsize('!I')  # sizeof(handler_type)
         left_size -= 3 * struct.calcsize('!I')  # sizeof(reserved)
-        self.name = str(file_strm.ReadByte(left_size))
+        self.name = file_strm.ReadByte(left_size)
 
         return file_strm
 

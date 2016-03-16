@@ -14,6 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import time
+
 from fullbox import *
 
 
@@ -44,7 +46,9 @@ class Mdhd(FullBox):
             FullBox.__init__(self, box)
 
         self.creation_time = 0
+        self.creation_time_fmt = 0
         self.modification_time = 0
+        self.modification_time_fmt = 0
         self.timescale = 0
         self.duration = 0
 
@@ -61,13 +65,17 @@ class Mdhd(FullBox):
         file_strm = FullBox.decode(self, file_strm)
 
         if self.version == 1:
-            self.creation_time = file_strm.ReadUint64()
-            self.modification_time = file_strm.ReadUint64()
+            self.creation_time = file_strm.ReadUInt64()
+            self.creation_time_fmt = time.ctime(self.creation_time)
+            self.modification_time = file_strm.ReadUInt64()
+            self.modification_time_fmt = time.ctime(self.modification_time)
             self.timescale = file_strm.ReadUInt32()
-            self.duration = file_strm.ReadUint64()
+            self.duration = file_strm.ReadUInt64()
         else:
             self.creation_time = file_strm.ReadUInt32()
+            self.creation_time_fmt = time.ctime(self.creation_time)
             self.modification_time = file_strm.ReadUInt32()
+            self.modification_time_fmt = time.ctime(self.modification_time)
             self.timescale = file_strm.ReadUInt32()
             self.duration = file_strm.ReadUInt32()
 
@@ -110,7 +118,8 @@ class Mdhd(FullBox):
         self.language_code = file_strm.ReadUInt16()
         self.pad = self.language_code >> 15 & 0x01
         for i in range(len(self.language)):
-            self.language[i] = chr((self.language_code >> (2 - i) * 5) + 0x60)
+            lang_ = ((self.language_code >> ((2 - i) * 5)) & 0x1F) + 0x60
+            self.language[i] = chr(lang_)
 
         self.pre_defined = file_strm.ReadUInt16()
 

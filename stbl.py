@@ -14,7 +14,7 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
-from mp4boxes import *
+import mp4boxes
 from stts import *
 
 
@@ -61,30 +61,32 @@ class Stbl(Box):
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Stts:
-                self.stts = MP4Boxes[tmp_box.type](tmp_box)
+                self.stts = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.stts.decode(file_strm)
             elif tmp_box.type == FourCCMp4Ctts:
-                self.ctts = MP4Boxes[tmp_box.type](tmp_box)
+                self.ctts = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.ctts.decode(file_strm)
             elif tmp_box.type == FourCCMp4Stss:
-                self.stss = MP4Boxes[tmp_box.type](tmp_box)
+                self.stss = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.stss.decode(file_strm)
             elif tmp_box.type == FourCCMp4Stsd:
-                self.stsd = MP4Boxes[tmp_box.type](tmp_box)
+                self.stsd = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.stsd.decode(file_strm)
             elif tmp_box.type == FourCCMp4Stsz:
-                self.stsz = MP4Boxes[tmp_box.type](tmp_box)
+                self.stsz = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.stsz.decode(file_strm)
             elif tmp_box.type == FourCCMp4Stsc:
-                self.stsc = MP4Boxes[tmp_box.type](tmp_box)
+                self.stsc = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.stsc.decode(file_strm)
             elif tmp_box.type == FourCCMp4Stco:
-                self.stco = MP4Boxes[tmp_box.type](tmp_box)
+                self.stco = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.stco.decode(file_strm)
             elif tmp_box.type == FourCCMp4Co64:
-                self.co64 = MP4Boxes[tmp_box.type](tmp_box)
+                self.co64 = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.co64.decode(file_strm)
-            left_size -= tmp_box.size()
+            else:
+                file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+            left_size -= tmp_box.Size()
 
         return file_strm
 

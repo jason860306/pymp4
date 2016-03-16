@@ -16,22 +16,21 @@ __email__ = "jason860306@gmail.com"
 
 from fullbox import *
 
-
-class DataEntryBox(FullBox):
-    """
-    """
-    pass
+FLAG_SELF_CONTAINED = 0x000001
 
 
-class DataEntryUrlBox(DataEntryBox):
+class DataEntryUrlBox(FullBox):
     """
     aligned(8) class DataEntryUrlBox (bit(24) flags) extends FullBox(‘url ’, version = 0, flags) {
         string location;
     }
+    // If the self‐contained flag is set, the URL form is used and no string is present;
+    // Each is a null‐terminated string using UTF‐8 characters.
+    // the box terminates with self‐contained flag isthe entry‐flags field.
     """
 
     def __init__(self):
-        DataEntryBox.__init__(self)
+        FullBox.__init__(self)
         self.location = ""
 
     def decode(self, file_strm):
@@ -39,27 +38,33 @@ class DataEntryUrlBox(DataEntryBox):
             print "file_strm is None"
             return file_strm
 
-        file_strm = DataEntryBox.decode(self, file_strm)
-
+        file_strm = FullBox.decode(self, file_strm)
+        left_size = self.Size() - self.GetLength()
+        if left_size > 0:
+            if self.flags != FLAG_SELF_CONTAINED:
+                self.location = file_strm.ReadByte(left_size)
+            else:
+                file_strm.seek(left_size, os.SEEK_CUR)
         return file_strm
 
-        # self.location
-
     def __str__(self):
-        logstr = "%s, location = %s" % (DataEntryBox.__str__(self), self.location)
+        logstr = "%s, location = %s" % (FullBox.__str__(self), self.location)
         return logstr
 
 
-class DataEntryUrnBox(DataEntryBox):
+class DataEntryUrnBox(FullBox):
     """
     aligned(8) class DataEntryUrnBox (bit(24) flags) extends FullBox(‘urn ’, version = 0, flags) {
         string name;
         string location;
     }
+    // If the self‐contained flag is set, the URL form is used and no string is present;
+    // Each is a null‐terminated string using UTF‐8 characters.
+    // the box terminates with self‐contained flag isthe entry‐flags field.
     """
 
     def __init__(self):
-        DataEntryBox.__init__(self)
+        FullBox.__init__(self)
         self.name = ""
         self.location = ""
 
@@ -68,13 +73,18 @@ class DataEntryUrnBox(DataEntryBox):
             print "file_strm is None"
             return file_strm
 
-        file_strm = DataEntryBox.decode(self, file_strm)
-
+        file_strm = FullBox.decode(self, file_strm)
+        left_size = self.Size() - self.GetLength()
+        if left_size > 0:
+            if self.flags != FLAG_SELF_CONTAINED:
+                self.location = file_strm.ReadByte(left_size)
+            else:
+                self.name = file_strm.ReadByte(left_size)
         return file_strm
 
     def __str__(self):
         logstr = "%s, name = %s, location = %s" % \
-                 (DataEntryBox.__str__(self), self.name, self.location)
+                 (FullBox.__str__(self), self.name, self.location)
         return logstr
 
 
@@ -106,9 +116,18 @@ class Dref(FullBox):
 
         self.entry_count = file_strm.ReadUInt32()
         for cnt in range(self.entry_count):
-            data_entry = DataEntryBox()
-            data_entry.decode(file_strm)
-            self.data_entries.append(data_entry)
+            tmp_box = Box()
+            file_strm = tmp_box.peek(file_strm)
+            if tmp_box.type == FourCCMp4Url:
+                data_entry = DataEntryUrlBox()
+                file_strm = data_entry.decode(file_strm)
+                self.data_entries.append(data_entry)
+            elif tmp_box.type == FourCCMp4Urn:
+                data_entry = DataEntryUrnBox()
+                file_strm = data_entry.decode(file_strm)
+                self.data_entries.append(data_entry)
+            else:
+                file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
 
         return file_strm
 

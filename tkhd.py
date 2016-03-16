@@ -4,6 +4,7 @@
 """
 
 """
+import time
 
 __file__ = '$id$'
 __author__ = 'szj0306'  # 志杰
@@ -53,7 +54,9 @@ class Tkhd(FullBox):
             FullBox.__init__(self, box)
 
         self.creation_time = 0
+        self.creation_time_fmt = 0
         self.modification_time = 0
+        self.modification_time_fmt = 0
         self.track_ID = 0
         self.reserved = 0
         self.duration = 0
@@ -77,15 +80,20 @@ class Tkhd(FullBox):
 
         if self.version == 1:
             self.creation_time = file_strm.ReadUint64()
+            self.creation_time_fmt = time.ctime(self.creation_time)
             self.modification_time = file_strm.ReadUint64()
+            self.modification_time_fmt = time.ctime(self.modification_time)
             self.track_ID = file_strm.ReadUInt32()
             self.reserved = file_strm.ReadUInt32()
-            self.duration = file_strm.ReadUint64()
+            self.duration = file_strm.ReadUInt64()
         else:
             self.creation_time = file_strm.ReadUInt32()
+            self.creation_time_fmt = time.ctime(self.creation_time)
             self.modification_time = file_strm.ReadUInt32()
+            self.modification_time_fmt = time.ctime(self.modification_time)
             self.track_ID = file_strm.ReadUInt32()
             self.reserved = file_strm.ReadUInt32()
+            self.duration = file_strm.ReadUInt32()
 
         for i in range(len(self.reserved1)):
             reserved1_ = file_strm.ReadUInt32()
@@ -94,7 +102,7 @@ class Tkhd(FullBox):
         self.layer = file_strm.ReadUInt16()
         self.alternate_group = file_strm.ReadUInt16()
         self.volume = file_strm.ReadUInt16()
-        self.volume_fmt = str(self.volume >> 8) + '.' + str(self.volume << 8)
+        self.volume_fmt = "%d.%d" % (self.volume >> 8, self.volume & 0x00FF)
         self.reserved2 = file_strm.ReadUInt16()
 
         for i in range(len(self.matrix)):

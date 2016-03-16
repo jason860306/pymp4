@@ -14,8 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import mp4boxes
 from box import *
-from mp4boxes import *
 
 
 class Mdia(Box):
@@ -44,15 +44,17 @@ class Mdia(Box):
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Mdhd:
-                self.mdhd = MP4Boxes[tmp_box.type](tmp_box)
+                self.mdhd = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.mdhd.decode(file_strm)
             elif tmp_box.type == FourCCMp4Hdlr:
-                self.hdlr = MP4Boxes[tmp_box.type](tmp_box)
+                self.hdlr = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.hdlr.decode(file_strm)
             elif tmp_box.type == FourCCMp4Minf:
-                self.minf = MP4Boxes[tmp_box.type](tmp_box)
+                self.minf = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.minf.decode(file_strm)
-            left_size -= tmp_box.size()
+            else:
+                file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+            left_size -= tmp_box.Size()
 
         return file_strm
 

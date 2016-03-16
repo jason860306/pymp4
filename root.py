@@ -61,6 +61,8 @@ class Root():
                 elif tmp_box.type == FourCCMp4Skip:
                     self.skip = MP4Boxes[tmp_box.type](tmp_box)
                     file_strm = self.skip.decode(file_strm)
+                else:
+                    file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
                 filesize -= tmp_box.Size()
 
             return file_strm

@@ -52,6 +52,8 @@ class Moov(Box):
             elif tmp_box.type == FourCCMp4Mdia:
                 self.mdia = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.mdia.decode(file_strm)
+            else:
+                file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
             left_size -= tmp_box.Size()
 
         return file_strm

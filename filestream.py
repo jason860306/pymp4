@@ -84,6 +84,7 @@ class FileStream:
         if self.file:
             size = struct.calcsize(__FMT)
             buf = self.file.read(size)
+            print repr(buf)
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_uint32(num[0]).value
             # return int(num[0])
@@ -139,6 +140,7 @@ class FileStream:
         buf = ''
         if self.file:
             buf = self.file.read(size)
+            print repr(buf)
             buf = struct.unpack_from(__FMT, buf)
         return buf
 

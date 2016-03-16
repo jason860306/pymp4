@@ -14,8 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import mp4boxes
 from box import *
-from mp4boxes import *
 
 
 class Minf(Box):
@@ -45,18 +45,20 @@ class Minf(Box):
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Vmhd:
-                self.vmhd = MP4Boxes[tmp_box.type](tmp_box)
+                self.vmhd = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.vmhd.decode(file_strm)
             elif tmp_box.type == FourCCMp4Smhd:
-                self.smhd = MP4Boxes[tmp_box.type](tmp_box)
+                self.smhd = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.smhd.decode(file_strm)
             elif tmp_box.type == FourCCMp4Dinf:
-                self.dinf = MP4Boxes[tmp_box.type](tmp_box)
+                self.dinf = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.dinf.decode(file_strm)
             elif tmp_box.type == FourCCMp4Stbl:
-                self.stbl = MP4Boxes[tmp_box.type](tmp_box)
+                self.stbl = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
                 file_strm = self.stbl.decode(file_strm)
-            left_size -= tmp_box.size()
+            else:
+                file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+            left_size -= tmp_box.Size()
 
         return file_strm
 
