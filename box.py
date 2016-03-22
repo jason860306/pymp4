@@ -33,7 +33,8 @@ class Box:
     }
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
+        self.offset = offset
         if isinstance(box, Box) and box is not None:
             self.size = box.size
             self.type = box.type
@@ -51,12 +52,20 @@ class Box:
             return file_strm
 
         self.size = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
+
         type_ = file_strm.ReadUInt32()
         self.type = ParseFourCC(type_)
+        self.offset += UInt32ByteLen
+
         if self.size == 1:
             self.large_size = file_strm.ReadUint64()
+            self.offset += UInt64ByteLen
+
         if self.type == FourCCMp4Uuid:
             self.user_type = file_strm.ReadUInt16()
+            self.offset += UInt16ByteLen
+
         return file_strm
 
     def peek(self, file_strm):
@@ -65,12 +74,19 @@ class Box:
             return file_strm
 
         self.size = file_strm.ReadUInt32()
+        # self.offset += UInt32ByteLen
+
         type_ = file_strm.ReadUInt32()
         self.type = ParseFourCC(type_)
+        # self.offset += UInt32ByteLen
+
         if self.size == 1:
             self.large_size = file_strm.ReadUint64()
+            # self.offset += UInt64ByteLen
+
         if self.type == FourCCMp4Uuid:
             self.user_type = file_strm.ReadUInt16()
+            # self.offset += UInt16ByteLen
 
         file_strm.seek(self.GetLength() * -1, os.SEEK_CUR)
 
@@ -86,4 +102,5 @@ class Box:
         return size_
 
     def __str__(self):
-        return "size = %ld, type = %s" % (self.size, self.type)
+        return "offset = 0x%08x, size = %ld, type = %s" % \
+               (self.offset, self.size, self.type)

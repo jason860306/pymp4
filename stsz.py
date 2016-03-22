@@ -30,11 +30,11 @@ class Stsz(FullBox):
     }
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
-            Box.__init__(self, box)
+            Box.__init__(self, offset, box)
         elif isinstance(box, FullBox):
-            FullBox.__init__(self, box)
+            FullBox.__init__(self, offset, box)
 
         self.sample_size = 0
         self.sample_count = 0
@@ -48,10 +48,15 @@ class Stsz(FullBox):
         file_strm = FullBox.decode(self, file_strm)
 
         self.sample_size = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
+
         self.sample_count = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
+
         if 0 == self.sample_size:
             for i in range(self.sample_count):
                 entry_size_ = file_strm.ReadUInt32()
+                self.offset += UInt32ByteLen
                 self.entry_size.append(entry_size_)
 
         return file_strm

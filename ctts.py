@@ -37,11 +37,11 @@ class Ctts(FullBox):
     }
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
-            Box.__init__(self, box)
+            Box.__init__(self, offset, box)
         elif isinstance(box, FullBox):
-            FullBox.__init__(self, box)
+            FullBox.__init__(self, offset, box)
 
         self.entry_count = 0
         self.sample_count = []  # 0 for i in range(self.entry_count)
@@ -55,15 +55,20 @@ class Ctts(FullBox):
         file_strm = FullBox.decode(self, file_strm)
 
         self.entry_count = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
+
         for i in range(self.entry_count):
             sample_count_ = file_strm.ReadUInt32()
             self.sample_count.append(sample_count_)
+            self.offset += UInt32ByteLen
 
             sample_offset_ = 0
             if 0 == self.version:
                 sample_offset_ = file_strm.ReadUInt32()
+                self.offset += UInt32ByteLen
             else:
                 sample_offset_ = file_strm.ReadInt32()
+                self.offset += Int32ByteLen
             self.sample_offset.append(sample_offset_)
 
         return file_strm

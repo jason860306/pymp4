@@ -24,9 +24,9 @@ class Dinf(Box):
     }
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
-            Box.__init__(self, box)
+            Box.__init__(self, offset, box)
         self.dref = None
 
     def decode(self, file_strm):

@@ -25,11 +25,11 @@ class Smhd(FullBox):
     }
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
-            Box.__init__(self, box)
+            Box.__init__(self, offset, box)
         elif isinstance(box, FullBox):
-            FullBox.__init__(self, box)
+            FullBox.__init__(self, offset, box)
 
         self.balance = 0
         self.reserved = 0
@@ -42,7 +42,10 @@ class Smhd(FullBox):
         file_strm = FullBox.decode(self, file_strm)
 
         self.balance = file_strm.ReadInt16()
+        self.offset += UInt16ByteLen
+
         self.reserved = file_strm.ReadUInt16()
+        self.offset += UInt16ByteLen
 
         return file_strm
 

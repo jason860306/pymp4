@@ -24,9 +24,9 @@ class Free(Box):
     }
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
-            Box.__init__(self, box)
+            Box.__init__(self, offset, box)
 
         self.data = ""
 
@@ -39,6 +39,7 @@ class Free(Box):
 
         left_size = Box.Size(self) - Box.GetLength(self)
         self.data = file_strm.ReadByte(left_size)
+        self.offset += Int8ByteLen * left_size
 
         return file_strm
 

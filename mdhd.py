@@ -39,11 +39,11 @@ class Mdhd(FullBox):
     }
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
-            Box.__init__(self, box)
+            Box.__init__(self, offset, box)
         elif isinstance(box, FullBox):
-            FullBox.__init__(self, box)
+            FullBox.__init__(self, offset, box)
 
         self.creation_time = 0
         self.creation_time_fmt = 0
@@ -66,18 +66,33 @@ class Mdhd(FullBox):
 
         if self.version == 1:
             self.creation_time = file_strm.ReadUInt64()
+            self.offset += UInt64ByteLen
             self.creation_time_fmt = time.ctime(self.creation_time)
+
             self.modification_time = file_strm.ReadUInt64()
+            self.offset += UInt64ByteLen
             self.modification_time_fmt = time.ctime(self.modification_time)
+
             self.timescale = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
+
             self.duration = file_strm.ReadUInt64()
+            self.offset += UInt64ByteLen
+
         else:
             self.creation_time = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
             self.creation_time_fmt = time.ctime(self.creation_time)
+
             self.modification_time = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
             self.modification_time_fmt = time.ctime(self.modification_time)
+
             self.timescale = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
+
             self.duration = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
 
         """
         ISO Language Codes
@@ -116,12 +131,15 @@ class Mdhd(FullBox):
         the 16-bit packed language code value of 0x2A0E
         """
         self.language_code = file_strm.ReadUInt16()
+        self.offset += UInt16ByteLen
+
         self.pad = self.language_code >> 15 & 0x01
         for i in range(len(self.language)):
             lang_ = ((self.language_code >> ((2 - i) * 5)) & 0x1F) + 0x60
             self.language[i] = chr(lang_)
 
         self.pre_defined = file_strm.ReadUInt16()
+        self.offset += UInt16ByteLen
 
         return file_strm
 

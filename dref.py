@@ -29,8 +29,8 @@ class DataEntryUrlBox(FullBox):
     // the box terminates with self‐contained flag isthe entry‐flags field.
     """
 
-    def __init__(self):
-        FullBox.__init__(self)
+    def __init__(self, offset=0):
+        FullBox.__init__(self, offset)
         self.location = ""
 
     def decode(self, file_strm):
@@ -63,8 +63,8 @@ class DataEntryUrnBox(FullBox):
     // the box terminates with self‐contained flag isthe entry‐flags field.
     """
 
-    def __init__(self):
-        FullBox.__init__(self)
+    def __init__(self, offset=0):
+        FullBox.__init__(self, offset)
         self.name = ""
         self.location = ""
 
@@ -98,11 +98,11 @@ class Dref(FullBox):
     }
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
-            Box.__init__(self, box)
+            Box.__init__(self, offset, box)
         elif isinstance(box, FullBox):
-            FullBox.__init__(self, box)
+            FullBox.__init__(self, offset, box)
 
         self.entry_count = 0
         self.data_entries = []

@@ -27,11 +27,11 @@ class Hdlr(FullBox):
     }
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
-            Box.__init__(self, box)
+            Box.__init__(self, offset, box)
         elif isinstance(box, FullBox):
-            FullBox.__init__(self, box)
+            FullBox.__init__(self, offset, box)
 
         self.pre_defined = 0
         self.handler_type = ''
@@ -46,17 +46,22 @@ class Hdlr(FullBox):
         file_strm = FullBox.decode(self, file_strm)
 
         self.pre_defined = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
+
         handler_type_ = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
         self.handler_type = ParseFourCC(handler_type_)
 
         for i in range(len(self.reserved)):
             self.reserved[i] = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
 
         left_size = Box.Size(self) - FullBox.GetLength(self)
         left_size -= struct.calcsize('!I')  # sizeof(pre_defined)
         left_size -= struct.calcsize('!I')  # sizeof(handler_type)
         left_size -= 3 * struct.calcsize('!I')  # sizeof(reserved)
         self.name = file_strm.ReadByte(left_size)
+        self.offset += Int8ByteLen * left_size
 
         return file_strm
 

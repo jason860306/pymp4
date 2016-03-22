@@ -14,17 +14,19 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
-import struct
+import ctypes
 
-Int8ByteLen = struct.calcsize('!s')
-Int16ByteLen = struct.calcsize('!h')
-Int32ByteLen = struct.calcsize('!i')
-Int64ByteLen = struct.calcsize('!q')
+# import struct
 
-UInt8ByteLen = Int8ByteLen
-UInt16ByteLen = struct.calcsize('!H')
-UInt32ByteLen = struct.calcsize('!I')
-UInt64ByteLen = struct.calcsize('!Q')
+Int8ByteLen = ctypes.sizeof(ctypes.c_int8)  # struct.calcsize('!s')
+Int16ByteLen = ctypes.sizeof(ctypes.c_int16)  # struct.calcsize('!h')
+Int32ByteLen = ctypes.sizeof(ctypes.c_int32)  # struct.calcsize('!i')
+Int64ByteLen = ctypes.sizeof(ctypes.c_int64)  # struct.calcsize('!q')
+
+UInt8ByteLen = ctypes.sizeof(ctypes.c_uint8)  # Int8ByteLen
+UInt16ByteLen = ctypes.sizeof(ctypes.c_uint16)  # struct.calcsize('!H')
+UInt32ByteLen = ctypes.sizeof(ctypes.c_uint32)  # struct.calcsize('!I')
+UInt64ByteLen = ctypes.sizeof(ctypes.c_uint64)  # struct.calcsize('!Q')
 
 FourCCMp4Root = 'root'
 FourCCMp4Uuid = 'uuid'

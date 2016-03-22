@@ -25,7 +25,8 @@ class MediaSegmentEntry:
     held for a period.
     """
 
-    def __init__(self, ver):
+    def __init__(self, offset=0, ver=0):
+        self.offset = offset
         self.version = ver
 
         self.segment_duration = 0
@@ -40,12 +41,23 @@ class MediaSegmentEntry:
 
         if self.version == 1:
             self.segment_duration = file_strm.ReadUint64()
+            self.offset += UInt64ByteLen
+
             self.media_time = file_strm.ReadInt64()
+            self.offset += Int64ByteLen
+
         else:
             self.segment_duration = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
+
             self.media_time = file_strm.ReadInt32()
+            self.offset += Int32ByteLen
+
         self.media_rate_integer = file_strm.ReadInt16()
+        self.offset += Int16ByteLen
+
         self.media_rate_fraction = file_strm.ReadInt16()
+        self.offset += Int16ByteLen
 
         return file_strm
 
@@ -75,11 +87,11 @@ class Elst(FullBox):
     }
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
-            Box.__init__(self, box)
+            Box.__init__(self, offset, box)
         elif isinstance(box, FullBox):
-            FullBox.__init__(self, box)
+            FullBox.__init__(self, offset, box)
 
         self.entry_count = 0
         self.segment_entry = []
@@ -94,8 +106,9 @@ class Elst(FullBox):
         self.entry_count = file_strm.ReadUInt32()
         for i in range(self.entry_count):
             segment_entry_ = MediaSegmentEntry(self.version)
-            segment_entry_.decode(file_strm)
+            file_strm = segment_entry_.decode(file_strm)
             self.segment_entry[i] = segment_entry_
+            self.offset += segment_entry_.offset
 
         return file_strm
 

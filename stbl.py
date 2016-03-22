@@ -36,9 +36,9 @@ class Stbl(Box):
         stdp    degradation priority
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
-            Box.__init__(self, box)
+            Box.__init__(self, offset, box)
 
         self.stts = None
         self.ctts = None

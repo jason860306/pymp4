@@ -24,7 +24,8 @@ class SampleChunk:
     unsigned int(32) sample_description_index;
     """
 
-    def __init__(self):
+    def __init__(self, offset=0):
+        self.offset = offset
         self.first_chunk = 0
         self.samples_per_chunk = 0
         self.sample_description_index = 0
@@ -35,8 +36,13 @@ class SampleChunk:
             return file_strm
 
         self.first_chunk = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
+
         self.samples_per_chunk = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
+
         self.sample_description_index = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
 
         return file_strm
 
@@ -60,11 +66,11 @@ class Stsc(FullBox):
     }
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
-            Box.__init__(self, box)
+            Box.__init__(self, offset, box)
         elif isinstance(box, FullBox):
-            FullBox.__init__(self, box)
+            FullBox.__init__(self, offset, box)
 
         self.entry_count = 0
         self.sample_chunks = []  # for i in range(self.entry_count)
@@ -79,7 +85,9 @@ class Stsc(FullBox):
         self.entry_count = file_strm.ReadUInt32()
         for i in range(self.entry_count):
             sample_chunk_ = SampleChunk()
-            sample_chunk_.decode(file_strm)
+            file_strm = sample_chunk_.decode(file_strm)
+            self.offset += sample_chunk_.offset
+
             self.sample_chunks.append(sample_chunk_)
 
         return file_strm

@@ -25,8 +25,8 @@ class SampeEntry(Box):
     }
     """
 
-    def __init__(self):
-        Box.__init__(self)
+    def __init__(self, offset=0):
+        Box.__init__(self, offset)
         self.reserved = [0 for i in range(6)]
         self.data_reference_index = 0
 
@@ -39,7 +39,10 @@ class SampeEntry(Box):
 
         for i in range(len(self.reserved)):
             self.reserved[i] = file_strm.ReadUInt8()
+            self.offset += UInt8ByteLen
+
         self.data_reference_index = file_strm.ReadUInt16()
+        self.offset += UInt16ByteLen
 
         return file_strm
 
@@ -62,11 +65,11 @@ class Stsd(FullBox):
     }
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
-            Box.__init__(self, box)
+            Box.__init__(self, offset, box)
         elif isinstance(box, FullBox):
-            FullBox.__init__(self, box)
+            FullBox.__init__(self, offset, box)
 
         self.entry_count = 0
         self.sample_entries = []

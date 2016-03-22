@@ -27,11 +27,11 @@ class Co64(FullBox):
     }
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
-            Box.__init__(self, box)
+            Box.__init__(self, offset, box)
         elif isinstance(box, FullBox):
-            FullBox.__init__(self, box)
+            FullBox.__init__(self, offset, box)
 
         self.entry_count = 0
         self.chunk_offset = []
@@ -44,8 +44,12 @@ class Co64(FullBox):
         file_strm = FullBox.decode(self, file_strm)
 
         self.entry_count = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
+
         for i in range(self.entry_count):
             chunk_offset_ = file_strm.ReadUint64()
+            self.offset += UInt64ByteLen
+
             self.chunk_offset.append(chunk_offset_)
 
         return file_strm

@@ -18,7 +18,7 @@ from box import *
 from mp4boxes import *
 
 
-class Root():
+class Root:
     """
     the root box of a mp4 file
     """

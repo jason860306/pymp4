@@ -27,8 +27,8 @@ class Ftyp(Box):
     }
     """
 
-    def __init__(self, box=None):
-        Box.__init__(self, box)
+    def __init__(self, offset=0, box=None):
+        Box.__init__(self, offset, box)
 
         self.major_brand = 0
         self.minor_brand = 0
@@ -42,13 +42,18 @@ class Ftyp(Box):
         file_strm = Box.decode(self, file_strm)
 
         major_brand_ = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
         self.major_brand = ParseFourCC(major_brand_)
+
         self.minor_brand = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
+
         left_size = Box.Size(self) - Box.GetLength(self)
         left_size -= UInt32ByteLen * 2
         count = left_size / UInt32ByteLen
         for idx in range(0, count):
             compatible_brand_ = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
             compatible_brand = ParseFourCC(compatible_brand_)
             self.compatible_brands.append(compatible_brand)
 

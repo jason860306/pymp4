@@ -25,8 +25,8 @@ class FullBox(Box):
     }
     """
 
-    def __init__(self, box=None):
-        Box.__init__(self, box)
+    def __init__(self, offset=0, box=None):
+        Box.__init__(self, offset, box)
         if isinstance(box, FullBox) and box is not None:
             self.large_size = box.large_size
             self.user_type = box.user_type
@@ -42,7 +42,10 @@ class FullBox(Box):
         file_strm = Box.decode(self, file_strm)
 
         self.version = file_strm.ReadUInt8()
+        self.offset += UInt8ByteLen
+
         self.flags = file_strm.ReadByte(3)
+        self.offset += Int8ByteLen * 3
 
         return file_strm
 

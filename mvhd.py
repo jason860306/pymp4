@@ -50,11 +50,11 @@ class Mvhd(FullBox):
     the specification must define whether the use is optional or mandatory.
     """
 
-    def __init__(self, box=None):
+    def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
-            Box.__init__(self, box)
+            Box.__init__(self, offset, box)
         elif isinstance(box, FullBox):
-            FullBox.__init__(self, box)
+            FullBox.__init__(self, offset, box)
 
         self.creation_time = 0
         self.creation_time_fmt = ''
@@ -82,34 +82,62 @@ class Mvhd(FullBox):
 
         if self.version == 1:
             self.creation_time = file_strm.ReadUint64()
+            self.offset += UInt64ByteLen
             self.creation_time_fmt = time.ctime(self.creation_time)
+
             self.modification_time = file_strm.ReadUint64()
+            self.offset += UInt64ByteLen
             self.modification_time_fmt = time.ctime(self.modification_time)
+
             self.timescale = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
+
             self.duration = file_strm.ReadUint64()
+            self.offset += UInt64ByteLen
+
         else:
             self.creation_time = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
             self.creation_time_fmt = time.ctime(self.creation_time)
+
             self.modification_time = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
             self.modification_time_fmt = time.ctime(self.modification_time)
+
             self.timescale = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
+
             self.duration = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
 
         self.rate = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
         self.rate_fmt = "%d.%d" % (self.rate >> 16, self.rate & 0x0000FFFF)
+
         self.volume = file_strm.ReadUInt16()
+        self.offset += UInt16ByteLen
         self.volume_fmt = "%d.%d" % (self.volume >> 8, self.volume & 0x00FF)
+
         self.reserved = file_strm.ReadUInt16()
+        self.offset += UInt16ByteLen
+
         for idx in range(len(self.reserved1)):
             reserved1_ = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
             self.reserved1[idx] = reserved1_
+
         for idx in range(len(self.matrix)):
             matrix_ = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
             self.matrix[idx] = matrix_
+
         for idx in range(len(self.pre_defined)):
             pre_defined_ = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
             self.pre_defined[idx] = pre_defined_
+
         self.next_track_ID = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
 
         return file_strm
 
