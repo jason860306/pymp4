@@ -46,6 +46,13 @@ class SampleChunk:
 
         return file_strm
 
+    def Size(self):
+        size = 0
+        size += UInt32ByteLen
+        size += UInt32ByteLen
+        size += UInt32ByteLen
+        return size
+
     def __str__(self):
         logstr = "first_chunk = %d, samples_per_chunk = %d, " \
                  "sample_description_index = %d" % \
@@ -86,7 +93,7 @@ class Stsc(FullBox):
         for i in range(self.entry_count):
             sample_chunk_ = SampleChunk()
             file_strm = sample_chunk_.decode(file_strm)
-            self.offset += sample_chunk_.offset
+            self.offset += sample_chunk_.Size()
 
             self.sample_chunks.append(sample_chunk_)
 

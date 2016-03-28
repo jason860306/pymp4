@@ -43,8 +43,10 @@ class DataEntryUrlBox(FullBox):
         if left_size > 0:
             if self.flags != FLAG_SELF_CONTAINED:
                 self.location = file_strm.ReadByte(left_size)
+                self.offset += Int8ByteLen * left_size
             else:
                 file_strm.seek(left_size, os.SEEK_CUR)
+                self.offset += left_size
         return file_strm
 
     def __str__(self):
@@ -78,8 +80,10 @@ class DataEntryUrnBox(FullBox):
         if left_size > 0:
             if self.flags != FLAG_SELF_CONTAINED:
                 self.location = file_strm.ReadByte(left_size)
+                self.offset += Int8ByteLen * left_size
             else:
                 self.name = file_strm.ReadByte(left_size)
+                self.offset += left_size
         return file_strm
 
     def __str__(self):
@@ -119,15 +123,18 @@ class Dref(FullBox):
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Url:
-                data_entry = DataEntryUrlBox()
+                data_entry = DataEntryUrlBox(self.offset)
                 file_strm = data_entry.decode(file_strm)
+                self.offset += data_entry.Size()
                 self.data_entries.append(data_entry)
             elif tmp_box.type == FourCCMp4Urn:
-                data_entry = DataEntryUrnBox()
+                data_entry = DataEntryUrnBox(self.offset)
                 file_strm = data_entry.decode(file_strm)
+                self.offset += data_entry.Size()
                 self.data_entries.append(data_entry)
             else:
                 file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+                self.offset += tmp_box.Size()
 
         return file_strm
 

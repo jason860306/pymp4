@@ -84,7 +84,8 @@ class Stsd(FullBox):
         self.entry_count = file_strm.ReadUInt32()
         for i in range(self.entry_count):
             sample_entry = SampeEntry()
-            sample_entry.decode(file_strm)
+            file_strm = sample_entry.decode(file_strm)
+            self.offset += sample_entry.Size()
             self.sample_entries.append(sample_entry)
 
         return file_strm

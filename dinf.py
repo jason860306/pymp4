@@ -41,8 +41,9 @@ class Dinf(Box):
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Dref:
-                self.dref = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.dref = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.dref.decode(file_strm)
+                self.offset += self.dref.Size()
             else:
                 file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
             left_size -= tmp_box.Size()

@@ -65,7 +65,7 @@ class FullBox(Box):
         box_size = Box.GetLength(self)
         ver_size = struct.calcsize('!s')
         flags_size = struct.calcsize('!3s')
-        return (box_size + ver_size + flags_size)
+        return box_size + ver_size + flags_size
 
     def __str__(self):
         return "%s, version = %d, flags = %s" % (

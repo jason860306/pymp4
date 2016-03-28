@@ -45,19 +45,24 @@ class Minf(Box):
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Vmhd:
-                self.vmhd = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.vmhd = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.vmhd.decode(file_strm)
+                self.offset += self.vmhd.Size()
             elif tmp_box.type == FourCCMp4Smhd:
-                self.smhd = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.smhd = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.smhd.decode(file_strm)
+                self.offset += self.smhd.Size()
             elif tmp_box.type == FourCCMp4Dinf:
-                self.dinf = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.dinf = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.dinf.decode(file_strm)
+                self.offset += self.dinf.Size()
             elif tmp_box.type == FourCCMp4Stbl:
-                self.stbl = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.stbl = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.stbl.decode(file_strm)
+                self.offset += self.stbl.Size()
             else:
                 file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+                self.offset += tmp_box.Size()
             left_size -= tmp_box.Size()
 
         return file_strm

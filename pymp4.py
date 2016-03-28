@@ -24,12 +24,12 @@ class PyMp4:
     the main class to parse a mp4 file
     """
 
-    def __init__(self, filename):
-        if filename is None:
+    def __init__(self, fname):
+        if fname is None:
             print "file is None"
             return
 
-        self.filename = filename
+        self.filename = fname
         self.root = None
 
     def ParseMp4(self):

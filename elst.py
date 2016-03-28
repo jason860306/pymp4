@@ -61,6 +61,18 @@ class MediaSegmentEntry:
 
         return file_strm
 
+    def Size(self):
+        size = 0
+        if 1 == self.version:
+            size += UInt64ByteLen
+            size += Int64ByteLen
+        else:
+            size += UInt32ByteLen
+            size += Int32ByteLen
+        size += Int16ByteLen
+        size += Int16ByteLen
+        return size
+
     def __str__(self):
         logstr = "segment_duration = %d, media_time = %d, " % \
                  (self.segment_duration, self.media_time)
@@ -105,10 +117,10 @@ class Elst(FullBox):
 
         self.entry_count = file_strm.ReadUInt32()
         for i in range(self.entry_count):
-            segment_entry_ = MediaSegmentEntry(self.version)
+            segment_entry_ = MediaSegmentEntry(self.offset, self.version)
             file_strm = segment_entry_.decode(file_strm)
+            self.offset += segment_entry_.Size()
             self.segment_entry[i] = segment_entry_
-            self.offset += segment_entry_.offset
 
         return file_strm
 

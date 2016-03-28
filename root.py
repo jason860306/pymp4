@@ -23,7 +23,9 @@ class Root:
     the root box of a mp4 file
     """
 
-    def __init__(self):
+    def __init__(self, offset=0):
+        self.offset = offset
+
         self.moov = None
         self.ftyp = None
         self.mdat = None
@@ -44,25 +46,32 @@ class Root:
                 tmp_box = Box()
                 file_strm = tmp_box.peek(file_strm)
                 if tmp_box.type == FourCCMp4Moov:
-                    self.moov = MP4Boxes[tmp_box.type](tmp_box)
+                    self.moov = MP4Boxes[tmp_box.type](self.offset, tmp_box)
                     file_strm = self.moov.decode(file_strm)
+                    self.offset += self.moov.Size()
                 elif tmp_box.type == FourCCMp4Ftyp:
-                    self.ftyp = MP4Boxes[tmp_box.type](tmp_box)
+                    self.ftyp = MP4Boxes[tmp_box.type](self.offset, tmp_box)
                     file_strm = self.ftyp.decode(file_strm)
+                    self.offset += self.ftyp.Size()
                 elif tmp_box.type == FourCCMp4Mdat:
-                    self.mdat = MP4Boxes[tmp_box.type](tmp_box)
+                    self.mdat = MP4Boxes[tmp_box.type](self.offset, tmp_box)
                     file_strm = self.mdat.decode(file_strm)
+                    self.offset += self.mdat.Size()
                 elif tmp_box.type == FourCCMp4Udat:
-                    self.udat = MP4Boxes[tmp_box.type](tmp_box)
+                    self.udat = MP4Boxes[tmp_box.type](self.offset, tmp_box)
                     file_strm = self.udat.decode(file_strm)
+                    self.offset += self.udat.Size()
                 elif tmp_box.type == FourCCMp4Free:
-                    self.free = MP4Boxes[tmp_box.type](tmp_box)
+                    self.free = MP4Boxes[tmp_box.type](self.offset, tmp_box)
                     file_strm = self.free.decode(file_strm)
+                    self.offset += self.free.Size()
                 elif tmp_box.type == FourCCMp4Skip:
-                    self.skip = MP4Boxes[tmp_box.type](tmp_box)
+                    self.skip = MP4Boxes[tmp_box.type](self.offset, tmp_box)
                     file_strm = self.skip.decode(file_strm)
+                    self.offset += self.skip.Size()
                 else:
                     file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+                    self.offset += tmp_box.Size()
                 filesize -= tmp_box.Size()
 
             return file_strm

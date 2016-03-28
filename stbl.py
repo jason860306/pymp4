@@ -61,31 +61,40 @@ class Stbl(Box):
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Stts:
-                self.stts = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.stts = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.stts.decode(file_strm)
+                self.offset += self.stts.Size()
             elif tmp_box.type == FourCCMp4Ctts:
-                self.ctts = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.ctts = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.ctts.decode(file_strm)
+                self.offset += self.ctts.Size()
             elif tmp_box.type == FourCCMp4Stss:
-                self.stss = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.stss = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.stss.decode(file_strm)
+                self.offset += self.stss.Size()
             elif tmp_box.type == FourCCMp4Stsd:
-                self.stsd = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.stsd = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.stsd.decode(file_strm)
+                self.offset += self.stsd.Size()
             elif tmp_box.type == FourCCMp4Stsz:
-                self.stsz = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.stsz = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.stsz.decode(file_strm)
+                self.offset += self.stsz.Size()
             elif tmp_box.type == FourCCMp4Stsc:
-                self.stsc = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.stsc = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.stsc.decode(file_strm)
+                self.offset += self.stsc.Size()
             elif tmp_box.type == FourCCMp4Stco:
-                self.stco = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.stco = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.stco.decode(file_strm)
+                self.offset += self.stco.Size()
             elif tmp_box.type == FourCCMp4Co64:
-                self.co64 = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.co64 = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.co64.decode(file_strm)
+                self.offset += self.co64.Size()
             else:
                 file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+                self.offset += tmp_box.Size()
             left_size -= tmp_box.Size()
 
         return file_strm

@@ -43,17 +43,21 @@ class Moov(Box):
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Mvhd:
-                self.mvhd = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.mvhd = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.mvhd.decode(file_strm)
+                self.offset += self.mvhd.Size()
             elif tmp_box.type == FourCCMp4Trak:
-                trak_ = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                trak_ = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = trak_.decode(file_strm)
+                self.offset += trak_.Size()
                 self.trak.append(trak_)
             elif tmp_box.type == FourCCMp4Mdia:
-                self.mdia = mp4boxes.MP4Boxes[tmp_box.type](tmp_box)
+                self.mdia = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = self.mdia.decode(file_strm)
+                self.offset += self.mdia.Size()
             else:
                 file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+                self.offset += tmp_box.Size()
             left_size -= tmp_box.Size()
 
         return file_strm
