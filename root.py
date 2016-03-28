@@ -24,6 +24,7 @@ class Root:
     """
 
     def __init__(self, offset=0):
+        self.box_offset = offset
         self.offset = offset
 
         self.moov = None
@@ -70,7 +71,7 @@ class Root:
                     file_strm = self.skip.decode(file_strm)
                     self.offset += self.skip.Size()
                 else:
-                    file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+                    file_strm.Seek(tmp_box.Size(), os.SEEK_CUR)
                     self.offset += tmp_box.Size()
                 filesize -= tmp_box.Size()
 

@@ -47,6 +47,10 @@ class Smhd(FullBox):
         self.reserved = file_strm.ReadUInt16()
         self.offset += UInt16ByteLen
 
+        tmp_size = self.offset - self.box_offset
+        if tmp_size != self.Size():
+            file_strm.Seek(self.Size() - tmp_size, os.SEEK_CUR)
+
         return file_strm
 
     def __str__(self):

@@ -35,12 +35,12 @@ class FileStream:
         self.file = file
         self.endian = endian
 
-    def tell(self):
+    def Tell(self):
         if self.file is None:
             return 0
         return self.file.tell()
 
-    def seek(self, offset, whence=None):
+    def Seek(self, offset, whence=None):
         if self.file is None:
             return
         self.file.seek(offset, whence)
@@ -151,7 +151,7 @@ class FileStream:
             size = struct.calcsize(__FMT)
 
             buf = self.file.read(size)
-            self.file.seek(size * -1, os.SEEK_CUR)
+            self.file.Seek(size * -1, os.SEEK_CUR)
 
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_int64(num[0]).value
@@ -165,7 +165,7 @@ class FileStream:
             size = struct.calcsize(__FMT)
 
             buf = self.file.read(size)
-            self.file.seek(size * -1, os.SEEK_CUR)
+            self.file.Seek(size * -1, os.SEEK_CUR)
 
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_uint64(num[0]).value
@@ -179,7 +179,7 @@ class FileStream:
             size = struct.calcsize(__FMT)
 
             buf = self.file.read(size)
-            self.file.seek(size * -1, os.SEEK_CUR)
+            self.file.Seek(size * -1, os.SEEK_CUR)
 
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_int32(num[0]).value
@@ -193,7 +193,7 @@ class FileStream:
             size = struct.calcsize(__FMT)
 
             buf = self.file.read(size)
-            self.file.seek(size * -1, os.SEEK_CUR)
+            self.file.Seek(size * -1, os.SEEK_CUR)
 
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_int32(num[0]).value
@@ -207,7 +207,7 @@ class FileStream:
             size = struct.calcsize(__FMT)
 
             buf = self.file.read(size)
-            self.file.seek(size * -1, os.SEEK_CUR)
+            self.file.Seek(size * -1, os.SEEK_CUR)
 
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_int16(num[0]).value
@@ -221,7 +221,7 @@ class FileStream:
             size = struct.calcsize(__FMT)
 
             buf = self.file.read(size)
-            self.file.seek(size * -1, os.SEEK_CUR)
+            self.file.Seek(size * -1, os.SEEK_CUR)
 
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_uint16(num[0]).value
@@ -235,7 +235,7 @@ class FileStream:
             size = struct.calcsize(__FMT)
 
             buf = self.file.read(size)
-            self.file.seek(size * -1, os.SEEK_CUR)
+            self.file.Seek(size * -1, os.SEEK_CUR)
 
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_int8(num[0]).value
@@ -249,7 +249,7 @@ class FileStream:
             size = struct.calcsize(__FMT)
 
             buf = self.file.read(size)
-            self.file.seek(size * -1, os.SEEK_CUR)
+            self.file.Seek(size * -1, os.SEEK_CUR)
 
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_uint8(num[0]).value
@@ -262,7 +262,7 @@ class FileStream:
         buf = ''
         if self.file:
             buf = self.file.read(size)
-            self.file.seek(size * -1, os.SEEK_CUR)
+            self.file.Seek(size * -1, os.SEEK_CUR)
 
             buf = struct.unpack_from(__FMT, buf)
         return buf

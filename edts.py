@@ -46,7 +46,7 @@ class Edts(Box):
                 file_strm = self.elst.decode(file_strm)
                 self.offset += self.elst.Size()
             else:
-                file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+                file_strm.Seek(tmp_box.Size(), os.SEEK_CUR)
                 self.offset += tmp_box.Size()
             left_size -= tmp_box.Size()
 

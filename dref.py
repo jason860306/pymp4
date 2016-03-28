@@ -45,8 +45,9 @@ class DataEntryUrlBox(FullBox):
                 self.location = file_strm.ReadByte(left_size)
                 self.offset += Int8ByteLen * left_size
             else:
-                file_strm.seek(left_size, os.SEEK_CUR)
+                file_strm.Seek(left_size, os.SEEK_CUR)
                 self.offset += left_size
+
         return file_strm
 
     def __str__(self):
@@ -84,6 +85,7 @@ class DataEntryUrnBox(FullBox):
             else:
                 self.name = file_strm.ReadByte(left_size)
                 self.offset += left_size
+
         return file_strm
 
     def __str__(self):
@@ -133,8 +135,12 @@ class Dref(FullBox):
                 self.offset += data_entry.Size()
                 self.data_entries.append(data_entry)
             else:
-                file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+                file_strm.Seek(tmp_box.Size(), os.SEEK_CUR)
                 self.offset += tmp_box.Size()
+
+        tmp_size = self.offset - self.box_offset
+        if tmp_size != self.Size():
+            file_strm.Seek(self.Size() - tmp_size, os.SEEK_CUR)
 
         return file_strm
 

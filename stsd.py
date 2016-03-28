@@ -44,6 +44,10 @@ class SampeEntry(Box):
         self.data_reference_index = file_strm.ReadUInt16()
         self.offset += UInt16ByteLen
 
+        tmp_size = self.offset - self.box_offset
+        if tmp_size != self.Size():
+            file_strm.Seek(self.Size() - tmp_size, os.SEEK_CUR)
+
         return file_strm
 
     def __str__(self):
@@ -87,6 +91,10 @@ class Stsd(FullBox):
             file_strm = sample_entry.decode(file_strm)
             self.offset += sample_entry.Size()
             self.sample_entries.append(sample_entry)
+
+        tmp_size = self.offset - self.box_offset
+        if tmp_size != self.Size():
+            file_strm.Seek(self.Size() - tmp_size, os.SEEK_CUR)
 
         return file_strm
 

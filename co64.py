@@ -52,6 +52,10 @@ class Co64(FullBox):
 
             self.chunk_offset.append(chunk_offset_)
 
+        tmp_size = self.offset - self.box_offset
+        if tmp_size != self.Size():
+            file_strm.Seek(self.Size() - tmp_size, os.SEEK_CUR)
+
         return file_strm
 
     def __str__(self):

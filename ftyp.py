@@ -57,6 +57,10 @@ class Ftyp(Box):
             compatible_brand = ParseFourCC(compatible_brand_)
             self.compatible_brands.append(compatible_brand)
 
+        tmp_size = self.offset - self.box_offset
+        if tmp_size != self.Size():
+            file_strm.Seek(self.Size() - tmp_size, os.SEEK_CUR)
+
         return file_strm
 
     def __str__(self):

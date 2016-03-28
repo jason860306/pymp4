@@ -59,6 +59,10 @@ class Stsz(FullBox):
                 self.offset += UInt32ByteLen
                 self.entry_size.append(entry_size_)
 
+        tmp_size = self.offset - self.box_offset
+        if tmp_size != self.Size():
+            file_strm.Seek(self.Size() - tmp_size, os.SEEK_CUR)
+
         return file_strm
 
     def __str__(self):

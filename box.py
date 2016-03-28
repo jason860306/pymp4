@@ -34,6 +34,7 @@ class Box:
     """
 
     def __init__(self, offset=0, box=None):
+        self.box_offset = offset
         self.offset = offset
         if isinstance(box, Box) and box is not None:
             self.size = box.size
@@ -88,7 +89,7 @@ class Box:
             self.user_type = file_strm.ReadUInt16()
             # self.offset += UInt16ByteLen
 
-        file_strm.seek(self.GetLength() * -1, os.SEEK_CUR)
+        file_strm.Seek(self.GetLength() * -1, os.SEEK_CUR)
 
         return file_strm
 

@@ -26,6 +26,7 @@ class MediaSegmentEntry:
     """
 
     def __init__(self, offset=0, ver=0):
+        self.box_offset = offset
         self.offset = offset
         self.version = ver
 
@@ -121,6 +122,10 @@ class Elst(FullBox):
             file_strm = segment_entry_.decode(file_strm)
             self.offset += segment_entry_.Size()
             self.segment_entry[i] = segment_entry_
+
+        tmp_size = self.offset - self.box_offset
+        if tmp_size != self.Size():
+            file_strm.Seek(self.Size() - tmp_size, os.SEEK_CUR)
 
         return file_strm
 

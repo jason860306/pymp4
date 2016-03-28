@@ -25,6 +25,7 @@ class SampleChunk:
     """
 
     def __init__(self, offset=0):
+        self.box_offset = offset
         self.offset = offset
         self.first_chunk = 0
         self.samples_per_chunk = 0
@@ -96,6 +97,10 @@ class Stsc(FullBox):
             self.offset += sample_chunk_.Size()
 
             self.sample_chunks.append(sample_chunk_)
+
+        tmp_size = self.offset - self.box_offset
+        if tmp_size != self.Size():
+            file_strm.Seek(self.Size() - tmp_size, os.SEEK_CUR)
 
         return file_strm
 
