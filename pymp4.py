@@ -38,6 +38,7 @@ class PyMp4:
 
     def __str__(self):
         logstr = "file = %s, root = %s" % (self.filename, self.root)
+        return logstr
 
 
 if __name__ == "__main__":
@@ -48,3 +49,5 @@ if __name__ == "__main__":
     filename = sys.argv[1]
     pymp4 = PyMp4(filename)
     pymp4.ParseMp4()
+
+    print "mp4info: %s\n" % str(pymp4)

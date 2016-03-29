@@ -50,10 +50,12 @@ class Stts(FullBox):
         self.offset += UInt32ByteLen
 
         for i in range(self.entry_count):
-            self.sample_count[i] = file_strm.ReadUInt32()
+            sample_count_ = file_strm.ReadUInt32()
+            self.sample_count.append(sample_count_)
             self.offset += UInt32ByteLen
 
-            self.sample_delta[i] = file_strm.ReadUInt32()
+            sample_delta_ = file_strm.ReadUInt32()
+            self.sample_delta.append(sample_delta_)
             self.offset += UInt32ByteLen
 
         tmp_size = self.offset - self.box_offset

@@ -91,8 +91,10 @@ class Stsc(FullBox):
         file_strm = FullBox.decode(self, file_strm)
 
         self.entry_count = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
+
         for i in range(self.entry_count):
-            sample_chunk_ = SampleChunk()
+            sample_chunk_ = SampleChunk(self.offset)
             file_strm = sample_chunk_.decode(file_strm)
             self.offset += sample_chunk_.Size()
 

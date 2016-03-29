@@ -29,8 +29,8 @@ class DataEntryUrlBox(FullBox):
     // the box terminates with self‐contained flag isthe entry‐flags field.
     """
 
-    def __init__(self, offset=0):
-        FullBox.__init__(self, offset)
+    def __init__(self, offset=0, box=None):
+        FullBox.__init__(self, offset, box)
         self.location = ""
 
     def decode(self, file_strm):
@@ -66,8 +66,8 @@ class DataEntryUrnBox(FullBox):
     // the box terminates with self‐contained flag isthe entry‐flags field.
     """
 
-    def __init__(self, offset=0):
-        FullBox.__init__(self, offset)
+    def __init__(self, offset=0, box=None):
+        FullBox.__init__(self, offset, box)
         self.name = ""
         self.location = ""
 
@@ -121,16 +121,18 @@ class Dref(FullBox):
         file_strm = FullBox.decode(self, file_strm)
 
         self.entry_count = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
+
         for cnt in range(self.entry_count):
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Url:
-                data_entry = DataEntryUrlBox(self.offset)
+                data_entry = DataEntryUrlBox(self.offset, tmp_box)
                 file_strm = data_entry.decode(file_strm)
                 self.offset += data_entry.Size()
                 self.data_entries.append(data_entry)
             elif tmp_box.type == FourCCMp4Urn:
-                data_entry = DataEntryUrnBox(self.offset)
+                data_entry = DataEntryUrnBox(self.offset, tmp_box)
                 file_strm = data_entry.decode(file_strm)
                 self.offset += data_entry.Size()
                 self.data_entries.append(data_entry)

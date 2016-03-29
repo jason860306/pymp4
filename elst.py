@@ -117,6 +117,8 @@ class Elst(FullBox):
         file_strm = FullBox.decode(self, file_strm)
 
         self.entry_count = file_strm.ReadUInt32()
+        self.offset += UInt32ByteLen
+
         for i in range(self.entry_count):
             segment_entry_ = MediaSegmentEntry(self.offset, self.version)
             file_strm = segment_entry_.decode(file_strm)
