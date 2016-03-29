@@ -51,7 +51,7 @@ class DataEntryUrlBox(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, location = %s" % (FullBox.__str__(self), self.location)
+        logstr = "%s\n\t\t\t\t\t\tlocation = %s" % (FullBox.__str__(self), self.location)
         return logstr
 
 
@@ -89,7 +89,7 @@ class DataEntryUrnBox(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, name = %s, location = %s" % \
+        logstr = "%s\n\t\t\t\t\t\tname = %s\n\t\t\t\t\t\tlocation = %s" % \
                  (FullBox.__str__(self), self.name, self.location)
         return logstr
 
@@ -147,9 +147,9 @@ class Dref(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, entry_count = %d, entries = [" % \
-                 (FullBox.__str__(self), self.entry_count)
+        logstr = "\t\t\t\t%s\n\t\t\t\tentry_count = %08ld(0x%016lx)\n\t\t\t\tentries = [" % \
+                 (FullBox.__str__(self), self.entry_count, self.entry_count)
         for i in range(self.entry_count):
-            logstr += "%d. %s, ], [" % (i, self.data_entries[i])
-        logstr += "]"
+            logstr += "\n\t\t\t\t\t%08ld. %s" % (i, self.data_entries[i])
+        logstr += "\n\t\t\t\t]\n"
         return logstr

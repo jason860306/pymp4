@@ -63,6 +63,6 @@ class Mdia(Box):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, mdhd = %s, hdlr = %s, minf = %s" % \
+        logstr = "\t%s\n%s\n%s\n%s\n" % \
                  (Box.__str__(self), self.mdhd, self.hdlr, self.minf)
         return logstr

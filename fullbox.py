@@ -68,5 +68,5 @@ class FullBox(Box):
         return box_size + ver_size + flags_size
 
     def __str__(self):
-        return "%s, version = %d, flags = %s" % (
-            Box.__str__(self), self.version, self.flags)
+        return "%s, version = %08ld(0x%016lx), flags = %s" % (
+            Box.__str__(self), self.version, self.version, repr(self.flags))

@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from box import *
 
 
-class Udat(Box):
+class Udta(Box):
     """
     aligned(8) class UserDataBox extends Box(‘udta’) {
     }
@@ -41,5 +41,5 @@ class Udat(Box):
         return file_strm
 
     def __str__(self):
-        logstr = "%s" % Box.__str__(self)
+        logstr = "\t%s\n" % Box.__str__(self)
         return logstr

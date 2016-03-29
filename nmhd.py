@@ -44,5 +44,5 @@ class Nmhd(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s" % FullBox.__str__(self)
+        logstr = "\t\t\t%s\n" % FullBox.__str__(self)
         return logstr

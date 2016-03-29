@@ -78,8 +78,7 @@ class Root:
             return file_strm
 
     def __str__(self):
-        logstr = "moov = %s, ftyp = %s, mdat = %s, free = %s, " \
-                 "skip = %s, udat = %s" % \
+        logstr = "%s%s%s%s%s%s" % \
                  (self.moov, self.ftyp, self.mdat, self.free,
                   self.skip, self.udat)
         return logstr

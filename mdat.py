@@ -48,5 +48,6 @@ class Mdat(Box):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, data = %s" % (Box.__str__(self), self.data)
+        # logstr = "%s, data = %s" % (Box.__str__(self), self.data)
+        logstr = "%s\n" % (Box.__str__(self))
         return logstr

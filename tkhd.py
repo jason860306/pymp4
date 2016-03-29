@@ -150,18 +150,23 @@ class Tkhd(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, creation_time = %d, modification_time = %d, " % \
-                 (Box.__str__(self), self.creation_time, self.modification_time)
-        logstr += "track_ID = %d, reserved = %d, duration = %d, reserved1 = [" % \
-                  (self.track_ID, self.reserved, self.duration)
+        logstr = "\t%s\n\tcreation_time = %s(%08ld)\n\tmodification_time = %s(%08ld)" % \
+                 (Box.__str__(self), self.creation_time_fmt, self.creation_time,
+                  self.modification_time_fmt, self.modification_time)
+        logstr += "\n\ttrack_ID = %08ld(0x%016lx)\n\treserved = %08ld(0x%016lx)" \
+                  "\n\tduration = %08ld(0x%016lx)\n\treserved1 = [ " % \
+                  (self.track_ID, self.track_ID, self.reserved, self.reserved,
+                   self.duration, self.duration)
         for i in range(len(self.reserved1)):
-            logstr += "%d, " % self.reserved1[i]
-        logstr += "], layer = %d, alternate_group = %d, volume = %s, " % \
-                  (self.layer, self.alternate_group, self.volume_fmt)
-        logstr += "reserved2 = %d, matrix = [["
+            logstr += "%08ld(0x%016lx), " % (self.reserved1[i], self.reserved1[i])
+        logstr += "]\n\tlayer = %08ld(0x%016lx)\n\talternate_group = %08ld(0x%016lx)" \
+                  "\n\tvolume = %s" % (self.layer, self.layer, self.alternate_group,
+                                     self.alternate_group, self.volume_fmt)
+        logstr += "\n\treserved2 = %08ld(0x%016lx)\n\tmatrix = [" % (self.reserved2, self.reserved2)
         for i in range(len(self.matrix)):
-            logstr += "%d " % self.matrix[i]
-            if 0 == i % 3:
-                logstr += "], ["
-        logstr += "]], width = %d, height = %d" % (self.width, self.height)
+            if (0 == i) or (0 == i % 3):
+                logstr += "\n\t\t"
+            logstr += "%016ld(0x%016lx) " % (self.matrix[i], self.matrix[i])
+        logstr += "\n\t]\n\twidth = %08ld(0x%016lx)\n\theight = %08ld(0x%016lx)\n" % \
+                  (self.width, self.width, self.height, self.height)
         return logstr

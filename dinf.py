@@ -52,5 +52,5 @@ class Dinf(Box):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, dref = %s" % (Box.__str__(self), self.dref)
+        logstr = "\t\t\t%s\n%s\n" % (Box.__str__(self), self.dref)
         return logstr

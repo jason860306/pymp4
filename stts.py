@@ -65,8 +65,10 @@ class Stts(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, sample = [" % FullBox.__str__(self)
+        logstr = "\t\t\t\t%s\n\t\t\t\tsample = [" % FullBox.__str__(self)
         for i in range(self.entry_count):
-            logstr += "%d. (%d %d)], [" % \
-                      (i, self.sample_count[i], self.sample_delta[i])
+            logstr += "\n\t\t\t\t\t%08ld. %08ld(0x%016lx) %08ld(0x%016lx)" % \
+                      (i, self.sample_count[i], self.sample_count[i],
+                       self.sample_delta[i], self.sample_delta[i])
+        logstr += "\n\t\t\t\t]\n"
         return logstr

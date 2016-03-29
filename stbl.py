@@ -100,8 +100,7 @@ class Stbl(Box):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, stts = %s, ctts = %s, stss = %s, stsd = %s, " \
-                 "stsz = %s, stsc = %s, stco = %s, co64 = %s" % \
+        logstr = "\t\t\t%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n" % \
                  (Box.__str__(self), self.stts, self.ctts, self.stss,
                   self.stsd, self.stsz, self.stsc, self.stco, self.co64)
         return logstr

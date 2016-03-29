@@ -37,7 +37,7 @@ class PyMp4:
         self.root.decode(self.filename)
 
     def __str__(self):
-        logstr = "file = %s, root = %s" % (self.filename, self.root)
+        logstr = "file = %s\n%s" % (self.filename, self.root)
         return logstr
 
 

@@ -51,10 +51,12 @@ class SampeEntry(Box):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, reserved = [" % Box.__str__(self)
+        logstr = "%s\n\t\t\t\t\t\treserved = [" % Box.__str__(self)
         for i in range(len(self.reserved)):
-            logstr += "%d. %d], [" % (i, self.reserved[i])
-        logstr += "], data_reference_index = %d" % self.data_reference_index
+            logstr += "\n\t\t\t\t\t\t\t%08ld. %08ld(0x%016lx)" % \
+                      (i, self.reserved[i], self.reserved[i])
+        logstr += "\n\t\t\t\t\t\t]\n\t\t\t\t\t\tdata_reference_index = %08ld(0x%016lx)" % \
+                  (self.data_reference_index, self.data_reference_index)
         return logstr
 
 
@@ -101,9 +103,10 @@ class Stsd(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, entry_count = %d, sample_entries = [" % \
-                 (FullBox.__str__(self), self.entry_count)
+        logstr = "\t\t\t\t%s\n\t\t\t\tentry_count = %08ld(0x%016lx)" \
+                 "\n\t\t\t\tsample_entries = [" % \
+                 (FullBox.__str__(self), self.entry_count, self.entry_count)
         for i in range(self.entry_count):
-            logstr += "%d. %s" % (i, self.sample_entries[i])
-        logstr += "]"
+            logstr += "\n\t\t\t\t\t%08ld. %s" % (i, self.sample_entries[i])
+        logstr += "\n\t\t\t\t]\n"
         return logstr

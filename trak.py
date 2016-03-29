@@ -63,6 +63,6 @@ class Trak(Box):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, tkhd = %s, edts = %s, mdia = %s" % \
+        logstr = "%s\n%s\n%s\n%s\n" % \
                  (Box.__str__(self), self.tkhd, self.edts, self.mdia)
         return logstr

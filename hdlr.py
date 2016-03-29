@@ -70,9 +70,11 @@ class Hdlr(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, pre_defined = %d, handler_type = %s, reserved = [" % \
-                 (FullBox.__str__(self), self.pre_defined, self.handler_type)
+        logstr = "\t\t%s\n\t\tpre_defined = %08ld(0x%016lx)" \
+                 "\n\t\thandler_type = %s\n\t\treserved = [ " % \
+                 (FullBox.__str__(self), self.pre_defined,
+                  self.pre_defined, self.handler_type)
         for r in self.reserved:
-            logstr += "%d, " % r
-        logstr += "], name = %s" % self.name
+            logstr += "%08ld(0x%016lx), " % (r, r)
+        logstr += "]\n\t\tname = %s\n" % self.name
         return logstr

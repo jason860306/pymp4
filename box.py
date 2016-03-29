@@ -103,5 +103,5 @@ class Box:
         return size_
 
     def __str__(self):
-        return "offset = 0x%08x, size = %ld, type = %s" % \
-               (self.offset, self.size, self.type)
+        return "offset = 0x%016x, size = %08ld(0x%08lx), type = %s" % \
+               (self.offset, self.size, self.size, self.type)

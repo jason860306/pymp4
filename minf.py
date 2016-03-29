@@ -68,6 +68,6 @@ class Minf(Box):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, vmhd = %s, smhd = %s, dinf = %s, stbl = %s" % \
+        logstr = "\t\t%s\n%s\n%s\n%s\n%s\n" % \
                  (Box.__str__(self), self.vmhd, self.smhd, self.dinf, self.stbl)
         return logstr

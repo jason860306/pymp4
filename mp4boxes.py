@@ -41,7 +41,7 @@ from stsz import Stsz
 from stts import Stts
 from tkhd import Tkhd
 from trak import Trak
-from udat import Udat
+from udta import Udta
 from vmhd import Vmhd
 
 # FourCC => BoxType
@@ -70,7 +70,7 @@ MP4Boxes = {
     FourCCMp4Stco: Stco,
     FourCCMp4Co64: Co64,
     FourCCMp4Mdat: Mdat,
-    FourCCMp4Udat: Udat,
+    FourCCMp4Udat: Udta,
     FourCCMp4Ftyp: Ftyp,
     FourCCMp4Free: Free,
     FourCCMp4Skip: Skip

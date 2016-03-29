@@ -146,23 +146,25 @@ class Mvhd(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, creation_time = %d, modification_time = %d, " % \
-                 (FullBox.__str__(self), self.creation_time, self.modification_time)
-        logstr += "timescale = %d, duration = %d, rate = %s, " % \
-                  (self.timescale, self.duration, self.rate_fmt)
-        logstr += "volume = %s, reserved = %d, reserved1 = [" % \
-                  (self.volume, self.reserved)
+        logstr = "\t%s\n\tcreation_time = %s(%08ld)\n\tmodification_time = %s(%08ld)" % \
+                 (FullBox.__str__(self), self.creation_time_fmt, self.creation_time,
+                  self.modification_time_fmt, self.modification_time)
+        logstr += "\n\ttimescale = %08ld(0x%016lx)\n\tduration = %08ld(0x%016lx)\n\trate = %s" % \
+                  (self.timescale, self.timescale, self.duration, self.duration, self.rate_fmt)
+        logstr += "\n\tvolume = %s\n\treserved = %08ld(0x%016lx)\n\treserved1 = [ " % \
+                  (self.volume, self.reserved, self.reserved)
         for r in self.reserved1:
-            logstr += "%d, " % r
-        logstr += "], matrix: [["
+            logstr += "%08ld(0x%016lx), " % (r, r)
+        logstr += "]\n\tmatrix = ["
         for i in range(len(self.matrix)):
-            logstr += "%d " % self.matrix[i]
-            if 0 == i % 3:
-                logstr += "], ["
-        logstr += "]], pre_defined: [["
+            if (0 == i) or (0 == i % 3):
+                logstr += "\n\t\t"
+            logstr += "%016ld(0x%016lx) " % (self.matrix[i], self.matrix[i])
+        logstr += "\n\t]\n\tpre_defined = ["
         for j in range(len(self.pre_defined)):
-            logstr += "%d " % self.pre_defined[j]
-            if 0 == j % 3:
-                logstr += "], ["
-        logstr += "]], next_track_ID = %d" % self.next_track_ID
+            if (0 == i) or (0 == i % 3):
+                logstr += "\n\t\t"
+            logstr += "%08ld(0x%016lx) " % (self.pre_defined[j], self.pre_defined[j])
+        logstr += "\n\t]\n\tnext_track_ID = %08ld(0x%016lx)\n" % (
+            self.next_track_ID, self.next_track_ID)
         return logstr

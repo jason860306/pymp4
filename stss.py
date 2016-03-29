@@ -59,9 +59,16 @@ class Stss(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, entry_count = %d, sample_number = [" % \
-                 (FullBox.__str__(self), self.entry_count)
+        logstr = "\t\t\t\t%s\n\t\t\t\tentry_count = %08ld(0x%016lx)" \
+                 "\n\t\t\t\tsample_number = [" % \
+                 (FullBox.__str__(self), self.entry_count, self.entry_count)
+
+        j = 0
         for i in range(self.entry_count):
-            logstr += "[%d. %d], " % (i, self.sample_number[i])
-        logstr += "]"
+            if (0 == i) or (0 == i % 3):
+                logstr += "\n\t\t\t\t\t%08ld. " % j
+                j += 1
+            logstr += "%08ld(0x%016lx) " % \
+                      (self.sample_number[i], self.sample_number[i])
+        logstr += "\n\t\t\t\t]\n"
         return logstr

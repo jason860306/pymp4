@@ -63,8 +63,8 @@ class Moov(Box):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, mvhd = %s, trak = [" % (Box.__str__(self), self.mvhd)
+        logstr = "%s\n%s\n" % (Box.__str__(self), self.mvhd)
         for i in range(len(self.trak)):
-            logstr += "[%d. %s], " % (i, self.trak[i])
-        logstr += "]"
+            logstr += "\t%08ld. %s" % (i, self.trak[i])
+        logstr += "\n"
         return logstr

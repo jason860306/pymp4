@@ -53,5 +53,5 @@ class Edts(Box):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, elst = %s" % (Box.__str__(self), self.elst)
+        logstr = "\t%s\n\t%s\n" % (Box.__str__(self), self.elst)
         return logstr
