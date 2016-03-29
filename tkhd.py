@@ -150,18 +150,23 @@ class Tkhd(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, creation_time = %d, modification_time = %d, " % \
-                 (Box.__str__(self), self.creation_time, self.modification_time)
-        logstr += "track_ID = %d, reserved = %d, duration = %d, reserved1 = [" % \
-                  (self.track_ID, self.reserved, self.duration)
+        logstr = "%s, creation_time = %s(%08ld), modification_time = %s(%08ld), " % \
+                 (Box.__str__(self), self.creation_time_fmt, self.creation_time,
+                  self.modification_time_fmt, self.modification_time)
+        logstr += "track_ID = %08ld(0x%016lx), reserved = %08ld(0x%016lx), " \
+                  "duration = %08ld(0x%016lx), reserved1 = [" % \
+                  (self.track_ID, self.track_ID, self.reserved, self.reserved,
+                   self.duration, self.duration)
         for i in range(len(self.reserved1)):
-            logstr += "%d, " % self.reserved1[i]
-        logstr += "], layer = %d, alternate_group = %d, volume = %s, " % \
-                  (self.layer, self.alternate_group, self.volume_fmt)
-        logstr += "reserved2 = %d, matrix = [["
+            logstr += "%08ld(0x%016lx), " % (self.reserved1[i], self.reserved1[i])
+        logstr += "], layer = %08ld(0x%016lx), alternate_group = %08ld(0x%016lx), " \
+                  "volume = %s, " % (self.layer, self.layer, self.alternate_group,
+                                     self.alternate_group, self.volume_fmt)
+        logstr += "reserved2 = %08ld(0x%016lx), matrix = [[" % (self.reserved2, self.reserved2)
         for i in range(len(self.matrix)):
-            logstr += "%d " % self.matrix[i]
+            logstr += "%08ld(0x%016lx) " % (self.matrix[i], self.matrix[i])
             if 0 == i % 3:
                 logstr += "], ["
-        logstr += "]], width = %d, height = %d" % (self.width, self.height)
+        logstr += "]], width = %08ld(0x%016lx), height = %08ld(0x%016lx)" % \
+                  (self.width, self.width, self.height, self.height)
         return logstr

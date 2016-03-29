@@ -59,9 +59,9 @@ class Co64(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, entry_count = %d, chunk_offset = [" % \
-                 (FullBox.__str__(self), self.entry_count)
+        logstr = "%s, entry_count = %08ld(0x%016lx), chunk_offset = [" % \
+                 (FullBox.__str__(self), self.entry_count, self.entry_count)
         for i in range(self.entry_count):
-            logstr += "[%d. %ld], " % (i, self.chunk_offset[i])
+            logstr += "[%d. 0x%016lx], " % (i, self.chunk_offset[i])
         logstr += "]"
         return logstr

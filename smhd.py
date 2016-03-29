@@ -54,6 +54,7 @@ class Smhd(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, balance = %d, reserved = %d" % \
-                 (FullBox.__str__(self), self.balance, self.reserved)
+        logstr = "%s, balance = %08ld(0x%016lx), reserved = %08ld(0x%016lx)" % \
+                 (FullBox.__str__(self), self.balance, self.balance,
+                  self.reserved, self.reserved)
         return logstr

@@ -66,11 +66,13 @@ class Stsz(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, sample_size = %d, sample_count = %d" % \
-                 (FullBox.__str__(self), self.sample_size, self.sample_count)
+        logstr = "%s, sample_size = %08ld(0x%016lx), sample_count = %08ld(0x%016lx)" % \
+                 (FullBox.__str__(self), self.sample_size, self.sample_size,
+                  self.sample_count, self.sample_count)
         if 0 == self.sample_size:
             logstr += ", entry_size = ["
             for i in range(self.sample_count):
-                logstr += "[%d. %d], " % (i, self.entry_size[i])
+                logstr += "[%d. %08ld(0x%016lx)], " % \
+                          (i, self.entry_size[i], self.entry_size[i])
             logstr += "]"
         return logstr

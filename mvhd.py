@@ -146,23 +146,24 @@ class Mvhd(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, creation_time = %d, modification_time = %d, " % \
-                 (FullBox.__str__(self), self.creation_time, self.modification_time)
-        logstr += "timescale = %d, duration = %d, rate = %s, " % \
-                  (self.timescale, self.duration, self.rate_fmt)
-        logstr += "volume = %s, reserved = %d, reserved1 = [" % \
-                  (self.volume, self.reserved)
+        logstr = "%s, creation_time = %s(%08ld), modification_time = %s(%08ld), " % \
+                 (FullBox.__str__(self), self.creation_time_fmt, self.creation_time,
+                  self.modification_time_fmt, self.modification_time)
+        logstr += "timescale = %08ld(0x%016lx), duration = %08ld(0x%016lx), rate = %s, " % \
+                  (self.timescale, self.timescale, self.duration, self.duration, self.rate_fmt)
+        logstr += "volume = %s, reserved = %08ld(0x%016lx), reserved1 = [" % \
+                  (self.volume, self.reserved, self.reserved)
         for r in self.reserved1:
-            logstr += "%d, " % r
+            logstr += "%08ld(0x%016lx), " % (r, r)
         logstr += "], matrix: [["
         for i in range(len(self.matrix)):
-            logstr += "%d " % self.matrix[i]
+            logstr += "%08ld(0x%016lx) " % (self.matrix[i], self.matrix[i])
             if 0 == i % 3:
                 logstr += "], ["
         logstr += "]], pre_defined: [["
         for j in range(len(self.pre_defined)):
-            logstr += "%d " % self.pre_defined[j]
+            logstr += "%08ld(0x%016lx) " % (self.pre_defined[j], self.pre_defined[j])
             if 0 == j % 3:
                 logstr += "], ["
-        logstr += "]], next_track_ID = %d" % self.next_track_ID
+        logstr += "]], next_track_ID = %08ld(0x%016lx)" % (self.next_track_ID, self.next_track_ID)
         return logstr

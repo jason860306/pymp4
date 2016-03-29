@@ -148,11 +148,12 @@ class Mdhd(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, creation_time = %d, modification_time = %d, " % \
-                 (FullBox.__str__(self), self.creation_time, self.modification_time)
-        logstr += "timescale = %d, duration = %d, language = [" % \
+        logstr = "%s, creation_time = %s(%08ld), modification_time = %s(%08ld), " % \
+                 (FullBox.__str__(self), self.creation_time_fmt, self.creation_time,
+                  self.modification_time_fmt, self.modification_time)
+        logstr += "timescale = %08ld, duration = %08ld, language = [" % \
                   (self.timescale, self.duration)
         for language_ in self.language:
             logstr += "%s, " % language_
-        logstr += "], pre_defined = %d" % self.pre_defined
+        logstr += "], pre_defined = %08ld(0x%016lx)" % (self.pre_defined, self.pre_defined)
         return logstr

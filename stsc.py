@@ -55,9 +55,10 @@ class SampleChunk:
         return size
 
     def __str__(self):
-        logstr = "first_chunk = %d, samples_per_chunk = %d, " \
-                 "sample_description_index = %d" % \
-                 (self.first_chunk, self.samples_per_chunk,
+        logstr = "first_chunk = %08ld(0x%016lx), samples_per_chunk = %08ld(0x%016lx), " \
+                 "sample_description_index = %08ld(0x%016lx)" % \
+                 (self.first_chunk, self.first_chunk, self.samples_per_chunk,
+                  self.samples_per_chunk, self.sample_description_index,
                   self.sample_description_index)
         return logstr
 
@@ -107,8 +108,8 @@ class Stsc(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, entry_count = %d, sample_chunks = [" % \
-                 (FullBox.__str__(self), self.entry_count)
+        logstr = "%s, entry_count = %08ld(0x%016lx), sample_chunks = [" % \
+                 (FullBox.__str__(self), self.entry_count, self.entry_count)
         for i in range(self.entry_count):
             logstr += "[%d. %s], " % (i, self.sample_chunks[i])
         logstr += "]"

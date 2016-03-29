@@ -53,8 +53,9 @@ class SampeEntry(Box):
     def __str__(self):
         logstr = "%s, reserved = [" % Box.__str__(self)
         for i in range(len(self.reserved)):
-            logstr += "%d. %d], [" % (i, self.reserved[i])
-        logstr += "], data_reference_index = %d" % self.data_reference_index
+            logstr += "%d. %08ld(0x%016lx)], [" % (i, self.reserved[i], self.reserved[i])
+        logstr += "], data_reference_index = %08ld(0x%016lx)" % \
+                  (self.data_reference_index, self.data_reference_index)
         return logstr
 
 
@@ -101,8 +102,8 @@ class Stsd(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, entry_count = %d, sample_entries = [" % \
-                 (FullBox.__str__(self), self.entry_count)
+        logstr = "%s, entry_count = %08ld(0x%016lx), sample_entries = [" % \
+                 (FullBox.__str__(self), self.entry_count, self.entry_count)
         for i in range(self.entry_count):
             logstr += "%d. %s" % (i, self.sample_entries[i])
         logstr += "]"

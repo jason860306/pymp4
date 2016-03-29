@@ -132,8 +132,9 @@ class Elst(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, entry_count = %d, entries: [" % \
-                 (Box.__str__(self), self.entry_count)
+        logstr = "%s, entry_count = %08ld(0x%016lx), entries: [" % \
+                 (Box.__str__(self), self.entry_count, self.entry_count)
         for i in range(len(self.segment_entry)):
-            logstr += "%d. %s, " % (i + 1, self.segment_entry[i])
+            logstr += "%d. %s, ], [" % (i + 1, self.segment_entry[i])
+        logstr += "]"
         return logstr

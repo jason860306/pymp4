@@ -64,8 +64,10 @@ class Ftyp(Box):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, major_brand = %s, minor_brand = %d" % \
-                 (Box.__str__(self), self.major_brand, self.minor_brand)
+        logstr = "%s, major_brand = %s, minor_brand = %08ld(0x%016lx)" % \
+                 (Box.__str__(self), self.major_brand, self.minor_brand, self.minor_brand)
+        logstr += "["
         for brand in self.compatible_brands:
             logstr += ", %s" % brand
+        logstr += "]"
         return logstr

@@ -78,10 +78,10 @@ class Ctts(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, entry_count = %d, sample = [" % \
-                 (FullBox.__str__(self), self.entry_count)
+        logstr = "%s, entry_count = %08ld(0x%016lx), sample = [" % \
+                 (FullBox.__str__(self), self.entry_count, self.entry_count)
         for i in range(self.entry_count):
-            logstr += "[%d. %d %d], " % \
+            logstr += "[%d. %08ld 0x%016lx], " % \
                       (i, self.sample_count[i], self.sample_offset[i])
         logstr += "]"
         return logstr

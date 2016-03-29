@@ -59,9 +59,10 @@ class Stss(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, entry_count = %d, sample_number = [" % \
-                 (FullBox.__str__(self), self.entry_count)
+        logstr = "%s, entry_count = %08ld(0x%016lx), sample_number = [" % \
+                 (FullBox.__str__(self), self.entry_count, self.entry_count)
         for i in range(self.entry_count):
-            logstr += "[%d. %d], " % (i, self.sample_number[i])
+            logstr += "[%d. %08ld(0x%016lx)], " % \
+                      (i, self.sample_number[i], self.sample_number[i])
         logstr += "]"
         return logstr

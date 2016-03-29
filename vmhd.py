@@ -56,9 +56,9 @@ class Vmhd(FullBox):
         return file_strm
 
     def __str__(self):
-        logstr = "%s, graphicsmode = %d, opcolor = [" % \
-                 (FullBox.__str__(self), self.graphicsmode)
+        logstr = "%s, graphicsmode = %08ld(0x%016lx), opcolor = [" % \
+                 (FullBox.__str__(self), self.graphicsmode, self.graphicsmode)
         for i in range(len(self.opcolor)):
-            logstr += "%d " % self.opcolor[i]
+            logstr += "%08ld(0x%016lx) " % (self.opcolor[i], self.opcolor[i])
         logstr += "]"
         return logstr
