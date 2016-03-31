@@ -162,7 +162,7 @@ class Mvhd(FullBox):
             logstr += "%016ld(0x%016lx) " % (self.matrix[i], self.matrix[i])
         logstr += "\n\t]\n\tpre_defined = ["
         for j in range(len(self.pre_defined)):
-            if (0 == i) or (0 == i % 3):
+            if (0 == j) or (0 == j % 3):
                 logstr += "\n\t\t"
             logstr += "%08ld(0x%016lx) " % (self.pre_defined[j], self.pre_defined[j])
         logstr += "\n\t]\n\tnext_track_ID = %08ld(0x%016lx)\n" % (

@@ -123,7 +123,7 @@ class Elst(FullBox):
             segment_entry_ = MediaSegmentEntry(self.offset, self.version)
             file_strm = segment_entry_.decode(file_strm)
             self.offset += segment_entry_.Size()
-            self.segment_entry[i] = segment_entry_
+            self.segment_entry.append(segment_entry_)
 
         tmp_size = self.offset - self.box_offset
         if tmp_size != self.Size():
