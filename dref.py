@@ -14,7 +14,11 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
+
+import mp4boxes
 from fullbox import *
+from mp4boxdesc import *
 
 FLAG_SELF_CONTAINED = 0x000001
 
@@ -34,8 +38,8 @@ class DataEntryUrlBox(FullBox):
         self.location = ""
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)
@@ -72,8 +76,8 @@ class DataEntryUrnBox(FullBox):
         self.location = ""
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)
@@ -102,6 +106,21 @@ class Dref(FullBox):
              DataEntryBox(entry_version, entry_flags) data_entry;
         }
     }
+    version - is an integer that specifies the version of this box
+    entry_count - is an integer that counts the actual entries
+    entry_version - is an integer that specifies the version of the entry format
+    entry_flags - is a 24‐bit integer with flags; one flag is defined (x000001) which
+                means that the media data is in the same file as the Movie Box containing
+                this data reference.
+    data_entry - is a URL or URN entry. Name is a URN, and is required in a URN entry.
+                 Location is a URL, and is required in a URL entry and optional in a URN
+                 entry, where it gives a location to find the resource with the given name.
+                 Each is a null‐terminated string using UTF‐8 characters. If the self‐contained
+                 flag is set, the URL form is used and no string is present; the box terminates
+                 with the entry‐flags field. The URL type should be of a service that delivers
+                 a file (e.g. URLs of type file, http, ftp etc.), and which services ideally
+                 also permit random access. Relative URLs are permissible and are relative to
+                 the file containing the Movie Box that contains this data reference.
     """
 
     def __init__(self, offset=0, box=None):
@@ -114,8 +133,8 @@ class Dref(FullBox):
         self.data_entries = []
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)
@@ -127,12 +146,12 @@ class Dref(FullBox):
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Url:
-                data_entry = DataEntryUrlBox(self.offset, tmp_box)
+                data_entry = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = data_entry.decode(file_strm)
                 self.offset += data_entry.Size()
                 self.data_entries.append(data_entry)
             elif tmp_box.type == FourCCMp4Urn:
-                data_entry = DataEntryUrnBox(self.offset, tmp_box)
+                data_entry = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
                 file_strm = data_entry.decode(file_strm)
                 self.offset += data_entry.Size()
                 self.data_entries.append(data_entry)

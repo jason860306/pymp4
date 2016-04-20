@@ -14,6 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
+
 from fullbox import *
 
 
@@ -22,6 +24,16 @@ class SampleChunk:
     unsigned int(32) first_chunk;
     unsigned int(32) samples_per_chunk;
     unsigned int(32) sample_description_index;
+
+    first_chunk - is an integer that gives the index of the first chunk in this run of
+                  chunks that share the same samples‐per‐chunk and sample‐description‐index;
+                  the index of the first chunk in a track has the value 1 (the first_chunk
+                  field in the first record of this box has the value 1, identifying that
+                  the first sample maps to the first chunk).
+    samples_per_chunk - is an integer that gives the number of samples in each of these chunks
+    sample_description_index - is an integer that gives the index of the sample entry that
+                               describes the samples in this chunk. The index ranges from 1
+                               to the number of sample entries in the Sample Description Box
     """
 
     def __init__(self, offset=0):
@@ -32,8 +44,8 @@ class SampleChunk:
         self.sample_description_index = 0
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         self.first_chunk = file_strm.ReadUInt32()
@@ -73,6 +85,17 @@ class Stsc(FullBox):
             unsigned int(32) sample_description_index;
         }
     }
+    version - is an integer that specifies the version of this box
+    entry_count - is an integer that gives the number of entries in the following table
+    first_chunk - is an integer that gives the index of the first chunk in this run of
+                  chunks that share the same samples‐per‐chunk and sample‐description‐index;
+                  the index of the first chunk in a track has the value 1 (the first_chunk
+                  field in the first record of this box has the value 1, identifying that
+                  the first sample maps to the first chunk).
+    samples_per_chunk - is an integer that gives the number of samples in each of these chunks
+    sample_description_index - is an integer that gives the index of the sample entry that
+                               describes the samples in this chunk. The index ranges from 1
+                               to the number of sample entries in the Sample Description Box
     """
 
     def __init__(self, offset=0, box=None):
@@ -85,8 +108,8 @@ class Stsc(FullBox):
         self.sample_chunks = []  # for i in range(self.entry_count)
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)

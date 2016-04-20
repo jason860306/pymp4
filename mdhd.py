@@ -14,6 +14,7 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
 import time
 
 from fullbox import *
@@ -37,6 +38,23 @@ class Mdhd(FullBox):
         unsigned int(5)[3] language; // ISO-639-2/T language code
         unsigned int(16) pre_defined = 0;
     }
+    version - is an integer that specifies the version of this box (0 or 1)
+    creation_time - is an integer that declares the creation time of the media in this
+                    track (in seconds since midnight, Jan. 1, 1904, in UTC time).
+    modification_time - is an integer that declares the most recent time the media in
+                        this track was modified (in seconds since midnight,
+                        Jan. 1, 1904, in UTC time).
+    timescale - is an integer that specifies the time‐scale for this media; this is
+                the number of time units that pass in one second. For example,
+                a time coordinate system that measures time in sixtieths of a second
+                has a time scale of 60.
+    duration - is an integer that declares the duration of this media (in the scale
+               of the timescale). If the duration cannot be determined then duration
+               is set to all 1s.
+    language - declares the language code for this media. See ISO 639‐2/T for the set
+               of three character codes. Each character is packed as the difference
+               between its ASCII value and 0x60. Since the code is confined to being
+               three lower‐case letters, these values are strictly positive.
     """
 
     def __init__(self, offset=0, box=None):
@@ -58,18 +76,20 @@ class Mdhd(FullBox):
         self.pre_defined = 0
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)
 
         if self.version == 1:
             self.creation_time = file_strm.ReadUInt64()
+            self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
             self.creation_time_fmt = time.ctime(self.creation_time)
 
             self.modification_time = file_strm.ReadUInt64()
+            self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
             self.modification_time_fmt = time.ctime(self.modification_time)
 
@@ -81,10 +101,12 @@ class Mdhd(FullBox):
 
         else:
             self.creation_time = file_strm.ReadUInt32()
+            self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
             self.creation_time_fmt = time.ctime(self.creation_time)
 
             self.modification_time = file_strm.ReadUInt32()
+            self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
             self.modification_time_fmt = time.ctime(self.modification_time)
 

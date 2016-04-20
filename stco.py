@@ -14,6 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
+
 from fullbox import *
 
 
@@ -25,6 +27,10 @@ class Stco(FullBox):
             unsigned int(32) chunk_offset;
         }
     }
+    version - is an integer that specifies the version of this box
+    entry_count - is an integer that gives the number of entries in the following table
+    chunk_offset - is a 32 or 64 bit integer that gives the offset of the start of a
+                   chunk into its containing media file.
     """
 
     def __init__(self, offset=0, box=None):
@@ -37,8 +43,8 @@ class Stco(FullBox):
         self.chunk_offset = []
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)

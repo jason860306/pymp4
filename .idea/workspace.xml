@@ -1,8 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b4e63d3-1836-4774-8578-bc63d0fc1462" name="Default" comment="format print">
+    <list default="true" id="8b4e63d3-1836-4774-8578-bc63d0fc1462" name="Default" comment="implement funciton such as duration(), width(), height(), fps(), bitsize() etc">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mp4boxdesc.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/pymp4.iml" afterPath="$PROJECT_DIR$/.idea/pymp4.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/box.py" afterPath="$PROJECT_DIR$/box.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/co64.py" afterPath="$PROJECT_DIR$/co64.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ctts.py" afterPath="$PROJECT_DIR$/ctts.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dinf.py" afterPath="$PROJECT_DIR$/dinf.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dref.py" afterPath="$PROJECT_DIR$/dref.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/edts.py" afterPath="$PROJECT_DIR$/edts.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elst.py" afterPath="$PROJECT_DIR$/elst.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/filestream.py" afterPath="$PROJECT_DIR$/filestream.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/free.py" afterPath="$PROJECT_DIR$/free.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ftyp.py" afterPath="$PROJECT_DIR$/ftyp.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fullbox.py" afterPath="$PROJECT_DIR$/fullbox.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hdlr.py" afterPath="$PROJECT_DIR$/hdlr.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mdat.py" afterPath="$PROJECT_DIR$/mdat.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mdhd.py" afterPath="$PROJECT_DIR$/mdhd.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mdia.py" afterPath="$PROJECT_DIR$/mdia.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/minf.py" afterPath="$PROJECT_DIR$/minf.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moov.py" afterPath="$PROJECT_DIR$/moov.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mp4boxes.py" afterPath="$PROJECT_DIR$/mp4boxes.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mvhd.py" afterPath="$PROJECT_DIR$/mvhd.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nmhd.py" afterPath="$PROJECT_DIR$/nmhd.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pymp4.py" afterPath="$PROJECT_DIR$/pymp4.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root.py" afterPath="$PROJECT_DIR$/root.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/skip.py" afterPath="$PROJECT_DIR$/skip.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smhd.py" afterPath="$PROJECT_DIR$/smhd.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stbl.py" afterPath="$PROJECT_DIR$/stbl.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stco.py" afterPath="$PROJECT_DIR$/stco.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stsc.py" afterPath="$PROJECT_DIR$/stsc.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stsd.py" afterPath="$PROJECT_DIR$/stsd.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stss.py" afterPath="$PROJECT_DIR$/stss.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stsz.py" afterPath="$PROJECT_DIR$/stsz.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stts.py" afterPath="$PROJECT_DIR$/stts.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tkhd.py" afterPath="$PROJECT_DIR$/tkhd.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trak.py" afterPath="$PROJECT_DIR$/trak.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/udta.py" afterPath="$PROJECT_DIR$/udta.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vmhd.py" afterPath="$PROJECT_DIR$/vmhd.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/constdef.py" afterPath="$PROJECT_DIR$/pymp4def.py" />
     </list>
     <ignored path="pymp4.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,61 +62,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="trak.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trak.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ftyp.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ftyp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-              <folding>
-                <marker date="1459336145759" expanded="true" signature="37:45" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1459336145759" expanded="true" signature="725:1665" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="root.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/root.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-              <folding>
-                <element signature="e#236#253#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="mvhd.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mvhd.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="159" column="12" selection-start-line="159" selection-start-column="12" selection-end-line="159" selection-end-column="12" />
-              <folding>
-                <marker date="1459336148341" expanded="true" signature="37:45" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1459336148341" expanded="true" signature="287:6052" placeholder="..." />
-                <marker date="1459336148341" expanded="true" signature="292:1517" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1459336148341" expanded="true" signature="1562:2228" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tkhd.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tkhd.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2095672">
-              <caret line="151" column="22" selection-start-line="151" selection-start-column="22" selection-end-line="151" selection-end-column="22" />
+              <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -87,12 +76,48 @@
         <entry file="file://$PROJECT_DIR$/ctts.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="85" column="12" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
-              <folding>
-                <marker date="1459336146365" expanded="true" signature="37:45" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1459336146365" expanded="true" signature="866:1199" placeholder="..." />
-                <marker date="1459336146365" expanded="true" signature="2196:2684" placeholder="..." />
-              </folding>
+              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tkhd.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tkhd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5580524">
+              <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hdlr.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hdlr.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stsc.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stsc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mdhd.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mdhd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -101,11 +126,8 @@
         <entry file="file://$PROJECT_DIR$/stsz.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="76" column="7" selection-start-line="76" selection-start-column="7" selection-end-line="76" selection-end-column="7" />
-              <folding>
-                <marker date="1459336147285" expanded="true" signature="648:958" placeholder="..." />
-                <marker date="1459336147285" expanded="true" signature="1751:2443" placeholder="..." />
-              </folding>
+              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -114,28 +136,8 @@
         <entry file="file://$PROJECT_DIR$/stss.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="67" column="12" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="12" />
-              <folding>
-                <marker date="1459336147421" expanded="true" signature="37:45" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1459336147421" expanded="true" signature="279:2002" placeholder="..." />
-                <marker date="1459336147421" expanded="true" signature="284:527" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stco.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stco.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="66" column="12" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
-              <folding>
-                <marker date="1459336147877" expanded="true" signature="37:45" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1459336147877" expanded="true" signature="279:1957" placeholder="..." />
-                <marker date="1459336147877" expanded="true" signature="284:513" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1459336147877" expanded="true" signature="558:783" placeholder="..." />
-                <marker date="1459336147877" expanded="true" signature="817:1418" placeholder="..." />
-              </folding>
+              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -144,14 +146,18 @@
         <entry file="file://$PROJECT_DIR$/co64.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="66" column="12" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
-              <folding>
-                <marker date="1459336146516" expanded="true" signature="37:45" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1459336146516" expanded="true" signature="279:1932" placeholder="..." />
-                <marker date="1459336146516" expanded="true" signature="284:519" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1459336146516" expanded="true" signature="564:789" placeholder="..." />
-                <marker date="1459336146516" expanded="true" signature="823:1425" placeholder="..." />
-              </folding>
+              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vmhd.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vmhd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -179,51 +185,53 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/util.py" />
-        <option value="$PROJECT_DIR$/mp4boxes.py" />
-        <option value="$PROJECT_DIR$/skip.py" />
-        <option value="$PROJECT_DIR$/constdef.py" />
         <option value="$PROJECT_DIR$/udat.py" />
-        <option value="$PROJECT_DIR$/box.py" />
         <option value="$PROJECT_DIR$/filestream.py" />
-        <option value="$PROJECT_DIR$/fullbox.py" />
-        <option value="$PROJECT_DIR$/mdat.py" />
-        <option value="$PROJECT_DIR$/free.py" />
-        <option value="$PROJECT_DIR$/nmhd.py" />
-        <option value="$PROJECT_DIR$/udta.py" />
         <option value="$PROJECT_DIR$/pymp4.py" />
+        <option value="$PROJECT_DIR$/constdef.py" />
+        <option value="$PROJECT_DIR$/dinf.py" />
         <option value="$PROJECT_DIR$/edts.py" />
-        <option value="$PROJECT_DIR$/elst.py" />
-        <option value="$PROJECT_DIR$/ftyp.py" />
-        <option value="$PROJECT_DIR$/mdhd.py" />
+        <option value="$PROJECT_DIR$/udta.py" />
+        <option value="$PROJECT_DIR$/pymp4def.py" />
+        <option value="$PROJECT_DIR$/mp4boxes.py" />
         <option value="$PROJECT_DIR$/root.py" />
-        <option value="$PROJECT_DIR$/smhd.py" />
-        <option value="$PROJECT_DIR$/stsc.py" />
+        <option value="$PROJECT_DIR$/ftyp.py" />
+        <option value="$PROJECT_DIR$/box.py" />
+        <option value="$PROJECT_DIR$/fullbox.py" />
+        <option value="$PROJECT_DIR$/dref.py" />
+        <option value="$PROJECT_DIR$/elst.py" />
+        <option value="$PROJECT_DIR$/free.py" />
+        <option value="$PROJECT_DIR$/mdat.py" />
+        <option value="$PROJECT_DIR$/nmhd.py" />
+        <option value="$PROJECT_DIR$/skip.py" />
         <option value="$PROJECT_DIR$/stsd.py" />
+        <option value="$PROJECT_DIR$/minf.py" />
+        <option value="$PROJECT_DIR$/moov.py" />
+        <option value="$PROJECT_DIR$/stbl.py" />
         <option value="$PROJECT_DIR$/stts.py" />
         <option value="$PROJECT_DIR$/trak.py" />
-        <option value="$PROJECT_DIR$/vmhd.py" />
+        <option value="$PROJECT_DIR$/mp4boxdesc.py" />
         <option value="$PROJECT_DIR$/mdia.py" />
-        <option value="$PROJECT_DIR$/hdlr.py" />
-        <option value="$PROJECT_DIR$/minf.py" />
-        <option value="$PROJECT_DIR$/dinf.py" />
-        <option value="$PROJECT_DIR$/stbl.py" />
-        <option value="$PROJECT_DIR$/dref.py" />
-        <option value="$PROJECT_DIR$/moov.py" />
-        <option value="$PROJECT_DIR$/co64.py" />
-        <option value="$PROJECT_DIR$/ctts.py" />
+        <option value="$PROJECT_DIR$/smhd.py" />
         <option value="$PROJECT_DIR$/stco.py" />
+        <option value="$PROJECT_DIR$/co64.py" />
+        <option value="$PROJECT_DIR$/vmhd.py" />
         <option value="$PROJECT_DIR$/stss.py" />
         <option value="$PROJECT_DIR$/stsz.py" />
+        <option value="$PROJECT_DIR$/ctts.py" />
+        <option value="$PROJECT_DIR$/hdlr.py" />
+        <option value="$PROJECT_DIR$/stsc.py" />
+        <option value="$PROJECT_DIR$/mdhd.py" />
         <option value="$PROJECT_DIR$/mvhd.py" />
         <option value="$PROJECT_DIR$/tkhd.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-2" />
-    <option name="y" value="25" />
-    <option name="width" value="1444" />
-    <option name="height" value="854" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -275,6 +283,26 @@
       <pane id="Scratches">
         <subPane />
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pymp4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pymp4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pymp4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Problems" />
         <subPane subId="Changed Files">
@@ -310,26 +338,6 @@
             <PATH_ELEMENT USER_OBJECT="pymp4">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pymp4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pymp4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pymp4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -373,57 +381,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.pymp4">
-    <configuration default="false" name="udat" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pymp4" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/udta.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="util" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pymp4" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/util.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="vmhd" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pymp4" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/vmhd.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="pymp4" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -437,11 +394,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="pymp4" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pymp4.py" />
-      <option name="PARAMETERS" value="/opt/Videos/123.mp4" />
+      <option name="PARAMETERS" value="d:\Kuaipan\video\123.mp4" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="edts" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="box" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -453,8 +410,25 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="pymp4" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/edts.py" />
-      <option name="PARAMETERS" value="/opt/Videos/123.mp4" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/box.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="fullbox" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="pymp4" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fullbox.py" />
+      <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
@@ -476,6 +450,40 @@
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Docutils task">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="pymp4" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Sphinx task">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="pymp4" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Attests">
@@ -583,20 +591,16 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.udat" />
-      <item index="1" class="java.lang.String" itemvalue="Python.util" />
-      <item index="2" class="java.lang.String" itemvalue="Python.vmhd" />
-      <item index="3" class="java.lang.String" itemvalue="Python.pymp4" />
-      <item index="4" class="java.lang.String" itemvalue="Python.edts" />
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="Python.pymp4" />
+      <item index="1" class="java.lang.String" itemvalue="Python.box" />
+      <item index="2" class="java.lang.String" itemvalue="Python.fullbox" />
     </list>
     <recent_temporary>
-      <list size="5">
+      <list size="3">
         <item index="0" class="java.lang.String" itemvalue="Python.pymp4" />
-        <item index="1" class="java.lang.String" itemvalue="Python.edts" />
-        <item index="2" class="java.lang.String" itemvalue="Python.vmhd" />
-        <item index="3" class="java.lang.String" itemvalue="Python.util" />
-        <item index="4" class="java.lang.String" itemvalue="Python.udat" />
+        <item index="1" class="java.lang.String" itemvalue="Python.fullbox" />
+        <item index="2" class="java.lang.String" itemvalue="Python.box" />
       </list>
     </recent_temporary>
   </component>
@@ -708,20 +712,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="25" width="1444" height="854" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24665257" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24627976" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32833788" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32561308" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5155483" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36512262" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32697546" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.54664487" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32288828" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32833788" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24876674" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32833788" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58756137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24851191" sideWeight="0.4942717" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32733223" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24851191" sideWeight="0.5057283" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3174387" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -762,7 +766,8 @@
     <MESSAGE value="add box_offset to every box, but hasn't debug yet!" />
     <MESSAGE value="oh yeah! debug successfully! congratulation!!!" />
     <MESSAGE value="format print" />
-    <option name="LAST_COMMIT_MESSAGE" value="format print" />
+    <MESSAGE value="implement funciton such as duration(), width(), height(), fps(), bitsize() etc" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement funciton such as duration(), width(), height(), fps(), bitsize() etc" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -790,6 +795,62 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/mvhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="159" column="12" selection-start-line="159" selection-start-column="12" selection-end-line="159" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tkhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ctts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="85" column="12" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stsz.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="76" column="7" selection-start-line="76" selection-start-column="7" selection-end-line="76" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="12" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stco.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="12" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/co64.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="12" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pymp4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -802,7 +863,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
-            <element signature="e#236#253#0" expanded="true" />
+            <element signature="e#236#253#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -821,38 +882,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib64/python2.6/struct.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.6207628">
           <caret line="2039" column="0" selection-start-line="2039" selection-start-column="0" selection-end-line="2039" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib64/python2.6/os.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib64/python2.6/genericpath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5529412">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm50/system/python_stubs/348993582/_ctypes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65680474">
-          <caret line="317" column="0" selection-start-line="317" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -863,106 +896,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mp4boxes.py">
+    <entry file="file://$USER_HOME$/.PyCharm50/system/python_stubs/-697680286/__builtin__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="21" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/constdef.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.6/site-packages/yum/misc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4392157">
-          <caret line="262" column="8" selection-start-line="262" selection-start-column="8" selection-end-line="262" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib64/python2.6/mailbox.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0745099">
-          <caret line="1773" column="8" selection-start-line="1773" selection-start-column="8" selection-end-line="1773" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm50/system/python_stubs/348993582/_struct.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib64/python2.6/ctypes/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54509807">
-          <caret line="534" column="28" selection-start-line="534" selection-start-column="28" selection-end-line="534" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm50/system/python_stubs/348993582/__builtin__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="845" column="11" selection-start-line="845" selection-start-column="11" selection-end-line="845" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/box.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="104" column="8" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/elst.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="135" column="22" selection-start-line="135" selection-start-column="22" selection-end-line="135" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filestream.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="267" column="8" selection-start-line="267" selection-start-column="8" selection-end-line="267" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fullbox.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="16" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nmhd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.024054984">
+          <caret line="600" column="0" selection-start-line="600" selection-start-column="0" selection-end-line="600" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -970,79 +907,33 @@
     <entry file="file://$PROJECT_DIR$/pymp4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smhd.py">
+    <entry file="file://$PROJECT_DIR$/filestream.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#230#243#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mp4boxes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="78" column="4" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stsc.py">
+    <entry file="file://$PROJECT_DIR$/box.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="112" column="26" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stsd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="107" column="26" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="60" selection-start-line="67" selection-start-column="60" selection-end-line="67" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vmhd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="26" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/free.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="42" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mdat.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mdhd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="159" column="0" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hdlr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="60" selection-start-line="73" selection-start-column="60" selection-end-line="73" selection-end-column="60" />
+          <caret line="41" column="32" selection-start-line="41" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1050,47 +941,7 @@
     <entry file="file://$PROJECT_DIR$/dinf.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="66" selection-start-line="54" selection-start-column="66" selection-end-line="54" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/edts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mdia.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stbl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/udta.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <caret line="22" column="39" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -1098,23 +949,31 @@
     <entry file="file://$PROJECT_DIR$/dref.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <caret line="106" column="5" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/moov.py">
+    <entry file="file://$PROJECT_DIR$/edts.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="34" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="34" />
+          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trak.py">
+    <entry file="file://$PROJECT_DIR$/elst.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <caret line="95" column="35" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/free.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -1122,11 +981,32 @@
     <entry file="file://$PROJECT_DIR$/ftyp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding>
-            <marker date="1459336145759" expanded="true" signature="37:45" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1459336145759" expanded="true" signature="725:1665" placeholder="..." />
-          </folding>
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fullbox.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mdat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nmhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1134,47 +1014,106 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stsd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="90" column="7" selection-start-line="90" selection-start-column="7" selection-end-line="90" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/udta.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pymp4def.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="60" selection-start-line="79" selection-start-column="60" selection-end-line="79" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stbl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="112" column="60" selection-start-line="112" selection-start-column="60" selection-end-line="112" selection-end-column="60" />
           <folding>
-            <element signature="e#236#253#0" expanded="true" />
+            <element signature="e#230#245#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/co64.py">
+    <entry file="file://$PROJECT_DIR$/stts.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="12" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
-          <folding>
-            <marker date="1459336146516" expanded="true" signature="37:45" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1459336146516" expanded="true" signature="279:1932" placeholder="..." />
-            <marker date="1459336146516" expanded="true" signature="284:519" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1459336146516" expanded="true" signature="564:789" placeholder="..." />
-            <marker date="1459336146516" expanded="true" signature="823:1425" placeholder="..." />
-          </folding>
+          <caret line="80" column="12" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ctts.py">
+    <entry file="file://$PROJECT_DIR$/mp4boxdesc.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="85" column="12" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
-          <folding>
-            <marker date="1459336146365" expanded="true" signature="37:45" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1459336146365" expanded="true" signature="866:1199" placeholder="..." />
-            <marker date="1459336146365" expanded="true" signature="2196:2684" placeholder="..." />
-          </folding>
+          <caret line="106" column="33" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mvhd.py">
+    <entry file="file://$PROJECT_DIR$/trak.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="159" column="12" selection-start-line="159" selection-start-column="12" selection-end-line="159" selection-end-column="12" />
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/moov.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="125" column="25" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mdia.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <marker date="1459336148341" expanded="true" signature="37:45" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1459336148341" expanded="true" signature="287:6052" placeholder="..." />
-            <marker date="1459336148341" expanded="true" signature="292:1517" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1459336148341" expanded="true" signature="1562:2228" placeholder="..." />
+            <element signature="e#230#239#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1182,44 +1121,89 @@
     <entry file="file://$PROJECT_DIR$/stco.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="12" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="9" />
           <folding>
-            <marker date="1459336147877" expanded="true" signature="37:45" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1459336147877" expanded="true" signature="279:1957" placeholder="..." />
-            <marker date="1459336147877" expanded="true" signature="284:513" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1459336147877" expanded="true" signature="558:783" placeholder="..." />
-            <marker date="1459336147877" expanded="true" signature="817:1418" placeholder="..." />
+            <element signature="e#235#244#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/co64.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vmhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stss.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="12" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="12" />
-          <folding>
-            <marker date="1459336147421" expanded="true" signature="37:45" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1459336147421" expanded="true" signature="279:2002" placeholder="..." />
-            <marker date="1459336147421" expanded="true" signature="284:527" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-          </folding>
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stsz.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="7" selection-start-line="76" selection-start-column="7" selection-end-line="76" selection-end-column="7" />
-          <folding>
-            <marker date="1459336147285" expanded="true" signature="648:958" placeholder="..." />
-            <marker date="1459336147285" expanded="true" signature="1751:2443" placeholder="..." />
-          </folding>
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ctts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hdlr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stsc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mdhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tkhd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2095672">
-          <caret line="151" column="22" selection-start-line="151" selection-start-column="22" selection-end-line="151" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.5580524">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
           <folding />
         </state>
       </provider>

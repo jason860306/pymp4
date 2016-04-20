@@ -14,6 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
+
 from fullbox import *
 
 
@@ -23,6 +25,11 @@ class SampeEntry(Box):
         const unsigned int(8)[6] reserved = 0;
         unsigned int(16) data_reference_index;
     }
+    data_reference_index - is an integer that contains the index of the data reference
+                           to use to retrieve data associated with samples that use
+                           this sample description. Data references are stored in Data
+                           Reference Boxes. The index ranges from 1 to the number of data
+                           references.
     """
 
     def __init__(self, offset=0):
@@ -31,8 +38,8 @@ class SampeEntry(Box):
         self.data_reference_index = 0
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)
@@ -62,13 +69,26 @@ class SampeEntry(Box):
 
 class Stsd(FullBox):
     """
-    aligned(8) class SampleDescriptionBox (unsigned int(32) handler_type) extends FullBox('stsd', version, 0){
+    aligned(8) class SampleDescriptionBox (unsigned int(32) handler_type)
+        extends FullBox('stsd', version, 0){
         int i;
         unsigned int(32) entry_count;
         for (i = 1 ; i <= entry_count ; i++){
              SampleEntry(); // an instance of a class derived from SampleEntry
         }
     }
+    version - is set to zero unless the box contains an AudioSampleEntryV1,
+              whereupon version must be 1
+    entry_count - is an integer that gives the number of entries in the following table
+    SampleEntry - is the appropriate sample entry.
+    data_reference_index - is an integer that contains the index of the data reference
+                           to use to retrieve data associated with samples that use
+                           this sample description. Data references are stored in Data
+                           Reference Boxes. The index ranges from 1 to the number of data
+                           references.
+    bufferSizeDB - gives the size of the decoding buffer for the elementary stream in bytes.
+    maxBitrate - gives the maximum rate in bits/second over any window of one second.
+    avgBitrate - gives the average rate in bits/second over the entire presentation.
     """
 
     def __init__(self, offset=0, box=None):
@@ -81,8 +101,8 @@ class Stsd(FullBox):
         self.sample_entries = []
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)

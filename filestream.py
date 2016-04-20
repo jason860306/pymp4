@@ -28,20 +28,20 @@ class FileStream:
     __BigEndian = int(1)
 
     def __init__(self, file, endian=__LittleEndian):
-        if file is None:
-            print "file is None"
+        if file == None:
+            print "file == None"
             return
 
         self.file = file
         self.endian = endian
 
     def Tell(self):
-        if self.file is None:
+        if self.file == None:
             return 0
         return self.file.tell()
 
     def Seek(self, offset, whence=None):
-        if self.file is None:
+        if self.file == None:
             return
         self.file.seek(offset, whence)
 

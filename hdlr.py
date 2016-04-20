@@ -14,6 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
+
 from fullbox import *
 
 
@@ -25,6 +27,16 @@ class Hdlr(FullBox):
         const unsigned int(32)[3] reserved = 0;
         string name;
     }
+    version – is an integer that specifies the version of this box
+    handler_type
+        – when present in a media box, contains a value as defined in clause 12,
+          or a value from a derived specification, or registration.
+        - when present in a meta box, contains an appropriate value to indicate
+          the format of the meta box contents. The value ‘null’ can be used in
+          the primary meta box to indicate that it is merely being used to
+          hold resources.
+    name – is a null‐terminated string in UTF‐8 characters which gives a human‐readable
+           name for the track type (for debugging and inspection purposes).
     """
 
     def __init__(self, offset=0, box=None):
@@ -39,8 +51,8 @@ class Hdlr(FullBox):
         self.name = ''
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)

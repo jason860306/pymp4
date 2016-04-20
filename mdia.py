@@ -33,8 +33,8 @@ class Mdia(Box):
         self.minf = None
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)
@@ -61,6 +61,21 @@ class Mdia(Box):
             left_size -= tmp_box.Size()
 
         return file_strm
+
+    def duration(self):
+        return 0 if (self.minf == None) else self.minf.duration()
+
+    def mediatype(self):
+        return None if (self.hdlr == None) else self.hdlr.handler_type
+
+    def sample_size(self):
+        return 0 if (self.minf == None) else self.minf.sample_size()
+
+    def bitsize(self):
+        return 0 if (self.minf == None) else self.minf.bitsize()
+
+    def find_sample_index(self, timestamp):
+        return -1 if (self.minf == None) else self.minf.find_sample_index(timestamp)
 
     def __str__(self):
         logstr = "\t%s\n%s\n%s\n%s\n" % \

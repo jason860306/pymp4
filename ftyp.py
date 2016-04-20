@@ -15,7 +15,7 @@ __email__ = "jason860306@gmail.com"
 
 
 from box import *
-from constdef import *
+from pymp4def import *
 
 
 class Ftyp(Box):
@@ -25,6 +25,9 @@ class Ftyp(Box):
         unsigned int(32) minor_version;
         unsigned int(32) compatible_brands[]; // to end of the box
     }
+    major_brand – is a brand identifier
+    minor_version – is an informative integer for the minor version of the major brand
+    compatible_brands – is a list, to the end of the box, of brands
     """
 
     def __init__(self, offset=0, box=None):
@@ -35,8 +38,8 @@ class Ftyp(Box):
         self.compatible_brands = []
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)

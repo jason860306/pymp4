@@ -14,6 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
+
 from fullbox import *
 
 
@@ -23,6 +25,12 @@ class Vmhd(FullBox):
         template unsigned int(16) graphicsmode = 0; // copy, see below
         template unsigned int(16)[3] opcolor = {0, 0, 0};
     }
+    version - is an integer that specifies the version of this box
+    graphicsmode - specifies a composition mode for this video track, from the
+                   following enumerated set, which may be extended by derived
+                   specifications: copy = 0 copy over the existing image
+    opcolor - is a set of 3 colour values (red, green, blue) available for use
+              by graphics modes
     """
 
     def __init__(self, offset=0, box=None):
@@ -35,8 +43,8 @@ class Vmhd(FullBox):
         self.opcolor = [0 for i in range(3)]
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)

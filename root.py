@@ -35,8 +35,8 @@ class Root:
         self.udat = None
 
     def decode(self, filename):
-        if filename is None:
-            print "file is None"
+        if filename == None:
+            print "file == None"
             return
 
         filesize = os.path.getsize(filename)
@@ -58,7 +58,7 @@ class Root:
                     self.mdat = MP4Boxes[tmp_box.type](self.offset, tmp_box)
                     file_strm = self.mdat.decode(file_strm)
                     self.offset += self.mdat.Size()
-                elif tmp_box.type == FourCCMp4Udat:
+                elif tmp_box.type == FourCCMp4Udta:
                     self.udat = MP4Boxes[tmp_box.type](self.offset, tmp_box)
                     file_strm = self.udat.decode(file_strm)
                     self.offset += self.udat.Size()
@@ -78,7 +78,7 @@ class Root:
             return file_strm
 
     def __str__(self):
-        logstr = "%s%s%s%s%s%s" % \
+        logstr = "%s\n%s\n%s\n%s\n%s\n%s" % \
                  (self.moov, self.ftyp, self.mdat, self.free,
                   self.skip, self.udat)
         return logstr

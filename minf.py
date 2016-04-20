@@ -34,8 +34,8 @@ class Minf(Box):
         self.stbl = None
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)
@@ -66,6 +66,18 @@ class Minf(Box):
             left_size -= tmp_box.Size()
 
         return file_strm
+
+    def duration(self):
+        return 0 if (self.stbl == None) else self.stbl.duration()
+
+    def sample_size(self):
+        return 0 if (self.stbl == None) else self.stbl.sample_size()
+
+    def bitsize(self):
+        return 0 if (self.stbl == None) else self.stbl.bitsize()
+
+    def find_sample_index(self, timestamp):
+        return -1 if (self.stbl == None) else self.stbl.find_sample_index(timestamp)
 
     def __str__(self):
         logstr = "\t\t%s\n%s\n%s\n%s\n%s\n" % \

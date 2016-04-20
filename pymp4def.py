@@ -28,40 +28,9 @@ UInt16ByteLen = ctypes.sizeof(ctypes.c_uint16)  # struct.calcsize('!H')
 UInt32ByteLen = ctypes.sizeof(ctypes.c_uint32)  # struct.calcsize('!I')
 UInt64ByteLen = ctypes.sizeof(ctypes.c_uint64)  # struct.calcsize('!Q')
 
-FourCCMp4Root = 'root'
-FourCCMp4Uuid = 'uuid'
-
-FourCCMp4Url = 'url '
-FourCCMp4Urn = 'urn '
-
-FourCCMp4Moov = 'moov'
-FourCCMp4Mvhd = 'mvhd'
-FourCCMp4Trak = 'trak'
-FourCCMp4Tkhd = 'tkhd'
-FourCCMp4Edts = 'edts'
-FourCCMp4Elst = 'elst'
-FourCCMp4Mdia = 'mdia'
-FourCCMp4Mdhd = 'mdhd'
-FourCCMp4Hdlr = 'hdlr'
-FourCCMp4Minf = 'minf'
-FourCCMp4Vmhd = 'vmhd'
-FourCCMp4Smhd = 'smhd'
-FourCCMp4Dinf = 'dinf'
-FourCCMp4Dref = 'dref'
-FourCCMp4Stbl = 'stbl'
-FourCCMp4Stts = 'stts'
-FourCCMp4Ctts = 'ctts'
-FourCCMp4Stss = 'stss'
-FourCCMp4Stsd = 'stsd'
-FourCCMp4Stsz = 'stsz'
-FourCCMp4Stsc = 'stsc'
-FourCCMp4Stco = 'stco'
-FourCCMp4Co64 = 'co64'
-FourCCMp4Mdat = 'mdat'
-FourCCMp4Udat = 'udat'
-FourCCMp4Ftyp = 'ftyp'
-FourCCMp4Free = 'free'
-FourCCMp4Skip = 'skip'
+VideTrackType = 'vide'
+SounTrackType = 'soun'
+HintTrackType = 'hint'
 
 
 def ParseFourCC(four_cc_num):
@@ -70,3 +39,17 @@ def ParseFourCC(four_cc_num):
     num3 = (four_cc_num & 0x0000FF00) >> 8
     num4 = (four_cc_num & 0x000000FF)
     return (chr(num1) + chr(num2) + chr(num3) + chr(num4))
+
+
+UTC_MP4_INTERVAL = (((1970 - 1904) * 365) + 17) * 24 * 60 * 60
+"""
+inline MP4Timestamp MP4GetAbsTimestamp() {
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	MP4Timestamp ret;
+	ret = tv.tv_sec;
+	ret += 2082844800;
+	return ret;	// MP4 start date is 1/1/1904
+	// 208284480 is (((1970 - 1904) * 365) + 17) * 24 * 60 * 60
+}
+"""

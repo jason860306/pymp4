@@ -14,7 +14,10 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
-from box import *
+import struct
+
+from box import Box
+from pymp4def import *
 
 
 class FullBox(Box):
@@ -23,11 +26,13 @@ class FullBox(Box):
         unsigned int(8) version = v;
         bit(24) flags = f;
     }
+    version – is an integer that specifies the version of this format of the box.
+    flags – is a map of flags
     """
 
     def __init__(self, offset=0, box=None):
         Box.__init__(self, offset, box)
-        if isinstance(box, FullBox) and box is not None:
+        if isinstance(box, FullBox) and box != None:
             self.large_size = box.large_size
             self.user_type = box.user_type
         else:
@@ -35,8 +40,8 @@ class FullBox(Box):
             self.flags = ''
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)
@@ -50,8 +55,8 @@ class FullBox(Box):
         return file_strm
 
     def peek(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = Box.peek(self, file_strm)

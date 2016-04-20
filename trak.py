@@ -33,8 +33,8 @@ class Trak(Box):
         self.mdia = None
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)
@@ -61,6 +61,27 @@ class Trak(Box):
             left_size -= tmp_box.Size()
 
         return file_strm
+
+    def duration(self):
+        return 0 if (self.mdia == None) else self.mdia.duration()
+
+    def width(self):
+        return self.tkhd.width
+
+    def height(self):
+        return self.tkhd.height
+
+    def mediatype(self):
+        return None if (self.mdia == None) else self.mdia.mediatype()
+
+    def sample_size(self):
+        return 0 if (self.mdia == None) else self.mdia.sample_size()
+
+    def bitsize(self):
+        return 0 if (self.mdia == None) else self.mdia.bitsize()
+
+    def find_sample_index(self, timestamp):
+        return -1 if (self.mdia == None) else self.mdia.find_sample_index(timestamp)
 
     def __str__(self):
         logstr = "%s\n%s\n%s\n%s\n" % \

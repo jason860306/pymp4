@@ -14,6 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
+
 from fullbox import *
 
 
@@ -23,6 +25,9 @@ class Smhd(FullBox):
         template int(16) balance = 0;
         const unsigned int(16) reserved = 0;
     }
+    version - is an integer that specifies the version of this box
+    balance - is a fixed‐point 8.8 number that places mono audio tracks in a stereo
+              space; 0 is centre (the normal value); full left is ‐1.0 and full right is 1.0.
     """
 
     def __init__(self, offset=0, box=None):
@@ -35,8 +40,8 @@ class Smhd(FullBox):
         self.reserved = 0
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)

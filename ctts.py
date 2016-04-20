@@ -14,6 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
+
 from fullbox import *
 
 
@@ -35,6 +37,12 @@ class Ctts(FullBox):
             }
         }
     }
+    version ‐ is an integer that specifies the version of this box.
+    entry_count ‐ is an integer that gives the number of entries in the following table.
+    sample_count ‐ is an integer that counts the number of consecutive samples that have
+                   the given offset.
+    sample_offset ‐ is an integer that gives the offset between CT and DT, such that
+                    CT(n) = DT(n) + CTTS(n).
     """
 
     def __init__(self, offset=0, box=None):
@@ -48,8 +56,8 @@ class Ctts(FullBox):
         self.sample_offset = []  # 0 for i in range(self.entry_count)
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)

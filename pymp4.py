@@ -25,8 +25,8 @@ class PyMp4:
     """
 
     def __init__(self, fname):
-        if fname is None:
-            print "file is None"
+        if fname == None:
+            print "file == None"
             return
 
         self.filename = fname

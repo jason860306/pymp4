@@ -14,6 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
+
 from fullbox import *
 
 
@@ -27,6 +29,12 @@ class Stts(FullBox):
             unsigned int(32) sample_delta;
         }
     }
+    version ‐ is an integer that specifies the version of this box.
+    entry_count ‐ is an integer that gives the number of entries in the following table.
+    sample_count ‐ is an integer that counts the number of consecutive samples that
+                   have the given duration.
+    sample_delta ‐ is an integer that gives the delta of these samples in the time‐scale
+                   of the media.
     """
 
     def __init__(self, offset=0, box=None):
@@ -40,8 +48,8 @@ class Stts(FullBox):
         self.sample_delta = []  # 0 for i in range(self.entry_count)
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)
@@ -63,6 +71,23 @@ class Stts(FullBox):
             file_strm.Seek(self.Size() - tmp_size, os.SEEK_CUR)
 
         return file_strm
+
+    def duration(self):
+        duration_ = 0
+        for i in range(self.entry_count):
+            duration_ += (self.sample_count[i] * self.sample_delta[i])
+        return (1.0 * duration_)
+
+    def find_sample_index(self, timestamp):
+        for i in range(self.entry_count):
+            sample_cnt = self.sample_count[i]
+            sample_duration = self.sample_delta[i]
+            for j in range(sample_cnt):
+                if (j * sample_duration) >= timestamp:
+                    return (i * j + 1)
+        else:
+            pass  # raise
+
 
     def __str__(self):
         logstr = "\t\t\t\t%s\n\t\t\t\tsample = [" % FullBox.__str__(self)

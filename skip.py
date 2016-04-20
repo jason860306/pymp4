@@ -22,5 +22,6 @@ class Skip(Free):
     aligned(8) class FreeSpaceBox extends Box(free_type) {
         unsigned int(8) data[];
     }
+    free_type may be ‘free’ or ‘skip’.
     """
     pass

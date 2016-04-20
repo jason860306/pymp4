@@ -14,6 +14,7 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
 import time
 
 from fullbox import *
@@ -43,6 +44,32 @@ class Mvhd(FullBox):
         bit(32)[6] pre_defined = 0;
         unsigned int(32) next_track_ID;
     }
+    version - is an integer that specifies the version of this box (0 or 1 in this specification)
+    creation_time - is an integer that declares the creation time of the presentation (in seconds
+                    since midnight, Jan. 1, 1904, in UTC time)
+    modification_time - is an integer that declares the most recent time the presentation was
+                        modified (in seconds since midnight, Jan. 1, 1904, in UTC time)
+    timescale - is an integer that specifies the time‐scale for the entire presentation;
+                this is the number of time units that pass in one second.
+                For example, a time coordinate system that measures time in sixtieths of
+                a second has a time scale of 60.
+    duration - is an integer that declares length of the presentation (in the indicated
+               timescale). This property is derived from the presentation’s tracks:
+               the value of this field corresponds to the duration of the longest track
+               in the presentation. If the duration cannot be determined then duration
+               is set to all 1s.
+    rate - is a fixed point 16.16 number that indicates the preferred rate to play the
+           presentation; 1.0 (0x00010000) is normal forward playback
+    volume - is a fixed point 8.8 number that indicates the preferred playback volume.
+             1.0 (0x0100) is full volume.
+    matrix - provides a transformation matrix for the video; (u,v,w) are restricted here
+             to (0,0,1), hex values (0,0,0x40000000).
+    next_track_ID - is a non‐zero integer that indicates a value to use for the track ID of
+                    the next track to be added to this presentation. Zero is not a valid
+                    track ID value. The value of next_track_ID shall be larger than the
+                    largest track‐ID in use. If this value is equal to all 1s (32‐bit
+                    maxint), and a new media track is to be added, then a search must be
+                    made in the file for an unused track identifier.
 
         Fields shown as “template” in the box descriptions are optional in the
     specifications that use this specification. If the field is used in another
@@ -74,18 +101,20 @@ class Mvhd(FullBox):
         self.next_track_ID = 0
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)
 
         if self.version == 1:
             self.creation_time = file_strm.ReadUint64()
+            self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
             self.creation_time_fmt = time.ctime(self.creation_time)
 
             self.modification_time = file_strm.ReadUint64()
+            self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
             self.modification_time_fmt = time.ctime(self.modification_time)
 
@@ -97,10 +126,12 @@ class Mvhd(FullBox):
 
         else:
             self.creation_time = file_strm.ReadUInt32()
+            self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
             self.creation_time_fmt = time.ctime(self.creation_time)
 
             self.modification_time = file_strm.ReadUInt32()
+            self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
             self.modification_time_fmt = time.ctime(self.modification_time)
 
@@ -144,6 +175,9 @@ class Mvhd(FullBox):
             file_strm.Seek(self.Size() - tmp_size, os.SEEK_CUR)
 
         return file_strm
+
+    def duration(self):
+        return 0.0 if (self.timescale == 0) else 1.0 * self.duration / self.timescale
 
     def __str__(self):
         logstr = "\t%s\n\tcreation_time = %s(%08ld)\n\tmodification_time = %s(%08ld)" % \

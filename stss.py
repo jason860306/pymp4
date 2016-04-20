@@ -14,6 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
+
 from fullbox import *
 
 
@@ -26,6 +28,11 @@ class Stss(FullBox):
             unsigned int(32) sample_number;
         }
     }
+    version ‐ is an integer that specifies the version of this box.
+    entry_count ‐ is an integer that gives the number of entries in the following table.
+                  If entry_count is zero, there are no sync samples within the stream and
+                  the following table is empty.
+    sample_number ‐ gives the numbers of the samples that are sync samples in the stream.
     """
 
     def __init__(self, offset=0, box=None):
@@ -38,8 +45,8 @@ class Stss(FullBox):
         self.sample_number = []
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)

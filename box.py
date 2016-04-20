@@ -13,8 +13,9 @@ __version__ = '$Revision$'
 __email__ = "jason860306@gmail.com"
 # '$Source$'
 
-from constdef import *
 from filestream import *
+from mp4boxdesc import *
+from pymp4def import *
 
 
 class Box:
@@ -31,25 +32,37 @@ class Box:
              unsigned int(8)[16] usertype = extended_type;
         }
     }
+    size – is an integer that specifies the number of bytes in this box, including all its
+         fields and contained boxes; if size is 1 then the actual size is in the field
+         largesize; if size is 0, then this box is the last one in the file, and its
+         contents extend to the end of the file (normally only used for a Media Data Box)
+    type – identifies the box type; standard boxes use a compact type, which is normally
+         four printable characters, to permit ease of identification, and is shown so in
+         the boxes below. User extensions use an extended type; in this case, the type
+         field is set to ‘uuid’.
     """
 
     def __init__(self, offset=0, box=None):
         self.box_offset = offset
         self.offset = offset
-        if isinstance(box, Box) and box is not None:
+        if isinstance(box, Box) and box != None:
             self.size = box.size
             self.type = box.type
             self.large_size = box.large_size
             self.user_type = box.user_type
+            self.fullname = MP4BoxesFullName[box.type]
+            self.desc = MP4BoxesDesc[box.type]
         else:
             self.size = int(0)
             self.type = ''
             self.large_size = int(0)
             self.user_type = ''
+            self.fullname = ''
+            self.desc = ''
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         self.size = file_strm.ReadUInt32()
@@ -70,8 +83,8 @@ class Box:
         return file_strm
 
     def peek(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         self.size = file_strm.ReadUInt32()
@@ -103,5 +116,5 @@ class Box:
         return size_
 
     def __str__(self):
-        return "offset = 0x%016x, size = %08ld(0x%08lx), type = %s" % \
-               (self.offset, self.size, self.size, self.type)
+        return "offset = 0x%016x, size = %08ld(0x%08lx), type = %s(%s: %s)" % \
+               (self.offset, self.size, self.size, self.type, self.fullname, self.desc)

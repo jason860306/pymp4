@@ -14,8 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
-from box import *
 import mp4boxes
+from box import *
 
 
 class Edts(Box):
@@ -31,8 +31,8 @@ class Edts(Box):
         self.elst = None
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)

@@ -22,6 +22,7 @@ class Free(Box):
     aligned(8) class FreeSpaceBox extends Box(free_type) {
         unsigned int(8) data[];
     }
+    free_type may be ‘free’ or ‘skip’.
     """
 
     def __init__(self, offset=0, box=None):
@@ -31,8 +32,8 @@ class Free(Box):
         self.data = ""
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)

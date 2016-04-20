@@ -14,6 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
+
 from fullbox import *
 
 
@@ -28,6 +30,15 @@ class Stsz(FullBox):
             }
         }
     }
+    version - is an integer that specifies the version of this box
+    sample_size - is integer specifying the default sample size. If all the samples are
+                  the same size, this field contains that size value. If this field is
+                  set to 0, then the samples have different sizes, and those sizes are
+                  stored in the sample size table. If this field is not 0, it specifies
+                  the constant sample size, and no array follows.
+    sample_count - is an integer that gives the number of samples in the track; if
+                   sample‐size is 0, then it is also the number of entries in the following table.
+    entry_size - is an integer specifying the size of a sample, indexed by its number.
     """
 
     def __init__(self, offset=0, box=None):
@@ -41,8 +52,8 @@ class Stsz(FullBox):
         self.entry_size = []  # for i in range(self.sample_count) when sample_size==0
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)
@@ -64,6 +75,15 @@ class Stsz(FullBox):
             file_strm.Seek(self.Size() - tmp_size, os.SEEK_CUR)
 
         return file_strm
+
+    def bitsize(self):
+        bsize = 0
+        if 0 == self.sample_size:
+            for size in self.entry_size:
+                bsize += size
+        else:
+            bsize = self.sample_count * self.sample_size
+        return bsize
 
     def __str__(self):
         logstr = "\t\t\t\t%s\n\t\t\t\tsample_size = %08ld(0x%016lx)" \

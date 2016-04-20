@@ -15,6 +15,7 @@ __email__ = "jason860306@gmail.com"
 
 
 import mp4boxes
+from mp4boxdesc import *
 from stts import *
 
 
@@ -50,8 +51,8 @@ class Stbl(Box):
         self.co64 = None
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)
@@ -98,6 +99,18 @@ class Stbl(Box):
             left_size -= tmp_box.Size()
 
         return file_strm
+
+    def duration(self):
+        return 0 if (self.stts == None) else self.stts.duration()
+
+    def sample_size(self):
+        return 0 if (self.stsz == None) else self.stsz.sample_count
+
+    def bitsize(self):
+        return 0 if (self.stsz == None) else self.stsz.bitsize()
+
+    def find_sample_index(self, timestamp):
+        return -1 if (self.stts == None) else self.stts.find_sample_index(timestamp)
 
     def __str__(self):
         logstr = "\t\t\t%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n" % \

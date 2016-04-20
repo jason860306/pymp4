@@ -14,6 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
+
 from fullbox import *
 
 
@@ -36,8 +38,8 @@ class MediaSegmentEntry:
         self.media_rate_fraction = 0
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         if self.version == 1:
@@ -98,6 +100,20 @@ class Elst(FullBox):
             int(16) media_rate_fraction = 0;
         }
     }
+    version - is an integer that specifies the version of this box (0 or 1)
+    entry_count - is an integer that gives the number of entries in the following table
+    segment_duration - is an integer that specifies the duration of this edit segment
+                       in units of the timescale in the Movie Header Box
+    media_time - is an integer containing the starting time within the media of this edit
+                 segment (in media time scale units, in composition time). If this field
+                 is set to –1, it is an empty edit. The last edit in a track shall never
+                 be an empty edit. Any difference between the duration in the Movie Header
+                 Box, and the track’s duration is expressed as an implicit empty edit at
+                 the end.
+    media_rate - specifies the relative rate at which to play the media corresponding to
+                 this edit segment. If this value is 0, then the edit is specifying
+                 a ‘dwell’: the media at media‐time is presented for the segment‐duration.
+                 Otherwise this field shall contain the value 1.
     """
 
     def __init__(self, offset=0, box=None):
@@ -110,8 +126,8 @@ class Elst(FullBox):
         self.segment_entry = []
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)

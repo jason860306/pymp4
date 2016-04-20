@@ -14,14 +14,17 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import os
+
 from fullbox import *
 
 
 class Nmhd(FullBox):
     """
-    aligned(8) class NullMediaHeaderBox
-        extends FullBox(’nmhd’, version = 0, flags) {
+    aligned(8) class NullMediaHeaderBox extends FullBox(’nmhd’, version = 0, flags) {
     }
+    version ‐ is an integer that specifies the version of this box.
+    flags ‐ is a 24‐bit integer with flags (currently all zero).
     """
 
     def __init__(self, offset=0, box=None):
@@ -31,8 +34,8 @@ class Nmhd(FullBox):
             FullBox.__init__(self, offset, box)
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)

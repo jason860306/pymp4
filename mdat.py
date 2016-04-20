@@ -22,6 +22,7 @@ class Mdat(Box):
     aligned(8) class MediaDataBox extends Box(‘mdat’) {
         bit(8) data[];
     }
+    data - is the contained media data
     """
 
     def __init__(self, offset=0, box=None):
@@ -31,8 +32,8 @@ class Mdat(Box):
         self.data = ""
 
     def decode(self, file_strm):
-        if file_strm is None:
-            print "file_strm is None"
+        if file_strm == None:
+            print "file_strm == None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)

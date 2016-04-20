@@ -15,9 +15,10 @@ __email__ = "jason860306@gmail.com"
 
 
 from co64 import Co64
-from constdef import *
 from ctts import Ctts
 from dinf import Dinf
+from dref import DataEntryUrlBox
+from dref import DataEntryUrnBox
 from dref import Dref
 from edts import Edts
 from elst import Elst
@@ -29,6 +30,7 @@ from mdhd import Mdhd
 from mdia import Mdia
 from minf import Minf
 from moov import Moov
+from mp4boxdesc import *
 from mvhd import Mvhd
 from skip import Skip
 from smhd import Smhd
@@ -70,8 +72,10 @@ MP4Boxes = {
     FourCCMp4Stco: Stco,
     FourCCMp4Co64: Co64,
     FourCCMp4Mdat: Mdat,
-    FourCCMp4Udat: Udta,
+    FourCCMp4Udta: Udta,
     FourCCMp4Ftyp: Ftyp,
     FourCCMp4Free: Free,
-    FourCCMp4Skip: Skip
+    FourCCMp4Skip: Skip,
+    FourCCMp4Url: DataEntryUrlBox,
+    FourCCMp4Urn: DataEntryUrnBox
 }
