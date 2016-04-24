@@ -92,6 +92,9 @@ class Trak(Box):
     def chunk_offset(self, chunk_idx):
         return -1 if (self.mdia == None) else self.mdia.chunk_offset(chunk_idx)
 
+    def find_sync_sample_index(self, sample_index):
+        return -1 if (self.mdia == None) else self.mdia.find_sync_sample_index(sample_index)
+
     def __str__(self):
         logstr = "%s\n%s\n%s\n%s\n" % \
                  (Box.__str__(self), self.tkhd, self.edts, self.mdia)

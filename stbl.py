@@ -124,6 +124,9 @@ class Stbl(Box):
     def chunk_offset(self, chunk_idx):
         return -1 if (self.stco == None) else self.stco.chunk_offset(chunk_idx)
 
+    def find_sync_sample_index(self, sample_index):
+        return -1 if (self.stss == None) else self.stss.find_sync_sample_index(sample_index)
+
     def __str__(self):
         logstr = "\t\t\t%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n" % \
                  (Box.__str__(self), self.stts, self.ctts, self.stss,

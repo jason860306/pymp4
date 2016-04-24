@@ -80,7 +80,6 @@ class Root:
             return file_strm
 
     def get_sample_data(self, utc_timestamp, track_type=VideTrackType):
-
         with open(self.filename, 'rb') as mp4_file:
             file_strm = FileStream(mp4_file)
             if self.moov == None:

@@ -144,9 +144,8 @@ class Moov(Box):
         trk = self.get_track(track_type)
         return trk.chunk_offset(chunk_idx)
 
-    def get_sample(self, timestamp, track_type=VideTrackType):
+    def get_sample(self, sample_index, track_type=VideTrackType):
         trk = self.get_track(track_type)
-        sample_index = trk.find_sample_index(timestamp)
         chunk_sample_idx = trk.find_chunk_index(sample_index)
         if (len(chunk_sample_idx) <= 0):
             pass  # raise
@@ -161,7 +160,26 @@ class Moov(Box):
 
     def get_sample_data(self, file_strm, utc_timestamp, track_type=VideTrackType):
         mp4_timestamp = self.utc2mp4_timestamp(utc_timestamp)
-        data_offset, data_size = self.get_sample(mp4_timestamp, track_type)
+
+        trk = self.get_track(track_type)
+        sample_index = trk.find_sample_index(mp4_timestamp)
+        data_offset, data_size = self.get_sample(sample_index, track_type)
+        if file_strm == None:
+            print "file_strm == None"
+            return file_strm
+        file_strm.Seek(data_offset, os.SEEK_SET)
+        return file_strm.ReadByte(data_size)
+
+    def find_sync_sample_index(self, utc_timestamp, track_type=VideTrackType):
+        mp4_timestamp = self.utc2mp4_timestamp(utc_timestamp)
+        trk = self.get_track(track_type)
+        sample_index = trk.find_sample_index(mp4_timestamp)
+        sync_sample_index = trk.find_sync_sample_index(sample_index)
+        return sync_sample_index
+
+    def get_sync_sample_data(self, file_strm, utc_timestamp, track_type=VideTrackType):
+        sync_sample_index = self.find_sync_sample_index(utc_timestamp, track_type)
+        data_offset, data_size = self.get_sample(sync_sample_index, track_type)
         if file_strm == None:
             print "file_strm == None"
             return file_strm

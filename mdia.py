@@ -89,6 +89,9 @@ class Mdia(Box):
     def chunk_offset(self, chunk_idx):
         return -1 if (self.minf == None) else self.minf.chunk_offset(chunk_idx)
 
+    def find_sync_sample_index(self, sample_index):
+        return -1 if (self.minf == None) else self.minf.find_sync_sample_index(sample_index)
+
     def __str__(self):
         logstr = "\t%s\n%s\n%s\n%s\n" % \
                  (Box.__str__(self), self.mdhd, self.hdlr, self.minf)

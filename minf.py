@@ -91,6 +91,9 @@ class Minf(Box):
     def chunk_offset(self, chunk_idx):
         return -1 if (self.stbl == None) else self.stbl.chunk_offset(chunk_idx)
 
+    def find_sync_sample_index(self, sample_index):
+        return -1 if (self.stbl == None) else self.stbl.find_sync_sample_index(sample_index)
+
     def __str__(self):
         logstr = "\t\t%s\n%s\n%s\n%s\n%s\n" % \
                  (Box.__str__(self), self.vmhd, self.smhd, self.dinf, self.stbl)

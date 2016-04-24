@@ -65,6 +65,13 @@ class Stss(FullBox):
 
         return file_strm
 
+    def find_sync_sample_index(self, sample_index):
+        if 0 == self.entry_count:
+            return -1
+        for sample_idx in self.sample_number:
+            if sample_idx >= sample_index:
+                return sample_idx
+
     def __str__(self):
         logstr = "\t\t\t\t%s\n\t\t\t\tentry_count = %08ld(0x%016lx)" \
                  "\n\t\t\t\tsample_number = [" % \
