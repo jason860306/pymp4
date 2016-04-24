@@ -130,6 +130,24 @@ class Stsc(FullBox):
 
         return file_strm
 
+    def find_chunk_index(self, sample_index):
+        index = 0
+        for i in range(self.entry_count):
+            sample_chunk = self.sample_chunks[i]
+            chunk_sample_max_index = \
+                sample_chunk.first_chunk * sample_chunk.samples_per_chunk
+            if sample_index > chunk_sample_max_index:
+                index = chunk_sample_max_index
+                continue
+            chunk_sample = (index for index in range(index, sample_index))
+            return {sample_chunk.first_chunk: chunk_sample}
+
+    def chunk_last_sample_index(self, chunk_index):
+        if chunk_index >= self.entry_count:
+            pass  # raise
+        sample_chunk = self.sample_chunks[chunk_index]
+        return sample_chunk.first_chunk * sample_chunk.samples_per_chunk
+
     def __str__(self):
         logstr = "\t\t\t\t%s\n\t\t\t\tentry_count = %08ld(0x%016lx)" \
                  "\n\t\t\t\tsample_chunks = [" % \

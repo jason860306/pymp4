@@ -63,6 +63,11 @@ class Stco(FullBox):
 
         return file_strm
 
+    def chunk_offset(self, chunk_idx):
+        if chunk_idx > self.entry_count - 1:
+            pass  # raise
+        return self.offset[chunk_idx]
+
     def __str__(self):
         logstr = "\t\t\t\t%s\n\t\t\t\tentry_count = %08ld(0x%016lx)" \
                  "\n\t\t\t\tchunk_offset = [" % \
