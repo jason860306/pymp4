@@ -70,14 +70,26 @@ class Minf(Box):
     def duration(self):
         return 0 if (self.stbl == None) else self.stbl.duration()
 
-    def sample_size(self):
-        return 0 if (self.stbl == None) else self.stbl.sample_size()
+    def sample_count(self):
+        return 0 if (self.stbl == None) else self.stbl.sample_count()
 
     def bitsize(self):
         return 0 if (self.stbl == None) else self.stbl.bitsize()
 
     def find_sample_index(self, timestamp):
         return -1 if (self.stbl == None) else self.stbl.find_sample_index(timestamp)
+
+    def get_sample_size(self, sample_index):
+        return 0 if (self.stbl == None) else self.stbl.get_sample_size(sample_index)
+
+    def find_chunk_index(self, sample_index):
+        return -1 if (self.stbl == None) else self.stbl.find_chunk_index(sample_index)
+
+    def chunk_last_sample_index(self, chunk_index):
+        return -1 if (self.stbl == None) else self.stbl.chunk_last_sample_index(chunk_index)
+
+    def chunk_offset(self, chunk_idx):
+        return -1 if (self.stbl == None) else self.stbl.chunk_offset(chunk_idx)
 
     def __str__(self):
         logstr = "\t\t%s\n%s\n%s\n%s\n%s\n" % \

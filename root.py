@@ -23,7 +23,7 @@ class Root:
     the root box of a mp4 file
     """
 
-    def __init__(self, offset=0):
+    def __init__(self, filename, offset=0):
         self.box_offset = offset
         self.offset = offset
 
@@ -34,14 +34,16 @@ class Root:
         self.skip = None
         self.udat = None
 
-    def decode(self, filename):
-        if filename == None:
+        self.filename = filename
+
+    def decode(self):
+        if self.filename == None:
             print "file == None"
             return
 
-        filesize = os.path.getsize(filename)
+        filesize = os.path.getsize(self.filename)
 
-        with open(filename, 'rb') as mp4_file:
+        with open(self.filename, 'rb') as mp4_file:
             file_strm = FileStream(mp4_file)
             while filesize > 0:
                 tmp_box = Box()
@@ -76,6 +78,15 @@ class Root:
                 filesize -= tmp_box.Size()
 
             return file_strm
+
+    def get_sample_data(self, utc_timestamp, track_type=VideTrackType):
+
+        with open(self.filename, 'rb') as mp4_file:
+            file_strm = FileStream(mp4_file)
+            if self.moov == None:
+                print "file %s hasn't decoded" % self.filename
+                return None
+            return self.moov.get_sample_data(file_strm, utc_timestamp, track_type)
 
     def __str__(self):
         logstr = "%s\n%s\n%s\n%s\n%s\n%s" % \

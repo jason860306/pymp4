@@ -103,7 +103,7 @@ class Stbl(Box):
     def duration(self):
         return 0 if (self.stts == None) else self.stts.duration()
 
-    def sample_size(self):
+    def sample_count(self):
         return 0 if (self.stsz == None) else self.stsz.sample_count
 
     def bitsize(self):
@@ -111,6 +111,18 @@ class Stbl(Box):
 
     def find_sample_index(self, timestamp):
         return -1 if (self.stts == None) else self.stts.find_sample_index(timestamp)
+
+    def get_sample_size(self, sample_index):
+        return -1 if (self.stsz == None) else self.stsz.get_sample_size(sample_index)
+
+    def find_chunk_index(self, sample_index):
+        return -1 if (self.stsc == None) else self.stsc.find_chunk_index(sample_index)
+
+    def chunk_last_sample_index(self, chunk_index):
+        return -1 if (self.stsc == None) else self.stsc.chunk_last_sample_index(chunk_index)
+
+    def chunk_offset(self, chunk_idx):
+        return -1 if (self.stco == None) else self.stco.chunk_offset(chunk_idx)
 
     def __str__(self):
         logstr = "\t\t\t%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n" % \

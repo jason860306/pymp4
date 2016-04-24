@@ -68,14 +68,26 @@ class Mdia(Box):
     def mediatype(self):
         return None if (self.hdlr == None) else self.hdlr.handler_type
 
-    def sample_size(self):
-        return 0 if (self.minf == None) else self.minf.sample_size()
+    def sample_count(self):
+        return 0 if (self.minf == None) else self.minf.sample_count()
 
     def bitsize(self):
         return 0 if (self.minf == None) else self.minf.bitsize()
 
     def find_sample_index(self, timestamp):
         return -1 if (self.minf == None) else self.minf.find_sample_index(timestamp)
+
+    def get_sample_size(self, sample_index):
+        return 0 if (self.minf == None) else self.minf.get_sample_size(sample_index)
+
+    def find_chunk_index(self, sample_index):
+        return -1 if (self.minf == None) else self.minf.find_chunk_index(sample_index)
+
+    def chunk_last_sample_index(self, chunk_index):
+        return -1 if (self.minf == None) else self.minf.chunk_last_sample_index(chunk_index)
+
+    def chunk_offset(self, chunk_idx):
+        return -1 if (self.minf == None) else self.minf.chunk_offset(chunk_idx)
 
     def __str__(self):
         logstr = "\t%s\n%s\n%s\n%s\n" % \

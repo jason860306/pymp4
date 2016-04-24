@@ -33,8 +33,8 @@ class PyMp4:
         self.root = None
 
     def ParseMp4(self):
-        self.root = Root()
-        self.root.decode(self.filename)
+        self.root = Root(self.filename)
+        self.root.decode()
 
     def __str__(self):
         logstr = "file = %s\n%s" % (self.filename, self.root)

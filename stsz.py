@@ -85,6 +85,12 @@ class Stsz(FullBox):
             bsize = self.sample_count * self.sample_size
         return bsize
 
+    def get_sample_size(self, sample_index):
+        if sample_index >= len(self.entry_size):
+            pass  # raise
+        return self.sample_size if (0 != self.sample_size) else \
+            self.entry_size[sample_index]
+
     def __str__(self):
         logstr = "\t\t\t\t%s\n\t\t\t\tsample_size = %08ld(0x%016lx)" \
                  "\n\t\t\t\tsample_count = %08ld(0x%016lx)" % \

@@ -74,14 +74,23 @@ class Trak(Box):
     def mediatype(self):
         return None if (self.mdia == None) else self.mdia.mediatype()
 
-    def sample_size(self):
-        return 0 if (self.mdia == None) else self.mdia.sample_size()
+    def sample_count(self):
+        return 0 if (self.mdia == None) else self.mdia.sample_count()
 
     def bitsize(self):
         return 0 if (self.mdia == None) else self.mdia.bitsize()
 
     def find_sample_index(self, timestamp):
         return -1 if (self.mdia == None) else self.mdia.find_sample_index(timestamp)
+
+    def get_sample_size(self, sample_index):
+        return 0 if (self.mdia == None) else self.mdia.get_sample_size(sample_index)
+
+    def chunk_last_sample_index(self, chunk_index):
+        return -1 if (self.mdia == None) else self.mdia.chunk_last_sample_index(chunk_index)
+
+    def chunk_offset(self, chunk_idx):
+        return -1 if (self.mdia == None) else self.mdia.chunk_offset(chunk_idx)
 
     def __str__(self):
         logstr = "%s\n%s\n%s\n%s\n" % \

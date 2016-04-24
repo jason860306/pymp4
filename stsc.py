@@ -139,8 +139,8 @@ class Stsc(FullBox):
             if sample_index > chunk_sample_max_index:
                 index = chunk_sample_max_index
                 continue
-            chunk_sample = (index for index in range(index, sample_index))
-            return {sample_chunk.first_chunk: chunk_sample}
+            chunk_sample_idx = (index for index in range(index, sample_index))
+            return {sample_chunk.first_chunk: chunk_sample_idx}
 
     def chunk_last_sample_index(self, chunk_index):
         if chunk_index >= self.entry_count:
