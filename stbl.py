@@ -100,9 +100,6 @@ class Stbl(Box):
 
         return file_strm
 
-    def duration(self):
-        return 0 if (self.stts == None) else self.stts.duration()
-
     def sample_count(self):
         return 0 if (self.stsz == None) else self.stsz.sample_count
 

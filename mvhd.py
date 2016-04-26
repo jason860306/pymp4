@@ -15,9 +15,9 @@ __email__ = "jason860306@gmail.com"
 
 
 import os
-import time
 
 from fullbox import *
+from util import Util
 
 
 class Mvhd(FullBox):
@@ -111,12 +111,12 @@ class Mvhd(FullBox):
             self.creation_time = file_strm.ReadUint64()
             self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
-            self.creation_time_fmt = time.ctime(self.creation_time)
+            self.creation_time_fmt = Util.time_format(self.creation_time)
 
             self.modification_time = file_strm.ReadUint64()
             self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
-            self.modification_time_fmt = time.ctime(self.modification_time)
+            self.modification_time_fmt = Util.time_format(self.modification_time)
 
             self.timescale = file_strm.ReadUInt32()
             self.offset += UInt32ByteLen
@@ -128,12 +128,12 @@ class Mvhd(FullBox):
             self.creation_time = file_strm.ReadUInt32()
             self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
-            self.creation_time_fmt = time.ctime(self.creation_time)
+            self.creation_time_fmt = Util.time_format(self.creation_time)
 
             self.modification_time = file_strm.ReadUInt32()
             self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
-            self.modification_time_fmt = time.ctime(self.modification_time)
+            self.modification_time_fmt = Util.time_format(self.modification_time)
 
             self.timescale = file_strm.ReadUInt32()
             self.offset += UInt32ByteLen
@@ -176,7 +176,7 @@ class Mvhd(FullBox):
 
         return file_strm
 
-    def duration(self):
+    def movie_duration(self):
         return 0.0 if (self.timescale == 0) else 1.0 * self.duration / self.timescale
 
     def __str__(self):

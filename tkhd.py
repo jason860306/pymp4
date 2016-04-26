@@ -4,7 +4,6 @@
 """
 
 """
-import time
 
 __file__ = '$id$'
 __author__ = 'szj0306'  # 志杰
@@ -16,7 +15,9 @@ __email__ = "jason860306@gmail.com"
 
 
 import os
+
 from fullbox import *
+from util import Util
 
 
 class Tkhd(FullBox):
@@ -140,12 +141,12 @@ class Tkhd(FullBox):
             self.creation_time = file_strm.ReadUint64()
             self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
-            self.creation_time_fmt = time.ctime(self.creation_time)
+            self.creation_time_fmt = Util.time_format(self.creation_time)
 
             self.modification_time = file_strm.ReadUint64()
             self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
-            self.modification_time_fmt = time.ctime(self.modification_time)
+            self.modification_time_fmt = Util.time_format(self.modification_time)
 
             self.track_ID = file_strm.ReadUInt32()
             self.offset += UInt32ByteLen
@@ -160,12 +161,12 @@ class Tkhd(FullBox):
             self.creation_time = file_strm.ReadUInt32()
             self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
-            self.creation_time_fmt = time.ctime(self.creation_time)
+            self.creation_time_fmt = Util.time_format(self.creation_time)
 
             self.modification_time = file_strm.ReadUInt32()
             self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
-            self.modification_time_fmt = time.ctime(self.modification_time)
+            self.modification_time_fmt = Util.time_format(self.modification_time)
 
             self.track_ID = file_strm.ReadUInt32()
             self.offset += UInt32ByteLen
@@ -200,9 +201,11 @@ class Tkhd(FullBox):
             self.matrix[i] = matrix_
 
         self.width = file_strm.ReadUInt32()
+        self.width = self.width >> 16
         self.offset += UInt32ByteLen
 
         self.height = file_strm.ReadUInt32()
+        self.height = self.height >> 16
         self.offset += UInt32ByteLen
 
         tmp_size = self.offset - self.box_offset

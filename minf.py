@@ -67,9 +67,6 @@ class Minf(Box):
 
         return file_strm
 
-    def duration(self):
-        return 0 if (self.stbl == None) else self.stbl.duration()
-
     def sample_count(self):
         return 0 if (self.stbl == None) else self.stbl.sample_count()
 

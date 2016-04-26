@@ -100,7 +100,7 @@ class Stsz(FullBox):
             logstr += "\n\t\t\t\tentry_size = ["
             j = 0
             for i in range(self.sample_count):
-                if (0 == i) or (0 == i % 3):
+                if (0 == i) or (0 == i % 4):
                     logstr += "\n\t\t\t\t\t%08ld. " % j
                     j += 1
                 logstr += "%08ld(0x%016lx) " % (self.entry_size[i], self.entry_size[i])

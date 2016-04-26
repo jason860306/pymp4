@@ -62,65 +62,43 @@ class Moov(Box):
 
         return file_strm
 
-    def vide_duration(self):
-        vide_duration_ = 0
-        for trk in self.trak:
-            if trk.mediatype() == VideTrackType:
-                vide_duration_ = trk.duration()
-        return vide_duration_
-
-    def soun_duration(self):
-        soun_duration_ = 0
-        for trk in self.trak:
-            if trk.mediatype() == SounTrackType:
-                soun_duration_ = trk.duration()
-        return soun_duration_
-
     def duration(self):
-        vduration = self.vide_duration()
-        sduration = self.soun_duration()
-        duration_ = self.mvhd.duration()
-        return max(vduration, sduration, duration_)
+        return self.mvhd.movie_duration()
+
+    def track_bitsize(self, track_type=VideTrackType):
+        trk = self.get_track(track_type)
+        return 0 if (trk == None) else trk.bitsize()
+
+    def track_duration(self, track_type=VideTrackType):
+        trk = self.get_track(track_type)
+        if None == self.mvhd:
+            return 0.0
+        duration_ = trk.track_duration() / self.mvhd.timescale
+        return duration_
+
+    def track_bitrate(self, track_type=VideTrackType):
+        track_bsize = self.track_bitsize(track_type)
+        track_duration = self.track_duration(track_type)
+        return 0.0 if (0 == track_duration) else (track_bsize / track_duration)
 
     def width(self):
-        width_ = 0
-        for trk in self.trak:
-            if trk.mediatype() == VideTrackType:
-                width_ = trk.width()
-                break
-        return width_
+        trk = self.get_track(VideTrackType)
+        return trk.width()
 
     def height(self):
-        height_ = 0
-        for trk in self.trak:
-            if trk.mediatype() == VideTrackType:
-                height_ = trk.height()
-                break
-        return height_
-
-    def sample_count(self):
-        sample_size_ = 0
-        for trk in self.trak:
-            if trk.mediatype() == VideTrackType:
-                sample_size_ = trk.sample_count()
-                break
-        return sample_size_
+        trk = self.get_track(VideTrackType)
+        return trk.height()
 
     def fps(self):
-        duration_ = 0
-        for trk in self.trak:
-            if trk.mediatype() == VideTrackType:
-                duration_ = trk.duration()
-                break
-        sample_count_ = self.sample_count()
+        duration_ = self.track_duration(VideTrackType)
+        sample_count_ = self.get_track(VideTrackType).sample_count()
         return 0.0 if (duration_) == 0 else (1.0 * sample_count_ / duration_)
 
     def bitrate(self):
         bsize = 0
-        duration_ = 0
+        duration_ = self.mvhd.movie_duration()
         for trk in self.trak:
             bsize += trk.bitsize()
-            duration_ += trk.duration()
         return 0.0 if (duration_ == 0) else (1.0 * bsize / duration_)
 
     def find_sample_index(self, utc_timestamp, track_type=VideTrackType):
@@ -186,9 +164,48 @@ class Moov(Box):
         file_strm.Seek(data_offset, os.SEEK_SET)
         return file_strm.ReadByte(data_size)
 
+    def get_general_meta_data(self):
+        general = {}
+        general['creation_time'] = UTC_NONE_TIME if (self.mvhd == None) else \
+            self.mvhd.creation_time_fmt
+        general['modify_time'] = UTC_NONE_TIME if (self.mvhd == None) else \
+            self.mvhd.modification_time_fmt
+        general['duration'] = self.duration()
+        general['bitrate'] = self.bitrate()
+        return general
+
+    def get_vide_meta_data(self):
+        video = {}
+        trk = self.get_track(VideTrackType)
+        if trk == None:
+            return video
+        video['ID'] = trk.track_id()
+        video['duration'] = self.track_duration(VideTrackType)
+        video['bitrate'] = self.track_bitrate(VideTrackType)
+        video['width'] = trk.width()
+        video['height'] = trk.height()
+        video['fps'] = self.fps()
+        video['create_time'] = trk.create_time()
+        video['modify_time'] = trk.modify_time()
+        return video
+
+    def get_soun_meta_data(self):
+        sound = {}
+        trk = self.get_track(SounTrackType)
+        if trk == None:
+            return sound
+        sound['ID'] = trk.track_id()
+        sound['duration'] = self.track_duration(SounTrackType)
+        sound['bitrate'] = self.track_bitrate(SounTrackType)
+        sound['fps'] = self.fps()
+        sound['create_time'] = trk.create_time()
+        sound['modify_time'] = trk.modify_time()
+        return sound
+
+
     def get_track(self, track_type=VideTrackType):
         for trk in self.trak:
-            if trk.mediatype == track_type:
+            if trk.mediatype() == track_type:
                 return trk
         else:
             pass  # raise

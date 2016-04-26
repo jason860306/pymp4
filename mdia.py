@@ -63,7 +63,7 @@ class Mdia(Box):
         return file_strm
 
     def duration(self):
-        return 0 if (self.minf == None) else self.minf.duration()
+        return 0.0 if (self.mdhd == None) else self.mdhd.duration()
 
     def mediatype(self):
         return None if (self.hdlr == None) else self.hdlr.handler_type

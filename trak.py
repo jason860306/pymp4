@@ -62,8 +62,20 @@ class Trak(Box):
 
         return file_strm
 
-    def duration(self):
-        return 0 if (self.mdia == None) else self.mdia.duration()
+    def track_id(self):
+        return -1 if (self.tkhd == None) else self.tkhd.track_ID
+
+    def create_time(self):
+        return UTC_NONE_TIME if (self.tkhd == None) else self.tkhd.creation_time_fmt
+
+    def modify_time(self):
+        return UTC_NONE_TIME if (self.tkhd == None) else self.tkhd.modification_time_fmt
+
+    def track_duration(self):
+        return (0 if (self.tkhd == None) else self.tkhd.duration)
+
+    def media_duration(self):
+        return (0 if (self.mdia == None) else self.mdia.duration())
 
     def width(self):
         return self.tkhd.width

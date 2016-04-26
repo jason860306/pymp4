@@ -32,15 +32,7 @@ VideTrackType = 'vide'
 SounTrackType = 'soun'
 HintTrackType = 'hint'
 
-
-def ParseFourCC(four_cc_num):
-    num1 = (four_cc_num & 0xFF000000) >> 24
-    num2 = (four_cc_num & 0x00FF0000) >> 16
-    num3 = (four_cc_num & 0x0000FF00) >> 8
-    num4 = (four_cc_num & 0x000000FF)
-    return (chr(num1) + chr(num2) + chr(num3) + chr(num4))
-
-
+UTC_NONE_TIME = 'UTC 1904-01-01 00:00:00'
 UTC_MP4_INTERVAL = (((1970 - 1904) * 365) + 17) * 24 * 60 * 60
 """
 inline MP4Timestamp MP4GetAbsTimestamp() {
@@ -53,3 +45,11 @@ inline MP4Timestamp MP4GetAbsTimestamp() {
 	// 208284480 is (((1970 - 1904) * 365) + 17) * 24 * 60 * 60
 }
 """
+
+
+def ParseFourCC(four_cc_num):
+    num1 = (four_cc_num & 0xFF000000) >> 24
+    num2 = (four_cc_num & 0x00FF0000) >> 16
+    num3 = (four_cc_num & 0x0000FF00) >> 8
+    num4 = (four_cc_num & 0x000000FF)
+    return (chr(num1) + chr(num2) + chr(num3) + chr(num4))

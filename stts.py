@@ -72,12 +72,6 @@ class Stts(FullBox):
 
         return file_strm
 
-    def duration(self):
-        duration_ = 0
-        for i in range(self.entry_count):
-            duration_ += (self.sample_count[i] * self.sample_delta[i])
-        return (1.0 * duration_)
-
     def find_sample_index(self, timestamp):
         for i in range(self.entry_count):
             sample_cnt = self.sample_count[i]

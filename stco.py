@@ -75,7 +75,7 @@ class Stco(FullBox):
 
         j = 0
         for i in range(self.entry_count):
-            if (0 == i) or (0 == i % 3):
+            if (0 == i) or (0 == i % 4):
                 logstr += "\n\t\t\t\t\t%08ld. " % j
                 j += 1
             logstr += "%08ld(0x%016lx) " % (self.chunk_offset[i], self.chunk_offset[i])
