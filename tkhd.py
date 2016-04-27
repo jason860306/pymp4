@@ -141,12 +141,12 @@ class Tkhd(FullBox):
             self.creation_time = file_strm.ReadUint64()
             self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
-            self.creation_time_fmt = Util.time_format(self.creation_time)
+            self.creation_time_fmt = Util.datetime_format(self.creation_time)
 
             self.modification_time = file_strm.ReadUint64()
             self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
-            self.modification_time_fmt = Util.time_format(self.modification_time)
+            self.modification_time_fmt = Util.datetime_format(self.modification_time)
 
             self.track_ID = file_strm.ReadUInt32()
             self.offset += UInt32ByteLen
@@ -161,12 +161,12 @@ class Tkhd(FullBox):
             self.creation_time = file_strm.ReadUInt32()
             self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
-            self.creation_time_fmt = Util.time_format(self.creation_time)
+            self.creation_time_fmt = Util.datetime_format(self.creation_time)
 
             self.modification_time = file_strm.ReadUInt32()
             self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
-            self.modification_time_fmt = Util.time_format(self.modification_time)
+            self.modification_time_fmt = Util.datetime_format(self.modification_time)
 
             self.track_ID = file_strm.ReadUInt32()
             self.offset += UInt32ByteLen
@@ -213,6 +213,23 @@ class Tkhd(FullBox):
             file_strm.Seek(self.Size() - tmp_size, os.SEEK_CUR)
 
         return file_strm
+
+    def dump(self):
+        dump_info = FullBox.dump(self)
+        dump_info['creation_time'] = self.creation_time_fmt
+        dump_info['modification_time'] = self.modification_time_fmt
+        dump_info['track_ID'] = self.track_ID
+        dump_info['reserved'] = self.reserved
+        dump_info['duration'] = self.duration
+        dump_info['reserved1'] = self.reserved1
+        dump_info['layer'] = self.layer
+        dump_info['alternate_group'] = self.alternate_group
+        dump_info['volume'] = self.volume_fmt
+        dump_info['reserved2'] = self.reserved2
+        dump_info['matrix'] = self.matrix
+        dump_info['width'] = self.width
+        dump_info['height'] = self.height
+        return dump_info
 
     def __str__(self):
         logstr = "\t%s\n\tcreation_time = %s(%08ld)\n\tmodification_time = %s(%08ld)" % \

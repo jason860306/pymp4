@@ -76,6 +76,17 @@ class MediaSegmentEntry:
         size += Int16ByteLen
         return size
 
+    def dump(self):
+        dump_info = {}
+        dump_info['box_offset'] = self.box_offset
+        dump_info['offset'] = self.offset
+        dump_info['version'] = self.version
+        dump_info['segment_duration'] = self.segment_duration
+        dump_info['media_time'] = self.media_time
+        dump_info['media_rate_integer'] = self.media_rate_integer
+        dump_info['media_rate_fraction'] = self.media_rate_fraction
+        return dump_info
+
     def __str__(self):
         logstr = "segment_duration = %d, media_time = %d, " % \
                  (self.segment_duration, self.media_time)
@@ -147,9 +158,16 @@ class Elst(FullBox):
 
         return file_strm
 
+    def dump(self):
+        dump_info = FullBox.dump(self)
+        dump_info['entry_count'] = self.entry_count
+        if None != self.segment_entry:
+            dump_info['entry_count'] = [entry.dump() for entry in self.segment_entry]
+        return dump_info
+
     def __str__(self):
         logstr = "\t\t%s\n\t\tentry_count = %08ld(0x%016lx)\n\t\tentries = [" % \
-                 (Box.__str__(self), self.entry_count, self.entry_count)
+                 (FullBox.__str__(self), self.entry_count, self.entry_count)
         for i in range(len(self.segment_entry)):
             logstr += "\n\t\t\t%08ld. %s" % (i + 1, self.segment_entry[i])
         logstr += "\n\t\t]\n"

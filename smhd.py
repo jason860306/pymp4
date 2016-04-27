@@ -58,8 +58,15 @@ class Smhd(FullBox):
 
         return file_strm
 
+    def dump(self):
+        dump_info = FullBox.dump(self)
+        dump_info['balance'] = self.balance
+        dump_info['reserved'] = self.reserved
+        return dump_info
+
     def __str__(self):
-        logstr = "\t\t\t%s\n\t\t\tbalance = %08ld(0x%016lx)\n\t\t\treserved = %08ld(0x%016lx)\n" % \
+        logstr = "\t\t\t%s\n\t\t\tbalance = %08ld(0x%016lx)\n\t\t\t" \
+                 "reserved = %08ld(0x%016lx)\n" % \
                  (FullBox.__str__(self), self.balance, self.balance,
                   self.reserved, self.reserved)
         return logstr

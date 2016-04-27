@@ -92,6 +92,13 @@ class Mdia(Box):
     def find_sync_sample_index(self, sample_index):
         return -1 if (self.minf == None) else self.minf.find_sync_sample_index(sample_index)
 
+    def dump(self):
+        dump_info = Box.dump(self)
+        dump_info['mdhd'] = self.mdhd.dump()
+        dump_info['hdlr'] = self.hdlr.dump()
+        dump_info['minf'] = self.minf.dump()
+        return dump_info
+
     def __str__(self):
         logstr = "\t%s\n%s\n%s\n%s\n" % \
                  (Box.__str__(self), self.mdhd, self.hdlr, self.minf)

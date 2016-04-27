@@ -85,6 +85,12 @@ class Ctts(FullBox):
 
         return file_strm
 
+    def dump(self):
+        dump_info = FullBox.dump(self)
+        dump_info['entry_count'] = self.entry_count
+        dump_info['sample'] = zip(self.sample_count, self.sample_offset)
+        return dump_info
+
     def __str__(self):
         logstr = "\t\t\t\t%s\n\t\t\t\tentry_count = %08ld(0x%016lx)\n\t\t\t\tsample = [" % \
                  (FullBox.__str__(self), self.entry_count, self.entry_count)

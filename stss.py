@@ -72,6 +72,12 @@ class Stss(FullBox):
             if sample_idx >= sample_index:
                 return sample_idx
 
+    def dump(self):
+        dump_info = FullBox.dump(self)
+        dump_info['entry_count'] = self.entry_count
+        dump_info['sample_number'] = self.sample_number
+        return dump_info
+
     def __str__(self):
         logstr = "\t\t\t\t%s\n\t\t\t\tentry_count = %08ld(0x%016lx)" \
                  "\n\t\t\t\tsample_number = [" % \

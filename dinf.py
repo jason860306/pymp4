@@ -51,6 +51,11 @@ class Dinf(Box):
 
         return file_strm
 
+    def dump(self):
+        dump_info = Box.dump(self)
+        dump_info['dref'] = self.dref.dump()
+        return dump_info
+
     def __str__(self):
         logstr = "\t\t\t%s\n%s\n" % (Box.__str__(self), self.dref)
         return logstr

@@ -7,7 +7,7 @@
 
 __file__ = '$id$'
 __author__ = 'szj0306'  # 志杰
-__date__ = '4/20/0020 16:01:30'
+__date__ = '4/20/2016 16:01:30'
 __license__ = "Public Domain"
 __version__ = '$Revision$'
 __email__ = "jason860306@gmail.com"

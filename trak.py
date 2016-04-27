@@ -107,6 +107,16 @@ class Trak(Box):
     def find_sync_sample_index(self, sample_index):
         return -1 if (self.mdia == None) else self.mdia.find_sync_sample_index(sample_index)
 
+    def dump(self):
+        dump_info = Box.dump(self)
+        if None != self.tkhd:
+            dump_info['tkhd'] = self.tkhd.dump()
+        if None != self.edts:
+            dump_info['edts'] = self.edts.dump()
+        if None != self.mdia:
+            dump_info['mdia'] = self.mdia.dump()
+        return dump_info
+
     def __str__(self):
         logstr = "%s\n%s\n%s\n%s\n" % \
                  (Box.__str__(self), self.tkhd, self.edts, self.mdia)

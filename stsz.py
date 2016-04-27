@@ -91,6 +91,13 @@ class Stsz(FullBox):
         return self.sample_size if (0 != self.sample_size) else \
             self.entry_size[sample_index]
 
+    def dump(self):
+        dump_info = FullBox.dump(self)
+        dump_info['sample_size'] = self.sample_size
+        dump_info['sample_count'] = self.sample_count
+        dump_info['entry_size'] = self.entry_size
+        return dump_info
+
     def __str__(self):
         logstr = "\t\t\t\t%s\n\t\t\t\tsample_size = %08ld(0x%016lx)" \
                  "\n\t\t\t\tsample_count = %08ld(0x%016lx)" % \

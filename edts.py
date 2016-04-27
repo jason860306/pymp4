@@ -52,6 +52,11 @@ class Edts(Box):
 
         return file_strm
 
+    def dump(self):
+        dump_info = Box.dump(self)
+        dump_info['elst'] = self.elst.dump()
+        return dump_info
+
     def __str__(self):
         logstr = "\t%s\n\t%s\n" % (Box.__str__(self), self.elst)
         return logstr

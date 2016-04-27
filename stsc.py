@@ -66,6 +66,13 @@ class SampleChunk:
         size += UInt32ByteLen
         return size
 
+    def dump(self):
+        dump_info = {}
+        dump_info['first_chunk'] = self.first_chunk
+        dump_info['samples_per_chunk'] = self.samples_per_chunk
+        dump_info['sample_description_index'] = self.sample_description_index
+        return dump_info
+
     def __str__(self):
         logstr = "first_chunk = %08ld(0x%016lx), samples_per_chunk = %08ld(0x%016lx), " \
                  "sample_description_index = %08ld(0x%016lx)" % \
@@ -147,6 +154,14 @@ class Stsc(FullBox):
             pass  # raise
         sample_chunk = self.sample_chunks[chunk_index]
         return sample_chunk.first_chunk * sample_chunk.samples_per_chunk
+
+    def dump(self):
+        dump_info = FullBox.dump(self)
+        dump_info['entry_count'] = self.entry_count
+        if None != self.sample_chunks:
+            dump_info['sample_chunks'] = \
+                [chunk.dump() for chunk in self.sample_chunks]
+        return dump_info
 
     def __str__(self):
         logstr = "\t\t\t\t%s\n\t\t\t\tentry_count = %08ld(0x%016lx)" \

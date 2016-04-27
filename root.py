@@ -99,6 +99,22 @@ class Root:
 
         return meta_data
 
+    def dump(self):
+        dump_info = {}
+        if None != self.moov:
+            dump_info['moov'] = self.moov.dump()
+        if None != self.ftyp:
+            dump_info['ftyp'] = self.ftyp.dump()
+        if None != self.mdat:
+            dump_info['mdat'] = self.mdat.dump()
+        if None != self.free:
+            dump_info['free'] = self.free.dump()
+        if None != self.skip:
+            dump_info['skip'] = self.skip.dump()
+        if None != self.udat:
+            dump_info['udat'] = self.udat.dump()
+        return dump_info
+
     def __str__(self):
         logstr = "%s\n%s\n%s\n%s\n%s\n%s" % \
                  (self.moov, self.ftyp, self.mdat, self.free,

@@ -86,12 +86,12 @@ class Mdhd(FullBox):
             self.creation_time = file_strm.ReadUInt64()
             self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
-            self.creation_time_fmt = Util.time_format(self.creation_time)
+            self.creation_time_fmt = Util.datetime_format(self.creation_time)
 
             self.modification_time = file_strm.ReadUInt64()
             self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
-            self.modification_time_fmt = Util.time_format(self.modification_time)
+            self.modification_time_fmt = Util.datetime_format(self.modification_time)
 
             self.timescale = file_strm.ReadUInt32()
             self.offset += UInt32ByteLen
@@ -103,12 +103,12 @@ class Mdhd(FullBox):
             self.creation_time = file_strm.ReadUInt32()
             self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
-            self.creation_time_fmt = Util.time_format(self.creation_time)
+            self.creation_time_fmt = Util.datetime_format(self.creation_time)
 
             self.modification_time = file_strm.ReadUInt32()
             self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
-            self.modification_time_fmt = Util.time_format(self.modification_time)
+            self.modification_time_fmt = Util.datetime_format(self.modification_time)
 
             self.timescale = file_strm.ReadUInt32()
             self.offset += UInt32ByteLen
@@ -171,6 +171,18 @@ class Mdhd(FullBox):
 
     def duration(self):
         return 1.0 * self.duration / self.timescale
+
+    def dump(self):
+        dump_info = FullBox.dump(self)
+        dump_info['creation_time'] = self.creation_time_fmt
+        dump_info['modification_time'] = self.modification_time_fmt
+        dump_info['timescale'] = self.timescale
+        dump_info['duration'] = self.duration
+        dump_info['pad'] = self.pad
+        dump_info['language_code'] = self.language_code
+        dump_info['language'] = self.language
+        dump_info['pre_defined'] = self.pre_defined
+        return dump_info
 
     def __str__(self):
         logstr = "\t\t%s\n\t\tcreation_time = %s(%08ld)\n\t\tmodification_time = %s(%08ld)" % \

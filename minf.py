@@ -91,6 +91,18 @@ class Minf(Box):
     def find_sync_sample_index(self, sample_index):
         return -1 if (self.stbl == None) else self.stbl.find_sync_sample_index(sample_index)
 
+    def dump(self):
+        dump_info = Box.dump(self)
+        if None != self.vmhd:
+            dump_info['vmhd'] = self.vmhd.dump()
+        if None != self.smhd:
+            dump_info['smhd'] = self.smhd.dump()
+        if None != self.dinf:
+            dump_info['dinf'] = self.dinf.dump()
+        if None != self.stbl:
+            dump_info['stbl'] = self.stbl.dump()
+        return dump_info
+
     def __str__(self):
         logstr = "\t\t%s\n%s\n%s\n%s\n%s\n" % \
                  (Box.__str__(self), self.vmhd, self.smhd, self.dinf, self.stbl)

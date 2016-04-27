@@ -57,6 +57,12 @@ class SampeEntry(Box):
 
         return file_strm
 
+    def dump(self):
+        dump_info = Box.dump(self)
+        dump_info['reserved'] = self.reserved
+        dump_info['data_reference_index'] = self.data_reference_index
+        return dump_info
+
     def __str__(self):
         logstr = "%s\n\t\t\t\t\t\treserved = [" % Box.__str__(self)
         for i in range(len(self.reserved)):
@@ -121,6 +127,14 @@ class Stsd(FullBox):
             file_strm.Seek(self.Size() - tmp_size, os.SEEK_CUR)
 
         return file_strm
+
+    def dump(self):
+        dump_info = FullBox.dump(self)
+        dump_info['entry_count'] = self.entry_count
+        if None != self.sample_entries:
+            dump_info['sample_entries'] = \
+                [entry.dump() for entry in self.sample_entries]
+        return dump_info
 
     def __str__(self):
         logstr = "\t\t\t\t%s\n\t\t\t\tentry_count = %08ld(0x%016lx)" \

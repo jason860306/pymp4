@@ -66,6 +66,13 @@ class Ftyp(Box):
 
         return file_strm
 
+    def dump(self):
+        dump_info = Box.dump(self)
+        dump_info['major_brand'] = self.major_brand
+        dump_info['minor_brand'] = self.minor_brand
+        dump_info['minor_brand'] = self.compatible_brands
+        return dump_info
+
     def __str__(self):
         logstr = "%s\nmajor_brand = %s\nminor_brand = %08ld(0x%016lx)\ncompatible_brands = [" % \
                  (Box.__str__(self), self.major_brand, self.minor_brand, self.minor_brand)

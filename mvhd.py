@@ -111,12 +111,12 @@ class Mvhd(FullBox):
             self.creation_time = file_strm.ReadUint64()
             self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
-            self.creation_time_fmt = Util.time_format(self.creation_time)
+            self.creation_time_fmt = Util.datetime_format(self.creation_time)
 
             self.modification_time = file_strm.ReadUint64()
             self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
-            self.modification_time_fmt = Util.time_format(self.modification_time)
+            self.modification_time_fmt = Util.datetime_format(self.modification_time)
 
             self.timescale = file_strm.ReadUInt32()
             self.offset += UInt32ByteLen
@@ -128,12 +128,12 @@ class Mvhd(FullBox):
             self.creation_time = file_strm.ReadUInt32()
             self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
-            self.creation_time_fmt = Util.time_format(self.creation_time)
+            self.creation_time_fmt = Util.datetime_format(self.creation_time)
 
             self.modification_time = file_strm.ReadUInt32()
             self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
-            self.modification_time_fmt = Util.time_format(self.modification_time)
+            self.modification_time_fmt = Util.datetime_format(self.modification_time)
 
             self.timescale = file_strm.ReadUInt32()
             self.offset += UInt32ByteLen
@@ -179,12 +179,28 @@ class Mvhd(FullBox):
     def movie_duration(self):
         return 0.0 if (self.timescale == 0) else 1.0 * self.duration / self.timescale
 
+    def dump(self):
+        dump_info = FullBox.dump(self)
+        dump_info['creation_time'] = self.creation_time_fmt
+        dump_info['modification_time'] = self.modification_time_fmt
+        dump_info['timescale'] = self.timescale
+        dump_info['duration'] = self.duration
+        dump_info['rate'] = self.rate_fmt
+        dump_info['volume'] = self.volume_fmt
+        dump_info['reserved'] = self.reserved
+        dump_info['reserved1'] = self.reserved1
+        dump_info['matrix'] = self.matrix
+        dump_info['pre_defined'] = self.pre_defined
+        dump_info['next_track_ID'] = self.next_track_ID
+        return dump_info
+
     def __str__(self):
         logstr = "\t%s\n\tcreation_time = %s(%08ld)\n\tmodification_time = %s(%08ld)" % \
                  (FullBox.__str__(self), self.creation_time_fmt, self.creation_time,
                   self.modification_time_fmt, self.modification_time)
-        logstr += "\n\ttimescale = %08ld(0x%016lx)\n\tduration = %08ld(0x%016lx)\n\trate = %s" % \
-                  (self.timescale, self.timescale, self.duration, self.duration, self.rate_fmt)
+        logstr += "\n\ttimescale = %08ld(0x%016lx)\n\tduration = %s(0x%08ld)\n\trate = %s" % \
+                  (self.timescale, self.timescale, Util.time_format(self.movie_duration()),
+                   self.movie_duration(), self.rate_fmt)
         logstr += "\n\tvolume = %s\n\treserved = %08ld(0x%016lx)\n\treserved1 = [ " % \
                   (self.volume, self.reserved, self.reserved)
         for r in self.reserved1:

@@ -72,6 +72,12 @@ class FullBox(Box):
         flags_size = struct.calcsize('!3s')
         return box_size + ver_size + flags_size
 
+    def dump(self):
+        dump_info = Box.dump(self)
+        dump_info['version'] = self.version
+        dump_info['flags'] = self.flags
+        return dump_info
+
     def __str__(self):
         return "%s, version = %08ld(0x%016lx), flags = %s" % (
             Box.__str__(self), self.version, self.version, repr(self.flags))

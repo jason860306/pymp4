@@ -4,6 +4,7 @@
 """
 
 """
+from util import Util
 
 __file__ = '$id$'
 __author__ = 'szj0306'  # 志杰
@@ -170,7 +171,8 @@ class Moov(Box):
             self.mvhd.creation_time_fmt
         general['modify_time'] = UTC_NONE_TIME if (self.mvhd == None) else \
             self.mvhd.modification_time_fmt
-        general['duration'] = self.duration()
+        duration_ = self.duration()
+        general['duration'] = Util.time_format(duration_)
         general['bitrate'] = self.bitrate()
         return general
 
@@ -180,7 +182,8 @@ class Moov(Box):
         if trk == None:
             return video
         video['ID'] = trk.track_id()
-        video['duration'] = self.track_duration(VideTrackType)
+        duration_ = self.track_duration(VideTrackType)
+        video['duration'] = Util.time_format(duration_)
         video['bitrate'] = self.track_bitrate(VideTrackType)
         video['width'] = trk.width()
         video['height'] = trk.height()
@@ -195,7 +198,8 @@ class Moov(Box):
         if trk == None:
             return sound
         sound['ID'] = trk.track_id()
-        sound['duration'] = self.track_duration(SounTrackType)
+        duration_ = self.track_duration(SounTrackType)
+        sound['duration'] = Util.time_format(duration_)
         sound['bitrate'] = self.track_bitrate(SounTrackType)
         sound['fps'] = self.fps()
         sound['create_time'] = trk.create_time()
@@ -213,6 +217,14 @@ class Moov(Box):
     def utc2mp4_timestamp(self, utc_timestamp):
         mp4_timestamp = utc_timestamp + UTC_MP4_INTERVAL
         return mp4_timestamp
+
+    def dump(self):
+        dump_info = Box.dump(self)
+        if None != self.mvhd:
+            dump_info['mvhd'] = self.mvhd.dump()
+        if None != self.trak:
+            dump_info['trak'] = [trk.dump() for trk in self.trak]
+        return dump_info
 
     def __str__(self):
         logstr = "%s\n%s\n" % (Box.__str__(self), self.mvhd)

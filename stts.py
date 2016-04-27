@@ -82,6 +82,13 @@ class Stts(FullBox):
         else:
             pass  # raise
 
+    def dump(self):
+        dump_info = FullBox.dump(self)
+        dump_info['entry_count'] = self.entry_count
+        dump_info['sample_count'] = self.sample_count
+        dump_info['sample_delta'] = self.sample_delta
+        return dump_info
+
 
     def __str__(self):
         logstr = "\t\t\t\t%s\n\t\t\t\tsample = [" % FullBox.__str__(self)

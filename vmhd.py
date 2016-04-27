@@ -63,6 +63,12 @@ class Vmhd(FullBox):
 
         return file_strm
 
+    def dump(self):
+        dump_info = FullBox.dump(self)
+        dump_info['graphicsmode'] = self.graphicsmode
+        dump_info['opcolor'] = self.opcolor
+        return dump_info
+
     def __str__(self):
         logstr = "\t\t\t%s\n\t\t\tgraphicsmode = %08ld(0x%016lx)" \
                  "\n\t\t\topcolor = [" % \

@@ -32,6 +32,9 @@ VideTrackType = 'vide'
 SounTrackType = 'soun'
 HintTrackType = 'hint'
 
+DUMP_TYPE_JSON = "json"
+DUMP_TYPE_XML = "xml"
+
 UTC_NONE_TIME = 'UTC 1904-01-01 00:00:00'
 UTC_MP4_INTERVAL = (((1970 - 1904) * 365) + 17) * 24 * 60 * 60
 """
@@ -45,7 +48,6 @@ inline MP4Timestamp MP4GetAbsTimestamp() {
 	// 208284480 is (((1970 - 1904) * 365) + 17) * 24 * 60 * 60
 }
 """
-
 
 def ParseFourCC(four_cc_num):
     num1 = (four_cc_num & 0xFF000000) >> 24

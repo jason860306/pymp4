@@ -124,6 +124,26 @@ class Stbl(Box):
     def find_sync_sample_index(self, sample_index):
         return -1 if (self.stss == None) else self.stss.find_sync_sample_index(sample_index)
 
+    def dump(self):
+        dump_info = Box.dump(self)
+        if None != self.stts:
+            dump_info['stts'] = self.stts.dump()
+        if None != self.ctts:
+            dump_info['ctts'] = self.ctts.dump()
+        if None != self.stss:
+            dump_info['stss'] = self.stss.dump()
+        if None != self.stsd:
+            dump_info['stsd'] = self.stsd.dump()
+        if None != self.stsz:
+            dump_info['stsz'] = self.stsz.dump()
+        if None != self.stsc:
+            dump_info['stsc'] = self.stsc.dump()
+        if None != self.stco:
+            dump_info['stco'] = self.stco.dump()
+        if None != self.co64:
+            dump_info['co64'] = self.co64.dump()
+        return dump_info
+
     def __str__(self):
         logstr = "\t\t\t%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n" % \
                  (Box.__str__(self), self.stts, self.ctts, self.stss,

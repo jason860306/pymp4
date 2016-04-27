@@ -40,6 +40,10 @@ class Udta(Box):
 
         return file_strm
 
+    def dump(self):
+        dump_info = Box.dump(self)
+        return dump_info
+
     def __str__(self):
         logstr = "\t%s\n" % Box.__str__(self)
         return logstr

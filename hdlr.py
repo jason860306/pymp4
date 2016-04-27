@@ -81,6 +81,14 @@ class Hdlr(FullBox):
 
         return file_strm
 
+    def dump(self):
+        dump_info = FullBox.dump(self)
+        dump_info['pre_defined'] = self.pre_defined
+        dump_info['handler_type'] = self.handler_type
+        dump_info['reserved'] = self.reserved
+        dump_info['name'] = self.name
+        return dump_info
+
     def __str__(self):
         logstr = "\t\t%s\n\t\tpre_defined = %08ld(0x%016lx)" \
                  "\n\t\thandler_type = %s\n\t\treserved = [ " % \
