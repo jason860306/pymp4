@@ -23,7 +23,7 @@ from mp4boxdesc import *
 FLAG_SELF_CONTAINED = 0x000001
 
 
-class DataEntryUrlBox(FullBox):
+class Url(FullBox):
     """
     aligned(8) class DataEntryUrlBox (bit(24) flags) extends FullBox(‘url ’, version = 0, flags) {
         string location;
@@ -64,7 +64,7 @@ class DataEntryUrlBox(FullBox):
         return logstr
 
 
-class DataEntryUrnBox(FullBox):
+class Urn(FullBox):
     """
     aligned(8) class DataEntryUrnBox (bit(24) flags) extends FullBox(‘urn ’, version = 0, flags) {
         string name;

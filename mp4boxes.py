@@ -14,12 +14,16 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+from avc1 import Avc1
+from avc2 import Avc2
+from avcC import AvcC
+from btrt import Btrt
 from co64 import Co64
 from ctts import Ctts
 from dinf import Dinf
-from dref import DataEntryUrlBox
-from dref import DataEntryUrnBox
 from dref import Dref
+from dref import Url
+from dref import Urn
 from edts import Edts
 from elst import Elst
 from free import Free
@@ -67,6 +71,12 @@ MP4Boxes = {
     FourCCMp4Ctts: Ctts,
     FourCCMp4Stss: Stss,
     FourCCMp4Stsd: Stsd,
+    FourCCMp4Avc1: Avc1,
+    FourCCMp4Avc2: Avc2,
+    FourCCMp4AvcC: AvcC,
+    FourCCMp4Btrt: Btrt,
+    # FourCCMp4M4ds: 'm4ds',
+    # FourCCMp4Srat: 'srat',
     FourCCMp4Stsz: Stsz,
     FourCCMp4Stsc: Stsc,
     FourCCMp4Stco: Stco,
@@ -76,6 +86,6 @@ MP4Boxes = {
     FourCCMp4Ftyp: Ftyp,
     FourCCMp4Free: Free,
     FourCCMp4Skip: Skip,
-    FourCCMp4Url: DataEntryUrlBox,
-    FourCCMp4Urn: DataEntryUrnBox
+    FourCCMp4Url: Url,
+    FourCCMp4Urn: Urn
 }

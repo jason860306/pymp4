@@ -40,6 +40,12 @@ FourCCMp4Stts = 'stts'
 FourCCMp4Ctts = 'ctts'
 FourCCMp4Stss = 'stss'
 FourCCMp4Stsd = 'stsd'
+FourCCMp4Avc1 = 'avc1'
+FourCCMp4Avc2 = 'avc2'
+FourCCMp4AvcC = 'avcC'
+FourCCMp4Btrt = 'btrt'
+FourCCMp4M4ds = 'm4ds'
+FourCCMp4Srat = 'srat'
 FourCCMp4Stsz = 'stsz'
 FourCCMp4Stsc = 'stsc'
 FourCCMp4Stco = 'stco'
@@ -73,6 +79,12 @@ Mp4SttsFullName = 'Decoding Time to Sample Box'
 Mp4CttsFullName = 'Composition Time to Sample Box'
 Mp4StssFullName = 'Sync Sample Box'
 Mp4StsdFullName = 'Sample Description Box'
+Mp4Avc1FullName = 'AVC SampleEntry'
+Mp4Avc2FullName = 'AVC2 SampleEntry'
+Mp4AvcCFullName = 'AVC Configuration Box'
+Mp4BtrtFullName = 'MPEG4 BitRate Box'
+Mp4M4dsFullName = 'MPEG4 Extension Descriptors Box'
+Mp4SratFullName = 'Sampling Rate Box'
 Mp4StszFullName = 'Sample Size Boxes'
 Mp4StscFullName = 'Sample To Chunk Box'
 Mp4StcoFullName = 'Chunk Offset Box in 32 bit'
@@ -106,6 +118,15 @@ Mp4SttsDesc = '(decoding) time-to-sample'
 Mp4CttsDesc = 'composition time-to-sample table'
 Mp4StssDesc = 'sync (key, I-frame) sample map'
 Mp4StsdDesc = 'sample descriptions (codec types, initialization etc.)'
+Mp4Avc1Desc = '''may only be used when the entire stream is a compliant and usable AVC
+stream as viewed by an AVC decoder operating under the configuration (including profile and level) given in
+the AVCConfigurationBox.'''
+Mp4Avc2Desc = '''may only be used when Extractors or Aggregators (Annex B) are required to be
+supported, and an appropriate Toolset is required (for example, as indicated by the file-type brands).'''
+Mp4AvcCDesc = 'the decoder configuration information for ISO/IEC 14496-10 video content.'
+Mp4BtrtDesc = 'a bitrate box of mpeg4'
+Mp4M4dsDesc = 'unknow'
+Mp4SratDesc = 'the actual sampling rate of the audio media, expressed as a 32‐bit integer'
 Mp4StszDesc = 'sample sizes (framing)'
 Mp4StscDesc = 'sample-to-chunk, partial data-offset information'
 Mp4StcoDesc = 'chunk offset, partial data-offset information'
@@ -137,6 +158,12 @@ MP4BoxesFullName = {
     FourCCMp4Ctts: Mp4CttsFullName,
     FourCCMp4Stss: Mp4StssFullName,
     FourCCMp4Stsd: Mp4StsdFullName,
+    FourCCMp4Avc1: Mp4Avc1FullName,
+    FourCCMp4Avc2: Mp4Avc2FullName,
+    FourCCMp4AvcC: Mp4AvcCFullName,
+    FourCCMp4Btrt: Mp4BtrtFullName,
+    FourCCMp4M4ds: Mp4M4dsFullName,
+    FourCCMp4Srat: Mp4SratFullName,
     FourCCMp4Stsz: Mp4StszFullName,
     FourCCMp4Stsc: Mp4StscFullName,
     FourCCMp4Stco: Mp4StcoFullName,
@@ -171,6 +198,12 @@ MP4BoxesDesc = {
     FourCCMp4Ctts: Mp4CttsDesc,
     FourCCMp4Stss: Mp4StssDesc,
     FourCCMp4Stsd: Mp4StsdDesc,
+    FourCCMp4Avc1: Mp4Avc1Desc,
+    FourCCMp4Avc2: Mp4Avc2Desc,
+    FourCCMp4AvcC: Mp4AvcCDesc,
+    FourCCMp4Btrt: Mp4BtrtDesc,
+    FourCCMp4M4ds: Mp4M4dsDesc,
+    FourCCMp4Srat: Mp4SratDesc,
     FourCCMp4Stsz: Mp4StszDesc,
     FourCCMp4Stsc: Mp4StscDesc,
     FourCCMp4Stco: Mp4StcoDesc,

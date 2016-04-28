@@ -39,10 +39,12 @@ class PyMp4:
         filesize = os.path.getsize(self.filename)
         with open(self.filename, 'rb') as mp4_file:
             file_strm = FileStream(mp4_file)
+            cur_pos = file_strm.Tell()
+            file_strm.Seek(0, os.SEEK_SET)
             self.root = Root(file_strm, filesize)
             self.root.decode()
 
-    def dump(self, dump_type='json'):
+    def dump(self, dump_type=DUMP_TYPE_JSON):
         dump_info = {}
         dump_info['file'] = self.filename
         dump_info['meta_data'] = self.root.get_meta_data()
@@ -50,9 +52,9 @@ class PyMp4:
 
         out_file = os.path.splitext(self.filename)[0] + "." + dump_type
         with open(out_file, 'wb') as ofile:
-            if dump_type == 'json':
+            if dump_type == DUMP_TYPE_JSON:
                 ofile.write(JsonEnc().encode(dump_info))
-            elif dump_type == 'xml':
+            elif dump_type == DUMP_TYPE_XML:
                 xmlEnc = XmlEnc()
                 xmlEnc.encode(dump_info)
                 xmlEnc.dump(ofile)

@@ -54,7 +54,7 @@ class Edts(Box):
 
     def dump(self):
         dump_info = Box.dump(self)
-        dump_info['elst'] = self.elst.dump()
+        dump_info[self.elst.type] = self.elst.dump()
         return dump_info
 
     def __str__(self):

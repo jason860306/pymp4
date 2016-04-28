@@ -53,7 +53,7 @@ class Dinf(Box):
 
     def dump(self):
         dump_info = Box.dump(self)
-        dump_info['dref'] = self.dref.dump()
+        dump_info[self.dref.type] = self.dref.dump()
         return dump_info
 
     def __str__(self):

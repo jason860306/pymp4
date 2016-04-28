@@ -127,21 +127,21 @@ class Stbl(Box):
     def dump(self):
         dump_info = Box.dump(self)
         if None != self.stts:
-            dump_info['stts'] = self.stts.dump()
+            dump_info[self.stts.type] = self.stts.dump()
         if None != self.ctts:
-            dump_info['ctts'] = self.ctts.dump()
+            dump_info[self.ctts.type] = self.ctts.dump()
         if None != self.stss:
-            dump_info['stss'] = self.stss.dump()
+            dump_info[self.stss.type] = self.stss.dump()
         if None != self.stsd:
-            dump_info['stsd'] = self.stsd.dump()
+            dump_info[self.stsd.type] = self.stsd.dump()
         if None != self.stsz:
-            dump_info['stsz'] = self.stsz.dump()
+            dump_info[self.stsz.type] = self.stsz.dump()
         if None != self.stsc:
-            dump_info['stsc'] = self.stsc.dump()
+            dump_info[self.stsc.type] = self.stsc.dump()
         if None != self.stco:
-            dump_info['stco'] = self.stco.dump()
+            dump_info[self.stco.type] = self.stco.dump()
         if None != self.co64:
-            dump_info['co64'] = self.co64.dump()
+            dump_info[self.co64.type] = self.co64.dump()
         return dump_info
 
     def __str__(self):
