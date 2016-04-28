@@ -94,13 +94,13 @@ class Minf(Box):
     def dump(self):
         dump_info = Box.dump(self)
         if None != self.vmhd:
-            dump_info['vmhd'] = self.vmhd.dump()
+            dump_info[self.vmhd.type] = self.vmhd.dump()
         if None != self.smhd:
-            dump_info['smhd'] = self.smhd.dump()
+            dump_info[self.smhd.type] = self.smhd.dump()
         if None != self.dinf:
-            dump_info['dinf'] = self.dinf.dump()
+            dump_info[self.dinf.type] = self.dinf.dump()
         if None != self.stbl:
-            dump_info['stbl'] = self.stbl.dump()
+            dump_info[self.stbl.type] = self.stbl.dump()
         return dump_info
 
     def __str__(self):

@@ -110,11 +110,11 @@ class Trak(Box):
     def dump(self):
         dump_info = Box.dump(self)
         if None != self.tkhd:
-            dump_info['tkhd'] = self.tkhd.dump()
+            dump_info[self.tkhd.type] = self.tkhd.dump()
         if None != self.edts:
-            dump_info['edts'] = self.edts.dump()
+            dump_info[self.edts.type] = self.edts.dump()
         if None != self.mdia:
-            dump_info['mdia'] = self.mdia.dump()
+            dump_info[self.mdia.type] = self.mdia.dump()
         return dump_info
 
     def __str__(self):

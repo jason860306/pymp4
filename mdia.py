@@ -94,9 +94,9 @@ class Mdia(Box):
 
     def dump(self):
         dump_info = Box.dump(self)
-        dump_info['mdhd'] = self.mdhd.dump()
-        dump_info['hdlr'] = self.hdlr.dump()
-        dump_info['minf'] = self.minf.dump()
+        dump_info[self.mdhd.type] = self.mdhd.dump()
+        dump_info[self.hdlr.type] = self.hdlr.dump()
+        dump_info[self.minf.type] = self.minf.dump()
         return dump_info
 
     def __str__(self):

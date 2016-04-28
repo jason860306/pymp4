@@ -50,9 +50,9 @@ class PyMp4:
 
         out_file = os.path.splitext(self.filename)[0] + "." + dump_type
         with open(out_file, 'wb') as ofile:
-            if dump_type == 'json':
+            if dump_type == DUMP_TYPE_JSON:
                 ofile.write(JsonEnc().encode(dump_info))
-            elif dump_type == 'xml':
+            elif dump_type == DUMP_TYPE_XML:
                 xmlEnc = XmlEnc()
                 xmlEnc.encode(dump_info)
                 xmlEnc.dump(ofile)
