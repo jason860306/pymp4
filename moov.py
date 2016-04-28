@@ -223,7 +223,8 @@ class Moov(Box):
         if None != self.mvhd:
             dump_info['mvhd'] = self.mvhd.dump()
         if None != self.trak:
-            dump_info['trak'] = [trk.dump() for trk in self.trak]
+            for trk in self.trak:
+                dump_info['{0}_trak'.format(trk.mediatype())] = trk.dump()
         return dump_info
 
     def __str__(self):

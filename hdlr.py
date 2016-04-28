@@ -73,6 +73,7 @@ class Hdlr(FullBox):
         left_size -= struct.calcsize('!I')  # sizeof(handler_type)
         left_size -= 3 * struct.calcsize('!I')  # sizeof(reserved)
         self.name = file_strm.ReadByte(left_size)
+        self.name = self.name.rstrip('\0')
         self.offset += Int8ByteLen * left_size
 
         tmp_size = self.offset - self.box_offset

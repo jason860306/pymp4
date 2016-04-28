@@ -14,8 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+import datetime
 import time
-from datetime import *
 
 
 class Util:
@@ -25,7 +25,7 @@ class Util:
 
     @staticmethod
     def datetime_format(utc_time=None):
-        return datetime.fromtimestamp(utc_time).strftime(
+        return datetime.datetime.fromtimestamp(utc_time).strftime(
             "UTC %Y-%m-%d %H:%M:%S")
 
     @staticmethod

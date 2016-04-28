@@ -111,12 +111,16 @@ class Mvhd(FullBox):
             self.creation_time = file_strm.ReadUint64()
             self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
-            self.creation_time_fmt = Util.datetime_format(self.creation_time)
+            if self.creation_time > 0:
+                self.creation_time_fmt = Util.datetime_format(
+                    self.creation_time)
 
             self.modification_time = file_strm.ReadUint64()
             self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt64ByteLen
-            self.modification_time_fmt = Util.datetime_format(self.modification_time)
+            if self.modification_time > 0:
+                self.modification_time_fmt = Util.datetime_format(
+                    self.modification_time)
 
             self.timescale = file_strm.ReadUInt32()
             self.offset += UInt32ByteLen
@@ -128,12 +132,16 @@ class Mvhd(FullBox):
             self.creation_time = file_strm.ReadUInt32()
             self.creation_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
-            self.creation_time_fmt = Util.datetime_format(self.creation_time)
+            if self.creation_time > 0:
+                self.creation_time_fmt = Util.datetime_format(
+                    self.creation_time)
 
             self.modification_time = file_strm.ReadUInt32()
             self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
-            self.modification_time_fmt = Util.datetime_format(self.modification_time)
+            if self.creation_time > 0:
+                self.modification_time = Util.datetime_format(
+                    self.modification_time)
 
             self.timescale = file_strm.ReadUInt32()
             self.offset += UInt32ByteLen

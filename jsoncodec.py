@@ -19,7 +19,7 @@ import json
 
 class JsonEnc(json.JSONEncoder):
     """
-
+    encode data to json via json.JSONEncoder
     """
 
     def default(self, obj):
@@ -33,7 +33,7 @@ class JsonEnc(json.JSONEncoder):
 
 class JsonDec(json.JSONDecoder):
     """
-
+    decode data from json via json.JSONDecoder
     """
 
     def __init__(self):

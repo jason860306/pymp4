@@ -132,8 +132,11 @@ class Stsd(FullBox):
         dump_info = FullBox.dump(self)
         dump_info['entry_count'] = self.entry_count
         if None != self.sample_entries:
-            dump_info['sample_entries'] = \
-                [entry.dump() for entry in self.sample_entries]
+            entries = {}
+            for i in range(len(self.sample_entries)):
+                entry = self.sample_entries[i]
+                entries[entry.type] = self.sample_entries[i].dump()
+            dump_info['sample_entries'] = entries
         return dump_info
 
     def __str__(self):

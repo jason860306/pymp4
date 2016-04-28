@@ -162,7 +162,10 @@ class Elst(FullBox):
         dump_info = FullBox.dump(self)
         dump_info['entry_count'] = self.entry_count
         if None != self.segment_entry:
-            dump_info['entry_count'] = [entry.dump() for entry in self.segment_entry]
+            entries = {}
+            for i in range(len(self.segment_entry)):
+                entries['entry_{0}'.format(i)] = self.segment_entry[i].dump()
+            dump_info['entries'] = entries
         return dump_info
 
     def __str__(self):

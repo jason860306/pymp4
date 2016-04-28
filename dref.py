@@ -180,7 +180,10 @@ class Dref(FullBox):
         dump_info = FullBox.dump(self)
         dump_info['entry_count'] = self.entry_count
         if None != self.data_entries:
-            dump_info['entries'] = [entry.dump() for entry in self.data_entries]
+            entries = {}
+            for entry in self.data_entries:
+                entries[entry.type] = entry.dump()
+            dump_info['data_entries'] = entries
         return dump_info
 
     def __str__(self):

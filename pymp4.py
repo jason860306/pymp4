@@ -19,6 +19,7 @@ import sys
 from jsoncodec import *
 from root import *
 from util import Util
+from xmlcodec import *
 
 
 class PyMp4:
@@ -41,14 +42,20 @@ class PyMp4:
             self.root = Root(file_strm, filesize)
             self.root.decode()
 
-    def dump(self, out_file=None):
-        if None == out_file:
-            return
-        dump_json = {}
-        dump_json['meta_data'] = self.root.get_meta_data()
-        dump_json['mp4_info'] = self.root.dump()
+    def dump(self, dump_type='json'):
+        dump_info = {}
+        dump_info['file'] = self.filename
+        dump_info['meta_data'] = self.root.get_meta_data()
+        dump_info['mp4_info'] = self.root.dump()
+
+        out_file = os.path.splitext(self.filename)[0] + "." + dump_type
         with open(out_file, 'wb') as ofile:
-            ofile.write(JsonEnc().encode(dump_json))
+            if dump_type == 'json':
+                ofile.write(JsonEnc().encode(dump_info))
+            elif dump_type == 'xml':
+                xmlEnc = XmlEnc()
+                xmlEnc.encode(dump_info)
+                xmlEnc.dump(ofile)
 
     def __str__(self):
         meta_data = self.root.get_meta_data()
@@ -58,17 +65,19 @@ class PyMp4:
 
 
 if __name__ == "__main__":
+
     arg_len = len(sys.argv)
     if (arg_len != 2) and (arg_len != 3):
-        print "usage: %s mp4_file [out_file]\n" % sys.argv[0]
+        print "usage: %s mp4_file [dump_type(json|xml)]\n" % sys.argv[0]
         sys.exit(0)
 
     filename = sys.argv[1]
+    dumptype = sys.argv[2]
+
     pymp4 = PyMp4(filename)
     pymp4.ParseMp4()
 
     if arg_len == 3:
-        out_file = sys.argv[2]
-        pymp4.dump(out_file)
+        pymp4.dump(dumptype)
 
-    print "mp4info: %s\n" % str(pymp4)
+        # print "mp4info: %s\n" % str(pymp4)

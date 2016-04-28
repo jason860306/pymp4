@@ -93,9 +93,9 @@ class Root:
         video_meta_data = self.moov.get_vide_meta_data()
         sound_meta_data = self.moov.get_soun_meta_data()
 
-        meta_data['General'] = general
-        meta_data['Video'] = video_meta_data
-        meta_data['Audio'] = sound_meta_data
+        meta_data['general'] = general
+        meta_data['video'] = video_meta_data
+        meta_data['audio'] = sound_meta_data
 
         return meta_data
 

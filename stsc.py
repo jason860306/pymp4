@@ -159,8 +159,10 @@ class Stsc(FullBox):
         dump_info = FullBox.dump(self)
         dump_info['entry_count'] = self.entry_count
         if None != self.sample_chunks:
-            dump_info['sample_chunks'] = \
-                [chunk.dump() for chunk in self.sample_chunks]
+            chunks = {}
+            for i in range(len(self.sample_chunks)):
+                chunks['sample_{0}'.format(i)] = self.sample_chunks[i].dump()
+            dump_info['sample_chunks'] = chunks
         return dump_info
 
     def __str__(self):
