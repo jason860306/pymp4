@@ -16,7 +16,7 @@ __email__ = "jason860306@gmail.com"
 
 from avc1 import Avc1
 from avc2 import Avc2
-from avcC import AvcC
+from avcc import AvcC
 from btrt import Btrt
 from co64 import Co64
 from ctts import Ctts

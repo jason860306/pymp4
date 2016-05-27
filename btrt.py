@@ -67,9 +67,9 @@ class Btrt(Box):
         return dump_info
 
     def __str__(self):
-        logstr = "\t\t\t\t\t\t\t%s\n\t\t\t\t\t\t\t\tbufferSizeDB = %08ld(0x%016lx)" \
-                 "\n\t\t\t\t\n\t\t\t\tmaxBitrate = %08ld(0x%016lx)" \
-                 "\n\t\t\t\t\n\t\t\t\tavgBitrate = %08ld(0x%016lx)\n" % \
+        logstr = "%s\n\t\t\t\t\t\tbufferSizeDB = %08ld(0x%016lx)" \
+                 "\n\t\t\t\t\t\tmaxBitrate = %08ld(0x%016lx)" \
+                 "\n\t\t\t\t\t\tavgBitrate = %08ld(0x%016lx)" % \
                  (Box.__str__(self), self.bufferSizeDB, self.bufferSizeDB,
                   self.maxBitrate, self.maxBitrate, self.avgBitrate, self.avgBitrate)
         return logstr

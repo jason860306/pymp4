@@ -65,12 +65,16 @@ class Stsd(FullBox):
         for i in range(self.entry_count):
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)
-
-            sample_entry = mp4boxes.MP4Boxes[tmp_box.type](self.offset,
-                                                           tmp_box)  # SampeEntry(self.offset, tmp_box)
-            file_strm = sample_entry.decode(file_strm)
-            self.offset += sample_entry.Size()
-            self.sample_entries.append(sample_entry)
+            if tmp_box.type == FourCCMp4Avc1:
+                sample_entry = mp4boxes.MP4Boxes[tmp_box.type](
+                    self.offset, tmp_box)
+                # sample_entry = SampeEntry(self.offset, tmp_box)
+                file_strm = sample_entry.decode(file_strm)
+                self.offset += sample_entry.Size()
+                self.sample_entries.append(sample_entry)
+            else:
+                file_strm.Seek(tmp_box.Size(), os.SEEK_CUR)
+                self.offset += tmp_box.Size()
 
         tmp_size = self.offset - self.box_offset
         if tmp_size != self.Size():
@@ -93,7 +97,7 @@ class Stsd(FullBox):
         logstr = "\t\t\t\t%s\n\t\t\t\tentry_count = %08ld(0x%016lx)" \
                  "\n\t\t\t\tsample_entries = [" % \
                  (FullBox.__str__(self), self.entry_count, self.entry_count)
-        for i in range(self.entry_count):
+        for i in range(len(self.sample_entries)):
             logstr += "\n\t\t\t\t\t%08ld. %s" % (i, self.sample_entries[i])
         logstr += "\n\t\t\t\t]\n"
         return logstr

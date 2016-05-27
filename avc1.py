@@ -95,6 +95,6 @@ class Avc1(VisualSampleEntry):
         return dump_info
 
     def __str__(self):
-        logstr = "\t\t\t\t\t%s\n\t\t\t\t\tavcC = %s\n\t\t\t\t\tbtrt = %s\n" % \
+        logstr = "%s\n\t\t\t\t\t%s\n\t\t\t\t\t%s" % \
                  (VisualSampleEntry.__str__(self), self.avcC, self.btrt)
         return logstr

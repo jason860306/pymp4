@@ -139,8 +139,8 @@ class Mvhd(FullBox):
             self.modification_time = file_strm.ReadUInt32()
             self.modification_time -= UTC_MP4_INTERVAL
             self.offset += UInt32ByteLen
-            if self.creation_time > 0:
-                self.modification_time = Util.datetime_format(
+            if self.modification_time > 0:
+                self.modification_time_fmt = Util.datetime_format(
                     self.modification_time)
 
             self.timescale = file_strm.ReadUInt32()

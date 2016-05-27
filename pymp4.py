@@ -80,6 +80,7 @@ if __name__ == "__main__":
     pymp4.ParseMp4()
 
     if arg_len == 3:
-        pymp4.dump(dumptype)
+        pass
+        # pymp4.dump(dumptype)
 
-        # print "mp4info: %s\n" % str(pymp4)
+        print "mp4info: %s\n" % str(pymp4)

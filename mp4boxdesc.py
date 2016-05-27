@@ -118,11 +118,12 @@ Mp4SttsDesc = '(decoding) time-to-sample'
 Mp4CttsDesc = 'composition time-to-sample table'
 Mp4StssDesc = 'sync (key, I-frame) sample map'
 Mp4StsdDesc = 'sample descriptions (codec types, initialization etc.)'
-Mp4Avc1Desc = '''may only be used when the entire stream is a compliant and usable AVC
-stream as viewed by an AVC decoder operating under the configuration (including profile and level) given in
-the AVCConfigurationBox.'''
-Mp4Avc2Desc = '''may only be used when Extractors or Aggregators (Annex B) are required to be
-supported, and an appropriate Toolset is required (for example, as indicated by the file-type brands).'''
+Mp4Avc1Desc = 'may only be used when the entire stream is a compliant and usable ' \
+              'AVC stream as viewed by an AVC decoder operating under the ' \
+              'configuration (including profile and level) given in the AVCConfigurationBox.'
+Mp4Avc2Desc = 'may only be used when Extractors or Aggregators (Annex B) are required ' \
+              'to be supported, and an appropriate Toolset is required (for example, ' \
+              'as indicated by the file-type brands).'
 Mp4AvcCDesc = 'the decoder configuration information for ISO/IEC 14496-10 video content.'
 Mp4BtrtDesc = 'a bitrate box of mpeg4'
 Mp4M4dsDesc = 'unknow'
