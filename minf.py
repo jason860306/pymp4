@@ -24,9 +24,11 @@ class Minf(Box):
     }
     """
 
-    def __init__(self, offset=0, box=None):
+    def __init__(self, offset=0, box=None, handler_type=''):
         if isinstance(box, Box):
             Box.__init__(self, offset, box)
+
+        self.handler_type = handler_type
 
         self.vmhd = None
         self.smhd = None
@@ -57,7 +59,8 @@ class Minf(Box):
                 file_strm = self.dinf.decode(file_strm)
                 self.offset += self.dinf.Size()
             elif tmp_box.type == FourCCMp4Stbl:
-                self.stbl = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
+                self.stbl = mp4boxes.MP4Boxes[tmp_box.type](
+                    self.offset, tmp_box, self.handler_type)
                 file_strm = self.stbl.decode(file_strm)
                 self.offset += self.stbl.Size()
             else:

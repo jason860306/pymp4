@@ -37,9 +37,11 @@ class Stbl(Box):
         stdp    degradation priority
     """
 
-    def __init__(self, offset=0, box=None):
+    def __init__(self, offset=0, box=None, handler_type=''):
         if isinstance(box, Box):
             Box.__init__(self, offset, box)
+
+        self.handler_type = handler_type
 
         self.stts = None
         self.ctts = None
@@ -74,7 +76,8 @@ class Stbl(Box):
                 file_strm = self.stss.decode(file_strm)
                 self.offset += self.stss.Size()
             elif tmp_box.type == FourCCMp4Stsd:
-                self.stsd = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
+                self.stsd = mp4boxes.MP4Boxes[tmp_box.type](
+                    self.offset, tmp_box, self.handler_type)
                 file_strm = self.stsd.decode(file_strm)
                 self.offset += self.stsd.Size()
             elif tmp_box.type == FourCCMp4Stsz:

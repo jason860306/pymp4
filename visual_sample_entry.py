@@ -136,7 +136,7 @@ class VisualSampleEntry(SampeEntry):
         dump_info['vertresolution'] = self.vertresolution
         dump_info['reserved2'] = self.reserved2
         dump_info['frame_count'] = self.frame_count
-        dump_info['compressorname'] = self.compressorname
+        dump_info['compressorname'] = repr(self.compressorname)
         dump_info['depth'] = self.depth
         dump_info['pre_defined2'] = self.pre_defined2
         return dump_info

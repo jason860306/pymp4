@@ -49,7 +49,7 @@ class ParameterSet:
     def dump(self):
         dump_info = {}
         dump_info['ps_len'] = self.ps_len
-        dump_info['ps_nalu'] = self.ps_nalu
+        dump_info['ps_nalu'] = repr(self.ps_nalu)
         return dump_info
 
     def __str__(self):

@@ -52,7 +52,8 @@ class Mdia(Box):
                 file_strm = self.hdlr.decode(file_strm)
                 self.offset += self.hdlr.Size()
             elif tmp_box.type == FourCCMp4Minf:
-                self.minf = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
+                self.minf = mp4boxes.MP4Boxes[tmp_box.type](
+                    self.offset, tmp_box, self.hdlr.handler_type)
                 file_strm = self.minf.decode(file_strm)
                 self.offset += self.minf.Size()
             else:
