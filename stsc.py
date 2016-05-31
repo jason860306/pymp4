@@ -19,69 +19,6 @@ import os
 from fullbox import *
 
 
-class SampleChunk:
-    """
-    unsigned int(32) first_chunk;
-    unsigned int(32) samples_per_chunk;
-    unsigned int(32) sample_description_index;
-
-    first_chunk - is an integer that gives the index of the first chunk in this run of
-                  chunks that share the same samples‐per‐chunk and sample‐description‐index;
-                  the index of the first chunk in a track has the value 1 (the first_chunk
-                  field in the first record of this box has the value 1, identifying that
-                  the first sample maps to the first chunk).
-    samples_per_chunk - is an integer that gives the number of samples in each of these chunks
-    sample_description_index - is an integer that gives the index of the sample entry that
-                               describes the samples in this chunk. The index ranges from 1
-                               to the number of sample entries in the Sample Description Box
-    """
-
-    def __init__(self, offset=0):
-        self.box_offset = offset
-        self.offset = offset
-        self.first_chunk = 0
-        self.samples_per_chunk = 0
-        self.sample_description_index = 0
-
-    def decode(self, file_strm):
-        if file_strm == None:
-            print "file_strm == None"
-            return file_strm
-
-        self.first_chunk = file_strm.ReadUInt32()
-        self.offset += UInt32ByteLen
-
-        self.samples_per_chunk = file_strm.ReadUInt32()
-        self.offset += UInt32ByteLen
-
-        self.sample_description_index = file_strm.ReadUInt32()
-        self.offset += UInt32ByteLen
-
-        return file_strm
-
-    def Size(self):
-        size = 0
-        size += UInt32ByteLen
-        size += UInt32ByteLen
-        size += UInt32ByteLen
-        return size
-
-    def dump(self):
-        dump_info = {}
-        dump_info['first_chunk'] = self.first_chunk
-        dump_info['samples_per_chunk'] = self.samples_per_chunk
-        dump_info['sample_description_index'] = self.sample_description_index
-        return dump_info
-
-    def __str__(self):
-        logstr = "first_chunk = %08ld(0x%016lx), samples_per_chunk = %08ld(0x%016lx), " \
-                 "sample_description_index = %08ld(0x%016lx)" % \
-                 (self.first_chunk, self.first_chunk, self.samples_per_chunk,
-                  self.samples_per_chunk, self.sample_description_index,
-                  self.sample_description_index)
-        return logstr
-
-
 class Stsc(FullBox):
     """
     aligned(8) class SampleToChunkBox extends FullBox(‘stsc’, version = 0, 0) {
@@ -105,6 +42,68 @@ class Stsc(FullBox):
                                to the number of sample entries in the Sample Description Box
     """
 
+    class SampleChunk:
+        """
+        unsigned int(32) first_chunk;
+        unsigned int(32) samples_per_chunk;
+        unsigned int(32) sample_description_index;
+
+        first_chunk - is an integer that gives the index of the first chunk in this run of
+                      chunks that share the same samples‐per‐chunk and sample‐description‐index;
+                      the index of the first chunk in a track has the value 1 (the first_chunk
+                      field in the first record of this box has the value 1, identifying that
+                      the first sample maps to the first chunk).
+        samples_per_chunk - is an integer that gives the number of samples in each of these chunks
+        sample_description_index - is an integer that gives the index of the sample entry that
+                                   describes the samples in this chunk. The index ranges from 1
+                                   to the number of sample entries in the Sample Description Box
+        """
+
+        def __init__(self, offset=0):
+            self.box_offset = offset
+            self.offset = offset
+            self.first_chunk = 0
+            self.samples_per_chunk = 0
+            self.sample_description_index = 0
+
+        def decode(self, file_strm):
+            if file_strm == None:
+                print "file_strm == None"
+                return file_strm
+
+            self.first_chunk = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
+
+            self.samples_per_chunk = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
+
+            self.sample_description_index = file_strm.ReadUInt32()
+            self.offset += UInt32ByteLen
+
+            return file_strm
+
+        def Size(self):
+            size = 0
+            size += UInt32ByteLen
+            size += UInt32ByteLen
+            size += UInt32ByteLen
+            return size
+
+        def dump(self):
+            dump_info = {}
+            dump_info['first_chunk'] = self.first_chunk
+            dump_info['samples_per_chunk'] = self.samples_per_chunk
+            dump_info['sample_description_index'] = self.sample_description_index
+            return dump_info
+
+        def __str__(self):
+            logstr = "first_chunk = %08ld(0x%016lx), samples_per_chunk = %08ld(0x%016lx), " \
+                     "sample_description_index = %08ld(0x%016lx)" % \
+                     (self.first_chunk, self.first_chunk, self.samples_per_chunk,
+                      self.samples_per_chunk, self.sample_description_index,
+                      self.sample_description_index)
+            return logstr
+
     def __init__(self, offset=0, box=None):
         if isinstance(box, Box):
             Box.__init__(self, offset, box)
@@ -125,7 +124,7 @@ class Stsc(FullBox):
         self.offset += UInt32ByteLen
 
         for i in range(self.entry_count):
-            sample_chunk_ = SampleChunk(self.offset)
+            sample_chunk_ = Stsc.SampleChunk(self.offset)
             file_strm = sample_chunk_.decode(file_strm)
             self.offset += sample_chunk_.Size()
 
@@ -154,6 +153,12 @@ class Stsc(FullBox):
             pass  # raise
         sample_chunk = self.sample_chunks[chunk_index]
         return sample_chunk.first_chunk * sample_chunk.samples_per_chunk
+
+    def get_sample_per_chunk(self, chunk_idx):
+        if chunk_idx >= self.entry_count:
+            pass  # raise
+        sample_chunk = self.sample_chunks[chunk_idx]
+        return sample_chunk.samples_per_chunk
 
     def dump(self):
         dump_info = FullBox.dump(self)

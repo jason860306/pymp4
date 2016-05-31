@@ -37,6 +37,9 @@ class Ftyp(Box):
         self.minor_brand = 0
         self.compatible_brands = []
 
+    def get_major_brand(self):
+        return self.major_brand
+
     def decode(self, file_strm):
         if file_strm == None:
             print "file_strm == None"

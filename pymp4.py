@@ -35,14 +35,27 @@ class PyMp4:
         self.filename = fname
         self.root = None
 
-    def ParseMp4(self):
+    def parse_mp4(self):
         filesize = os.path.getsize(self.filename)
         with open(self.filename, 'rb') as mp4_file:
-            file_strm = FileStream(mp4_file)
-            cur_pos = file_strm.Tell()
-            file_strm.Seek(0, os.SEEK_SET)
-            self.root = Root(file_strm, filesize)
+            self.file_strm = FileStream(mp4_file)
+            self.root = Root(self.file_strm, filesize)
             self.root.decode()
+
+    def write_es_file(self):
+        if self.root is None:
+            return  # raise
+        self.root.rebuild_sample_table()
+
+        out_file = os.path.splitext(self.filename)[0] + "." + self.root.get_major_brand()
+        with open(out_file, 'wb') as es_file:
+            for trk in self.root.get_tracks():
+                if trk.type != VideTrackType:
+                    continue
+                for sample in trk.get_sample():
+                    sample_data = self.root.get_sample_data(
+                        sample.offset, sample.size, self.file_strm, trk.type)
+                    es_file.write(sample_data)
 
     def dump(self, dump_type=DUMP_TYPE_JSON):
         dump_info = {}
@@ -77,7 +90,7 @@ if __name__ == "__main__":
     dumptype = sys.argv[2]
 
     pymp4 = PyMp4(filename)
-    pymp4.ParseMp4()
+    pymp4.parse_mp4()
 
     if arg_len == 3:
         # pass

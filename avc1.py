@@ -86,6 +86,15 @@ class Avc1(VisualSampleEntry):
 
         return file_strm
 
+    def get_sps(self):
+        return None if (self.avcC is None) else self.avcC.get_sps()
+
+    def get_pps(self):
+        return None if (self.avcC is None) else self.avcC.get_pps()
+
+    def get_spse(self):
+        return None if (self.avcC is None) else self.avcC.get_spse()
+
     def dump(self):
         dump_info = VisualSampleEntry.dump(self)
         if self.avcC != None:

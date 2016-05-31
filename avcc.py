@@ -482,6 +482,15 @@ class AvcC(Box):
 
         return file_strm
 
+    def get_sps(self):
+        return None if (self.avcCRecord is None) else self.avcCRecord.sps
+
+    def get_pps(self):
+        return None if (self.avcCRecord is None) else self.avcCRecord.pps
+
+    def get_spse(self):
+        return None if (self.avcCRecord is None) else self.avcCRecord.spse
+
     def dump(self):
         dump_info = Box.dump(self)
         if self.avcCRecord != None:

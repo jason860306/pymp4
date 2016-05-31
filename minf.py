@@ -79,6 +79,9 @@ class Minf(Box):
     def find_sample_index(self, timestamp):
         return -1 if (self.stbl == None) else self.stbl.find_sample_index(timestamp)
 
+    def get_sample_duration(self, sample_idx):
+        return -1 if (self.stbl == None) else self.stbl.get_sample_duration(sample_idx)
+
     def get_sample_size(self, sample_index):
         return 0 if (self.stbl == None) else self.stbl.get_sample_size(sample_index)
 
@@ -91,8 +94,23 @@ class Minf(Box):
     def chunk_offset(self, chunk_idx):
         return -1 if (self.stbl == None) else self.stbl.chunk_offset(chunk_idx)
 
+    def get_chunk_offset_list(self):
+        return -1 if (self.stbl == None) else self.stbl.get_chunk_offset_list()
+
+    def get_sample_per_chunk(self, chunk_idx):
+        return -1 if (self.stbl == None) else self.stbl.get_sample_per_chunk(chunk_idx)
+
     def find_sync_sample_index(self, sample_index):
         return -1 if (self.stbl == None) else self.stbl.find_sync_sample_index(sample_index)
+
+    def get_sps(self):
+        return None if (self.stbl is None) else self.stbl.get_sps()
+
+    def get_pps(self):
+        return None if (self.stbl is None) else self.stbl.get_pps()
+
+    def get_spse(self):
+        return None if (self.stbl is None) else self.stbl.get_spse()
 
     def dump(self):
         dump_info = Box.dump(self)

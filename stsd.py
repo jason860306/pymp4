@@ -86,6 +86,30 @@ class Stsd(FullBox):
 
         return file_strm
 
+    def get_sps(self):
+        if self.sample_entries is None:
+            return None
+        for i in range(len(self.sample_entries)):
+            entry = self.sample_entries[i]
+            if entry.type == FourCCMp4Avc1:
+                return entry.get_sps()
+
+    def get_pps(self):
+        if self.sample_entries is None:
+            return None
+        for i in range(len(self.sample_entries)):
+            entry = self.sample_entries[i]
+            if entry.type == FourCCMp4Avc1:
+                return entry.get_pps()
+
+    def get_spse(self):
+        if self.sample_entries is None:
+            return None
+        for i in range(len(self.sample_entries)):
+            entry = self.sample_entries[i]
+            if entry.type == FourCCMp4Avc1:
+                return entry.get_spse()
+
     def dump(self):
         dump_info = FullBox.dump(self)
         dump_info['entry_count'] = self.entry_count

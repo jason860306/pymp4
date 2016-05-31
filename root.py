@@ -16,6 +16,8 @@ __email__ = "jason860306@gmail.com"
 
 from box import *
 from mp4boxes import *
+from sample import *
+from track import *
 
 
 class Root:
@@ -38,6 +40,11 @@ class Root:
             pass  # raise
         self.file_strm = file_strm
         self.file_size = file_size
+
+        self.tracks = []
+
+    def get_major_brand(self):
+        return "h264" if self.ftyp is None else self.ftyp.major_brand
 
     def decode(self):
         fsize = self.file_size
@@ -75,10 +82,56 @@ class Root:
             fsize -= tmp_box.Size()
         return file_strm_
 
-    def get_sample_data(self, utc_timestamp, track_type=VideTrackType):
+    def rebuild_sample_table(self):
+        TrackType = [VideTrackType, SounTrackType, HintTrackType]
+        for trk_type in TrackType:
+            if self.moov.get_track(trk_type) is None:
+                continue
+            track = Track(trk_type)
+
+            sample_idx = 0
+            chunk_offset_lst = self.moov.get_chunk_offset_list()
+            for i in range(len(chunk_offset_lst)):
+                sample_per_chunk = self.moov.get_sample_per_chunk(i, trk_type)
+                for j in range(sample_per_chunk):
+                    sample = None
+                    if trk_type == VideTrackType:
+                        sample = VideoSample()
+                    elif trk_type == SounTrackType:
+                        sample = AudioSample()
+                    if sample is None:
+                        continue
+                    sample.index = sample_idx
+                    sample_idx += 1
+
+                    sample.offset, sample.size = \
+                        self.moov.get_sample(sample.index, trk_type)
+                    sample.duration = \
+                        self.moov.get_sample_duration(sample.index, trk_type)
+
+                    track.append_sample(sample)
+            self.tracks.append(track)
+
+    def get_tracks(self):
+        return self.tracks
+
+    def write_es_header(self):
+        sps = self.moov.get_sps(VideTrackType)
+        pps = self.moov.get_pps(VideTrackType)
+        spse = self.moov.get_spse(VideTrackType)
+
+    def get_sample_data_by_time(self, utc_timestamp, track_type=VideTrackType):
         if None == self.moov:
             pass  # raise
-        return self.moov.get_sample_data(self.file_strm, utc_timestamp, track_type)
+        return self.moov.get_sample_data_by_time(self.file_strm, utc_timestamp, track_type)
+
+    def get_sample_data(self, offset, size, file_strm, track_type=VideTrackType):
+        if None == self.moov:
+            pass  # raise
+        return self.moov.get_sample_data(offset, size, self.file_strm, track_type)
+
+    def write_es_tailer(self):
+        return ''
 
     def get_meta_data(self):
         if None == self.moov or None == self.ftyp:

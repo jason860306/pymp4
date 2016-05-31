@@ -35,6 +35,12 @@ class Stts(FullBox):
                    have the given duration.
     sample_delta ‐ is an integer that gives the delta of these samples in the time‐scale
                    of the media.
+
+        The atom contains time deltas:
+            DT(n+1) = DT(n) + STTS(n)
+    here STTS(n) is the (uncompressed) table entry for sample n and DT is the display
+    time for sample (n).
+        DT(i) = SUM (for j=0 to i-1 of delta(j))
     """
 
     def __init__(self, offset=0, box=None):
@@ -82,13 +88,17 @@ class Stts(FullBox):
         else:
             pass  # raise
 
+    def get_sample_duration(self, sample_idx):
+        if sample_idx >= self.entry_count:
+            return -1  # raise
+        return self.sample_delta[sample_idx]
+
     def dump(self):
         dump_info = FullBox.dump(self)
         dump_info['entry_count'] = self.entry_count
         dump_info['sample_count'] = self.sample_count
         dump_info['sample_delta'] = self.sample_delta
         return dump_info
-
 
     def __str__(self):
         logstr = "\t\t\t\t%s\n\t\t\t\tsample = [" % FullBox.__str__(self)

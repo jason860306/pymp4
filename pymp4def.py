@@ -15,8 +15,8 @@ __email__ = "jason860306@gmail.com"
 
 
 import ctypes
-
 # import struct
+
 
 Int8ByteLen = ctypes.sizeof(ctypes.c_int8)  # struct.calcsize('!s')
 Int16ByteLen = ctypes.sizeof(ctypes.c_int16)  # struct.calcsize('!h')
@@ -28,6 +28,8 @@ UInt16ByteLen = ctypes.sizeof(ctypes.c_uint16)  # struct.calcsize('!H')
 UInt32ByteLen = ctypes.sizeof(ctypes.c_uint32)  # struct.calcsize('!I')
 UInt64ByteLen = ctypes.sizeof(ctypes.c_uint64)  # struct.calcsize('!Q')
 
+AVC_START_CODE = '00000001'
+
 VideTrackType = 'vide'
 SounTrackType = 'soun'
 HintTrackType = 'hint'
@@ -37,17 +39,19 @@ DUMP_TYPE_XML = "xml"
 
 UTC_NONE_TIME = 'UTC 1904-01-01 00:00:00'
 UTC_MP4_INTERVAL = (((1970 - 1904) * 365) + 17) * 24 * 60 * 60
-"""
-inline MP4Timestamp MP4GetAbsTimestamp() {
-	struct timeval tv;
-	gettimeofday(&tv, NULL);
-	MP4Timestamp ret;
-	ret = tv.tv_sec;
-	ret += 2082844800;
-	return ret;	// MP4 start date is 1/1/1904
-	// 208284480 is (((1970 - 1904) * 365) + 17) * 24 * 60 * 60
-}
-"""
+
+
+# """
+# inline MP4Timestamp MP4GetAbsTimestamp() {
+# 	struct timeval tv;
+# 	gettimeofday(&tv, NULL);
+# 	MP4Timestamp ret;
+# 	ret = tv.tv_sec;
+# 	ret += 2082844800;
+# 	return ret;	// MP4 start date is 1/1/1904
+# 	// 208284480 is (((1970 - 1904) * 365) + 17) * 24 * 60 * 60
+# }
+# """
 
 def ParseFourCC(four_cc_num):
     num1 = (four_cc_num & 0xFF000000) >> 24

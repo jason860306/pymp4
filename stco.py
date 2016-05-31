@@ -63,8 +63,11 @@ class Stco(FullBox):
 
         return file_strm
 
+    def get_chunk_offset_list(self):
+        return self.chunk_offset
+
     def chunk_offset(self, chunk_idx):
-        if chunk_idx > self.entry_count - 1:
+        if chunk_idx >= self.entry_count:
             pass  # raise
         return self.offset[chunk_idx]
 
