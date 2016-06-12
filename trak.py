@@ -33,8 +33,8 @@ class Trak(Box):
         self.mdia = None
 
     def decode(self, file_strm):
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)
@@ -63,19 +63,19 @@ class Trak(Box):
         return file_strm
 
     def track_id(self):
-        return -1 if (self.tkhd == None) else self.tkhd.track_ID
+        return -1 if (self.tkhd is None) else self.tkhd.track_ID
 
     def create_time(self):
-        return UTC_NONE_TIME if (self.tkhd == None) else self.tkhd.creation_time_fmt
+        return UTC_NONE_TIME if (self.tkhd is None) else self.tkhd.creation_time_fmt
 
     def modify_time(self):
-        return UTC_NONE_TIME if (self.tkhd == None) else self.tkhd.modification_time_fmt
+        return UTC_NONE_TIME if (self.tkhd is None) else self.tkhd.modification_time_fmt
 
     def track_duration(self):
-        return (0 if (self.tkhd == None) else self.tkhd.duration)
+        return (0 if (self.tkhd is None) else self.tkhd.duration)
 
     def media_duration(self):
-        return (0 if (self.mdia == None) else self.mdia.duration())
+        return (0 if (self.mdia is None) else self.mdia.duration())
 
     def width(self):
         return self.tkhd.width
@@ -84,37 +84,47 @@ class Trak(Box):
         return self.tkhd.height
 
     def mediatype(self):
-        return None if (self.mdia == None) else self.mdia.mediatype()
+        return None if (self.mdia is None) else self.mdia.mediatype()
 
     def sample_count(self):
-        return 0 if (self.mdia == None) else self.mdia.sample_count()
+        return 0 if (self.mdia is None) else self.mdia.sample_count()
 
     def bitsize(self):
-        return 0 if (self.mdia == None) else self.mdia.bitsize()
+        return 0 if (self.mdia is None) else self.mdia.bitsize()
 
     def find_sample_index(self, timestamp):
-        return -1 if (self.mdia == None) else self.mdia.find_sample_index(timestamp)
+        return -1 if (self.mdia is None) else self.mdia.find_sample_index(timestamp)
 
     def get_sample_duration(self, sample_idx):
-        return -1 if (self.mdia == None) else self.mdia.get_sample_duration(sample_idx)
+        return -1 if (self.mdia is None) else self.mdia.get_sample_duration(sample_idx)
 
     def get_sample_size(self, sample_index):
-        return 0 if (self.mdia == None) else self.mdia.get_sample_size(sample_index)
+        return 0 if (self.mdia is None) else self.mdia.get_sample_size(sample_index)
+
+    def find_chunk_index(self, sample_index):
+        return -1 if (self.mdia is None) else self.mdia.find_chunk_index(sample_index)
+
+    def chunk_1st_sample_index(self, chunk_index):
+        return -1 if (self.mdia is None) else self.mdia.chunk_1st_sample_index(chunk_index)
 
     def chunk_last_sample_index(self, chunk_index):
-        return -1 if (self.mdia == None) else self.mdia.chunk_last_sample_index(chunk_index)
+        return -1 if (self.mdia is None) else self.mdia.chunk_last_sample_index(chunk_index)
+
+    def chunk_sample_index_diff(self, chunk_index, sample_index):
+        return -1 if (self.mdia is None) else self.mdia.chunk_sample_index_diff(
+            chunk_index, sample_index)
 
     def chunk_offset(self, chunk_idx):
-        return -1 if (self.mdia == None) else self.mdia.chunk_offset(chunk_idx)
+        return -1 if (self.mdia is None) else self.mdia.chunk_offset(chunk_idx)
 
     def get_chunk_offset_list(self):
-        return -1 if (self.mdia == None) else self.mdia.get_chunk_offset_list()
+        return -1 if (self.mdia is None) else self.mdia.get_chunk_offset_list()
 
     def get_sample_per_chunk(self, chunk_idx):
-        return -1 if (self.mdia == None) else self.mdia.get_sample_per_chunk(chunk_idx)
+        return -1 if (self.mdia is None) else self.mdia.get_sample_per_chunk(chunk_idx)
 
     def find_sync_sample_index(self, sample_index):
-        return -1 if (self.mdia == None) else self.mdia.find_sync_sample_index(sample_index)
+        return -1 if (self.mdia is None) else self.mdia.find_sync_sample_index(sample_index)
 
     def get_sps(self):
         return None if (self.mdia is None) else self.mdia.get_sps()

@@ -54,8 +54,8 @@ class Stts(FullBox):
         self.sample_delta = []  # 0 for i in range(self.entry_count)
 
     def decode(self, file_strm):
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)
@@ -84,14 +84,17 @@ class Stts(FullBox):
             sample_duration = self.sample_delta[i]
             for j in range(sample_cnt):
                 if (j * sample_duration) >= timestamp:
-                    return (i * j + 1)
+                    return i * j + 1
         else:
             pass  # raise
 
     def get_sample_duration(self, sample_idx):
-        if sample_idx >= self.entry_count:
-            return -1  # raise
-        return self.sample_delta[sample_idx]
+        sample_idx_ = 0
+        for i in range(self.entry_count):
+            sample_idx_ += self.sample_count[i]
+            if sample_idx < sample_idx_:
+                return self.sample_delta[i]
+        return -1
 
     def dump(self):
         dump_info = FullBox.dump(self)

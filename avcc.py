@@ -32,8 +32,8 @@ class ParameterSet:
         self.ps_nalu = ''
 
     def decode(self, file_strm):
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
         self.ps_len = file_strm.ReadUInt16()
         self.ps_nalu = file_strm.ReadByte(self.ps_len)
@@ -210,8 +210,8 @@ class AVCDecoderConfigurationRecord:
             self.spse = []
 
         def decode(self, file_strm):
-            if file_strm == None:
-                print "file_strm == None"
+            if file_strm is None:
+                print "file_strm is None"
                 return file_strm
 
             tmp_byte = file_strm.ReadUInt8()
@@ -304,8 +304,8 @@ class AVCDecoderConfigurationRecord:
         self.spse = []
 
     def decode(self, file_strm):
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
 
         self.conf_version = file_strm.ReadUInt8()
@@ -468,8 +468,8 @@ class AvcC(Box):
         self.avcCRecord = None
 
     def decode(self, file_strm):
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)

@@ -64,8 +64,8 @@ class AudioSampleEntryV1(SampeEntry):
         self.samplerate = 0
 
     def decode(self, file_strm):
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
 
         file_strm = SampeEntry.decode(self, file_strm)

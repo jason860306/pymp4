@@ -67,8 +67,8 @@ class Stsc(FullBox):
             self.sample_description_index = 0
 
         def decode(self, file_strm):
-            if file_strm == None:
-                print "file_strm == None"
+            if file_strm is None:
+                print "file_strm is None"
                 return file_strm
 
             self.first_chunk = file_strm.ReadUInt32()
@@ -114,8 +114,8 @@ class Stsc(FullBox):
         self.sample_chunks = []  # for i in range(self.entry_count)
 
     def decode(self, file_strm):
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)
@@ -148,17 +148,38 @@ class Stsc(FullBox):
             chunk_sample_idx = (index for index in range(index, sample_index))
             return {sample_chunk.first_chunk: chunk_sample_idx}
 
+    def chunk_1st_sample_index(self, chunk_index):
+        if chunk_index == 0:
+            return 0
+
+        chunk_index_ = chunk_index - 1
+        sample_idx = 0
+        for i in range(self.entry_count):
+            if chunk_index_ < self.sample_chunks[i].first_chunk - 1:
+                break
+            sample_idx += self.sample_chunks[i].samples_per_chunk
+        if chunk_index >= self.entry_count:
+            sample_idx += (chunk_index - self.entry_count) * \
+                          self.sample_chunks[self.entry_count - 1].samples_per_chunk
+        return sample_idx
+
     def chunk_last_sample_index(self, chunk_index):
         if chunk_index >= self.entry_count:
             pass  # raise
-        sample_chunk = self.sample_chunks[chunk_index]
-        return sample_chunk.first_chunk * sample_chunk.samples_per_chunk
+        return self.chunk_1st_sample_index(chunk_index + 1) - 1
+
+    def chunk_sample_index_diff(self, chunk_index, sample_index):
+        if chunk_index >= self.entry_count:
+            pass  # raise
+        return (idx for idx in range(self.chunk_1st_sample_index(chunk_index), sample_index))
 
     def get_sample_per_chunk(self, chunk_idx):
-        if chunk_idx >= self.entry_count:
-            pass  # raise
-        sample_chunk = self.sample_chunks[chunk_idx]
-        return sample_chunk.samples_per_chunk
+        sample_per_chunk_ = 0
+        for i in range(self.entry_count):
+            if chunk_idx < self.sample_chunks[i].first_chunk - 1:
+                break
+            sample_per_chunk_ = self.sample_chunks[i].samples_per_chunk
+        return sample_per_chunk_
 
     def dump(self):
         dump_info = FullBox.dump(self)

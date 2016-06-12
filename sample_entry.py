@@ -36,8 +36,8 @@ class SampeEntry(Box):
         self.data_reference_index = 0
 
     def decode(self, file_strm):
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)

@@ -43,8 +43,8 @@ class Vmhd(FullBox):
         self.opcolor = [0 for i in range(3)]
 
     def decode(self, file_strm):
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
 
         file_strm = FullBox.decode(self, file_strm)

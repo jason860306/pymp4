@@ -33,8 +33,8 @@ class Moov(Box):
         self.trak = []
 
     def decode(self, file_strm):
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)
@@ -68,11 +68,11 @@ class Moov(Box):
 
     def track_bitsize(self, track_type=VideTrackType):
         trk = self.get_track(track_type)
-        return 0 if (trk == None) else trk.bitsize()
+        return 0 if (trk is None) else trk.bitsize()
 
     def track_duration(self, track_type=VideTrackType):
         trk = self.get_track(track_type)
-        if None == self.mvhd:
+        if self.mvhd is None:
             return 0.0
         duration_ = trk.track_duration() / self.mvhd.timescale
         return duration_
@@ -147,19 +147,31 @@ class Moov(Box):
         trk = self.get_track(track_type)
         return None if (self.mdia is None) else trk.get_spse()
 
-    def get_sample(self, sample_index, track_type=VideTrackType):
+    # def get_sample(self, sample_index, track_type=VideTrackType):
+    #     trk = self.get_track(track_type)
+    #     chunk_idx = trk.find_chunk_index(sample_index)
+    #     if len(chunk_idx) < 0:
+    #         pass  # raise
+    #     chunk_idx = chunk_idx.keys[0]
+    #     samples_idx = chunk_idx.values[0]
+    #     data_offset = chunk_offset = trk.chunk_offset(chunk_idx)
+    #     for i in range(len(samples_idx) - 1):
+    #         sample_size = trk.get_sample_size(samples_idx[i])
+    #         data_offset += sample_size
+    #     data_size = trk.get_sample_size(samples_idx[-1])
+    #     return data_offset, data_size
+
+    def get_sample(self, chunk_idx, sample_idx, track_type=VideTrackType):
         trk = self.get_track(track_type)
-        chunk_sample_idx = trk.find_chunk_index(sample_index)
-        if (len(chunk_sample_idx) <= 0):
+        chunk_offset_lst = self.get_chunk_offset_list(track_type)
+        if chunk_idx >= len(chunk_offset_lst):
             pass  # raise
-        chunk_idx = chunk_sample_idx.keys[0]
-        samples_idx = chunk_sample_idx.values[0]
-        data_offset = chunk_offset = trk.chunk_offset(chunk_idx)
-        for i in range(len(samples_idx) - 1):
-            sample_size = trk.get_sample_size(samples_idx[i])
-            data_offset += sample_size
-        data_size = trk.get_sample_size(samples_idx[-1])
-        return data_offset, data_size
+        chunk_offset = chunk_offset_lst[chunk_idx]
+        sample_offset = chunk_offset
+        for idx in trk.chunk_sample_index_diff(chunk_idx, sample_idx):
+            sample_offset += trk.get_sample_size(idx)
+        sample_size = trk.get_sample_size(sample_idx)
+        return sample_offset, sample_size
 
     def get_sample_data_by_time(self, file_strm, utc_timestamp, track_type=VideTrackType):
         mp4_timestamp = self.utc2mp4_timestamp(utc_timestamp)
@@ -167,8 +179,8 @@ class Moov(Box):
         trk = self.get_track(track_type)
         sample_index = trk.find_sample_index(mp4_timestamp)
         data_offset, data_size = self.get_sample(sample_index, track_type)
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
         offset_ = file_strm.Tell()
         file_strm.Seek(data_offset, os.SEEK_SET)
@@ -177,8 +189,8 @@ class Moov(Box):
         return data
 
     def get_sample_data(self, offset, size, file_strm, track_type=VideTrackType):
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
         offset_ = file_strm.Tell()
         file_strm.Seek(offset, os.SEEK_SET)
@@ -196,17 +208,17 @@ class Moov(Box):
     def get_sync_sample_data(self, file_strm, utc_timestamp, track_type=VideTrackType):
         sync_sample_index = self.find_sync_sample_index(utc_timestamp, track_type)
         data_offset, data_size = self.get_sample(sync_sample_index, track_type)
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
         file_strm.Seek(data_offset, os.SEEK_SET)
         return file_strm.ReadByte(data_size)
 
     def get_general_meta_data(self):
         general = {}
-        general['creation_time'] = UTC_NONE_TIME if (self.mvhd == None) else \
+        general['creation_time'] = UTC_NONE_TIME if (self.mvhd is None) else \
             self.mvhd.creation_time_fmt
-        general['modify_time'] = UTC_NONE_TIME if (self.mvhd == None) else \
+        general['modify_time'] = UTC_NONE_TIME if (self.mvhd is None) else \
             self.mvhd.modification_time_fmt
         duration_ = self.duration()
         general['duration'] = Util.time_format(duration_)
@@ -216,7 +228,7 @@ class Moov(Box):
     def get_vide_meta_data(self):
         video = {}
         trk = self.get_track(VideTrackType)
-        if trk == None:
+        if trk is None:
             return video
         video['ID'] = trk.track_id()
         duration_ = self.track_duration(VideTrackType)
@@ -232,7 +244,7 @@ class Moov(Box):
     def get_soun_meta_data(self):
         sound = {}
         trk = self.get_track(SounTrackType)
-        if trk == None:
+        if trk is None:
             return sound
         sound['ID'] = trk.track_id()
         duration_ = self.track_duration(SounTrackType)

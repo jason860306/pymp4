@@ -36,7 +36,7 @@ class Root:
         self.skip = None
         self.udat = None
 
-        if file_strm == None or 0 == file_size:
+        if file_strm is None or 0 == file_size:
             pass  # raise
         self.file_strm = file_strm
         self.file_size = file_size
@@ -105,11 +105,13 @@ class Root:
                     sample_idx += 1
 
                     sample.offset, sample.size = \
-                        self.moov.get_sample(sample.index, trk_type)
+                        self.moov.get_sample(i, sample.index, trk_type)
                     sample.duration = \
                         self.moov.get_sample_duration(sample.index, trk_type)
 
                     track.append_sample(sample)
+
+                    print sample
             self.tracks.append(track)
 
     def get_tracks(self):
@@ -121,12 +123,12 @@ class Root:
         spse = self.moov.get_spse(VideTrackType)
 
     def get_sample_data_by_time(self, utc_timestamp, track_type=VideTrackType):
-        if None == self.moov:
+        if self.moov is None:
             pass  # raise
         return self.moov.get_sample_data_by_time(self.file_strm, utc_timestamp, track_type)
 
     def get_sample_data(self, offset, size, file_strm, track_type=VideTrackType):
-        if None == self.moov:
+        if self.moov is None:
             pass  # raise
         return self.moov.get_sample_data(offset, size, self.file_strm, track_type)
 
@@ -134,14 +136,14 @@ class Root:
         return ''
 
     def get_meta_data(self):
-        if None == self.moov or None == self.ftyp:
+        if self.moov is None or self.ftyp is None:
             pass  # raise
         meta_data = {}
 
         general = {}
-        general['major_brand'] = '' if (self.ftyp == None) else self.ftyp.major_brand
-        general['minor_brand'] = '' if (self.ftyp == None) else self.ftyp.minor_brand
-        general['compatible_brands'] = '' if (self.ftyp == None) else self.ftyp.compatible_brands
+        general['major_brand'] = '' if (self.ftyp is None) else self.ftyp.major_brand
+        general['minor_brand'] = '' if (self.ftyp is None) else self.ftyp.minor_brand
+        general['compatible_brands'] = '' if (self.ftyp is None) else self.ftyp.compatible_brands
         general.update(self.moov.get_general_meta_data())
         video_meta_data = self.moov.get_vide_meta_data()
         sound_meta_data = self.moov.get_soun_meta_data()

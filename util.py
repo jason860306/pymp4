@@ -38,7 +38,7 @@ class Util:
     @staticmethod
     def dump_dict(d=None):
         dump_str = ""
-        if None == d:
+        if d is None:
             return dump_str
         idx = 0
         for k, v in d.items():

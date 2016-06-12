@@ -29,7 +29,7 @@ class XmlEnc:
         self.xml_tree = None
 
     def encode(self, data=None):
-        if None == data:
+        if data is None:
             pass  # raise
         root_elem = ET.Element('root')
 

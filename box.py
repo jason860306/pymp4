@@ -61,8 +61,8 @@ class Box:
             self.desc = ''
 
     def decode(self, file_strm):
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
 
         self.size = file_strm.ReadUInt32()
@@ -83,8 +83,8 @@ class Box:
         return file_strm
 
     def peek(self, file_strm):
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
 
         self.size = file_strm.ReadUInt32()

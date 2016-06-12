@@ -33,8 +33,8 @@ class Mdia(Box):
         self.minf = None
 
     def decode(self, file_strm):
-        if file_strm == None:
-            print "file_strm == None"
+        if file_strm is None:
+            print "file_strm is None"
             return file_strm
 
         file_strm = Box.decode(self, file_strm)
@@ -64,43 +64,50 @@ class Mdia(Box):
         return file_strm
 
     def duration(self):
-        return 0.0 if (self.mdhd == None) else self.mdhd.duration()
+        return 0.0 if (self.mdhd is None) else self.mdhd.duration()
 
     def mediatype(self):
-        return None if (self.hdlr == None) else self.hdlr.handler_type
+        return None if (self.hdlr is None) else self.hdlr.handler_type
 
     def sample_count(self):
-        return 0 if (self.minf == None) else self.minf.sample_count()
+        return 0 if (self.minf is None) else self.minf.sample_count()
 
     def bitsize(self):
-        return 0 if (self.minf == None) else self.minf.bitsize()
+        return 0 if (self.minf is None) else self.minf.bitsize()
 
     def find_sample_index(self, timestamp):
-        return -1 if (self.minf == None) else self.minf.find_sample_index(timestamp)
+        return -1 if (self.minf is None) else self.minf.find_sample_index(timestamp)
 
     def get_sample_duration(self, sample_idx):
-        return -1 if (self.minf == None) else self.minf.get_sample_duration(sample_idx)
+        return -1 if (self.minf is None) else self.minf.get_sample_duration(sample_idx)
 
     def get_sample_size(self, sample_index):
-        return 0 if (self.minf == None) else self.minf.get_sample_size(sample_index)
+        return 0 if (self.minf is None) else self.minf.get_sample_size(sample_index)
 
     def find_chunk_index(self, sample_index):
-        return -1 if (self.minf == None) else self.minf.find_chunk_index(sample_index)
+        return -1 if (self.minf is None) else self.minf.find_chunk_index(sample_index)
+
+    def chunk_1st_sample_index(self, chunk_index):
+        return -1 if (self.minf is None) else self.minf.chunk_1st_sample_index(chunk_index)
 
     def chunk_last_sample_index(self, chunk_index):
-        return -1 if (self.minf == None) else self.minf.chunk_last_sample_index(chunk_index)
+        return -1 if (self.minf is None) else self.minf.chunk_last_sample_index(chunk_index)
+
+    def chunk_sample_index_diff(self, chunk_index, sample_index):
+        return -1 if (self.minf is None) else self.minf.chunk_sample_index_diff(
+            chunk_index, sample_index)
 
     def chunk_offset(self, chunk_idx):
-        return -1 if (self.minf == None) else self.minf.chunk_offset(chunk_idx)
+        return -1 if (self.minf is None) else self.minf.chunk_offset(chunk_idx)
 
     def get_chunk_offset_list(self):
-        return -1 if (self.minf == None) else self.minf.get_chunk_offset_list()
+        return -1 if (self.minf is None) else self.minf.get_chunk_offset_list()
 
     def get_sample_per_chunk(self, chunk_idx):
-        return -1 if (self.minf == None) else self.minf.get_sample_per_chunk(chunk_idx)
+        return -1 if (self.minf is None) else self.minf.get_sample_per_chunk(chunk_idx)
 
     def find_sync_sample_index(self, sample_index):
-        return -1 if (self.minf == None) else self.minf.find_sync_sample_index(sample_index)
+        return -1 if (self.minf is None) else self.minf.find_sync_sample_index(sample_index)
 
     def get_sps(self):
         return None if (self.minf is None) else self.minf.get_sps()
