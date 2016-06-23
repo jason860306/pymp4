@@ -14,7 +14,7 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
-from box import *
+from boxes.box import *
 from mp4boxes import *
 from sample import *
 from track import *
@@ -77,7 +77,7 @@ class Root:
                 file_strm_ = self.skip.decode(file_strm_)
                 self.offset += self.skip.Size()
             else:
-                file_strm_.Seek(tmp_box.Size(), os.SEEK_CUR)
+                file_strm_.seek(tmp_box.Size(), os.SEEK_CUR)
                 self.offset += tmp_box.Size()
             fsize -= tmp_box.Size()
         return file_strm_
@@ -153,6 +153,18 @@ class Root:
         meta_data['audio'] = sound_meta_data
 
         return meta_data
+
+    def get_sps(self, track_type=VideTrackType):
+        return None if (self.moov is None) else self.moov.get_sps(track_type)
+
+    def get_pps(self, track_type=VideTrackType):
+        return None if (self.moov is None) else self.moov.get_pps(track_type)
+
+    def get_spse(self, track_type=VideTrackType):
+        return None if (self.moov is None) else self.moov.get_spse(track_type)
+
+    def get_nal_len_size(self, track_type=VideTrackType):
+        return 0 if self.moov is None else self.moov.get_nal_len_size(track_type)
 
     def dump(self):
         dump_info = {}

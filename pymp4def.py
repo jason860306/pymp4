@@ -18,6 +18,10 @@ import ctypes
 # import struct
 
 
+LittleEndian = 0
+BigEndian = 1
+
+
 Int8ByteLen = ctypes.sizeof(ctypes.c_int8)  # struct.calcsize('!s')
 Int16ByteLen = ctypes.sizeof(ctypes.c_int16)  # struct.calcsize('!h')
 Int32ByteLen = ctypes.sizeof(ctypes.c_int32)  # struct.calcsize('!i')
@@ -27,8 +31,6 @@ UInt8ByteLen = ctypes.sizeof(ctypes.c_uint8)  # Int8ByteLen
 UInt16ByteLen = ctypes.sizeof(ctypes.c_uint16)  # struct.calcsize('!H')
 UInt32ByteLen = ctypes.sizeof(ctypes.c_uint32)  # struct.calcsize('!I')
 UInt64ByteLen = ctypes.sizeof(ctypes.c_uint64)  # struct.calcsize('!Q')
-
-AVC_START_CODE = '00000001'
 
 VideTrackType = 'vide'
 SounTrackType = 'soun'
@@ -40,6 +42,10 @@ DUMP_TYPE_XML = "xml"
 UTC_NONE_TIME = 'UTC 1904-01-01 00:00:00'
 UTC_MP4_INTERVAL = (((1970 - 1904) * 365) + 17) * 24 * 60 * 60
 
+H264_START_CODE = ['\0', '\0', '\0', '\1']
+
+
+# NALU_BYTE_SIZE = [1, 2, 4]
 
 # """
 # inline MP4Timestamp MP4GetAbsTimestamp() {
@@ -53,7 +59,8 @@ UTC_MP4_INTERVAL = (((1970 - 1904) * 365) + 17) * 24 * 60 * 60
 # }
 # """
 
-def ParseFourCC(four_cc_num):
+
+def parse_4cc(four_cc_num):
     num1 = (four_cc_num & 0xFF000000) >> 24
     num2 = (four_cc_num & 0x00FF0000) >> 16
     num3 = (four_cc_num & 0x0000FF00) >> 8
