@@ -50,5 +50,5 @@ class BaseDescriptor:
 
     """
 
-    def __init__(self, descr_tag=DescrTagForbidden00):
+    def __init__(self, descr_tag=DescrTag_Forbidden00):
         self.descriptor_tag = descr_tag
