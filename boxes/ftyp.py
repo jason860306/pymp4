@@ -18,7 +18,7 @@ from box import *
 from pymp4def import *
 
 
-class Ftyp(Box):
+class Ftyp(object, Box):
     """
     aligned(8) class FileTypeBox extends Box(‘ftyp’) {
         unsigned int(32) major_brand;

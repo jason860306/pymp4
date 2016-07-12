@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from box import *
 
 
-class Mdat(Box):
+class Mdat(object, Box):
     """
     aligned(8) class MediaDataBox extends Box(‘mdat’) {
         bit(8) data[];

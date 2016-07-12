@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from free import *
 
 
-class Skip(Free):
+class Skip(object, Free):
     """
     aligned(8) class FreeSpaceBox extends Box(free_type) {
         unsigned int(8) data[];

@@ -19,7 +19,7 @@ import os
 from fullbox import *
 
 
-class Hdlr(FullBox):
+class Hdlr(object, FullBox):
     """
     aligned(8) class HandlerBox extends FullBox(‘hdlr’, version = 0, 0) {
         unsigned int(32) pre_defined = 0;

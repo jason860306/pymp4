@@ -19,7 +19,7 @@ import os
 from fullbox import *
 
 
-class MediaSegmentEntry:
+class MediaSegmentEntry(object):
     """
         Each entry defines part of the track time‐line: by mapping
     part of the media time‐line, or by indicating ‘empty’ time, or
@@ -95,7 +95,7 @@ class MediaSegmentEntry:
         return logstr
 
 
-class Elst(FullBox):
+class Elst(object, FullBox):
     """
     aligned(8) class EditListBox extends FullBox(‘elst’, version, 0) {
         unsigned int(32) entry_count;

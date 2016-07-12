@@ -19,7 +19,7 @@ import os
 from fullbox import *
 
 
-class Stts(FullBox):
+class Stts(object, FullBox):
     """
     aligned(8) class TimeToSampleBox extends FullBox(’stts’, version = 0, 0) {
         unsigned int(32) entry_count;

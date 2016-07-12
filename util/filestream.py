@@ -24,7 +24,7 @@ from pymp4def import (LittleEndian, Int8ByteLen, Int16ByteLen,
 from stream import *
 
 
-class FileStream(Stream):
+class FileStream(object, Stream):
     """
     some utility function
     """

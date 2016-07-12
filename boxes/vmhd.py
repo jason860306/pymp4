@@ -19,7 +19,7 @@ import os
 from fullbox import *
 
 
-class Vmhd(FullBox):
+class Vmhd(object, FullBox):
     """
     aligned(8) class VideoMediaHeaderBox extends FullBox(‘vmhd’, version = 0, 1) {
         template unsigned int(16) graphicsmode = 0; // copy, see below

@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from sample_entry import *
 
 
-class AudioSampleEntryV1(SampeEntry):
+class AudioSampleEntryV1(object, SampeEntry):
     """
     aligned(8) class SamplingRateBox extends FullBox(‘srat’) {
         unsigned int(32) sampling_rate;

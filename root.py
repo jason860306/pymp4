@@ -20,7 +20,7 @@ from sample import *
 from track import *
 
 
-class Root:
+class Root(object):
     """
     the root box of a mp4 file
     """

@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from base_descriptor import *
 
 
-class DecoderSpecificInfo(BaseDescriptor):
+class DecoderSpecificInfo(object, BaseDescriptor):
     """
     7.2.6.7.1 Syntax
     abstract class DecoderSpecificInfo extends BaseDescriptor

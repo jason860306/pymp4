@@ -33,15 +33,17 @@ __email__ = "jason860306@gmail.com"
 # 0xFF      | forbidden
 # --------------------------------------------
 
-CmdTagForbidden00 = 0x00
-CmdTagObjectDescrUpdateTag = 0x01
-CmdTagObjectDescrRemoveTag = 0x02
-CmdTagES_DescrUpdateTag = 0x03
-CmdTagES_DescrRemoveTag = 0x04
-CmdTagIPMP_DescrUpdateTag = 0x05
-CmdTagIPMP_DescrRemoveTag = 0x06
-CmdTagES_DescrRemoveRefTag = 0x07
-CmdTagObjectDescrExecuteTag = 0x08
-# CmdTagReserved for ISO (command tags) = 0x09-0xBF
-# CmdTagUser private = 0xC0-0xFE
-CmdTagForbiddenFF = 0xFF
+CmdTag_Forbidden00 = 0x00
+CmdTag_ObjectDescrUpdateTag = 0x01
+CmdTag_ObjectDescrRemoveTag = 0x02
+CmdTag_ES_DescrUpdateTag = 0x03
+CmdTag_ES_DescrRemoveTag = 0x04
+CmdTag_IPMP_DescrUpdateTag = 0x05
+CmdTag_IPMP_DescrRemoveTag = 0x06
+CmdTag_ES_DescrRemoveRefTag = 0x07
+CmdTag_ObjectDescrExecuteTag = 0x08
+CmdTag_ISOReserved09 = 0x09
+CmdTag_ISOReservedBF = 0xBF
+CmdTag_PrivateUserC0 = 0xC0
+CmdTag_PrivateUserFE = 0xFE
+CmdTag_ForbiddenFF = 0xFF

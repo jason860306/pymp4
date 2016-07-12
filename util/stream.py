@@ -16,7 +16,7 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
-class Stream:
+class Stream(object):
     """
     some utility function
     """

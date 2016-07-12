@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from pymp4def import *
 
 
-class Track:
+class Track(object):
     """
     a video or audio sequence
     """

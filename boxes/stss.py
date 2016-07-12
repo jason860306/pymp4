@@ -19,7 +19,7 @@ import os
 from fullbox import *
 
 
-class Stss(FullBox):
+class Stss(object, FullBox):
     """
     aligned(8) class SyncSampleBox extends FullBox(‘stss’, version = 0, 0) {
         unsigned int(32) entry_count;

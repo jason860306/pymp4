@@ -18,7 +18,7 @@ import mp4boxes
 from box import *
 
 
-class Dinf(Box):
+class Dinf(object, Box):
     """
     aligned(8) class DataInformationBox extends Box(‘dinf’) {
     }

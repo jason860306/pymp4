@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from base_descriptor import *
 
 
-class ESDescriptor(BaseDescriptor):
+class ESDescriptor(object, BaseDescriptor):
     """
     7.2.6.5.1 Syntax
     class ES_Descriptor extends BaseDescriptor

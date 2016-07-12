@@ -18,7 +18,7 @@ import mp4boxes
 from box import *
 
 
-class Edts(Box):
+class Edts(object, Box):
     """
     aligned(8) class EditBox extends Box(‘edts’) {
     }

@@ -19,7 +19,7 @@ import os
 from fullbox import *
 
 
-class Smhd(FullBox):
+class Smhd(object, FullBox):
     """
     aligned(8) class SoundMediaHeaderBox extends FullBox(‘smhd’, version = 0, 0) {
         template int(16) balance = 0;

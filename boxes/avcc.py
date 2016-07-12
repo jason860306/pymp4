@@ -18,7 +18,7 @@ __email__ = "jason860306@gmail.com"
 from box import *
 
 
-class ParameterSet:
+class ParameterSet(object):
     """
     unsigned int(16) sequenceParameterSetLength ;
     bit(8*sequenceParameterSetLength) sequenceParameterSetNALUnit;
@@ -58,7 +58,7 @@ class ParameterSet:
         return logstr
 
 
-class SequenceParameterSet(ParameterSet):
+class SequenceParameterSet(object, ParameterSet):
     """
     unsigned int(16) sequenceParameterSetLength ;
     bit(8*sequenceParameterSetLength) sequenceParameterSetNALUnit;
@@ -71,7 +71,7 @@ class SequenceParameterSet(ParameterSet):
         return ParameterSet.decode(self, file_strm)
 
 
-class PictureParameterSet(ParameterSet):
+class PictureParameterSet(object, ParameterSet):
     """
     unsigned int(16) pictureParameterSetLength;
     bit(8*pictureParameterSetLength) pictureParameterSetNALUnit;
@@ -84,7 +84,7 @@ class PictureParameterSet(ParameterSet):
         return ParameterSet.decode(self, file_strm)
 
 
-class SequenceParameterSetExt(ParameterSet):
+class SequenceParameterSetExt(object, ParameterSet):
     """
     unsigned int(16) sequenceParameterSetExtLength;
     bit(8*sequenceParameterSetExtLength) sequenceParameterSetExtNALUnit;
@@ -97,7 +97,7 @@ class SequenceParameterSetExt(ParameterSet):
         return ParameterSet.decode(self, file_strm)
 
 
-class AVCDecoderConfigurationRecord:
+class AVCDecoderConfigurationRecord(object):
     """
     aligned(8) class AVCDecoderConfigurationRecord {
         unsigned int(8) configurationVersion = 1;
@@ -177,7 +177,7 @@ class AVCDecoderConfigurationRecord:
                                      ISO/IEC 14496-10.
     """
 
-    class SequenceParameterSetExt:
+    class SequenceParameterSetExt(object):
         """
         if( profile_idc == 100 || profile_idc == 110 ||
         profile_idc == 122 || profile_idc == 144 )
@@ -457,7 +457,7 @@ class AVCDecoderConfigurationRecord:
         return logstr
 
 
-class AvcC(Box):
+class AvcC(object, Box):
     """
     // Visual Sequences
     class AvcC extends Box(‘avcC’) {

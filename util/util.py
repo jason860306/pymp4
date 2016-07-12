@@ -18,7 +18,7 @@ import datetime
 import time
 
 
-class Util:
+class Util(object):
     """
 
     """

@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from base_descriptor import *
 
 
-class ObjectDescriptor(BaseDescriptor):
+class ObjectDescriptor(object, BaseDescriptor):
     """
     7.2.6.3.1 Syntax
     class ObjectDescriptor extends ObjectDescriptorBase

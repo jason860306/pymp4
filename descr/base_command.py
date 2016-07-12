@@ -18,7 +18,7 @@ __email__ = "jason860306@gmail.com"
 from cmdtagdef import *
 
 
-class BaseCommand:
+class BaseCommand(object):
     """
     7.2.2.3.2 Semantics
 
@@ -39,5 +39,5 @@ class BaseCommand:
     a registration authority if required.
     """
 
-    def __init__(self, cmd_tag=CmdTagForbidden00):
+    def __init__(self, cmd_tag=CmdTag_Forbidden00):
         self.command_tag = cmd_tag

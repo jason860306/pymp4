@@ -19,7 +19,7 @@ import os
 from fullbox import *
 
 
-class Ctts(FullBox):
+class Ctts(object, FullBox):
     """
     aligned(8) class CompositionOffsetBox extends FullBox(‘ctts’, version, 0) {
         unsigned int(32) entry_count;

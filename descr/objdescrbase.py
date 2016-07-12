@@ -18,12 +18,12 @@ __email__ = 'jason860306@gmail.com'
 from base_descriptor import *
 
 
-class ObjectDescriptorBase(BaseDescriptor):
+class ObjectDescriptorBase(object, BaseDescriptor):
     """
     7.2.6.2.1 Syntax
     abstract class ObjectDescriptorBase extends BaseDescriptor
         : bit(8) tag=[ObjectDescrTag..InitialObjectDescrTag] {
-    // empty. To be filled by classes extending this class.
+		// empty. To be filled by classes extending this class.
     }
     7.2.6.2.2 Semantics
     This is an abstract base class for the different types of

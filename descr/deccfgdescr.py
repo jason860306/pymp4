@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from extprofleveldescr import *
 
 
-class DecoderConfigDescriptor(BaseDescriptor):
+class DecoderConfigDescriptor(object, BaseDescriptor):
     """
     7.2.6.6.1 Syntax
     class DecoderConfigDescriptor extends BaseDescriptor

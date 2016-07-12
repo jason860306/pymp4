@@ -20,7 +20,7 @@ from fullbox import *
 from util.util import Util
 
 
-class Tkhd(FullBox):
+class Tkhd(object, FullBox):
     """
     aligned(8) class TrackHeaderBox extends FullBox(‘tkhd’, version, flags){
         if (version==1) {

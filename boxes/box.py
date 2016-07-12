@@ -18,7 +18,7 @@ from pymp4def import *
 from util.filestream import *
 
 
-class Box:
+class Box(object):
     """
     aligned(8) class Box (unsigned int(32) boxtype, optional unsigned int(8)[16] extended_type) {
         unsigned int(32) size;

@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from box import *
 
 
-class Free(Box):
+class Free(object, Box):
     """
     aligned(8) class FreeSpaceBox extends Box(free_type) {
         unsigned int(8) data[];

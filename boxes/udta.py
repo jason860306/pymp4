@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from box import *
 
 
-class Udta(Box):
+class Udta(object, Box):
     """
     aligned(8) class UserDataBox extends Box(‘udta’) {
     }

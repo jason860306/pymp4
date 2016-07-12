@@ -16,7 +16,7 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
-class Sample:
+class Sample(object):
     """
     base class for video frame and audio sample.
     """
@@ -33,7 +33,7 @@ class Sample:
         return logstr
 
 
-class VideoSample(Sample):
+class VideoSample(object, Sample):
     """
     a video frame
     """
@@ -46,7 +46,7 @@ class VideoSample(Sample):
         return logstr
 
 
-class AudioSample(Sample):
+class AudioSample(object, Sample):
     """
     a audio sample
     """

@@ -20,7 +20,7 @@ except ImportError:
     import xml.etree.ElementTree as ET
 
 
-class XmlEnc:
+class XmlEnc(object):
     """
     encode data to xml via ElementTree
     """

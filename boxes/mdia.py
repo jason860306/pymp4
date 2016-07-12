@@ -18,7 +18,7 @@ import mp4boxes
 from box import *
 
 
-class Mdia(Box):
+class Mdia(object, Box):
     """
     aligned(8) class MediaBox extends Box(‘mdia’) {
     }

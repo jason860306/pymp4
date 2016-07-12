@@ -125,6 +125,8 @@ DescrTag_UserPrivateC0 = 0xC0
 DescrTag_UserPrivateFE = 0xFE
 DescrTag_ForbiddenFF = 0xFF
 
+DescrTag_IPMP_ParamtericDescription = 0x10
+
 # Additional Class Tags for Descriptors
 DescrTag_ExtDescrTagStartRange = 0x6A
 DescrTag_ExtDescrTagEndRange = 0xFE

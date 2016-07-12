@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from objdescr import *
 
 
-class InitObjectDescriptor(ObjectDescriptor):
+class InitObjectDescriptor(object, ObjectDescriptor):
     """
     7.2.6.4.1 Syntax
     class InitialObjectDescriptor extends ObjectDescriptorBase

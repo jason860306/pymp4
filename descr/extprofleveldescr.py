@@ -19,7 +19,7 @@ from base_descriptor import *
 from descrtagdef import *
 
 
-class ExtProfLevelDescriptor(BaseDescriptor):
+class ExtProfLevelDescriptor(object, BaseDescriptor):
     """
     7.2.6.19.1 Syntax
     class ExtensionProfileLevelDescriptor() extends ExtensionDescriptor

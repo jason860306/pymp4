@@ -23,7 +23,7 @@ from util.util import Util
 from util.xmlcodec import *
 
 
-class PyMp4:
+class PyMp4(object):
     """
     the main class to parse a mp4 file
     """

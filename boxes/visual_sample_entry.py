@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from sample_entry import *
 
 
-class VisualSampleEntry(SampeEntry):
+class VisualSampleEntry(object, SampeEntry):
     """
     class VisualSampleEntry(codingname) extends SampleEntry (codingname){
         unsigned int(16) pre_defined = 0;

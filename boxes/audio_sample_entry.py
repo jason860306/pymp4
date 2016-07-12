@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from sample_entry import *
 
 
-class AudioSampleEntry(SampeEntry):
+class AudioSampleEntry(object, SampeEntry):
     """
     class AudioSampleEntry(codingname) extends SampleEntry (codingname){
         const unsigned int(32)[2] reserved = 0;

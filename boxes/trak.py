@@ -18,7 +18,7 @@ import mp4boxes
 from box import *
 
 
-class Trak(Box):
+class Trak(object, Box):
     """
     aligned(8) class TrackBox extends Box(‘trak’) {
     }

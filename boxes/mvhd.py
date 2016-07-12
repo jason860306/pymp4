@@ -20,7 +20,7 @@ from fullbox import *
 from util.util import Util
 
 
-class Mvhd(FullBox):
+class Mvhd(object, FullBox):
     """
     aligned(8) class MovieHeaderBox extends FullBox(‘mvhd’, version, 0) {
         if (version==1) {

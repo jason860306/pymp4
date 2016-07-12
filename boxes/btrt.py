@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from box import *
 
 
-class Btrt(Box):
+class Btrt(object, Box):
     """
     class Btrt extends Box(‘btrt’){
         unsigned int(32) bufferSizeDB;

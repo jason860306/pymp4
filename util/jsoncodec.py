@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 import json
 
 
-class JsonEnc(json.JSONEncoder):
+class JsonEnc(object, json.JSONEncoder):
     """
     encode data to json via json.JSONEncoder
     """
@@ -31,7 +31,7 @@ class JsonEnc(json.JSONEncoder):
         return dict
 
 
-class JsonDec(json.JSONDecoder):
+class JsonDec(object, json.JSONDecoder):
     """
     decode data from json via json.JSONDecoder
     """

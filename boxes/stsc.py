@@ -19,7 +19,7 @@ import os
 from fullbox import *
 
 
-class Stsc(FullBox):
+class Stsc(object, FullBox):
     """
     aligned(8) class SampleToChunkBox extends FullBox(‘stsc’, version = 0, 0) {
         unsigned int(32) entry_count;
@@ -42,7 +42,7 @@ class Stsc(FullBox):
                                to the number of sample entries in the Sample Description Box
     """
 
-    class SampleChunk:
+    class SampleChunk(object):
         """
         unsigned int(32) first_chunk;
         unsigned int(32) samples_per_chunk;

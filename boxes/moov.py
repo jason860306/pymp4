@@ -19,7 +19,7 @@ import mp4boxes
 from box import *
 
 
-class Moov(Box):
+class Moov(object, Box):
     """
     aligned(8) class MovieBox extends Box(‘moov’){
     }

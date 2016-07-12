@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from descrtagdef import *
 
 
-class BaseDescriptor:
+class BaseDescriptor(object):
     """
     7.2.2.2.1 Syntax
     abstract aligned(8) expandable(228-1) class BaseDescriptor : bit(8) tag=0 {
