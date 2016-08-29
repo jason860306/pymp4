@@ -14,7 +14,8 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
-from descrtagdef import *
+from descrtagdesc import *
+from util.filestream import *
 
 
 class BaseDescriptor(object):
@@ -50,5 +51,31 @@ class BaseDescriptor(object):
 
     """
 
-    def __init__(self, descr_tag=DescrTag_Forbidden00):
-        self.descriptor_tag = descr_tag
+    def __init__(self, offset=0, box=None, descr_tag=DescrTag_Forbidden00):
+        self.descr_offset = offset
+        self.offset = offset
+
+        self.descr_tag = descr_tag
+
+        self.fullname = DescrTagFullName[self.descr_tag]
+
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        self.descr_tag = file_strm.read_int8()
+        self.offset += UInt8ByteLen
+
+        return file_strm
+
+    def dump(self):
+        dump_info = {}
+        dump_info['offset'] = self.descr_offset
+        dump_info['tag'] = self.descr_tag
+        dump_info['fullname'] = self.fullname
+        return dump_info
+
+    def __str__(self):
+        return "offset = 0x%016x, tag = %08ld(0x%08lx), fullname = %s" % \
+               (self.descr_offset, self.descr_tag, self.descr_tag, self.fullname)

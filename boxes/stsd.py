@@ -43,7 +43,7 @@ class Stsd(object, FullBox):
     avgBitrate - gives the average rate in bits/second over the entire presentation.
     """
 
-    def __init__(self, offset=0, box=None, handler_type=''):
+    def __init__(self, offset=0, box=None, handler_type=VideTrackType):
         if isinstance(box, Box):
             Box.__init__(self, offset, box)
         elif isinstance(box, FullBox):
@@ -74,8 +74,13 @@ class Stsd(object, FullBox):
                 self.offset += sample_entry.Size()
                 self.sample_entries.append(sample_entry)
             elif self.handler_type == SounTrackType and tmp_box.type == FourCCMp4Mp4a:
-                file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
-                self.offset += tmp_box.Size()
+                # file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+                # self.offset += tmp_box.Size()
+                sample_entry = mp4boxes.MP4Boxes[tmp_box.type](
+                    self.offset, tmp_box)
+                file_strm = sample_entry.decode(file_strm)
+                self.offset += sample_entry.Size()
+                self.sample_entries.append(sample_entry)
             else:
                 file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
                 self.offset += tmp_box.Size()

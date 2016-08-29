@@ -1,31 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< Temporary merge branch 1
-    <list default="true" id="8b4e63d3-1836-4774-8578-bc63d0fc1462" name="Default" comment="debug avcC successfully and output media info into a xml/json file.">
+    <list default="true" id="697edb63-5a90-487d-ae50-8fc97c603321" name="Default" comment="beging debug descr.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/descrtagdesc.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/pymp4.iml" afterPath="$PROJECT_DIR$/.idea/pymp4.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-=======
-    <list default="true" id="8b4e63d3-1836-4774-8578-bc63d0fc1462" name="Default" comment="finish code writing to get sample data from mdat, hasn't debug yet.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/file.template.settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sample.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/track.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/avc1.py" afterPath="$PROJECT_DIR$/avc1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/avcc.py" afterPath="$PROJECT_DIR$/avcc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ftyp.py" afterPath="$PROJECT_DIR$/ftyp.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mdia.py" afterPath="$PROJECT_DIR$/mdia.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/minf.py" afterPath="$PROJECT_DIR$/minf.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moov.py" afterPath="$PROJECT_DIR$/moov.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pymp4.py" afterPath="$PROJECT_DIR$/pymp4.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pymp4def.py" afterPath="$PROJECT_DIR$/pymp4def.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/root.py" afterPath="$PROJECT_DIR$/root.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stbl.py" afterPath="$PROJECT_DIR$/stbl.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stco.py" afterPath="$PROJECT_DIR$/stco.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stsc.py" afterPath="$PROJECT_DIR$/stsc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stsd.py" afterPath="$PROJECT_DIR$/stsd.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stts.py" afterPath="$PROJECT_DIR$/stts.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trak.py" afterPath="$PROJECT_DIR$/trak.py" />
->>>>>>> Temporary merge branch 2
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boxes/box.py" afterPath="$PROJECT_DIR$/boxes/box.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boxes/esds.py" afterPath="$PROJECT_DIR$/boxes/esds.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boxes/mp4a.py" afterPath="$PROJECT_DIR$/boxes/mp4a.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boxes/mp4s.py" afterPath="$PROJECT_DIR$/boxes/mp4s.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boxes/mp4v.py" afterPath="$PROJECT_DIR$/boxes/mp4v.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/boxes/stsd.py" afterPath="$PROJECT_DIR$/boxes/stsd.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/descr/base_descriptor.py" afterPath="$PROJECT_DIR$/descr/base_descriptor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mp4boxdesc.py" afterPath="$PROJECT_DIR$/mp4boxdesc.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mp4boxes.py" afterPath="$PROJECT_DIR$/mp4boxes.py" />
     </list>
     <ignored path="pymp4.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,13 +25,8 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
-  </component>
-  <component name="ErrorTreeViewConfiguration">
-    <option name="autoscrollToSource" value="true" />
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -50,175 +34,107 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-<<<<<<< Temporary merge branch 1
-      <file leaf-file-name="stsd.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/stsd.py">
+      <file leaf-file-name="mp4a.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/boxes/mp4a.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-=======
-      <file leaf-file-name="minf.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/minf.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
->>>>>>> Temporary merge branch 2
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< Temporary merge branch 1
-      <file leaf-file-name="pymp4def.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pymp4def.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-=======
-      <file leaf-file-name="trak.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trak.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="116" column="91" selection-start-line="116" selection-start-column="91" selection-end-line="116" selection-end-column="91" />
->>>>>>> Temporary merge branch 2
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< Temporary merge branch 1
-      <file leaf-file-name="minf.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/minf.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="62" column="20" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
-=======
-      <file leaf-file-name="moov.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/moov.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="147" column="62" selection-start-line="147" selection-start-column="62" selection-end-line="147" selection-end-column="62" />
->>>>>>> Temporary merge branch 2
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="root.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/root.py">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Temporary merge branch 1
-            <state relative-caret-position="270">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-=======
-            <state relative-caret-position="360">
-              <caret line="120" column="48" selection-start-line="120" selection-start-column="48" selection-end-line="120" selection-end-column="48" />
->>>>>>> Temporary merge branch 2
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< Temporary merge branch 1
-      <file leaf-file-name="visual_sample_entry.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/visual_sample_entry.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-=======
-      <file leaf-file-name="pymp4def.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pymp4def.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
->>>>>>> Temporary merge branch 2
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< Temporary merge branch 1
-      <file leaf-file-name="hdlr.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hdlr.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
-=======
-      <file leaf-file-name="avcc.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/avcc.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="338" column="33" selection-start-line="338" selection-start-column="33" selection-end-line="338" selection-end-column="33" />
->>>>>>> Temporary merge branch 2
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< Temporary merge branch 1
-      <file leaf-file-name="mp4boxes.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mp4boxes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="63" column="12" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="17" />
-              <folding>
-                <element signature="e#236#257#0" expanded="true" />
-              </folding>
-=======
-      <file leaf-file-name="avc1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/avc1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="86" column="24" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
-              <folding />
->>>>>>> Temporary merge branch 2
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< Temporary merge branch 1
-      <file leaf-file-name="mdia.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mdia.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="55" column="20" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="20" />
-=======
-      <file leaf-file-name="stsd.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stsd.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
+            <state relative-caret-position="437">
               <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
->>>>>>> Temporary merge branch 2
+              <folding>
+                <element signature="e#229#244#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="esds.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/boxes/esds.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="78" column="44" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< Temporary merge branch 1
+      <file leaf-file-name="esdescr.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/descr/esdescr.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1438">
+              <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base_descriptor.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/descr/base_descriptor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="602">
+              <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+              <folding>
+                <element signature="e#242#268#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="descrtagdef.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/descr/descrtagdef.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="79" column="25" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="descrtagdesc.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/descrtagdesc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="mp4boxdesc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mp4boxdesc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
-=======
-      <file leaf-file-name="mdia.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mdia.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
->>>>>>> Temporary merge branch 2
+            <state relative-caret-position="510">
+              <caret line="172" column="35" selection-start-line="172" selection-start-column="35" selection-end-line="172" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stbl.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stbl.py">
+      <file leaf-file-name="mp4boxes.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mp4boxes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="138" column="22" selection-start-line="138" selection-start-column="22" selection-end-line="138" selection-end-column="22" />
+            <state relative-caret-position="602">
+              <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="filestream.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/filestream.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1215">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="box.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/boxes/box.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="52" column="54" selection-start-line="52" selection-start-column="54" selection-end-line="52" selection-end-column="54" />
               <folding>
-                <element signature="e#230#245#0" expanded="true" />
+                <element signature="e#229#253#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -237,107 +153,32 @@
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
         <option value="jason860306 &lt;jason860306@gmail.com&gt;" />
-        <option value="jason860306@gmail.com" />
       </list>
     </option>
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/json.py" />
-        <option value="$PROJECT_DIR$/json_codec.py" />
-        <option value="$PROJECT_DIR$/free.py" />
-        <option value="$PROJECT_DIR$/mdat.py" />
-        <option value="$PROJECT_DIR$/nmhd.py" />
-        <option value="$PROJECT_DIR$/udta.py" />
-        <option value="$PROJECT_DIR$/box.py" />
-        <option value="$PROJECT_DIR$/co64.py" />
-        <option value="$PROJECT_DIR$/dinf.py" />
-        <option value="$PROJECT_DIR$/edts.py" />
-        <option value="$PROJECT_DIR$/smhd.py" />
-        <option value="$PROJECT_DIR$/stss.py" />
-        <option value="$PROJECT_DIR$/stsz.py" />
-        <option value="$PROJECT_DIR$/vmhd.py" />
-        <option value="$PROJECT_DIR$/util.py" />
-        <option value="$PROJECT_DIR$/jsoncodec.py" />
-        <option value="$PROJECT_DIR$/dref.py" />
-        <option value="$PROJECT_DIR$/fullbox.py" />
-        <option value="$PROJECT_DIR$/mdhd.py" />
-        <option value="$PROJECT_DIR$/tkhd.py" />
-        <option value="$PROJECT_DIR$/xmlcodec.py" />
-        <option value="$PROJECT_DIR$/filestream.py" />
-        <option value="$PROJECT_DIR$/hdlr.py" />
-        <option value="$PROJECT_DIR$/ctts.py" />
-        <option value="$PROJECT_DIR$/elst.py" />
-        <option value="$PROJECT_DIR$/mp4boxes.py" />
-        <option value="$PROJECT_DIR$/mvhd.py" />
-        <option value="$PROJECT_DIR$/btrt.py" />
-<<<<<<< Temporary merge branch 1
-        <option value="$PROJECT_DIR$/avc1.py" />
-        <option value="$PROJECT_DIR$/pymp4.py" />
-        <option value="$PROJECT_DIR$/avcc.py" />
-=======
->>>>>>> Temporary merge branch 2
-        <option value="$PROJECT_DIR$/visual_sample_entry.py" />
         <option value="$PROJECT_DIR$/mp4boxdesc.py" />
-        <option value="$PROJECT_DIR$/sample.py" />
-        <option value="$PROJECT_DIR$/stco.py" />
-        <option value="$PROJECT_DIR$/stsc.py" />
-        <option value="$PROJECT_DIR$/stts.py" />
-        <option value="$PROJECT_DIR$/track.py" />
-        <option value="$PROJECT_DIR$/ftyp.py" />
-        <option value="$PROJECT_DIR$/pymp4.py" />
-        <option value="$PROJECT_DIR$/avcc.py" />
-        <option value="$PROJECT_DIR$/avc1.py" />
-        <option value="$PROJECT_DIR$/stsd.py" />
-<<<<<<< Temporary merge branch 1
-=======
-        <option value="$PROJECT_DIR$/stbl.py" />
-        <option value="$PROJECT_DIR$/minf.py" />
-        <option value="$PROJECT_DIR$/mdia.py" />
-        <option value="$PROJECT_DIR$/trak.py" />
-        <option value="$PROJECT_DIR$/moov.py" />
-        <option value="$PROJECT_DIR$/root.py" />
-        <option value="$PROJECT_DIR$/ew.py" />
-        <option value="$PROJECT_DIR$/wef.py" />
-        <option value="$PROJECT_DIR$/tt.py" />
-        <option value="$PROJECT_DIR$/a.py" />
-        <option value="$PROJECT_DIR$/pymp4def.py" />
->>>>>>> Temporary merge branch 2
+        <option value="$PROJECT_DIR$/boxes/stsd.py" />
+        <option value="$PROJECT_DIR$/mp4boxes.py" />
+        <option value="$PROJECT_DIR$/boxes/mp4s.py" />
+        <option value="$PROJECT_DIR$/boxes/mp4a.py" />
+        <option value="$PROJECT_DIR$/boxes/mp4v.py" />
+        <option value="$PROJECT_DIR$/boxes/esds.py" />
+        <option value="$PROJECT_DIR$/boxes/box.py" />
+        <option value="$PROJECT_DIR$/descrtagdesc.py" />
+        <option value="$PROJECT_DIR$/descr/base_descriptor.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="y" value="25" />
+    <option name="width" value="1440" />
+    <option name="height" value="842" />
   </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-          <State>
-            <id>JSON</id>
-          </State>
-          <State>
-            <id>Python</id>
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>JsonStandardCompliance</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -362,48 +203,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-        <subPane subId="Changed Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="pymp4">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="pymp4">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Default">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="pymp4">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches">
-        <subPane />
-      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -422,6 +223,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pymp4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pymp4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="descr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pymp4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pymp4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boxes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -429,94 +258,8 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="102" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="135" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="116" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="948" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="102" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="110" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="116" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="973" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
-  <component name="PyConsoleOptionsProvider">
-    <option name="myPythonConsoleState">
-      <console-settings module-name="pymp4" is-module-sdk="true">
-        <envs>
-          <env key="LD_LIBRARY_PATH" value="$LD_LIBRARY_PATH:/usr/local/lib" />
-        </envs>
-        <option name="myUseModuleSdk" value="true" />
-        <option name="myModuleName" value="pymp4" />
-        <option name="myEnvs">
-          <map>
-            <entry key="LD_LIBRARY_PATH" value="$LD_LIBRARY_PATH:/usr/local/lib" />
-          </map>
-        </option>
-      </console-settings>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.pymp4">
-    <configuration default="false" name="pymp4" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pymp4" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pymp4.py" />
-      <option name="PARAMETERS" value="d:\Media\video\123.mp4 xml" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="box" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pymp4" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/box.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="fullbox" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pymp4" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fullbox.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="CompoundRunConfigurationType" factoryName="Compound Run Configuration">
-      <method />
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -544,40 +287,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="pymp4" />
-      <method />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Docutils task">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pymp4" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Sphinx task">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="pymp4" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Attests">
@@ -685,18 +394,6 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Python.pymp4" />
-      <item index="1" class="java.lang.String" itemvalue="Python.box" />
-      <item index="2" class="java.lang.String" itemvalue="Python.fullbox" />
-    </list>
-    <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.pymp4" />
-        <item index="1" class="java.lang.String" itemvalue="Python.fullbox" />
-        <item index="2" class="java.lang.String" itemvalue="Python.box" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -706,231 +403,36 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8b4e63d3-1836-4774-8578-bc63d0fc1462" name="Default" comment="" />
-      <created>1456819598771</created>
+      <changelist id="697edb63-5a90-487d-ae50-8fc97c603321" name="Default" comment="" />
+      <created>1472467185167</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1456819598771</updated>
+      <updated>1472467185167</updated>
     </task>
-    <task id="LOCAL-00001" summary="add boxes and some utility souces as follow:&#10;box.py&#10;fullbox.py&#10;ftyp.py&#10;moov.py&#10;util.py&#10;constdef.py">
-      <created>1456891029017</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1456891029017</updated>
-    </task>
-    <task id="LOCAL-00002" summary="add boxes as follow:&#10;dinf.py&#10;dref.py&#10;stbl.py&#10;stsd.py&#10;stts.py">
-      <created>1457452272231</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1457452272231</updated>
-    </task>
-    <task id="LOCAL-00003" summary="add boxes as follow:&#10;co64.py&#10;ctts.py&#10;free.py&#10;mdat.py&#10;stco.py&#10;stsc.py&#10;stss.py&#10;stsz.py&#10;udat.py">
-      <created>1457519377410</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1457519377410</updated>
-    </task>
-    <task id="LOCAL-00004" summary="debug firstly.">
-      <created>1457948587959</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1457948587959</updated>
-    </task>
-    <task id="LOCAL-00005" summary="debug FileStream &amp; pymp4 main function successfully.">
-      <created>1457956702818</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1457956702818</updated>
-    </task>
-    <task id="LOCAL-00006" summary="debug moov &amp; ftyp &amp; mvhd &amp; fullbox successfully!">
-      <created>1458042477902</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1458042477902</updated>
-    </task>
-    <task id="LOCAL-00007" summary="debug box successfully as follow:&#10;dref.py&#10;hdlr.py&#10;mdhd.py&#10;mdia.py&#10;moov.py&#10;tkhd.py&#10;&#10;i'll debug stbl.py-stsd.py tomorrow!">
-      <created>1458120104319</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1458120104319</updated>
-    </task>
-    <task id="LOCAL-00008" summary="add offset to every box.">
-      <created>1458646436588</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1458646436588</updated>
-    </task>
-    <task id="LOCAL-00009" summary="add offset to every box. debug the offset in container boxes.">
-      <created>1459132072956</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1459132072956</updated>
-    </task>
-    <task id="LOCAL-00010" summary="add box_offset to every box, but hasn't debug yet!">
-      <created>1459150194798</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1459150194798</updated>
-    </task>
-    <task id="LOCAL-00011" summary="oh yeah! debug successfully! congratulation!!!">
-      <created>1459241164622</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1459241164622</updated>
-    </task>
-    <task id="LOCAL-00012" summary="format print">
-      <created>1459250752334</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1459250752334</updated>
-    </task>
-    <task id="LOCAL-00013" summary="format print">
-      <created>1459336085057</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1459336085057</updated>
-    </task>
-    <task id="LOCAL-00014" summary="format print">
-      <created>1459388414179</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1459388414179</updated>
-    </task>
-    <task id="LOCAL-00015" summary="1. implement funciton such as duration(), width(), height(), fps(), bitsize() etc&#10;2. convert UTC timestamp to mp4 time cordination.">
-      <created>1461150616198</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1461150616198</updated>
-    </task>
-    <task id="LOCAL-00016" summary="1. implement funciton find_example.">
-      <created>1461487042786</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1461487042786</updated>
-    </task>
-    <task id="LOCAL-00017" summary="1. implement funciton find_example.">
-      <created>1461491878136</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1461491878136</updated>
-    </task>
-    <task id="LOCAL-00018" summary="1. implement funciton get_sync_example_data.">
-      <created>1461494160659</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1461494160659</updated>
-    </task>
-    <task id="LOCAL-00019" summary="1. implement funciton get_meta_data.">
-      <created>1461678010446</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1461678010446</updated>
-    </task>
-    <task id="LOCAL-00020" summary="1. dump mp4 info and meta_data via json.">
-      <created>1461756277277</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1461756277277</updated>
-    </task>
-    <task id="LOCAL-00021" summary="1. dump mp4 info and meta_data via json.">
-      <created>1461756291704</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1461756291704</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;">
-      <created>1464340429967</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1464340429967</updated>
-    </task>
-    <task id="LOCAL-00023" summary="debug avcC successfully.">
-      <created>1464508648593</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1464508648593</updated>
-    </task>
-    <task id="LOCAL-00024" summary="debug avcC successfully and output media info into a xml/json file.">
-      <created>1464695468144</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1464695468144</updated>
-    </task>
-<<<<<<< Temporary merge branch 1
-    <option name="localTasksCounter" value="25" />
-=======
-    <task id="LOCAL-00025" summary="debug avcC successfully and output media info into a xml/json file.">
-      <created>1464695541742</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1464695541742</updated>
-    </task>
-    <option name="localTasksCounter" value="26" />
->>>>>>> Temporary merge branch 2
     <servers />
   </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="0" y="25" width="1440" height="842" extended-state="6" />
     <editor active="false" />
     <layout>
-<<<<<<< Temporary merge branch 1
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2001488" sideWeight="0.48803827" order="0" side_tool="false" content_ui="combo" />
-=======
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19940476" sideWeight="0.48803827" order="0" side_tool="false" content_ui="combo" />
->>>>>>> Temporary merge branch 2
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32833788" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5155483" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43862522" sideWeight="0.5029762" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44844517" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32352942" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28641573" sideWeight="0.49702382" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43862522" sideWeight="0.49702382" order="2" side_tool="false" content_ui="tabs" x="3" y="153" width="1360" height="398" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24851191" sideWeight="0.4942717" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21354167" sideWeight="0.5119617" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28150573" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918397" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32965517" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32918397" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -946,633 +448,236 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="create source directories." />
-    <MESSAGE value="add boxes and some utility souces as follow:&#10;box.py&#10;fullbox.py&#10;ftyp.py&#10;moov.py&#10;util.py&#10;constdef.py" />
-    <MESSAGE value="add boxes and some utility souces as follow:&#10;edts.py&#10;elst.py&#10;hdlr.py&#10;mdhd.py&#10;mdia.py&#10;mvhd.py&#10;tkhd.py&#10;trak.py" />
-    <MESSAGE value="add boxes as follow:&#10;dinf.py&#10;dref.py&#10;stbl.py&#10;stsd.py&#10;stts.py" />
-    <MESSAGE value="add boxes as follow:&#10;co64.py&#10;ctts.py&#10;free.py&#10;mdat.py&#10;stco.py&#10;stsc.py&#10;stss.py&#10;stsz.py&#10;udat.py" />
-    <MESSAGE value="add boxes as follow and complete entire sources:&#10;mp4boxes.py&#10;pymp4.py&#10;skip.py&#10;root.py" />
-    <MESSAGE value="debug firstly." />
-    <MESSAGE value="debug FileStream &amp; pymp4 main function successfully." />
-    <MESSAGE value="debug moov &amp; ftyp &amp; mvhd &amp; fullbox successfully!" />
-    <MESSAGE value="debug box successfully as follow:&#10;dref.py&#10;hdlr.py&#10;mdhd.py&#10;mdia.py&#10;moov.py&#10;tkhd.py&#10;&#10;i'll debug stbl.py-stsd.py tomorrow!" />
-    <MESSAGE value="add offset to every box." />
-    <MESSAGE value="add offset to every box. debug the offset in container boxes." />
-    <MESSAGE value="add box_offset to every box, but hasn't debug yet!" />
-    <MESSAGE value="oh yeah! debug successfully! congratulation!!!" />
-    <MESSAGE value="format print" />
-    <MESSAGE value="implement funciton such as duration(), width(), height(), fps(), bitsize() etc" />
-    <MESSAGE value="1. implement funciton such as duration(), width(), height(), fps(), bitsize() etc&#10;2. convert UTC timestamp to mp4 time cordination." />
-    <MESSAGE value="1. implement funciton find_example." />
-    <MESSAGE value="1. implement funciton get_sync_example_data." />
-    <MESSAGE value="1. implement funciton get_meta_data." />
-    <MESSAGE value="1. dump mp4 info and meta_data via json." />
-    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;" />
-    <MESSAGE value="debug avcC successfully." />
-    <MESSAGE value="debug avcC successfully and output media info into a xml/json file." />
-<<<<<<< Temporary merge branch 1
-    <option name="LAST_COMMIT_MESSAGE" value="debug avcC successfully and output media info into a xml/json file." />
-=======
-    <MESSAGE value="finish code writing to get sample data from mdat, hasn't debug yet." />
-    <option name="LAST_COMMIT_MESSAGE" value="finish code writing to get sample data from mdat, hasn't debug yet." />
->>>>>>> Temporary merge branch 2
+    <MESSAGE value="beging debug descr." />
+    <option name="LAST_COMMIT_MESSAGE" value="beging debug descr." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/xmlcodec.py</url>
-          <line>48</line>
-          <option name="timeStamp" value="109" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/xmlcodec.py</url>
-          <line>34</line>
-          <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/xmlcodec.py</url>
-          <line>72</line>
-          <option name="timeStamp" value="112" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-<<<<<<< Temporary merge branch 1
-          <url>file://$PROJECT_DIR$/pymp4.py</url>
-          <line>55</line>
-          <option name="timeStamp" value="128" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-=======
->>>>>>> Temporary merge branch 2
-          <url>file://$PROJECT_DIR$/stsd.py</url>
-          <line>69</line>
-          <option name="timeStamp" value="129" />
-        </line-breakpoint>
-      </breakpoints>
-      <breakpoints-dialog>
-        <breakpoints-dialog />
-      </breakpoints-dialog>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-      <option name="time" value="130" />
-    </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="key" />
-        <watch expression="k" />
-        <watch expression="d" />
-        <watch expression="repr(self.name)" language="Python" />
-        <watch expression="self.offset - self.box_offset" />
-        <watch expression="len(self.compressorname)" />
-        <watch expression="self.offset - self.box_offset" />
-      </configuration>
-    </watches-manager>
+    <breakpoint-manager />
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharm2016.1/system/python_stubs/-697680286/datetime.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2668">
-          <caret line="359" column="45" selection-start-line="359" selection-start-column="45" selection-end-line="359" selection-end-column="45" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python27/Lib/xml/etree/cElementTree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
+      <provider editor-type-id="MarkdownFxPreviewEditor">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2016.1/system/python_stubs/-697680286/_elementtree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="55" column="4" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="15">
+            <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python27/Lib/ntpath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="197" column="0" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsoncodec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python27/Lib/json/encoder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="206" column="12" selection-start-line="206" selection-start-column="12" selection-end-line="206" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python27/Lib/xml/etree/ElementTree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="1066" column="23" selection-start-line="1066" selection-start-column="23" selection-end-line="1066" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mdhd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="116" column="42" selection-start-line="115" selection-start-column="40" selection-end-line="116" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tkhd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="180" column="0" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/edts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/elst.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="156" column="63" selection-start-line="156" selection-start-column="63" selection-end-line="156" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xmlcodec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="45" column="19" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2016.1/system/python_stubs/-697680286/__builtin__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="414" column="4" selection-start-line="414" selection-start-column="4" selection-end-line="414" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fullbox.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dref.py">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Temporary merge branch 1
-        <state relative-caret-position="225">
-          <caret line="156" column="63" selection-start-line="156" selection-start-column="63" selection-end-line="156" selection-end-column="63" />
-=======
-        <state relative-caret-position="143">
-          <caret line="185" column="47" selection-start-line="185" selection-start-column="47" selection-end-line="185" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dinf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mvhd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="207" column="69" selection-start-line="207" selection-start-column="69" selection-end-line="207" selection-end-column="69" />
->>>>>>> Temporary merge branch 2
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/box.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/btrt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visual_sample_entry.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Temporary merge branch 1
-    <entry file="file://$PROJECT_DIR$/fullbox.py">
-=======
-    <entry file="file://$PROJECT_DIR$/hdlr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mp4boxdesc.py">
->>>>>>> Temporary merge branch 2
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Temporary merge branch 1
-    <entry file="file://$PROJECT_DIR$/dref.py">
-=======
-    <entry file="file://$PROJECT_DIR$/mdat.py">
->>>>>>> Temporary merge branch 2
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stss.py">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Temporary merge branch 1
-        <state relative-caret-position="182">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
-=======
-        <state relative-caret-position="302">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
->>>>>>> Temporary merge branch 2
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stsz.py">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Temporary merge branch 1
-        <state relative-caret-position="280">
-          <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-=======
-        <state relative-caret-position="179">
-          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
->>>>>>> Temporary merge branch 2
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sample_entry.py">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Temporary merge branch 1
-        <state relative-caret-position="341">
-          <caret line="68" column="57" selection-start-line="68" selection-start-column="57" selection-end-line="68" selection-end-column="57" />
-=======
-        <state relative-caret-position="495">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
->>>>>>> Temporary merge branch 2
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ctts.py">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Temporary merge branch 1
-        <state relative-caret-position="104">
-          <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
-          <folding />
-=======
-        <state relative-caret-position="387">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
->>>>>>> Temporary merge branch 2
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stco.py">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Temporary merge branch 1
-        <state relative-caret-position="91">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-=======
-        <state relative-caret-position="210">
-          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
->>>>>>> Temporary merge branch 2
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stsc.py">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Temporary merge branch 1
-        <state relative-caret-position="166">
-          <caret line="207" column="69" selection-start-line="207" selection-start-column="69" selection-end-line="207" selection-end-column="69" />
-=======
-        <state relative-caret-position="2235">
-          <caret line="151" column="46" selection-start-line="151" selection-start-column="46" selection-end-line="151" selection-end-column="46" />
->>>>>>> Temporary merge branch 2
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Temporary merge branch 1
-    <entry file="file://$PROJECT_DIR$/box.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-=======
-    <entry file="file://$PROJECT_DIR$/stts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="93" column="44" selection-start-line="93" selection-start-column="44" selection-end-line="93" selection-end-column="44" />
->>>>>>> Temporary merge branch 2
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Temporary merge branch 1
-    <entry file="file://$PROJECT_DIR$/btrt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-=======
-    <entry file="file://$PROJECT_DIR$/track.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
->>>>>>> Temporary merge branch 2
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Temporary merge branch 1
-    <entry file="file://$PROJECT_DIR$/pymp4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="50" column="48" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
-=======
-    <entry file="file://$PROJECT_DIR$/sample.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
->>>>>>> Temporary merge branch 2
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Temporary merge branch 1
-    <entry file="file://$PROJECT_DIR$/avcc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="42" column="19" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
-=======
-    <entry file="file://$PROJECT_DIR$/ftyp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
->>>>>>> Temporary merge branch 2
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Temporary merge branch 1
-    <entry file="file://$PROJECT_DIR$/visual_sample_entry.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-=======
-    <entry file="file://$PROJECT_DIR$/filestream.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1634">
-          <caret line="135" column="8" selection-start-line="135" selection-start-column="8" selection-end-line="135" selection-end-column="8" />
->>>>>>> Temporary merge branch 2
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Temporary merge branch 1
-    <entry file="file://$PROJECT_DIR$/avc1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-=======
-    <entry file="file://$PROJECT_DIR$/pymp4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
->>>>>>> Temporary merge branch 2
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Temporary merge branch 1
-    <entry file="file://$PROJECT_DIR$/hdlr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
-=======
-    <entry file="file://$PROJECT_DIR$/mp4boxes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/avc1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="86" column="24" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stsd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
->>>>>>> Temporary merge branch 2
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Temporary merge branch 1
-    <entry file="file://$PROJECT_DIR$/mp4boxes.py">
-=======
-    <entry file="file://$PROJECT_DIR$/stbl.py">
->>>>>>> Temporary merge branch 2
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="138" column="22" selection-start-line="138" selection-start-column="22" selection-end-line="138" selection-end-column="22" />
-          <folding>
-            <element signature="e#230#245#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mdia.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trak.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="116" column="91" selection-start-line="116" selection-start-column="91" selection-end-line="116" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/moov.py">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Temporary merge branch 1
-        <state relative-caret-position="506">
-          <caret line="62" column="20" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
-=======
-        <state relative-caret-position="314">
-          <caret line="147" column="62" selection-start-line="147" selection-start-column="62" selection-end-line="147" selection-end-column="62" />
-          <folding />
-        </state>
+      <provider editor-type-id="MarkdownFxPreviewEditor">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/root.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="120" column="48" selection-start-line="120" selection-start-column="48" selection-end-line="120" selection-end-column="48" />
->>>>>>> Temporary merge branch 2
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Temporary merge branch 1
-    <entry file="file://$PROJECT_DIR$/stbl.py">
-=======
-    <entry file="file://$PROJECT_DIR$/ew.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wef.py">
->>>>>>> Temporary merge branch 2
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tt.py">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Temporary merge branch 1
-        <state relative-caret-position="179">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-=======
-        <state relative-caret-position="240">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
->>>>>>> Temporary merge branch 2
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Temporary merge branch 1
-    <entry file="file://$PROJECT_DIR$/mp4boxdesc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
-=======
-    <entry file="file://$PROJECT_DIR$/a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="377">
+          <caret line="85" column="51" selection-start-line="85" selection-start-column="51" selection-end-line="85" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pymp4def.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
->>>>>>> Temporary merge branch 2
+        <state relative-caret-position="217">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< Temporary merge branch 1
-    <entry file="file://$PROJECT_DIR$/stsd.py">
+    <entry file="file://$PROJECT_DIR$/boxes/minf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-=======
-    <entry file="file://$PROJECT_DIR$/avcc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="338" column="33" selection-start-line="338" selection-start-column="33" selection-end-line="338" selection-end-column="33" />
->>>>>>> Temporary merge branch 2
+        <state relative-caret-position="-1305">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <entry file="file://$PROJECT_DIR$/boxes/skip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boxes/free.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="57" column="21" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boxes/stsd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boxes/elst.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-713">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boxes/btrt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boxes/moov.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3435">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boxes/mp4v.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="85" column="47" selection-start-line="85" selection-start-column="47" selection-end-line="85" selection-end-column="47" />
+          <folding>
+            <element signature="e#229#244#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boxes/mp4s.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boxes/mp4a.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+          <folding>
+            <element signature="e#229#244#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boxes/mdia.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boxes/tkhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="262" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/descr/esdescr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1438">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boxes/esds.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="78" column="44" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/filestream.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1215">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mp4boxes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boxes/box.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="52" column="54" selection-start-line="52" selection-start-column="54" selection-end-line="52" selection-end-column="54" />
+          <folding>
+            <element signature="e#229#253#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/descr/descrtagdef.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="79" column="25" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mp4boxdesc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="172" column="35" selection-start-line="172" selection-start-column="35" selection-end-line="172" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/descrtagdesc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/descr/base_descriptor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding>
+            <element signature="e#242#268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

@@ -26,6 +26,7 @@ from boxes.dref import Url
 from boxes.dref import Urn
 from boxes.edts import Edts
 from boxes.elst import Elst
+from boxes.esds import Esds
 from boxes.free import Free
 from boxes.ftyp import Ftyp
 from boxes.hdlr import Hdlr
@@ -34,6 +35,9 @@ from boxes.mdhd import Mdhd
 from boxes.mdia import Mdia
 from boxes.minf import Minf
 from boxes.moov import Moov
+from boxes.mp4a import Mp4a
+from boxes.mp4s import Mp4s
+from boxes.mp4v import Mp4v
 from boxes.mvhd import Mvhd
 from boxes.skip import Skip
 from boxes.smhd import Smhd
@@ -77,6 +81,10 @@ MP4Boxes = {
     FourCCMp4Btrt: Btrt,
     # FourCCMp4M4ds: 'm4ds',
     # FourCCMp4Srat: 'srat',
+    FourCCMp4Mp4a: Mp4a,
+    FourCCMp4Mp4v: Mp4v,
+    FourCCMp4Mp4s: Mp4s,
+    FourCCMp4Esds: Esds,
     FourCCMp4Stsz: Stsz,
     FourCCMp4Stsc: Stsc,
     FourCCMp4Stco: Stco,

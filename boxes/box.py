@@ -117,7 +117,7 @@ class Box(object):
 
     def dump(self):
         dump_info = {}
-        dump_info['offset'] = self.offset
+        dump_info['offset'] = self.box_offset
         dump_info['size'] = self.size
         dump_info['type'] = self.type
         dump_info['fullname'] = self.fullname
@@ -126,4 +126,4 @@ class Box(object):
 
     def __str__(self):
         return "offset = 0x%016x, size = %08ld(0x%08lx), type = %s(%s: %s)" % \
-               (self.offset, self.size, self.size, self.type, self.fullname, self.desc)
+               (self.box_offset, self.size, self.size, self.type, self.fullname, self.desc)

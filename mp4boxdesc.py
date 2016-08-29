@@ -46,6 +46,9 @@ FourCCMp4AvcC = 'avcC'
 FourCCMp4Btrt = 'btrt'
 FourCCMp4M4ds = 'm4ds'
 FourCCMp4Mp4a = 'mp4a'
+FourCCMp4Mp4v = 'mp4v'
+FourCCMp4Mp4s = 'mp4s'
+FourCCMp4Esds = 'esds'
 FourCCMp4Srat = 'srat'
 FourCCMp4Stsz = 'stsz'
 FourCCMp4Stsc = 'stsc'
@@ -85,6 +88,10 @@ Mp4Avc2FullName = 'AVC2 SampleEntry'
 Mp4AvcCFullName = 'AVC Configuration Box'
 Mp4BtrtFullName = 'MPEG4 BitRate Box'
 Mp4M4dsFullName = 'MPEG4 Extension Descriptors Box'
+Mp4Mp4aFullName = 'MPEG4 Audio Sample Entry'
+Mp4Mp4vFullName = 'MPEG4 Visual Sample Entry'
+Mp4Mp4sFullName = 'Mpeg Sample Entry'
+Mp4EsdsFullName = 'Elementary Stream Descriptors'
 Mp4SratFullName = 'Sampling Rate Box'
 Mp4StszFullName = 'Sample Size Boxes'
 Mp4StscFullName = 'Sample To Chunk Box'
@@ -128,6 +135,10 @@ Mp4Avc2Desc = 'may only be used when Extractors or Aggregators (Annex B) are req
 Mp4AvcCDesc = 'the decoder configuration information for ISO/IEC 14496-10 video content.'
 Mp4BtrtDesc = 'a bitrate box of mpeg4'
 Mp4M4dsDesc = 'unknow'
+Mp4Mp4aDesc = 'For audio streams, an AudioSampleEntry'
+Mp4Mp4vDesc = 'For visual streams, a VisualSampleEntry is used'
+Mp4Mp4sDesc = 'For all other MPEG-4 streams, a MpegSampleEntry is used'
+Mp4EsdsDesc = 'Elementary Stream Descriptors'
 Mp4SratDesc = 'the actual sampling rate of the audio media, expressed as a 32‐bit integer'
 Mp4StszDesc = 'sample sizes (framing)'
 Mp4StscDesc = 'sample-to-chunk, partial data-offset information'
@@ -165,6 +176,10 @@ MP4BoxesFullName = {
     FourCCMp4AvcC: Mp4AvcCFullName,
     FourCCMp4Btrt: Mp4BtrtFullName,
     FourCCMp4M4ds: Mp4M4dsFullName,
+    FourCCMp4Mp4a: Mp4Mp4aFullName,
+    FourCCMp4Mp4v: Mp4Mp4vFullName,
+    FourCCMp4Mp4s: Mp4Mp4sFullName,
+    FourCCMp4Esds: Mp4EsdsFullName,
     FourCCMp4Srat: Mp4SratFullName,
     FourCCMp4Stsz: Mp4StszFullName,
     FourCCMp4Stsc: Mp4StscFullName,
@@ -205,6 +220,10 @@ MP4BoxesDesc = {
     FourCCMp4AvcC: Mp4AvcCDesc,
     FourCCMp4Btrt: Mp4BtrtDesc,
     FourCCMp4M4ds: Mp4M4dsDesc,
+    FourCCMp4Mp4a: Mp4Mp4aDesc,
+    FourCCMp4Mp4v: Mp4Mp4vDesc,
+    FourCCMp4Mp4s: Mp4Mp4sDesc,
+    FourCCMp4Esds: Mp4EsdsDesc,
     FourCCMp4Srat: Mp4SratDesc,
     FourCCMp4Stsz: Mp4StszDesc,
     FourCCMp4Stsc: Mp4StscDesc,

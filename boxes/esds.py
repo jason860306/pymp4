@@ -15,6 +15,7 @@ __email__ = 'jason860306@gmail.com'
 # '$Source$'
 
 
+from descr.esdescr import *
 from fullbox import *
 
 
@@ -76,3 +77,29 @@ class Esds(object, FullBox):
     def __init__(self):
         super(Esds, self).__init__()
         self.esDescr = None  # ES_Descriptor
+
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = Box.decode(self, file_strm)
+
+        left_size = Box.Size(self) - Box.GetLength(self)
+        self.data = file_strm.read_byte(left_size)
+        self.offset += Int8ByteLen * left_size
+
+        tmp_size = self.offset - self.box_offset
+        if tmp_size != self.Size():
+            file_strm.seek(self.Size() - tmp_size, os.SEEK_CUR)
+
+        return file_strm
+
+    def dump(self):
+        dump_info = Box.dump(self)
+        return dump_info
+
+    def __str__(self):
+        # logstr = "%s, data = %s" % (Box.__str__(self), self.data)
+        logstr = "%s\n" % (Box.__str__(self))
+        return logstr

@@ -15,6 +15,7 @@ __email__ = 'jason860306@gmail.com'
 # '$Source$'
 
 
+import mp4boxes
 from audio_sample_entry import *
 
 
@@ -76,3 +77,38 @@ class Mp4a(object, AudioSampleEntry):
     def __init__(self):
         super(Mp4a, self).__init__()
         self.esds = None
+
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        file_strm = Box.decode(self, file_strm)
+
+        left_size = Box.Size(self) - Box.GetLength(self)
+        while left_size > 0:
+            tmp_box = Box()
+            file_strm = tmp_box.peek(file_strm)
+            if tmp_box.type == FourCCMp4Esds:
+                self.mvhd = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
+                file_strm = self.mvhd.decode(file_strm)
+                self.offset += self.mvhd.Size()
+            else:
+                file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+                self.offset += tmp_box.Size()
+            left_size -= tmp_box.Size()
+
+        tmp_size = self.offset - self.box_offset
+        if tmp_size != self.Size():
+            file_strm.seek(self.Size() - tmp_size, os.SEEK_CUR)
+
+        return file_strm
+
+    def dump(self):
+        dump_info = Box.dump(self)
+        return dump_info
+
+    def __str__(self):
+        # logstr = "%s, data = %s" % (Box.__str__(self), self.data)
+        logstr = "%s\n" % (Box.__str__(self))
+        return logstr
