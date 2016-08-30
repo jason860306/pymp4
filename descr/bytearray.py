@@ -12,9 +12,11 @@ __date__ = '2016-07-12 15:31:47'
 __license__ = 'GPLv2'
 __version__ = '$Revision$'
 __email__ = 'jason860306@gmail.com'
-
-
 # '$Source$'
+
+
+from pymp4def import *
+from util.bytestream import *
 
 
 class ByteArray(object):
@@ -33,4 +35,26 @@ class ByteArray(object):
     """
 
     def __init__(self):
-        self.data = []
+        self.len = 0
+        self.data = ''
+
+    def decode(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+
+        self.len = parse_descr_len(file_strm)
+        self.data = file_strm.read_byte(self.len)
+
+    def gen_strm(self):
+        return ByteStream(self.data, self.len)
+
+    def dump(self):
+        dump_info = {}
+        dump_info['len'] = self.len
+        dump_info['data'] = self.data
+        return dump_info
+
+    def __str__(self):
+        log_str = ''
+        return log_str

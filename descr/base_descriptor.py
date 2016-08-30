@@ -15,6 +15,7 @@ __email__ = "jason860306@gmail.com"
 
 
 from descrtagdesc import *
+from pymp4def import *
 from util.filestream import *
 
 
@@ -51,12 +52,13 @@ class BaseDescriptor(object):
 
     """
 
-    def __init__(self, offset=0, box=None, descr_tag=DescrTag_Forbidden00):
+    def __init__(self, offset=0, descr_tag=DescrTag_Forbidden00):
         self.descr_offset = offset
         self.offset = offset
 
         self.descr_tag = descr_tag
-
+        self.sizeOfInstance = 0
+        self.hdr_size = 0
         self.fullname = DescrTagFullName[self.descr_tag]
 
     def decode(self, file_strm):
@@ -66,13 +68,29 @@ class BaseDescriptor(object):
 
         self.descr_tag = file_strm.read_int8()
         self.offset += UInt8ByteLen
+        self.sizeOfInstance, self.hdr_size = parse_descr_len(file_strm)
+        self.offset += self.hdr_size
 
         return file_strm
+
+    def peek(self, file_strm):
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+        self.descr_tag = file_strm.read_uint8()
+        self.sizeOfInstance, self.hdr_size = parse_descr_len(file_strm)
+        file_strm.seek(self.size() * -1, os.SEEK_CUR)
+        return file_strm
+
+    def size(self):
+        return self.hdr_size + self.sizeOfInstance
 
     def dump(self):
         dump_info = {}
         dump_info['offset'] = self.descr_offset
         dump_info['tag'] = self.descr_tag
+        dump_info['size'] = self.sizeOfInstance
+        dump_info['hdr_size'] = self.hdr_size
         dump_info['fullname'] = self.fullname
         return dump_info
 

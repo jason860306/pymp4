@@ -97,8 +97,8 @@ class ObjectDescriptor(object, BaseDescriptor):
                  shall have any number of zero up to 255 elements.
     """
 
-    def __init__(self, descr_tag=DescrTag_ObjectDescrTag):
-        BaseDescriptor.__init__(self, descr_tag)
+    def __init__(self, offset=0, descr_tag=DescrTag_ObjectDescrTag):
+        BaseDescriptor.__init__(self, offset, descr_tag)
         self.objDescrID = 0
         self.urlFlag = 0
         self.reserved = 0

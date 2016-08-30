@@ -65,4 +65,18 @@ def parse_4cc(four_cc_num):
     num2 = (four_cc_num & 0x00FF0000) >> 16
     num3 = (four_cc_num & 0x0000FF00) >> 8
     num4 = (four_cc_num & 0x000000FF)
-    return (chr(num1) + chr(num2) + chr(num3) + chr(num4))
+    return chr(num1) + chr(num2) + chr(num3) + chr(num4)
+
+
+def parse_descr_len(strm):
+    descr_len = 0
+
+    hdr_size = 0
+    num_bytes = Int32ByteLen
+    tmp_bytes = 0
+    while tmp_bytes & 0x80 != 0 and hdr_size < num_bytes:
+        tmp_bytes = strm.read_uint8()
+        descr_len = (descr_len << 7) | (tmp_bytes & 0x7F)
+        hdr_size += 1
+
+    return descr_len, hdr_size

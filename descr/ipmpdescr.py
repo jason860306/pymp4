@@ -106,8 +106,8 @@ class IPMPDescriptor(object, BaseDescriptor):
     IPMP_data – Data of unspecified format.
     """
 
-    def __init__(self, descr_tag=DescrTag_IPMP_DescrTag):
-        super(IPMPDescriptor, self).__init__(descr_tag)
+    def __init__(self, offset=0, descr_tag=DescrTag_IPMP_DescrTag):
+        super(IPMPDescriptor, self).__init__(offset, descr_tag)
         self.ipmpDescrId = 0
         self.ipmpsType = 0
         self.ipmpDescrIdEx = 0  # if (IPMP_DescriptorID == 0xFF && IPMPS_Type == 0xFFFF)

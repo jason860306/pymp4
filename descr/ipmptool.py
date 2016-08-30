@@ -89,8 +89,8 @@ class IPMPTool(object, BaseDescriptor):
     IPMP_Tool may be obtained in a manner defined outside the scope of these specifications.
     """
 
-    def __init__(self, descr_tag=DescrTag_IPMP_ToolTag):
-        super(IPMPTool, self).__init__(descr_tag)
+    def __init__(self, offset=0, descr_tag=DescrTag_IPMP_ToolTag):
+        super(IPMPTool, self).__init__(offset, descr_tag)
         self.ipmpToolID = 0
         self.isAltGroup = 0
         self.isParametric = 0

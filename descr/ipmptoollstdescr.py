@@ -31,6 +31,6 @@ class IPMPToolListDescriptor(object, BaseDescriptor):
                 access the content.
     """
 
-    def __init__(self, descr_tag=DescrTag_IPMP_ToolsListDescrTag):
-        super(IPMPToolListDescriptor, self).__init__(descr_tag)
+    def __init__(self, offset=0, descr_tag=DescrTag_IPMP_ToolsListDescrTag):
+        super(IPMPToolListDescriptor, self).__init__(offset, descr_tag)
         self.ipmpTool = []

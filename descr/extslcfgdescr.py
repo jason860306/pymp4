@@ -6,19 +6,19 @@
 
 """
 
-__file__ = '$Id$'
+__file__ = '-$id$'
 __author__ = 'szj0306'  # 志杰
-__date__ = '2016-07-06 16:43:25'
+__date__ = '2016-07-18 17:18:50'
 __license__ = 'GPLv2'
 __version__ = '$Revision$'
 __email__ = 'jason860306@gmail.com'
 # '$Source$'
 
 
-from base_descriptor import *
+from slcfgdescr import *
 
 
-class SLConfigDescriptor(object, BaseDescriptor):
+class ExtendedSLConfigDescriptor(object, SLConfigDescriptor):
     """
     7.3.2.3.1 Syntax
     class SLConfigDescriptor extends BaseDescriptor
@@ -162,43 +162,20 @@ class SLConfigDescriptor(object, BaseDescriptor):
     as specified in 7.3.2.3.1.
     """
 
-    def __init__(self, offset=0, descr_tag=DescrTag_SLConfigDescrTag):
-        super(SLConfigDescriptor, self).__init__(offset, descr_tag)
-        self.predefined = 0
-        self.useAccessUnitStartFlag = 0  # if (predefined==0)
-        self.useAccessUnitEndFlag = 0  # if (predefined==0)
-        self.useRandomAccessPointFlag = 0  # if (predefined==0)
-        self.hasRandomAccessUnitsOnlyFlag = 0  # if (predefined==0)
-        self.usePaddingFlag = 0  # if (predefined==0)
-        self.useTimeStampsFlag = 0  # if (predefined==0)
-        self.useIdleFlag = 0  # if (predefined==0)
-        self.durationFlag = 0  # if (predefined==0)
-        self.timeStampResolution = 0  # if (predefined==0)
-        self.OCRResolution = 0  # if (predefined==0)
-        self.timeStampLength = 0  # if (predefined==0)
-        self.OCRLength = 0  # if (predefined==0)
-        self.AU_Length = 0  # if (predefined==0)
-        self.instantBitrateLength = 0  # if (predefined==0)
-        self.degradationPriorityLength = 0  # if (predefined==0)
-        self.AU_seqNumLength = 0  # if (predefined==0)
-        self.packetSeqNumLength = 0  # if (predefined==0)
-        self.reserved = 0  # if (predefined==0)
-        self.timeScale = 0  # if (durationFlag)
-        self.accessUnitDuration = 0  # if (durationFlag)
-        self.compositionUnitDuration = 0  # if (durationFlag)
-        self.startDecodingTimeStamp = ''  # if (!useTimeStampsFlag)
-        self.startCompositionTimeStamp = ''  # if (!useTimeStampsFlag)
+    def __init__(self, offset=0, descr_tag=DescrTag_ExtSLConfigDescrTag):
+        super(ExtendedSLConfigDescriptor, self).__init__(offset, descr_tag)
+        self.slextDescr = []  # an array of ExtensionDescriptors
 
     def decode(self, file_strm):
         return file_strm
 
-    def size(self):
-        return super(SLConfigDescriptor, self).size()
-
     def dump(self):
-        dump_info = super(SLConfigDescriptor, self).dump()
+        dump_info = super(ExtendedSLConfigDescriptor, self).dump()
         return dump_info
 
+    def size(self):
+        return super(ExtendedSLConfigDescriptor, self).size()
+
     def __str__(self):
-        log_str = super(SLConfigDescriptor, self).__str__()
+        log_str = super(ExtendedSLConfigDescriptor, self).__str__()
         return log_str

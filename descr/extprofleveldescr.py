@@ -78,8 +78,8 @@ class ExtProfLevelDescriptor(object, BaseDescriptor):
                                 3D Compression Profile and Level descriptor
     """
 
-    def __init__(self, descr_tag=DescrTag_ExtensionProfileLevelDescrTag):
-        BaseDescriptor.__init__(self, descr_tag)
+    def __init__(self, offset=0, descr_tag=DescrTag_ExtensionProfileLevelDescrTag):
+        BaseDescriptor.__init__(self, offset, descr_tag)
         self.profileLevelIndicationIndex = 0
         self.ODProfileLevelIndication = 0
         self.sceneProfileLevelIndication = 0

@@ -29,20 +29,20 @@ class ByteStream(object, Stream):
     some utility function
     """
 
-    def __init__(self, byte_strm, byte_size, endian=LittleEndian):
-        if byte_strm is None:
+    def __init__(self, byte_data, byte_size, endian=LittleEndian):
+        if byte_data is None:
             print "byte_strm is None"
             return
         Stream.__init__(self, endian)
         self.byte_offset = 0
-        self.byte_stream = byte_strm
+        self.byte_data = byte_data
         self.byte_size = byte_size
 
     def tell(self):
         return self.byte_offset
 
     def seek(self, offset, whence=None):
-        if self.byte_stream is None:
+        if self.byte_data is None:
             return
         if whence == os.SEEK_SET:
             if offset < self.byte_size:
@@ -81,11 +81,11 @@ class ByteStream(object, Stream):
     def read_int64(self):
         __FMT = '!q' if (self.endian == LittleEndian) else '@q'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             self.byte_offset += size
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_int64(num[0]).value
@@ -95,11 +95,11 @@ class ByteStream(object, Stream):
     def read_uint64(self):
         __FMT = '!Q' if (self.endian == LittleEndian) else '@Q'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             self.byte_offset += size
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_uint64(num[0]).value
@@ -109,11 +109,11 @@ class ByteStream(object, Stream):
     def read_int32(self):
         __FMT = '!i' if (self.endian == LittleEndian) else '@i'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             self.byte_offset += size
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_int32(num[0]).value
@@ -123,11 +123,11 @@ class ByteStream(object, Stream):
     def read_uint32(self):
         __FMT = '!I' if (self.endian == LittleEndian) else '@I'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             self.byte_offset += size
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_uint32(num[0]).value
@@ -137,11 +137,11 @@ class ByteStream(object, Stream):
     def read_int16(self):
         __FMT = '!h' if (self.endian == LittleEndian) else '@h'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             self.byte_offset += size
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_int16(num[0]).value
@@ -151,11 +151,11 @@ class ByteStream(object, Stream):
     def read_uint16(self):
         __FMT = '!H' if (self.endian == LittleEndian) else '@H'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             self.byte_offset += size
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_uint16(num[0]).value
@@ -165,11 +165,11 @@ class ByteStream(object, Stream):
     def read_int8(self):
         __FMT = '!b' if (self.endian == LittleEndian) else '@b'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             self.byte_offset += size
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_int8(num[0]).value
@@ -179,11 +179,11 @@ class ByteStream(object, Stream):
     def read_uint8(self):
         __FMT = '!B' if (self.endian == LittleEndian) else '@B'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             self.byte_offset += size
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_uint8(num[0]).value
@@ -194,10 +194,10 @@ class ByteStream(object, Stream):
         __FMT = '!%ds' % size if (self.endian == LittleEndian) else '@%ds' % size
 
         buf = ''
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             if self.byte_offset + size > self.byte_size:
                 return 0
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             self.byte_offset += size
             buf, = struct.unpack_from(__FMT, buf)
         return buf
@@ -205,12 +205,12 @@ class ByteStream(object, Stream):
     def peek_int64(self):
         __FMT = '!q' if (self.endian == LittleEndian) else '@q'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
 
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_int64(num[0]).value
             # return int(num[0])
@@ -219,12 +219,12 @@ class ByteStream(object, Stream):
     def peek_uint64(self):
         __FMT = '!Q' if (self.endian == LittleEndian) else '@Q'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
 
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_uint64(num[0]).value
             # return int(num[0])
@@ -233,12 +233,12 @@ class ByteStream(object, Stream):
     def peek_int32(self):
         __FMT = '!i' if (self.endian == LittleEndian) else '@i'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
 
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_int32(num[0]).value
             # return int(num[0])
@@ -247,12 +247,12 @@ class ByteStream(object, Stream):
     def peek_uint32(self):
         __FMT = '!I' if (self.endian == LittleEndian) else '@I'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
 
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_int32(num[0]).value
             # return int(num[0])
@@ -261,12 +261,12 @@ class ByteStream(object, Stream):
     def peek_int16(self):
         __FMT = '!h' if (self.endian == LittleEndian) else '@h'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
 
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_int16(num[0]).value
             # return int(num[0])
@@ -275,12 +275,12 @@ class ByteStream(object, Stream):
     def peek_uint16(self):
         __FMT = '!H' if (self.endian == LittleEndian) else '@H'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
 
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_uint16(num[0]).value
             # return int(num[0])
@@ -289,12 +289,12 @@ class ByteStream(object, Stream):
     def peek_int8(self):
         __FMT = '!b' if (self.endian == LittleEndian) else '@b'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
 
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_int8(num[0]).value
             # return int(num[0])
@@ -303,12 +303,12 @@ class ByteStream(object, Stream):
     def peek_uint8(self):
         __FMT = '!B' if (self.endian == LittleEndian) else '@B'
 
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             size = struct.calcsize(__FMT)
             if self.byte_offset + size > self.byte_size:
                 return 0
 
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             num = struct.unpack_from(__FMT, buf)
             return ctypes.c_uint8(num[0]).value
             # return int(num[0])
@@ -318,10 +318,10 @@ class ByteStream(object, Stream):
         __FMT = '!%ds' % size if (self.endian == LittleEndian) else '@%ds' % size
 
         buf = ''
-        if self.byte_stream is not None:
+        if self.byte_data is not None:
             if self.byte_offset + size > self.byte_size:
                 return 0
-            buf = self.byte_stream[self.byte_offset:self.byte_offset + size]
+            buf = self.byte_data[self.byte_offset:self.byte_offset + size]
             buf, = struct.unpack_from(__FMT, buf)
         return buf
 
