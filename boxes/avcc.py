@@ -5,7 +5,7 @@
 
 """
 
-__file__ = '$id$'
+__file__ = '$Id$'
 __author__ = 'szj0306'  # 志杰
 __date__ = '5/5/2016 17:59:16'
 __license__ = "Public Domain"

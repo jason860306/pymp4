@@ -6,7 +6,7 @@
 """
 from util.util import Util
 
-__file__ = '$id$'
+__file__ = '$Id$'
 __author__ = 'szj0306'  # 志杰
 __date__ = '2016/3/1 17:22'
 __license__ = "Public Domain"

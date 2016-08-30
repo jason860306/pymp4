@@ -6,7 +6,7 @@
 
 """
 
-__file__ = '$id$'
+__file__ = '$Id$'
 __author__ = 'szj0306'  # Administrator
 __date__ = '2016/6/29 18:31'
 __license__ = "Public Domain"
