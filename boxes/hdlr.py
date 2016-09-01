@@ -19,7 +19,7 @@ import os
 from fullbox import *
 
 
-class Hdlr(object, FullBox):
+class Hdlr(FullBox, object):
     """
     aligned(8) class HandlerBox extends FullBox(‘hdlr’, version = 0, 0) {
         unsigned int(32) pre_defined = 0;
@@ -68,7 +68,7 @@ class Hdlr(object, FullBox):
             self.reserved[i] = file_strm.read_uint32()
             self.offset += UInt32ByteLen
 
-        left_size = Box.Size(self) - FullBox.GetLength(self)
+        left_size = self.Size() - self.GetLength()
         left_size -= struct.calcsize('!I')  # sizeof(pre_defined)
         left_size -= struct.calcsize('!I')  # sizeof(handler_type)
         left_size -= 3 * struct.calcsize('!I')  # sizeof(reserved)

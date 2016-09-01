@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from box import *
 
 
-class Mdat(object, Box):
+class Mdat(Box, object):
     """
     aligned(8) class MediaDataBox extends Box(‘mdat’) {
         bit(8) data[];
@@ -38,7 +38,7 @@ class Mdat(object, Box):
 
         file_strm = Box.decode(self, file_strm)
 
-        left_size = Box.Size(self) - Box.GetLength(self)
+        left_size = self.Size() - self.GetLength()
         self.data = file_strm.read_byte(left_size)
         self.offset += Int8ByteLen * left_size
 

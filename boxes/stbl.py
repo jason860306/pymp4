@@ -19,7 +19,7 @@ from mp4boxdesc import *
 from stts import *
 
 
-class Stbl(object, Box):
+class Stbl(Box, object):
     """
     aligned(8) class SampleTableBox extends Box(‘stbl’) {
     }

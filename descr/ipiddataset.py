@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from base_descriptor import *
 
 
-class IPIdentificationDataSet(object, BaseDescriptor):
+class IPIdentificationDataSet(BaseDescriptor, object):
     """
     7.2.6.9.1 Syntax
     abstract class IP_IdentificationDataSet extends BaseDescriptor

@@ -18,13 +18,13 @@ import ctypes
 import os
 import struct
 
-from pymp4def import (LittleEndian, Int8ByteLen, Int16ByteLen,
+from pymp4def import (Int8ByteLen, Int16ByteLen,
                       Int32ByteLen, Int64ByteLen, UInt8ByteLen,
                       UInt16ByteLen, UInt32ByteLen, UInt64ByteLen)
 from stream import *
 
 
-class FileStream(object, Stream):
+class FileStream(Stream, object):
     """
     some utility function
     """
@@ -33,7 +33,7 @@ class FileStream(object, Stream):
         if file is None:
             print "file is None"
             return
-        Stream.__init__(self, endian)
+        super(FileStream, self).__init__(endian)
         self.file = file
 
     def tell(self):

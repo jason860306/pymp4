@@ -19,7 +19,7 @@ import os
 from fullbox import *
 
 
-class Stco(object, FullBox):
+class Stco(FullBox, object):
     """
     aligned(8) class ChunkOffsetBox extends FullBox(‘stco’, version = 0, 0) {
         unsigned int(32) entry_count;

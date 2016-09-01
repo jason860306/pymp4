@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from base_descriptor import *
 
 
-class ExtDescriptor(object, BaseDescriptor):
+class ExtDescriptor(BaseDescriptor, object):
     """
     7.2.6.16.1 Syntax
     abstract class ExtensionDescriptor extends BaseDescriptor

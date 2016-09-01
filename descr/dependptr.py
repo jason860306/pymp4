@@ -19,7 +19,7 @@ from descrtagdef import *
 from slextdescr import *
 
 
-class DependencyPointer(object, SLExtensionDescriptor):
+class DependencyPointer(SLExtensionDescriptor, object):
     """
     7.3.2.3.3 SLExtentionDescriptor Syntax
     abstract class SLExtensionDescriptor : bit(8) tag=0 {

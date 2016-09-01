@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from base_descriptor import *
 
 
-class RegistrationDescriptor(object, BaseDescriptor):
+class RegistrationDescriptor(BaseDescriptor, object):
     """
     The registration descriptor provides a method to uniquely and
     unambiguously identify formats of private data streams.

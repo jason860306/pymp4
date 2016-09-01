@@ -19,7 +19,7 @@ import os
 from fullbox import *
 
 
-class Nmhd(object, FullBox):
+class Nmhd(FullBox, object):
     """
     aligned(8) class NullMediaHeaderBox extends FullBox(’nmhd’, version = 0, flags) {
     }

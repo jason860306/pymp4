@@ -19,7 +19,7 @@ from descrtagdef import *
 from ipmpdatabaseclass import *
 
 
-class IPMPParamDescriptor(object, IPMPDataBaseClass):
+class IPMPParamDescriptor(IPMPDataBaseClass, object):
     """
     7.2.6.14.3.3.1 Syntax
     class IPMP_ParamtericDescription extends IPMP_Data_BaseClass

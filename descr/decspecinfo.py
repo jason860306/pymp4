@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from base_descriptor import *
 
 
-class DecoderSpecificInfo(object, BaseDescriptor):
+class DecoderSpecificInfo(BaseDescriptor, object):
     """
     7.2.6.7.1 Syntax
     abstract class DecoderSpecificInfo extends BaseDescriptor
@@ -58,6 +58,8 @@ class DecoderSpecificInfo(object, BaseDescriptor):
 
     def __init__(self, offset=0, descr_tag=DescrTag_DecSpecificInfoTag):
         super(DecoderSpecificInfo, self).__init__(offset, descr_tag)
+
+        self.opaque_data = ''
 
     def decode(self, file_strm):
         """
@@ -198,7 +200,15 @@ class DecoderSpecificInfo(object, BaseDescriptor):
         :param file_strm:
         :return:
         """
-        pass
+
+        file_strm = super(DecoderSpecificInfo, self).decode(file_strm)
+        if file_strm is None:
+            # file_strm.seek(strm_pos, os.SEEK_SET)
+            return file_strm
+        self.opaque_data = file_strm.read_byte(self.size())
+        self.offset += self.size()
+
+        return file_strm
 
     def size(self):
         return super(DecoderSpecificInfo, self).size()

@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from sample_entry import *
 
 
-class AudioSampleEntry(object, SampeEntry):
+class AudioSampleEntry(SampeEntry, object):
     """
     class AudioSampleEntry(codingname) extends SampleEntry (codingname){
         const unsigned int(32)[2] reserved = 0;
@@ -48,11 +48,11 @@ class AudioSampleEntry(object, SampeEntry):
     def __init__(self, offset=0, box=None):
         SampeEntry.__init__(self, offset, box)
 
-        self.reserved = [0 for i in range(2)]
+        self.igreserved1 = [0 for i in range(2)]
         self.channelcount = 2
         self.samplesize = 16
         self.pre_defined = 0
-        self.reserved1 = 0
+        self.igreserved2 = 0
         self.samplerate = 0
 
     def decode(self, file_strm):
@@ -62,9 +62,9 @@ class AudioSampleEntry(object, SampeEntry):
 
         file_strm = SampeEntry.decode(self, file_strm)
 
-        for i in range(len(self.reserved)):
-            reserved_ = file_strm.read_uint32()
-            self.reserved[i] = reserved_
+        for i in range(len(self.igreserved1)):
+            igreserved_ = file_strm.read_uint32()
+            self.igreserved1[i] = igreserved_
             self.offset += UInt32ByteLen
 
         self.channelcount = file_strm.read_uint16()
@@ -76,10 +76,11 @@ class AudioSampleEntry(object, SampeEntry):
         self.pre_defined = file_strm.read_uint16()
         self.offset += UInt16ByteLen
 
-        self.reserved1 = file_strm.read_uint16()
+        self.igreserved2 = file_strm.read_uint16()
         self.offset += UInt16ByteLen
 
         self.samplerate = file_strm.read_uint32()
+        self.samplerate = (self.samplerate >> 16)
         self.offset += UInt16ByteLen
 
         # tmp_size = self.offset - self.box_offset
@@ -90,25 +91,25 @@ class AudioSampleEntry(object, SampeEntry):
 
     def dump(self):
         dump_info = SampeEntry.dump(self)
-        dump_info['reserved'] = self.reserved
+        dump_info['igreserved1'] = self.igreserved1
         dump_info['channelcount'] = self.channelcount
         dump_info['samplesize'] = self.samplesize
         dump_info['pre_defined'] = self.pre_defined
-        dump_info['reserved1'] = self.reserved1
+        dump_info['igreserved2'] = self.igreserved2
         dump_info['samplerate'] = self.samplerate
         return dump_info
 
     def __str__(self):
-        logstr = "\t\t\t\t\t\t%s\n\t\t\t\t\t\treserved = [" % (SampeEntry.__str__(self))
-        for i in range(len(self.reserved)):
-            logstr += "%08ld(0x%016lx), " % (self.reserved[i], self.reserved[i])
+        logstr = "\t\t\t\t\t\t%s\n\t\t\t\t\t\tigreserved1 = [" % (SampeEntry.__str__(self))
+        for i in range(len(self.igreserved1)):
+            logstr += "%08ld(0x%016lx), " % (self.igreserved1[i], self.igreserved1[i])
         logstr += "]\n\t\t\t\t\t\tchannelcount = %08ld(0x%016lx)" \
                   "\n\t\t\t\t\t\tsamplesize = %08ld(0x%016lx)" \
                   "\n\t\t\t\t\t\tpre_defined = %08ld(0x%016lx)" \
-                  "\n\t\t\t\t\t\treserved1 = %08ld(0x%016lx)" \
+                  "\n\t\t\t\t\t\tigreserved2 = %08ld(0x%016lx)" \
                   "\n\t\t\t\t\t\tsamplerate = %08ld(0x%016lx)\n" % \
                   (self.channelcount, self.channelcount, self.samplesize,
                    self.samplesize, self.pre_defined, self.pre_defined,
-                   self.reserved1, self.reserved1, self.samplerate,
+                   self.igreserved2, self.igreserved2, self.samplerate,
                    self.samplerate)
         return logstr

@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from ocidescr import *
 
 
-class LanguageDescriptor(object, OCIDescriptor):
+class LanguageDescriptor(OCIDescriptor, object):
     """
     7.2.6.18.6.1 Syntax
     class LanguageDescriptor extends OCI_Descriptor

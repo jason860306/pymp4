@@ -15,28 +15,28 @@ __email__ = 'jason860306@gmail.com'
 # '$Source$'
 
 
-from descr.deccfgdescr import DecoderConfigDescriptor
-from descr.decspecinfo import DecoderSpecificInfo
-from descr.dependptr import DependencyPointer
-from descr.esdescr import ESDescriptor
-from descr.extprofleveldescr import ExtProfLevelDescriptor
-from descr.extslcfgdescr import ExtendedSLConfigDescriptor
-from descr.initobjdescr import InitObjectDescriptor
-from descr.ipiddataset import IPIdentificationDataSet
-from descr.ipidescr import IPIDescrPtr
-from descr.ipmpdescr import IPMPDescriptor
-from descr.ipmptool import IPMPTool
-from descr.ipmptoollstdescr import IPMPToolListDescriptor
-from descr.langdescr import LanguageDescriptor
-from descr.markerdescr import MarkerDescriptor
-from descr.objdescr import ObjectDescriptor
-from descr.qosdescr import QoSDescriptor
-from descr.regdescr import RegistrationDescriptor
-from descr.slcfgdescr import SLConfigDescriptor
-from descrtagdef import *
+import descr.deccfgdescr
+import descr.decspecinfo
+import descr.dependptr
+import descr.descrtagdef
+import descr.esdescr
+import descr.extprofleveldescr
+import descr.extslcfgdescr
+import descr.initobjdescr
+import descr.ipiddataset
+import descr.ipidescr
+import descr.ipmpdescr
+import descr.ipmptool
+import descr.ipmptoollstdescr
+import descr.langdescr
+import descr.markerdescr
+import descr.objdescr
+import descr.qosdescr
+import descr.regdescr
+import descr.slcfgdescr
 
 
-def create_descr(offset=0, descr_tag=DescrTag_Forbidden00):
+def create_descr(offset=0, descr_tag=descr.descrtagdef.DescrTag_Forbidden00):
     """
     :brief source code from gpac (be famous as mp4box)
     :detail
@@ -172,112 +172,113 @@ def create_descr(offset=0, descr_tag=DescrTag_Forbidden00):
     :param descr_tag: tag for a descriptor
     :return: a descriptor instance
     """
-    descr = None
-    if descr_tag == DescrTag_Forbidden00:
+
+    tmp_descr = None
+    if descr_tag == descr.descrtagdef.DescrTag_Forbidden00:
         pass
-    elif descr_tag == DescrTag_ObjectDescrTag:
-        descr = ObjectDescriptor(offset, descr_tag)
-    elif descr_tag == DescrTag_InitialObjectDescrTag:
-        descr = InitObjectDescriptor(offset, descr_tag)
-    elif descr_tag == DescrTag_ES_DescrTag:
-        descr = ESDescriptor(offset, descr_tag)
-    elif descr_tag == DescrTag_DecoderConfigDescrTag:
-        descr = DecoderConfigDescriptor(offset, descr_tag)
-    elif descr_tag == DescrTag_DecSpecificInfoTag:
-        descr = DecoderSpecificInfo(offset, descr_tag)
-    elif descr_tag == DescrTag_SLConfigDescrTag:
-        descr = SLConfigDescriptor(offset, descr_tag)
-    elif descr_tag == DescrTag_ContentIdentDescrTag:
-        descr = IPIdentificationDataSet(offset, descr_tag)
-    elif descr_tag == DescrTag_SupplContentIdentDescrTag:
-        descr = IPIdentificationDataSet(offset, descr_tag)
-    elif descr_tag == DescrTag_IPI_DescrPointerTag:
-        descr = IPIDescrPtr(offset, descr_tag)
-    elif descr_tag == DescrTag_IPMP_DescrPointerTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_ObjectDescrTag:
+        tmp_descr = descr.objdescr.ObjectDescriptor(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_InitialObjectDescrTag:
+        tmp_descr = descr.initobjdescr.InitObjectDescriptor(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_ES_DescrTag:
+        tmp_descr = descr.esdescr.ESDescriptor(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_DecoderConfigDescrTag:
+        tmp_descr = descr.deccfgdescr.DecoderConfigDescriptor(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_DecSpecificInfoTag:
+        tmp_descr = descr.decspecinfo.DecoderSpecificInfo(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_SLConfigDescrTag:
+        tmp_descr = descr.slcfgdescr.SLConfigDescriptor(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_ContentIdentDescrTag:
+        tmp_descr = descr.ipiddataset.IPIdentificationDataSet(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_SupplContentIdentDescrTag:
+        tmp_descr = descr.ipiddataset.IPIdentificationDataSet(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_IPI_DescrPointerTag:
+        tmp_descr = descr.ipidescr.IPIDescrPtr(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_IPMP_DescrPointerTag:
         pass
-    elif descr_tag == DescrTag_IPMP_DescrTag:
-        descr = IPMPDescriptor(offset, descr_tag)
-    elif descr_tag == DescrTag_QoS_DescrTag:
-        descr = QoSDescriptor(offset, descr_tag)
-    elif descr_tag == DescrTag_RegistrationDescrTag:
-        descr = RegistrationDescriptor(offset, descr_tag)
-    elif descr_tag == DescrTag_ES_ID_IncTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_IPMP_DescrTag:
+        tmp_descr = descr.ipmpdescr.IPMPDescriptor(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_QoS_DescrTag:
+        tmp_descr = descr.qosdescr.QoSDescriptor(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_RegistrationDescrTag:
+        tmp_descr = descr.regdescr.RegistrationDescriptor(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_ES_ID_IncTag:
         pass
-    elif descr_tag == DescrTag_ES_ID_RefTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_ES_ID_RefTag:
         pass
-    elif descr_tag == DescrTag_MP4_IOD_Tag:
+    elif descr_tag == descr.descrtagdef.DescrTag_MP4_IOD_Tag:
         pass
-    elif descr_tag == DescrTag_MP4_OD_Tag:
+    elif descr_tag == descr.descrtagdef.DescrTag_MP4_OD_Tag:
         pass
-    elif descr_tag == DescrTag_IPL_DescrPointerRefTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_IPL_DescrPointerRefTag:
         pass
-    elif descr_tag == DescrTag_ExtensionProfileLevelDescrTag:
-        descr = ExtProfLevelDescriptor(offset, descr_tag)
-    elif descr_tag == DescrTag_profileLevelIndicationIndexDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_ExtensionProfileLevelDescrTag:
+        tmp_descr = descr.extprofleveldescr.ExtProfLevelDescriptor(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_profileLevelIndicationIndexDescrTag:
         pass
-    elif descr_tag == DescrTag_ISOReserved15:
+    elif descr_tag == descr.descrtagdef.DescrTag_ISOReserved15:
         pass
-    elif descr_tag == DescrTag_ISOReserved3F:
+    elif descr_tag == descr.descrtagdef.DescrTag_ISOReserved3F:
         pass
-    elif descr_tag == DescrTag_ContentClassificationDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_ContentClassificationDescrTag:
         pass
-    elif descr_tag == DescrTag_KeyWordDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_KeyWordDescrTag:
         pass
-    elif descr_tag == DescrTag_RatingDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_RatingDescrTag:
         pass
-    elif descr_tag == DescrTag_LanguageDescrTag:
-        descr = LanguageDescriptor(offset, descr_tag)
-    elif descr_tag == DescrTag_ShortTextualDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_LanguageDescrTag:
+        tmp_descr = descr.langdescr.LanguageDescriptor(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_ShortTextualDescrTag:
         pass
-    elif descr_tag == DescrTag_ExpandedTextualDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_ExpandedTextualDescrTag:
         pass
-    elif descr_tag == DescrTag_ContentCreatorNameDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_ContentCreatorNameDescrTag:
         pass
-    elif descr_tag == DescrTag_ContentCreationDateDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_ContentCreationDateDescrTag:
         pass
-    elif descr_tag == DescrTag_OCICreatorNameDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_OCICreatorNameDescrTag:
         pass
-    elif descr_tag == DescrTag_OCICreationDateDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_OCICreationDateDescrTag:
         pass
-    elif descr_tag == DescrTag_SmpteCameraPositionDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_SmpteCameraPositionDescrTag:
         pass
-    elif descr_tag == DescrTag_SegmentDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_SegmentDescrTag:
         pass
-    elif descr_tag == DescrTag_MediaTimeDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_MediaTimeDescrTag:
         pass
-    elif descr_tag == DescrTag_ISO_OCI_Reserved4D:
+    elif descr_tag == descr.descrtagdef.DescrTag_ISO_OCI_Reserved4D:
         pass
-    elif descr_tag == DescrTag_ISO_OCI_Reserved5F:
+    elif descr_tag == descr.descrtagdef.DescrTag_ISO_OCI_Reserved5F:
         pass
-    elif descr_tag == DescrTag_IPMP_ToolsListDescrTag:
-        descr = IPMPToolListDescriptor(offset, descr_tag)
-    elif descr_tag == DescrTag_IPMP_ToolTag:
-        descr = IPMPTool(offset, descr_tag)
-    elif descr_tag == DescrTag_M4MuxTimingDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_IPMP_ToolsListDescrTag:
+        tmp_descr = descr.ipmptoollstdescr.IPMPToolListDescriptor(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_IPMP_ToolTag:
+        tmp_descr = descr.ipmptool.IPMPTool(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_M4MuxTimingDescrTag:
         pass
-    elif descr_tag == DescrTag_M4MuxCodeTableDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_M4MuxCodeTableDescrTag:
         pass
-    elif descr_tag == DescrTag_ExtSLConfigDescrTag:
-        descr = ExtendedSLConfigDescriptor(offset, descr_tag)
-    elif descr_tag == DescrTag_M4MuxBufferSizeDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_ExtSLConfigDescrTag:
+        tmp_descr = descr.extslcfgdescr.ExtendedSLConfigDescriptor(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_M4MuxBufferSizeDescrTag:
         pass
-    elif descr_tag == DescrTag_M4MuxIdentDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_M4MuxIdentDescrTag:
         pass
-    elif descr_tag == DescrTag_DependencyPointerTag:
-        descr = DependencyPointer(offset, descr_tag)
-    elif descr_tag == DescrTag_DependencyMarkerTag:
-        descr = MarkerDescriptor(offset, descr_tag)
-    elif descr_tag == DescrTag_M4MuxChannelDescrTag:
+    elif descr_tag == descr.descrtagdef.DescrTag_DependencyPointerTag:
+        tmp_descr = descr.dependptr.DependencyPointer(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_DependencyMarkerTag:
+        tmp_descr = descr.markerdescr.MarkerDescriptor(offset, descr_tag)
+    elif descr_tag == descr.descrtagdef.DescrTag_M4MuxChannelDescrTag:
         pass
-    elif descr_tag == DescrTag_ISOReserved6A:
+    elif descr_tag == descr.descrtagdef.DescrTag_ISOReserved6A:
         pass
-    elif descr_tag == DescrTag_ISOReservedBF:
+    elif descr_tag == descr.descrtagdef.DescrTag_ISOReservedBF:
         pass
-    elif descr_tag == DescrTag_UserPrivateC0:
+    elif descr_tag == descr.descrtagdef.DescrTag_UserPrivateC0:
         pass
-    elif descr_tag == DescrTag_UserPrivateFE:
+    elif descr_tag == descr.descrtagdef.DescrTag_UserPrivateFE:
         pass
-    elif descr_tag == DescrTag_ForbiddenFF:
+    elif descr_tag == descr.descrtagdef.DescrTag_ForbiddenFF:
         pass
 
-    return descr
+    return tmp_descr

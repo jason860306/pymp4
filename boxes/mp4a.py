@@ -19,7 +19,7 @@ import mp4boxes
 from audio_sample_entry import *
 
 
-class Mp4a(object, AudioSampleEntry):
+class Mp4a(AudioSampleEntry, object):
     """
     5.6.1 Syntax
     aligned(8) class Esds extends FullBox(‘esds’, version = 0, 0) {
@@ -74,8 +74,8 @@ class Mp4a(object, AudioSampleEntry):
     ES — is the ES Descriptor for this stream.
     """
 
-    def __init__(self):
-        super(Mp4a, self).__init__()
+    def __init__(self, offset=0, box=None):
+        super(Mp4a, self).__init__(offset, box)
         self.esds = None
 
     def decode(self, file_strm):
@@ -83,16 +83,16 @@ class Mp4a(object, AudioSampleEntry):
             print "file_strm is None"
             return file_strm
 
-        file_strm = Box.decode(self, file_strm)
+        file_strm = super(Mp4a, self).decode(file_strm)
 
-        left_size = Box.Size(self) - Box.GetLength(self)
+        left_size = self.Size() - self.GetLength()
         while left_size > 0:
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)
             if tmp_box.type == FourCCMp4Esds:
-                self.mvhd = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
-                file_strm = self.mvhd.decode(file_strm)
-                self.offset += self.mvhd.Size()
+                self.esds = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
+                file_strm = self.esds.decode(file_strm)
+                self.offset += self.esds.Size()
             else:
                 file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
                 self.offset += tmp_box.Size()

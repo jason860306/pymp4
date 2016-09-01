@@ -95,7 +95,7 @@ class MediaSegmentEntry(object):
         return logstr
 
 
-class Elst(object, FullBox):
+class Elst(FullBox, object):
     """
     aligned(8) class EditListBox extends FullBox(‘elst’, version, 0) {
         unsigned int(32) entry_count;

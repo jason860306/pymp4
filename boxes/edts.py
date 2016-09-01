@@ -18,7 +18,7 @@ import mp4boxes
 from box import *
 
 
-class Edts(object, Box):
+class Edts(Box, object):
     """
     aligned(8) class EditBox extends Box(‘edts’) {
     }
@@ -37,7 +37,7 @@ class Edts(object, Box):
 
         file_strm = Box.decode(self, file_strm)
 
-        left_size = Box.Size(self) - Box.GetLength(self)
+        left_size = self.Size() - self.GetLength()
         while left_size > 0:
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)

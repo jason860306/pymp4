@@ -74,9 +74,12 @@ def parse_descr_len(strm):
     hdr_size = 0
     num_bytes = Int32ByteLen
     tmp_bytes = 0
-    while tmp_bytes & 0x80 != 0 and hdr_size < num_bytes:
+    while True:
         tmp_bytes = strm.read_uint8()
         descr_len = (descr_len << 7) | (tmp_bytes & 0x7F)
         hdr_size += 1
+
+        if not ((tmp_bytes & 0x80) != 0 and hdr_size < num_bytes):
+            break
 
     return descr_len, hdr_size

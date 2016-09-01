@@ -19,7 +19,7 @@ import os
 from fullbox import *
 
 
-class Co64(object, FullBox):
+class Co64(FullBox, object):
     """
     aligned(8) class ChunkLargeOffsetBox extends FullBox(‘co64’, version = 0, 0) {
         unsigned int(32) entry_count;

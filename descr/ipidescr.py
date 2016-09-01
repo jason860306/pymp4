@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from base_descriptor import *
 
 
-class IPIDescrPtr(object, BaseDescriptor):
+class IPIDescrPtr(BaseDescriptor, object):
     """
     7.2.6.12.1 Syntax
     class IPI_DescrPointer extends BaseDescriptor

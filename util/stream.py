@@ -11,18 +11,16 @@ __date__ = '2016/6/23 17:33'
 __license__ = "Public Domain"
 __version__ = '$Revision$'
 __email__ = "jason860306@gmail.com"
-
-
 # '$Source$'
+
+
+from pymp4def import (LittleEndian)
 
 
 class Stream(object):
     """
     some utility function
     """
-
-    LittleEndian = 0
-    BigEndian = 1
 
     def __init__(self, endian=LittleEndian):
         self.endian = endian

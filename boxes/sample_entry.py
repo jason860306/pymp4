@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from box import *
 
 
-class SampeEntry(object, Box):
+class SampeEntry(Box, object):
     """
     aligned(8) abstract class SampleEntry (unsigned int(32) format) extends Box(format){
         const unsigned int(8)[6] reserved = 0;

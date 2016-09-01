@@ -19,7 +19,7 @@ from fullbox import *
 from sample_entry import *
 
 
-class Stsd(object, FullBox):
+class Stsd(FullBox, object):
     """
     aligned(8) class SampleDescriptionBox (unsigned int(32) handler_type)
         extends FullBox('stsd', version, 0){

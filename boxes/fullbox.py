@@ -20,7 +20,7 @@ from box import Box
 from pymp4def import *
 
 
-class FullBox(object, Box):
+class FullBox(Box, object):
     """
     aligned(8) class FullBox(unsigned int(32) boxtype, unsigned int(8) v, bit(24) f) extends Box(boxtype) {
         unsigned int(8) version = v;

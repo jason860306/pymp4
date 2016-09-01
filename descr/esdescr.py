@@ -5,7 +5,6 @@
 """
 
 """
-from mp4descr import create_descr
 
 __file__ = '$Id$'
 __author__ = 'szj0306'  # 志杰
@@ -17,12 +16,13 @@ __email__ = 'jason860306@gmail.com'
 
 
 from deccfgdescr import *
-from odproflevelindicdef import *
 from extslcfgdescr import *
 from ipidescr import *
+from mp4descr import *
+from odproflevelindicdef import *
 
 
-class ESDescriptor(object, BaseDescriptor):
+class ESDescriptor(BaseDescriptor, object):
     """
     7.2.6.5.1 Syntax
     class ES_Descriptor extends BaseDescriptor
@@ -320,7 +320,7 @@ class ESDescriptor(object, BaseDescriptor):
             self.OCR_ES_ID = file_strm.read_int16()
             self.offset += UInt16ByteLen
 
-        tmpDecCfgDescr = DecoderConfigDescriptor()
+        tmpDecCfgDescr = DecoderConfigDescriptor(self.offset)
         file_strm = tmpDecCfgDescr.decode(file_strm)
         if file_strm is None:
             return file_strm
@@ -329,22 +329,29 @@ class ESDescriptor(object, BaseDescriptor):
 
         tmpSLCfgDescr = None
         if self.odProfLevelIndic == OdProfLevelIndic_ReservedISONoSLExtension:
-            tmpSLCfgDescr = SLConfigDescriptor()
+            tmpSLCfgDescr = SLConfigDescriptor(self.offset)
         else:
-            tmpSLCfgDescr = ExtendedSLConfigDescriptor()
+            tmpSLCfgDescr = ExtendedSLConfigDescriptor(self.offset)
         file_strm = tmpSLCfgDescr.decode(file_strm)
         if file_strm is None:
             return file_strm
         self.slCfgDescr = tmpSLCfgDescr
         self.offset += self.slCfgDescr.size()
 
-        left_size = self.size() - self.offset
+        left_size = self.size() - (self.offset - self.descr_offset)
         while left_size > 0:
-            tmp_descr = BaseDescriptor()
-            if tmp_descr.decode(file_strm) is None:
+            tmp_descr = BaseDescriptor(self.offset)
+            if tmp_descr.peek(file_strm) is None:
+                return file_strm
+            tmp_descr = create_descr(self.offset, tmp_descr.descr_tag)
+            file_strm = tmp_descr.decode(file_strm)
+            if file_strm is None:
+                print "file_strm is None"
                 return file_strm
             self.offset += tmp_descr.size()
             self._add_desc(tmp_descr)
+
+            left_size = self.size() - (self.offset - self.descr_offset)
 
         return file_strm
 
@@ -417,7 +424,6 @@ class ESDescriptor(object, BaseDescriptor):
         :param tmp_descr:
         :return:
         """
-        descr = create_descr(self.offset, tmp_descr.descr_tag)
         if DescrTag_IPI_DescrPointerTag == tmp_descr.descr_tag:
             self.ipiPtr.append(descr)
         elif DescrTag_ContentIdentDescrTag == tmp_descr.descr_tag:

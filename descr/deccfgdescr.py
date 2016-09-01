@@ -15,10 +15,11 @@ __email__ = 'jason860306@gmail.com'
 # '$Source$'
 
 
+import mp4descr
 from extprofleveldescr import *
 
 
-class DecoderConfigDescriptor(object, BaseDescriptor):
+class DecoderConfigDescriptor(BaseDescriptor, object):
     """
     7.2.6.6.1 Syntax
     class DecoderConfigDescriptor extends BaseDescriptor
@@ -77,7 +78,7 @@ class DecoderConfigDescriptor(object, BaseDescriptor):
     """
 
     def __init__(self, offset=0, descr_tag=DescrTag_DecoderConfigDescrTag):
-        super(DecoderConfigDescriptor, self).__init__(self, offset, descr_tag)
+        super(DecoderConfigDescriptor, self).__init__(offset, descr_tag)
 
         self.objectTypeIndication = 0
         self.streamType = 0
@@ -228,7 +229,121 @@ class DecoderConfigDescriptor(object, BaseDescriptor):
         :param file_strm:
         :return:
         """
+
+        file_strm = super(DecoderConfigDescriptor, self).decode(file_strm)
+        if file_strm is None:
+            # file_strm.seek(strm_pos, os.SEEK_SET)
+            return file_strm
+
+        self.objectTypeIndication = file_strm.read_uint8()
+        self.offset += UInt8ByteLen
+
+        tmp_byte = file_strm.read_uint8()
+        self.streamType = tmp_byte & 0xFC >> 2
+        self.upStream = tmp_byte & 0x02 >> 1
+        self.reserved = tmp_byte & 0x01  # 0x1
+        self.offset += UInt8ByteLen
+
+        self.bufferSizeDB = file_strm.read_byte(3)
+        self.offset += 3
+
+        self.maxBitrate = file_strm.read_uint32()
+        self.offset += UInt32ByteLen
+
+        self.avgBitrate = file_strm.read_uint32()
+        self.offset += UInt32ByteLen
+
+        left_size = self.size() - (self.offset - self.descr_offset)
+        while left_size > 0:
+            tmp_descr = BaseDescriptor(self.offset)
+            if tmp_descr.peek(file_strm) is None:
+                return file_strm
+            tmp_descr = mp4descr.create_descr(self.offset, tmp_descr.descr_tag)
+            file_strm = tmp_descr.decode(file_strm)
+            if file_strm is None:
+                print "file_strm is None"
+                return file_strm
+            self.offset += tmp_descr.size()
+            self._add_desc(tmp_descr)
+
+            left_size = self.size() - (self.offset - self.descr_offset)
+
         return file_strm
+
+    def _add_desc(self, tmp_descr):
+        """
+        :brief add a descriptor, source code from gpac(be famous as mp4box)
+        :detail:
+            GF_Err AddDescriptorToESD(GF_ESD *esd, GF_Descriptor *desc)
+            {
+                if (!esd || !desc) return GF_BAD_PARAM;
+
+                switch (desc->tag) {
+                case GF_ODF_DCD_TAG:
+                    if (esd->decoderConfig) return GF_ODF_INVALID_DESCRIPTOR;
+                    esd->decoderConfig = (GF_DecoderConfig *) desc;
+                    break;
+
+                case GF_ODF_SLC_TAG:
+                    if (esd->slConfig) return GF_ODF_INVALID_DESCRIPTOR;
+                    esd->slConfig = (GF_SLConfig *) desc;
+                    break;
+
+                case GF_ODF_MUXINFO_TAG:
+                    gf_list_add(esd->extensionDescriptors, desc);
+                    break;
+
+                case GF_ODF_LANG_TAG:
+                    if (esd->langDesc) return GF_ODF_INVALID_DESCRIPTOR;
+                    esd->langDesc = (GF_Language *) desc;
+                    break;
+
+            #ifndef GPAC_MINIMAL_ODF
+                //the GF_ODF_ISOM_IPI_PTR_TAG is only used in the file format and replaces GF_ODF_IPI_PTR_TAG...
+                case GF_ODF_ISOM_IPI_PTR_TAG:
+                case GF_ODF_IPI_PTR_TAG:
+                    if (esd->ipiPtr) return GF_ODF_INVALID_DESCRIPTOR;
+                    esd->ipiPtr = (GF_IPIPtr *) desc;
+                    break;
+
+                case GF_ODF_QOS_TAG:
+                    if (esd->qos) return GF_ODF_INVALID_DESCRIPTOR;
+                    esd->qos  =(GF_QoS_Descriptor *) desc;
+                    break;
+
+                case GF_ODF_CI_TAG:
+                case GF_ODF_SCI_TAG:
+                    return gf_list_add(esd->IPIDataSet, desc);
+
+                //we use the same struct for v1 and v2 IPMP DPs
+                case GF_ODF_IPMP_PTR_TAG:
+                    return gf_list_add(esd->IPMPDescriptorPointers, desc);
+
+                case GF_ODF_REG_TAG:
+                    if (esd->RegDescriptor) return GF_ODF_INVALID_DESCRIPTOR;
+                    esd->RegDescriptor =(GF_Registration *) desc;
+                    break;
+            #endif
+
+                default:
+                    if ( (desc->tag >= GF_ODF_EXT_BEGIN_TAG) &&
+                            (desc->tag <= GF_ODF_EXT_END_TAG) ) {
+                        return gf_list_add(esd->extensionDescriptors, desc);
+                    }
+                    gf_odf_delete_descriptor(desc);
+                    return GF_OK;
+                }
+
+                return GF_OK;
+            }
+        :param tmp_descr:
+        :return:
+        """
+
+        if DescrTag_DecSpecificInfoTag == tmp_descr.descr_tag:
+            self.decSpecificInfo.append(tmp_descr)
+        elif DescrTag_profileLevelIndicationIndexDescrTag == tmp_descr.descr_tag:
+            self.profileLevelIndicationIndexDescr.append(tmp_descr)
 
     def size(self):
         return super(DecoderConfigDescriptor, self).size()

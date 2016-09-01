@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from slcfgdescr import *
 
 
-class ExtendedSLConfigDescriptor(object, SLConfigDescriptor):
+class ExtendedSLConfigDescriptor(SLConfigDescriptor, object):
     """
     7.3.2.3.1 Syntax
     class SLConfigDescriptor extends BaseDescriptor

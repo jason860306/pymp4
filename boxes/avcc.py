@@ -16,7 +16,7 @@ __email__ = "jason860306@gmail.com"
 
 
 from box import *
-from util.filestream import *
+
 
 class ParameterSet(object):
     """
@@ -58,7 +58,7 @@ class ParameterSet(object):
         return logstr
 
 
-class SequenceParameterSet(object, ParameterSet):
+class SequenceParameterSet(ParameterSet, object):
     """
     unsigned int(16) sequenceParameterSetLength ;
     bit(8*sequenceParameterSetLength) sequenceParameterSetNALUnit;
@@ -71,7 +71,7 @@ class SequenceParameterSet(object, ParameterSet):
         return ParameterSet.decode(self, file_strm)
 
 
-class PictureParameterSet(object, ParameterSet):
+class PictureParameterSet(ParameterSet, object):
     """
     unsigned int(16) pictureParameterSetLength;
     bit(8*pictureParameterSetLength) pictureParameterSetNALUnit;
@@ -84,7 +84,7 @@ class PictureParameterSet(object, ParameterSet):
         return ParameterSet.decode(self, file_strm)
 
 
-class SequenceParameterSetExt(object, ParameterSet):
+class SequenceParameterSetExt(ParameterSet, object):
     """
     unsigned int(16) sequenceParameterSetExtLength;
     bit(8*sequenceParameterSetExtLength) sequenceParameterSetExtNALUnit;
@@ -457,7 +457,7 @@ class AVCDecoderConfigurationRecord(object):
         return logstr
 
 
-class AvcC(object, Box):
+class AvcC(Box, object):
     """
     // Visual Sequences
     class AvcC extends Box(‘avcC’) {

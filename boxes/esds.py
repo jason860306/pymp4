@@ -19,7 +19,7 @@ from descr.esdescr import *
 from fullbox import *
 
 
-class Esds(object, FullBox):
+class Esds(FullBox, object):
     """
     5.6.1 Syntax
     aligned(8) class Esds extends FullBox(‘esds’, version = 0, 0) {
@@ -74,8 +74,8 @@ class Esds(object, FullBox):
     ES — is the ES Descriptor for this stream.
     """
 
-    def __init__(self):
-        super(Esds, self).__init__()
+    def __init__(self, offset=0, box=None):
+        super(Esds, self).__init__(offset, box)
         self.esDescr = None  # ES_Descriptor
 
     def decode(self, file_strm):
@@ -83,11 +83,20 @@ class Esds(object, FullBox):
             print "file_strm is None"
             return file_strm
 
-        file_strm = Box.decode(self, file_strm)
+        file_strm = super(Esds, self).decode(file_strm)
 
-        left_size = Box.Size(self) - Box.GetLength(self)
-        self.data = file_strm.read_byte(left_size)
-        self.offset += Int8ByteLen * left_size
+        left_size = self.Size() - self.GetLength()
+        while left_size > 0:
+            tmp_descr = BaseDescriptor(self.offset)
+            if tmp_descr.peek(file_strm) is None:
+                print "file_strm is None"
+                return file_strm
+            self.esDescr = create_descr(self.offset, tmp_descr.descr_tag)
+            file_strm = self.esDescr.decode(file_strm)
+            if file_strm is None:
+                print "file_strm is None"
+                return file_strm
+            self.offset += tmp_descr.size()
 
         tmp_size = self.offset - self.box_offset
         if tmp_size != self.Size():

@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from base_descriptor import *
 
 
-class OCIDescriptor(object, BaseDescriptor):
+class OCIDescriptor(BaseDescriptor, object):
     """
     7.2.6.18.2.1 Syntax
     abstract class OCI_Descriptor extends BaseDescriptor

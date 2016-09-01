@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from base_descriptor import *
 
 
-class IPMPTool(object, BaseDescriptor):
+class IPMPTool(BaseDescriptor, object):
     """
     7.2.6.14.3.2.1 Syntax
     class IPMP_Tool extends BaseDescriptor

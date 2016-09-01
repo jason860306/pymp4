@@ -18,13 +18,13 @@ import ctypes
 import os
 import struct
 
-from pymp4def import (LittleEndian, Int8ByteLen, Int16ByteLen,
+from pymp4def import (Int8ByteLen, Int16ByteLen,
                       Int32ByteLen, Int64ByteLen, UInt8ByteLen,
                       UInt16ByteLen, UInt32ByteLen, UInt64ByteLen)
 from stream import *
 
 
-class ByteStream(object, Stream):
+class ByteStream(Stream, object):
     """
     some utility function
     """
@@ -33,7 +33,7 @@ class ByteStream(object, Stream):
         if byte_data is None:
             print "byte_strm is None"
             return
-        Stream.__init__(self, endian)
+        super(ByteStream, self).__init__(self, endian)
         self.byte_offset = 0
         self.byte_data = byte_data
         self.byte_size = byte_size

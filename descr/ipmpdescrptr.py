@@ -18,7 +18,7 @@ __email__ = 'jason860306@gmail.com'
 from base_descriptor import *
 
 
-class IPMPDescrPointer(object, BaseDescriptor):
+class IPMPDescrPointer(BaseDescriptor, object):
     """
     7.2.6.13.1 Syntax
     class IPMP_DescriptorPointer extends BaseDescriptor

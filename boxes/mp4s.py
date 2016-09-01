@@ -19,7 +19,7 @@ import mp4boxes
 from sample_entry import *
 
 
-class Mp4s(object, SampeEntry):
+class Mp4s(SampeEntry, object):
     """
     5.6.1 Syntax
     aligned(8) class Esds extends FullBox(‘esds’, version = 0, 0) {
@@ -74,7 +74,8 @@ class Mp4s(object, SampeEntry):
     ES — is the ES Descriptor for this stream.
     """
 
-    def __init__(self):
+    def __init__(self, offset=0, box=None):
+        super(Mp4s, self).__init__(offset, box)
         self.esds = None
 
     def decode(self, file_strm):
@@ -84,7 +85,7 @@ class Mp4s(object, SampeEntry):
 
         file_strm = Box.decode(self, file_strm)
 
-        left_size = Box.Size(self) - Box.GetLength(self)
+        left_size = self.Size() - self.GetLength()
         while left_size > 0:
             tmp_box = Box()
             file_strm = tmp_box.peek(file_strm)

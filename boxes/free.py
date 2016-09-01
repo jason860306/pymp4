@@ -17,7 +17,7 @@ __email__ = "jason860306@gmail.com"
 from box import *
 
 
-class Free(object, Box):
+class Free(Box, object):
     """
     aligned(8) class FreeSpaceBox extends Box(free_type) {
         unsigned int(8) data[];
@@ -38,7 +38,7 @@ class Free(object, Box):
 
         file_strm = Box.decode(self, file_strm)
 
-        left_size = Box.Size(self) - Box.GetLength(self)
+        left_size = self.Size() - self.GetLength()
         self.data = file_strm.read_byte(left_size)
         self.offset += Int8ByteLen * left_size
 

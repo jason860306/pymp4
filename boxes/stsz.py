@@ -19,7 +19,7 @@ import os
 from fullbox import *
 
 
-class Stsz(object, FullBox):
+class Stsz(FullBox, object):
     """
     aligned(8) class SampleSizeBox extends FullBox(‘stsz’, version = 0, 0) {
         unsigned int(32) sample_size;

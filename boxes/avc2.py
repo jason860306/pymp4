@@ -18,7 +18,7 @@ import mp4boxes
 from visual_sample_entry import *
 
 
-class Avc2(object, VisualSampleEntry):
+class Avc2(VisualSampleEntry, object):
     """
     class AvcC extends Box(‘avcC’) {
         AVCDecoderConfigurationRecord() AVCConfig;

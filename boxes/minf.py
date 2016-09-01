@@ -18,7 +18,7 @@ import mp4boxes
 from box import *
 
 
-class Minf(object, Box):
+class Minf(Box, object):
     """
     aligned(8) class MediaInformationBox extends Box(‘minf’) {
     }

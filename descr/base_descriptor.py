@@ -59,7 +59,7 @@ class BaseDescriptor(object):
         self.descr_tag = descr_tag
         self.sizeOfInstance = 0
         self.hdr_size = 0
-        self.fullname = DescrTagFullName[self.descr_tag]
+        self.fullname = ''
 
     def decode(self, file_strm):
         if file_strm is None:
@@ -68,6 +68,9 @@ class BaseDescriptor(object):
 
         self.descr_tag = file_strm.read_int8()
         self.offset += UInt8ByteLen
+
+        self.fullname = DescrTagFullName[self.descr_tag]
+
         self.sizeOfInstance, self.hdr_size = parse_descr_len(file_strm)
         self.offset += self.hdr_size
 
@@ -79,11 +82,17 @@ class BaseDescriptor(object):
             return file_strm
         self.descr_tag = file_strm.read_uint8()
         self.sizeOfInstance, self.hdr_size = parse_descr_len(file_strm)
-        file_strm.seek(self.size() * -1, os.SEEK_CUR)
+        file_strm.seek(self.length() * -1, os.SEEK_CUR)
         return file_strm
 
     def size(self):
-        return self.hdr_size + self.sizeOfInstance
+        return self.sizeOfInstance + self.length()
+
+    def length(self):
+        hdr_size_ = self.hdr_size
+        tag_size_ = 1
+        size_ = hdr_size_ + tag_size_
+        return size_
 
     def dump(self):
         dump_info = {}

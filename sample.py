@@ -33,7 +33,7 @@ class Sample(object):
         return logstr
 
 
-class VideoSample(object, Sample):
+class VideoSample(Sample, object):
     """
     a video frame
     """
@@ -46,7 +46,7 @@ class VideoSample(object, Sample):
         return logstr
 
 
-class AudioSample(object, Sample):
+class AudioSample(Sample, object):
     """
     a audio sample
     """

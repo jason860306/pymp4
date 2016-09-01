@@ -18,7 +18,7 @@ from box import *
 from pymp4def import *
 
 
-class Ftyp(object, Box):
+class Ftyp(Box, object):
     """
     aligned(8) class FileTypeBox extends Box(‘ftyp’) {
         unsigned int(32) major_brand;
@@ -54,7 +54,7 @@ class Ftyp(object, Box):
         self.minor_brand = file_strm.read_uint32()
         self.offset += UInt32ByteLen
 
-        left_size = Box.Size(self) - Box.GetLength(self)
+        left_size = self.Size() - self.GetLength()
         left_size -= UInt32ByteLen * 2
         count = left_size / UInt32ByteLen
         for idx in range(0, count):
