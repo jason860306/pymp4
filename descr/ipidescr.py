@@ -47,11 +47,19 @@ class IPIDescrPtr(BaseDescriptor, object):
         self.IPI_ES_ID = 0
 
     def decode(self, file_strm):
+        file_strm = super(IPIDescrPtr, self).decode(file_strm)
+        if file_strm is None:
+            # file_strm.seek(strm_pos, os.SEEK_SET)
+            return file_strm
+
         return file_strm
 
     def dump(self):
         dump_info = super(IPIDescrPtr, self).dump()
         return dump_info
+
+    def size(self):
+        return super(IPIDescrPtr, self).size()
 
     def __str__(self):
         log_str = super(IPIDescrPtr, self).__str__()

@@ -23,7 +23,7 @@ class ObjectDescriptorBase(BaseDescriptor, object):
     7.2.6.2.1 Syntax
     abstract class ObjectDescriptorBase extends BaseDescriptor
         : bit(8) tag=[ObjectDescrTag..InitialObjectDescrTag] {
-		// empty. To be filled by classes extending this class.
+        // empty. To be filled by classes extending this class.
     }
     7.2.6.2.2 Semantics
     This is an abstract base class for the different types of
@@ -33,4 +33,23 @@ class ObjectDescriptorBase(BaseDescriptor, object):
     """
 
     def __init__(self, descr_tag=DescrTag_ObjectDescrTag):
-        BaseDescriptor.__init__(self, descr_tag)
+        super(ObjectDescriptorBase, self).__init__(descr_tag)
+
+    def decode(self, file_strm):
+        file_strm = super(ObjectDescriptorBase, self).decode(file_strm)
+        if file_strm is None:
+            # file_strm.seek(strm_pos, os.SEEK_SET)
+            return file_strm
+
+        return file_strm
+
+    def dump(self):
+        dump_info = super(ObjectDescriptorBase, self).dump()
+        return dump_info
+
+    def size(self):
+        return super(ObjectDescriptorBase, self).size()
+
+    def __str__(self):
+        log_str = super(ObjectDescriptorBase, self).__str__()
+        return log_str

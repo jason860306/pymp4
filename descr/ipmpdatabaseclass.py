@@ -51,3 +51,17 @@ class IPMPDataBaseClass(object):
     def __init__(self):
         self.version = 0
         self.dataId = 0
+
+    def decode(self, file_strm):
+        return file_strm
+
+    def dump(self):
+        dump_info = {}
+        return dump_info
+
+    def size(self):
+        return 0
+
+    def __str__(self):
+        log_str = ""
+        return log_str

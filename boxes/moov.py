@@ -169,7 +169,7 @@ class Moov(Box, object):
         trk = self.get_track(track_type)
         chunk_offset_lst = self.get_chunk_offset_list(track_type)
         if chunk_idx >= len(chunk_offset_lst):
-            pass  # raise
+            return  # raise
         chunk_offset = chunk_offset_lst[chunk_idx]
         sample_offset = chunk_offset
         for idx in trk.chunk_sample_index_diff(chunk_idx, sample_idx):

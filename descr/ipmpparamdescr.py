@@ -74,3 +74,22 @@ class IPMPParamDescriptor(IPMPDataBaseClass, object):
         self.minorVer = 0
         self.numOfDesc = 0
         self.descs = []  # for i in self.numOfDesc
+
+    def decode(self, file_strm):
+        file_strm = super(IPMPParamDescriptor, self).decode(file_strm)
+        if file_strm is None:
+            # file_strm.seek(strm_pos, os.SEEK_SET)
+            return file_strm
+
+        return file_strm
+
+    def dump(self):
+        dump_info = super(IPMPParamDescriptor, self).dump()
+        return dump_info
+
+    def size(self):
+        return super(IPMPParamDescriptor, self).size()
+
+    def __str__(self):
+        log_str = super(IPMPParamDescriptor, self).__str__()
+        return log_str

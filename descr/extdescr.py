@@ -38,3 +38,22 @@ class ExtDescriptor(BaseDescriptor, object):
 
     def __init__(self, descr_tag=DescrTag_ExtensionProfileLevelDescrTag):
         super(ExtDescriptor, self).__init__(descr_tag)
+
+    def decode(self, file_strm):
+        file_strm = super(ExtDescriptor, self).decode(file_strm)
+        if file_strm is None:
+            # file_strm.seek(strm_pos, os.SEEK_SET)
+            return file_strm
+
+        return file_strm
+
+    def size(self):
+        return super(ExtDescriptor, self).size()
+
+    def dump(self):
+        dump_info = super(ExtDescriptor, self).dump()
+        return dump_info
+
+    def __str__(self):
+        log_str = super(ExtDescriptor, self).__str__()
+        return log_str

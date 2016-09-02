@@ -205,7 +205,7 @@ class DecoderSpecificInfo(BaseDescriptor, object):
         if file_strm is None:
             # file_strm.seek(strm_pos, os.SEEK_SET)
             return file_strm
-        self.opaque_data = file_strm.read_byte(self.size())
+        self.opaque_data = file_strm.read_byte(self.sizeOfInstance)
         self.offset += self.size()
 
         return file_strm

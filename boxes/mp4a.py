@@ -85,22 +85,15 @@ class Mp4a(AudioSampleEntry, object):
 
         file_strm = super(Mp4a, self).decode(file_strm)
 
-        left_size = self.Size() - self.GetLength()
-        while left_size > 0:
-            tmp_box = Box()
-            file_strm = tmp_box.peek(file_strm)
-            if tmp_box.type == FourCCMp4Esds:
-                self.esds = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
-                file_strm = self.esds.decode(file_strm)
-                self.offset += self.esds.Size()
-            else:
-                file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
-                self.offset += tmp_box.Size()
-            left_size -= tmp_box.Size()
-
-        tmp_size = self.offset - self.box_offset
-        if tmp_size != self.Size():
-            file_strm.seek(self.Size() - tmp_size, os.SEEK_CUR)
+        tmp_box = Box()
+        file_strm = tmp_box.peek(file_strm)
+        if tmp_box.type == FourCCMp4Esds:
+            self.esds = mp4boxes.MP4Boxes[tmp_box.type](self.offset, tmp_box)
+            file_strm = self.esds.decode(file_strm)
+            self.offset += self.esds.Size()
+        else:
+            file_strm.seek(tmp_box.Size(), os.SEEK_CUR)
+            self.offset += tmp_box.Size()
 
         return file_strm
 

@@ -15,7 +15,6 @@ __email__ = 'jason860306@gmail.com'
 # '$Source$'
 
 
-from descrtagdef import *
 from slextdescr import *
 
 
@@ -74,3 +73,22 @@ class DependencyPointer(SLExtensionDescriptor, object):
         self.hasESID = 0
         self.dependLen = 0
         self.ESID = 0  # if (hasESID)
+
+    def decode(self, file_strm):
+        file_strm = super(DependencyPointer, self).decode(file_strm)
+        if file_strm is None:
+            # file_strm.seek(strm_pos, os.SEEK_SET)
+            return file_strm
+
+        return file_strm
+
+    def size(self):
+        return super(DependencyPointer, self).size()
+
+    def dump(self):
+        dump_info = super(DependencyPointer, self).dump()
+        return dump_info
+
+    def __str__(self):
+        log_str = super(DependencyPointer, self).__str__()
+        return log_str

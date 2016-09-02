@@ -85,22 +85,16 @@ class Esds(FullBox, object):
 
         file_strm = super(Esds, self).decode(file_strm)
 
-        left_size = self.Size() - self.GetLength()
-        while left_size > 0:
-            tmp_descr = BaseDescriptor(self.offset)
-            if tmp_descr.peek(file_strm) is None:
-                print "file_strm is None"
-                return file_strm
-            self.esDescr = create_descr(self.offset, tmp_descr.descr_tag)
-            file_strm = self.esDescr.decode(file_strm)
-            if file_strm is None:
-                print "file_strm is None"
-                return file_strm
-            self.offset += tmp_descr.size()
-
-        tmp_size = self.offset - self.box_offset
-        if tmp_size != self.Size():
-            file_strm.seek(self.Size() - tmp_size, os.SEEK_CUR)
+        tmp_descr = BaseDescriptor(self.offset)
+        if tmp_descr.peek(file_strm) is None:
+            print "file_strm is None"
+            return file_strm
+        self.esDescr = create_descr(self.offset, tmp_descr.descr_tag)
+        file_strm = self.esDescr.decode(file_strm)
+        if file_strm is None:
+            print "file_strm is None"
+            return file_strm
+        self.offset += tmp_descr.size()
 
         return file_strm
 

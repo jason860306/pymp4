@@ -167,6 +167,11 @@ class ExtendedSLConfigDescriptor(SLConfigDescriptor, object):
         self.slextDescr = []  # an array of ExtensionDescriptors
 
     def decode(self, file_strm):
+        file_strm = super(ExtendedSLConfigDescriptor, self).decode(file_strm)
+        if file_strm is None:
+            # file_strm.seek(strm_pos, os.SEEK_SET)
+            return file_strm
+
         return file_strm
 
     def dump(self):

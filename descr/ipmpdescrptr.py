@@ -79,3 +79,22 @@ class IPMPDescrPointer(BaseDescriptor, object):
         self.ipmpDescrId = 0
         self.ipmpDescrIdEx = 0  # if (IPMP_DescriptorID == 0xff)
         self.ipmpESId = 0  # if (IPMP_DescriptorID == 0xff)
+
+    def decode(self, file_strm):
+        file_strm = super(IPMPDescrPointer, self).decode(file_strm)
+        if file_strm is None:
+            # file_strm.seek(strm_pos, os.SEEK_SET)
+            return file_strm
+
+        return file_strm
+
+    def dump(self):
+        dump_info = super(IPMPDescrPointer, self).dump()
+        return dump_info
+
+    def size(self):
+        return super(IPMPDescrPointer, self).size()
+
+    def __str__(self):
+        log_str = super(IPMPDescrPointer, self).__str__()
+        return log_str

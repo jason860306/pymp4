@@ -33,7 +33,7 @@ class ByteStream(Stream, object):
         if byte_data is None:
             print "byte_strm is None"
             return
-        super(ByteStream, self).__init__(self, endian)
+        super(ByteStream, self).__init__(endian)
         self.byte_offset = 0
         self.byte_data = byte_data
         self.byte_size = byte_size

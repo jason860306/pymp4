@@ -35,3 +35,22 @@ class OCIDescriptor(BaseDescriptor, object):
 
     def __init__(self, descr_tag=DescrTag_OCIDescrTagStartRange):
         super(OCIDescriptor, self).__init__(descr_tag)
+
+    def decode(self, file_strm):
+        file_strm = super(OCIDescriptor, self).decode(file_strm)
+        if file_strm is None:
+            # file_strm.seek(strm_pos, os.SEEK_SET)
+            return file_strm
+
+        return file_strm
+
+    def dump(self):
+        dump_info = super(OCIDescriptor, self).dump()
+        return dump_info
+
+    def size(self):
+        return super(OCIDescriptor, self).size()
+
+    def __str__(self):
+        log_str = super(OCIDescriptor, self).__str__()
+        return log_str

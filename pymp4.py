@@ -48,24 +48,20 @@ class PyMp4(object):
             file_path = os.path.splitext(self.filename)
             out_file = file_path[0] + "." + self.root.get_major_brand()
             for trk in self.root.get_tracks():
-                if trk.type != VideTrackType:
-                    continue
-                with open(out_file, 'wb') as es_file:
-                    # 1. write sps NAL
-                    for sps in self.root.get_sps(VideTrackType):
-                        es_file.write(''.join(H264_START_CODE))
-                        es_file.write(sps)
+                tmp_out_file = out_file + "." + trk.type
+                with open(tmp_out_file, 'wb') as es_file:
+                    if VideTrackType == trk.type:
+                        # 1. write sps NAL
+                        for sps in self.root.get_sps(VideTrackType):
+                            es_file.write(''.join(H264_START_CODE))
+                            es_file.write(sps)
 
-                    # 2. write pps NAL
-                    for pps in self.root.get_pps(VideTrackType):
-                        es_file.write(''.join(H264_START_CODE))
-                        es_file.write(pps)
+                        # 2. write pps NAL
+                        for pps in self.root.get_pps(VideTrackType):
+                            es_file.write(''.join(H264_START_CODE))
+                            es_file.write(pps)
 
-                    # 3. write slice NAL
-                    for trk in self.root.get_tracks():
-                        if trk.type != VideTrackType:
-                            continue
-
+                        # 3. write slice NAL
                         nalu_byte_size = self.root.get_nal_len_size(VideTrackType)  # 1 or 2 or 4
                         # nalu_byte_size = NALU_BYTE_SIZE[math.log(nalu_byte_size, 2)]
 
@@ -96,6 +92,11 @@ class PyMp4(object):
                                     #             sample.offset, sample.size, self.file_strm, trk.type)
                                     #         with open(out_file + '.%s' % sample.index, 'wb') as es_file:
                                     #             es_file.write(sample_data)
+                    elif SounTrackType == trk.type:
+                        for sample in trk.get_samples():
+                            sample_data = self.root.get_sample_data(
+                                sample.offset, sample.size, self.file_strm, trk.type)
+                            es_file.write(sample_data)
 
     def dump(self, dump_type=DUMP_TYPE_JSON):
         dump_info = {}

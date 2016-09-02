@@ -90,7 +90,7 @@ class Root(object):
             track = Track(trk_type)
 
             sample_idx = 0
-            chunk_offset_lst = self.moov.get_chunk_offset_list()
+            chunk_offset_lst = self.moov.get_chunk_offset_list(trk_type)
             for i in range(len(chunk_offset_lst)):
                 sample_per_chunk = self.moov.get_sample_per_chunk(i, trk_type)
                 for j in range(sample_per_chunk):

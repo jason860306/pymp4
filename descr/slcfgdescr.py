@@ -190,6 +190,13 @@ class SLConfigDescriptor(BaseDescriptor, object):
         self.startCompositionTimeStamp = ''  # if (!useTimeStampsFlag)
 
     def decode(self, file_strm):
+        file_strm = super(SLConfigDescriptor, self).decode(file_strm)
+        if file_strm is None:
+            # file_strm.seek(strm_pos, os.SEEK_SET)
+            return file_strm
+        self.predefined = file_strm.read_uint8()
+        assert self.predefined != 0
+
         return file_strm
 
     def size(self):

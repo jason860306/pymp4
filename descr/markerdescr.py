@@ -15,7 +15,6 @@ __email__ = 'jason860306@gmail.com'
 # '$Source$'
 
 
-from descrtagdef import *
 from slextdescr import *
 
 
@@ -70,3 +69,22 @@ class MarkerDescriptor(SLExtensionDescriptor, object):
     def __init__(self, offset=0, descr_tag=DescrTag_DependencyMarkerTag):
         super(MarkerDescriptor, self).__init__(offset, descr_tag)
         self.markerLen = 0
+
+    def decode(self, file_strm):
+        file_strm = super(MarkerDescriptor, self).decode(file_strm)
+        if file_strm is None:
+            # file_strm.seek(strm_pos, os.SEEK_SET)
+            return file_strm
+
+        return file_strm
+
+    def dump(self):
+        dump_info = super(MarkerDescriptor, self).dump()
+        return dump_info
+
+    def size(self):
+        return super(MarkerDescriptor, self).size()
+
+    def __str__(self):
+        log_str = super(MarkerDescriptor, self).__str__()
+        return log_str
