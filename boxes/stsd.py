@@ -125,9 +125,9 @@ class Stsd(FullBox, object):
 
     def dump(self):
         dump_info = FullBox.dump(self)
-        dump_info['entry_count'] = self.entry_count
+        dump_info['entry_count'] = str(self.entry_count)
         if None != self.sample_entries:
-            entries = {}
+            entries = dict()
             for i in range(len(self.sample_entries)):
                 entry = self.sample_entries[i]
                 entries[entry.type] = self.sample_entries[i].dump()
@@ -139,6 +139,6 @@ class Stsd(FullBox, object):
                  "\n\t\t\t\tsample_entries = [" % \
                  (FullBox.__str__(self), self.entry_count, self.entry_count)
         for i in range(len(self.sample_entries)):
-            logstr += "\n\t\t\t\t\t%08ld. %s" % (i, self.sample_entries[i])
+            logstr += "\n\t\t\t\t\t%08ld. %s" % (i, str(self.sample_entries[i]))
         logstr += "\n\t\t\t\t]\n"
         return logstr

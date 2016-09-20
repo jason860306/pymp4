@@ -56,7 +56,7 @@ class IPMPDataBaseClass(object):
         return file_strm
 
     def dump(self):
-        dump_info = {}
+        dump_info = dict()
         return dump_info
 
     def size(self):

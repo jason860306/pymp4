@@ -77,14 +77,14 @@ class MediaSegmentEntry(object):
         return size
 
     def dump(self):
-        dump_info = {}
-        dump_info['box_offset'] = self.box_offset
-        dump_info['offset'] = self.offset
-        dump_info['version'] = self.version
-        dump_info['segment_duration'] = self.segment_duration
-        dump_info['media_time'] = self.media_time
-        dump_info['media_rate_integer'] = self.media_rate_integer
-        dump_info['media_rate_fraction'] = self.media_rate_fraction
+        dump_info = dict()
+        dump_info['box_offset'] = str(self.box_offset)
+        dump_info['offset'] = str(self.offset)
+        dump_info['version'] = str(self.version)
+        dump_info['segment_duration'] = str(self.segment_duration)
+        dump_info['media_time'] = str(self.media_time)
+        dump_info['media_rate_integer'] = str(self.media_rate_integer)
+        dump_info['media_rate_fraction'] = str(self.media_rate_fraction)
         return dump_info
 
     def __str__(self):
@@ -160,9 +160,9 @@ class Elst(FullBox, object):
 
     def dump(self):
         dump_info = FullBox.dump(self)
-        dump_info['entry_count'] = self.entry_count
+        dump_info['entry_count'] = str(self.entry_count)
         if None != self.segment_entry:
-            entries = {}
+            entries = dict()
             for i in range(len(self.segment_entry)):
                 entries['entry_{0}'.format(i)] = self.segment_entry[i].dump()
             dump_info['entries'] = entries

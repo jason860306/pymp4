@@ -127,18 +127,18 @@ class VisualSampleEntry(SampeEntry, object):
 
     def dump(self):
         dump_info = SampeEntry.dump(self)
-        dump_info['pre_defined'] = self.pre_defined
-        dump_info['reserved1'] = self.reserved1
-        dump_info['pre_defined1'] = self.pre_defined1
-        dump_info['width'] = self.width
-        dump_info['height'] = self.height
-        dump_info['horizresolution'] = self.horizresolution
-        dump_info['vertresolution'] = self.vertresolution
-        dump_info['reserved2'] = self.reserved2
-        dump_info['frame_count'] = self.frame_count
+        dump_info['pre_defined'] = str(self.pre_defined)
+        dump_info['reserved1'] = str(self.reserved1)
+        dump_info['pre_defined1'] = str(self.pre_defined1)
+        dump_info['width'] = str(self.width)
+        dump_info['height'] = str(self.height)
+        dump_info['horizresolution'] = str(self.horizresolution)
+        dump_info['vertresolution'] = str(self.vertresolution)
+        dump_info['reserved2'] = str(self.reserved2)
+        dump_info['frame_count'] = str(self.frame_count)
         dump_info['compressorname'] = repr(self.compressorname)
-        dump_info['depth'] = self.depth
-        dump_info['pre_defined2'] = self.pre_defined2
+        dump_info['depth'] = str(self.depth)
+        dump_info['pre_defined2'] = str(self.pre_defined2)
         return dump_info
 
     def __str__(self):

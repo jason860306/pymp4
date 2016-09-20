@@ -90,10 +90,10 @@ class Stsc(FullBox, object):
             return size
 
         def dump(self):
-            dump_info = {}
-            dump_info['first_chunk'] = self.first_chunk
-            dump_info['samples_per_chunk'] = self.samples_per_chunk
-            dump_info['sample_description_index'] = self.sample_description_index
+            dump_info = dict()
+            dump_info['first_chunk'] = str(self.first_chunk)
+            dump_info['samples_per_chunk'] = str(self.samples_per_chunk)
+            dump_info['sample_description_index'] = str(self.sample_description_index)
             return dump_info
 
         def __str__(self):
@@ -183,9 +183,9 @@ class Stsc(FullBox, object):
 
     def dump(self):
         dump_info = FullBox.dump(self)
-        dump_info['entry_count'] = self.entry_count
+        dump_info['entry_count'] = str(self.entry_count)
         if None != self.sample_chunks:
-            chunks = {}
+            chunks = dict()
             for i in range(len(self.sample_chunks)):
                 chunks['sample_{0}'.format(i)] = self.sample_chunks[i].dump()
             dump_info['sample_chunks'] = chunks

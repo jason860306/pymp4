@@ -98,10 +98,10 @@ class Mp4a(AudioSampleEntry, object):
         return file_strm
 
     def dump(self):
-        dump_info = Box.dump(self)
+        dump_info = super(Mp4a, self).dump()
+        dump_info['Esds'] = self.esds.dump()
         return dump_info
 
     def __str__(self):
-        # logstr = "%s, data = %s" % (Box.__str__(self), self.data)
-        logstr = "%s\n" % (Box.__str__(self))
+        logstr = "%s\n\t\t\t\t\t%s" % (str(super(Mp4a, self)), self.esds)
         return logstr

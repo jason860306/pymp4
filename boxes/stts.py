@@ -98,9 +98,9 @@ class Stts(FullBox, object):
 
     def dump(self):
         dump_info = FullBox.dump(self)
-        dump_info['entry_count'] = self.entry_count
-        dump_info['sample_count'] = self.sample_count
-        dump_info['sample_delta'] = self.sample_delta
+        dump_info['entry_count'] = str(self.entry_count)
+        dump_info['sample_count'] = str(self.sample_count)
+        dump_info['sample_delta'] = str(self.sample_delta)
         return dump_info
 
     def __str__(self):

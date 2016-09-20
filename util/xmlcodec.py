@@ -43,7 +43,7 @@ class XmlEnc(object):
         self.xml_tree = ET.ElementTree(root_elem)
 
     def dump(self, xml_file):
-        self.xml_tree.write(xml_file)
+        self.xml_tree.write(xml_file, encoding='utf-8')
 
     def _encode_dict(self, key, dict_data):
         """

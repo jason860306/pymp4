@@ -99,10 +99,10 @@ class Esds(FullBox, object):
         return file_strm
 
     def dump(self):
-        dump_info = Box.dump(self)
+        dump_info = super(Esds, self).dump()
+        dump_info['ES_Descriptor'] = self.esDescr.dump()
         return dump_info
 
     def __str__(self):
-        # logstr = "%s, data = %s" % (Box.__str__(self), self.data)
-        logstr = "%s\n" % (Box.__str__(self))
+        logstr = "%s\n\t\t\t\t\t\t%s" % (super(Esds, self), self.esDescr)
         return logstr

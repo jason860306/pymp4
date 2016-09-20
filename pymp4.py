@@ -82,16 +82,6 @@ class PyMp4(object):
                                 sample_strm.seek(nalu_len, os.SEEK_CUR)
                                 if nalu_offset >= sample.size:
                                     break
-                                    # file_path = os.path.splitext(self.filename)
-                                    # out_file = file_path[0] + "." + self.root.get_major_brand()
-                                    # for trk in self.root.get_tracks():
-                                    #     if trk.type != VideTrackType:
-                                    #         continue
-                                    #     for sample in trk.get_samples():
-                                    #         sample_data = self.root.get_sample_data(
-                                    #             sample.offset, sample.size, self.file_strm, trk.type)
-                                    #         with open(out_file + '.%s' % sample.index, 'wb') as es_file:
-                                    #             es_file.write(sample_data)
                     elif SounTrackType == trk.type:
                         for sample in trk.get_samples():
                             sample_data = self.root.get_sample_data(
@@ -99,7 +89,7 @@ class PyMp4(object):
                             es_file.write(sample_data)
 
     def dump(self, dump_type=DUMP_TYPE_JSON):
-        dump_info = {}
+        dump_info = dict()
         dump_info['file'] = self.filename
         dump_info['meta_data'] = self.root.get_meta_data()
         dump_info['mp4_info'] = self.root.dump()
@@ -131,9 +121,8 @@ if __name__ == "__main__":
 
     pymp4 = PyMp4(file_name)
     pymp4.parse_mp4()
-    # print "mp4info: %s\n" % str(pymp4)
+    print "mp4info: %s\n" % str(pymp4)
 
     if arg_len == 3:
-        # pass
         dump_type = sys.argv[2]
         pymp4.dump(dump_type)

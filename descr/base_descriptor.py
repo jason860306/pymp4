@@ -95,14 +95,14 @@ class BaseDescriptor(object):
         return size_
 
     def dump(self):
-        dump_info = {}
-        dump_info['offset'] = self.descr_offset
-        dump_info['tag'] = self.descr_tag
-        dump_info['size'] = self.sizeOfInstance
-        dump_info['hdr_size'] = self.hdr_size
+        dump_info = dict()
+        dump_info['offset'] = str(self.descr_offset)
+        dump_info['tag'] = str(self.descr_tag)
+        dump_info['size'] = str(self.sizeOfInstance)
+        dump_info['hdr_size'] = str(self.hdr_size)
         dump_info['fullname'] = self.fullname
         return dump_info
 
     def __str__(self):
-        return "offset = 0x%016x, tag = %08ld(0x%08lx), fullname = %s" % \
+        return "\n\t\t\t\t\t\ttoffset = 0x%016x, tag = %08ld(0x%08lx), fullname = %s" % \
                (self.descr_offset, self.descr_tag, self.descr_tag, self.fullname)

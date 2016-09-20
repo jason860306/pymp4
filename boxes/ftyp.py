@@ -72,8 +72,8 @@ class Ftyp(Box, object):
     def dump(self):
         dump_info = Box.dump(self)
         dump_info['major_brand'] = self.major_brand
-        dump_info['minor_brand'] = self.minor_brand
-        dump_info['minor_brand'] = self.compatible_brands
+        dump_info['minor_brand'] = str(self.minor_brand)
+        dump_info['compatible_brands'] = str(self.compatible_brands)
         return dump_info
 
     def __str__(self):

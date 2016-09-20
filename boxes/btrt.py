@@ -61,9 +61,9 @@ class Btrt(Box, object):
 
     def dump(self):
         dump_info = Box.dump(self)
-        dump_info['bufferSizeDB'] = self.bufferSizeDB
-        dump_info['maxBitrate'] = self.maxBitrate
-        dump_info['avgBitrate'] = self.avgBitrate
+        dump_info['bufferSizeDB'] = str(self.bufferSizeDB)
+        dump_info['maxBitrate'] = str(self.maxBitrate)
+        dump_info['avgBitrate'] = str(self.avgBitrate)
         return dump_info
 
     def __str__(self):

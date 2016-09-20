@@ -74,8 +74,8 @@ class Stss(FullBox, object):
 
     def dump(self):
         dump_info = FullBox.dump(self)
-        dump_info['entry_count'] = self.entry_count
-        dump_info['sample_number'] = self.sample_number
+        dump_info['entry_count'] = str(self.entry_count)
+        dump_info['sample_number'] = str(self.sample_number)
         return dump_info
 
     def __str__(self):

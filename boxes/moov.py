@@ -219,42 +219,42 @@ class Moov(Box, object):
         return file_strm.read_byte(data_size)
 
     def get_general_meta_data(self):
-        general = {}
+        general = dict()
         general['creation_time'] = UTC_NONE_TIME if (self.mvhd is None) else \
             self.mvhd.creation_time_fmt
         general['modify_time'] = UTC_NONE_TIME if (self.mvhd is None) else \
             self.mvhd.modification_time_fmt
         duration_ = self.duration()
         general['duration'] = Util.time_format(duration_)
-        general['bitrate'] = self.bitrate()
+        general['bitrate'] = str(self.bitrate())
         return general
 
     def get_vide_meta_data(self):
-        video = {}
+        video = dict()
         trk = self.get_track(VideTrackType)
         if trk is None:
             return video
-        video['ID'] = trk.track_id()
+        video['ID'] = str(trk.track_id())
         duration_ = self.track_duration(VideTrackType)
         video['duration'] = Util.time_format(duration_)
-        video['bitrate'] = self.track_bitrate(VideTrackType)
-        video['width'] = trk.width()
-        video['height'] = trk.height()
-        video['fps'] = self.fps()
+        video['bitrate'] = str(self.track_bitrate(VideTrackType))
+        video['width'] = str(trk.width())
+        video['height'] = str(trk.height())
+        video['fps'] = str(self.fps())
         video['create_time'] = trk.create_time()
         video['modify_time'] = trk.modify_time()
         return video
 
     def get_soun_meta_data(self):
-        sound = {}
+        sound = dict()
         trk = self.get_track(SounTrackType)
         if trk is None:
             return sound
-        sound['ID'] = trk.track_id()
+        sound['ID'] = str(trk.track_id())
         duration_ = self.track_duration(SounTrackType)
         sound['duration'] = Util.time_format(duration_)
-        sound['bitrate'] = self.track_bitrate(SounTrackType)
-        sound['fps'] = self.fps()
+        sound['bitrate'] = str(self.track_bitrate(SounTrackType))
+        sound['fps'] = str(self.fps())
         sound['create_time'] = trk.create_time()
         sound['modify_time'] = trk.modify_time()
         return sound

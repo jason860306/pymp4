@@ -116,9 +116,9 @@ class Box(object):
         return size_
 
     def dump(self):
-        dump_info = {}
-        dump_info['offset'] = self.box_offset
-        dump_info['size'] = self.size
+        dump_info = dict()
+        dump_info['offset'] = str(self.box_offset)
+        dump_info['size'] = str(self.size)
         dump_info['type'] = self.type
         dump_info['fullname'] = self.fullname
         dump_info['desc'] = self.desc

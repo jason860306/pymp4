@@ -15,7 +15,10 @@ __email__ = 'jason860306@gmail.com'
 # '$Source$'
 
 
-from base_descriptor import *
+from bitstring import ConstBitStream
+
+from audio.asc import AudioSpecificConfig
+from descr.base_descriptor import *
 
 
 class DecoderSpecificInfo(BaseDescriptor, object):
@@ -60,6 +63,7 @@ class DecoderSpecificInfo(BaseDescriptor, object):
         super(DecoderSpecificInfo, self).__init__(offset, descr_tag)
 
         self.opaque_data = ''
+        self.asc = None
 
     def decode(self, file_strm):
         """
@@ -208,15 +212,27 @@ class DecoderSpecificInfo(BaseDescriptor, object):
         self.opaque_data = file_strm.read_byte(self.sizeOfInstance)
         self.offset += self.size()
 
+        bit_strm = ConstBitStream(bytes=self.opaque_data)  # , length=self.sizeOfInstance
+        self.asc = AudioSpecificConfig(self.offset)
+        bit_strm = self.asc.decode(bit_strm)
+
         return file_strm
+
+    def get_es_header(self):
+        return self.opaque_data
 
     def size(self):
         return super(DecoderSpecificInfo, self).size()
 
     def dump(self):
         dump_info = super(DecoderSpecificInfo, self).dump()
+        dump_info['opaque_data'] = repr(self.opaque_data)
+        if self.asc is not None:
+            dump_info['asc'] = self.asc.dump()
         return dump_info
 
     def __str__(self):
-        log_str = super(DecoderSpecificInfo, self).__str__()
-        return log_str
+        logstr = "%s\n\t\t\t\t\t\t\t\t\t" % str(super(DecoderSpecificInfo, self))
+        if self.asc is not None:
+            logstr += 'asc: %s\n\t\t\t\t\t\t\t\t' % str(self.asc)
+        return logstr

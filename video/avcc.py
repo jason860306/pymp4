@@ -15,7 +15,7 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
-from box import *
+from boxes.box import *
 
 
 class ParameterSet(object):
@@ -47,8 +47,8 @@ class ParameterSet(object):
         return size
 
     def dump(self):
-        dump_info = {}
-        dump_info['ps_len'] = self.ps_len
+        dump_info = dict()
+        dump_info['ps_len'] = str(self.ps_len)
         dump_info['ps_nalu'] = repr(self.ps_nalu)
         return dump_info
 
@@ -240,18 +240,18 @@ class AVCDecoderConfigurationRecord(object):
             return file_strm
 
         def dump(self):
-            dump_info = {}
-            dump_info['box_offset'] = self.box_offset
-            dump_info['offset'] = self.offset
-            dump_info['reserved1'] = self.reserved1
-            dump_info['chroma_format'] = self.chroma_format
-            dump_info['reserved2'] = self.reserved2
-            dump_info['bit_depth_luma_minus8'] = self.bit_depth_luma_minus8
-            dump_info['reserved3'] = self.reserved3
-            dump_info['bit_depth_chroma_minus8'] = self.bit_depth_chroma_minus8
-            dump_info['num_spse'] = self.num_spse
-            if self.num_spse > 0 and self.spse != None:
-                spsees = {}
+            dump_info = dict()
+            dump_info['box_offset'] = str(self.box_offset)
+            dump_info['offset'] = str(self.offset)
+            dump_info['reserved1'] = str(self.reserved1)
+            dump_info['chroma_format'] = str(self.chroma_format)
+            dump_info['reserved2'] = str(self.reserved2)
+            dump_info['bit_depth_luma_minus8'] = str(self.bit_depth_luma_minus8)
+            dump_info['reserved3'] = str(self.reserved3)
+            dump_info['bit_depth_chroma_minus8'] = str(self.bit_depth_chroma_minus8)
+            dump_info['num_spse'] = str(self.num_spse)
+            if self.num_spse > 0 and self.spse is not None:
+                spsees = dict()
                 for i in range(len(self.spse)):
                     sps_ = self.spse[i]
                     spsees['spse_%d' % i] = sps_[i].dump()
@@ -275,7 +275,7 @@ class AVCDecoderConfigurationRecord(object):
                       self.bit_depth_chroma_minus8, self.bit_depth_chroma_minus8,
                       self.num_spse, self.num_spse)
             for i in range(len(self.spse)):
-                logstr += "\n\t\t\t\t\t\t\t\t\t\t\t%08ld. %s" % (i, self.spse[i])
+                logstr += "\n\t\t\t\t\t\t\t\t\t\t\t%08ld. %s" % (i, str(self.spse[i]))
             logstr += "\n\t\t\t\t\t\t\t\t\t\t]\n"
             return logstr
 
@@ -379,37 +379,37 @@ class AVCDecoderConfigurationRecord(object):
         return self.length_size_nalu + 1
 
     def dump(self):
-        dump_info = {}
-        dump_info['box_offset'] = self.box_offset
-        dump_info['offset'] = self.offset
-        dump_info['conf_version'] = self.conf_version
-        dump_info['avc_profile_indication'] = self.avc_profile_indication
-        dump_info['profile_compatibility'] = self.profile_compatibility
-        dump_info['avc_level_indication'] = self.avc_level_indication
-        dump_info['reserved1'] = self.reserved1
-        dump_info['length_size_nalu'] = self.length_size_nalu
-        dump_info['reserved2'] = self.reserved2
-        dump_info['num_sps'] = self.num_sps
+        dump_info = dict()
+        dump_info['box_offset'] = str(self.box_offset)
+        dump_info['offset'] = str(self.offset)
+        dump_info['conf_version'] = str(self.conf_version)
+        dump_info['avc_profile_indication'] = str(self.avc_profile_indication)
+        dump_info['profile_compatibility'] = str(self.profile_compatibility)
+        dump_info['avc_level_indication'] = str(self.avc_level_indication)
+        dump_info['reserved1'] = str(self.reserved1)
+        dump_info['length_size_nalu'] = str(self.length_size_nalu)
+        dump_info['reserved2'] = str(self.reserved2)
+        dump_info['num_sps'] = str(self.num_sps)
         if self.num_sps > 0 and self.sps != None:
-            spses = {}
+            spses = dict()
             for i in range(len(self.sps)):
                 spses['sps_%d' % i] = self.sps[i].dump()
             dump_info['sps'] = spses
-        dump_info['num_pps'] = self.num_pps
+        dump_info['num_pps'] = str(self.num_pps)
         if self.num_pps > 0 and self.pps != None:
-            ppses = {}
+            ppses = dict()
             for i in range(len(self.pps)):
                 ppses['pps_%d' % i] = self.pps[i].dump()
             dump_info['pps'] = ppses
-        dump_info['reserved3'] = self.reserved3
-        dump_info['chroma_format'] = self.chroma_format
-        dump_info['reserved4'] = self.reserved4
-        dump_info['bit_depth_luma_minus8'] = self.bit_depth_luma_minus8
-        dump_info['reserved5'] = self.reserved5
-        dump_info['bit_depth_chroma_minus8'] = self.bit_depth_chroma_minus8
-        dump_info['num_spse'] = self.num_spse
+        dump_info['reserved3'] = str(self.reserved3)
+        dump_info['chroma_format'] = str(self.chroma_format)
+        dump_info['reserved4'] = str(self.reserved4)
+        dump_info['bit_depth_luma_minus8'] = str(self.bit_depth_luma_minus8)
+        dump_info['reserved5'] = str(self.reserved5)
+        dump_info['bit_depth_chroma_minus8'] = str(self.bit_depth_chroma_minus8)
+        dump_info['num_spse'] = str(self.num_spse)
         if self.num_spse > 0 and self.spse != None:
-            spse_dict = {}
+            spse_dict = dict()
             for i in range(len(self.spse)):
                 spse_dict['spse_%d' % i] = self.spse[i].dump()
             dump_info['spse'] = spse_dict
@@ -433,11 +433,11 @@ class AVCDecoderConfigurationRecord(object):
                   self.reserved1, self.reserved1, self.length_size_nalu, self.length_size_nalu,
                   self.reserved2, self.reserved2, self.num_sps, self.num_sps)
         for i in range(len(self.sps)):
-            logstr += "\n\t\t\t\t\t\t\t%08ld. %s" % (i, self.sps[i])
+            logstr += "\n\t\t\t\t\t\t\t%08ld. %s" % (i, str(self.sps[i]))
         logstr += "\n\t\t\t\t\t\t]\n\t\t\t\t\t\tnum_pps = %08ld(0x%016lx), " \
                   "pps = [" % (self.num_pps, self.num_pps)
         for i in range(len(self.pps)):
-            logstr += "\n\t\t\t\t\t\t\t%08ld. %s" % (i, self.pps[i])
+            logstr += "\n\t\t\t\t\t\t\t%08ld. %s" % (i, str(self.pps[i]))
         logstr += "\n\t\t\t\t\t\t]"
         logstr += "\n\t\t\t\t\t\treserved3 = %08ld(0x%016lx)" \
                   "\n\t\t\t\t\t\tchroma_format = %08ld(0x%016lx)" \
@@ -452,7 +452,7 @@ class AVCDecoderConfigurationRecord(object):
                    self.reserved5, self.reserved5, self.bit_depth_chroma_minus8,
                    self.bit_depth_chroma_minus8, self.num_spse, self.num_spse)
         for i in range(len(self.spse)):
-            logstr += "\n\t\t\t\t\t\t\t%08ld. %s" % (i, self.spse[i])
+            logstr += "\n\t\t\t\t\t\t\t%08ld. %s" % (i, str(self.spse[i]))
         logstr += "\n\t\t\t\t\t\t]"
         return logstr
 

@@ -93,9 +93,9 @@ class Stsz(FullBox, object):
 
     def dump(self):
         dump_info = FullBox.dump(self)
-        dump_info['sample_size'] = self.sample_size
-        dump_info['sample_count'] = self.sample_count
-        dump_info['entry_size'] = self.entry_size
+        dump_info['sample_size'] = str(self.sample_size)
+        dump_info['sample_count'] = str(self.sample_count)
+        dump_info['entry_size'] = str(self.entry_size)
         return dump_info
 
     def __str__(self):

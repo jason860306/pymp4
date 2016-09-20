@@ -111,11 +111,11 @@ class SLExtensionDescriptor(object):
         return size_
 
     def dump(self):
-        dump_info = {}
-        dump_info['offset'] = self.descr_offset
-        dump_info['tag'] = self.descr_tag
-        dump_info['size'] = self.sizeOfInstance
-        dump_info['hdr_size'] = self.hdr_size
+        dump_info = dict()
+        dump_info['offset'] = str(self.descr_offset)
+        dump_info['tag'] = str(self.descr_tag)
+        dump_info['size'] = str(self.sizeOfInstance)
+        dump_info['hdr_size'] = str(self.hdr_size)
         dump_info['fullname'] = self.fullname
         return dump_info
 

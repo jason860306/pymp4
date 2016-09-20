@@ -64,9 +64,9 @@ class Mdhd(FullBox, object):
             FullBox.__init__(self, offset, box)
 
         self.creation_time = 0
-        self.creation_time_fmt = 0
+        self.creation_time_fmt = ''
         self.modification_time = 0
-        self.modification_time_fmt = 0
+        self.modification_time_fmt = ''
         self.timescale = 0
         self.duration = 0
 
@@ -184,12 +184,12 @@ class Mdhd(FullBox, object):
         dump_info = FullBox.dump(self)
         dump_info['creation_time'] = self.creation_time_fmt
         dump_info['modification_time'] = self.modification_time_fmt
-        dump_info['timescale'] = self.timescale
-        dump_info['duration'] = self.duration
-        dump_info['pad'] = self.pad
-        dump_info['language_code'] = self.language_code
-        dump_info['language'] = self.language
-        dump_info['pre_defined'] = self.pre_defined
+        dump_info['timescale'] = str(self.timescale)
+        dump_info['duration'] = str(self.duration)
+        dump_info['pad'] = str(self.pad)
+        dump_info['language_code'] = str(self.language_code)
+        dump_info['language'] = str(self.language)
+        dump_info['pre_defined'] = str(self.pre_defined)
         return dump_info
 
     def __str__(self):

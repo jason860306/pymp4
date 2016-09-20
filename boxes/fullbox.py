@@ -74,7 +74,7 @@ class FullBox(Box, object):
 
     def dump(self):
         dump_info = Box.dump(self)
-        dump_info['version'] = self.version
+        dump_info['version'] = str(self.version)
         dump_info['flags'] = repr(self.flags)
         return dump_info
 

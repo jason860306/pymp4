@@ -50,8 +50,8 @@ class ByteArray(object):
         return ByteStream(self.data, self.len)
 
     def dump(self):
-        dump_info = {}
-        dump_info['len'] = self.len
+        dump_info = dict()
+        dump_info['len'] = str(self.len)
         dump_info['data'] = self.data
         return dump_info
 

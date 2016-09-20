@@ -101,13 +101,13 @@ class AudioSampleEntryV1(SampeEntry, object):
 
     def dump(self):
         dump_info = SampeEntry.dump(self)
-        dump_info['entry_version'] = self.entry_version
-        dump_info['reserved'] = self.reserved
-        dump_info['channelcount'] = self.channelcount
-        dump_info['samplesize'] = self.samplesize
-        dump_info['pre_defined'] = self.pre_defined
-        dump_info['reserved1'] = self.reserved1
-        dump_info['samplerate'] = self.samplerate
+        dump_info['entry_version'] = str(self.entry_version)
+        dump_info['reserved'] = str(self.reserved)
+        dump_info['channelcount'] = str(self.channelcount)
+        dump_info['samplesize'] = str(self.samplesize)
+        dump_info['pre_defined'] = str(self.pre_defined)
+        dump_info['reserved1'] = str(self.reserved1)
+        dump_info['samplerate'] = str(self.samplerate)
         return dump_info
 
     def __str__(self):

@@ -15,7 +15,7 @@ __email__ = 'jason860306@gmail.com'
 # '$Source$'
 
 
-from base_descriptor import *
+from descr.base_descriptor import *
 
 
 class SLConfigDescriptor(BaseDescriptor, object):
@@ -207,5 +207,7 @@ class SLConfigDescriptor(BaseDescriptor, object):
         return dump_info
 
     def __str__(self):
-        log_str = super(SLConfigDescriptor, self).__str__()
+        log_str = "\n\t\t\t\t\t\t\t%s, predefine = %08ld(0x%016lx)" \
+                  % (super(SLConfigDescriptor, self).__str__(),
+                     self.predefined, self.predefined)
         return log_str

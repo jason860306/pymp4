@@ -446,8 +446,70 @@ class ESDescriptor(BaseDescriptor, object):
 
     def dump(self):
         dump_info = super(ESDescriptor, self).dump()
+        dump_info['ES_ID'] = str(self.ES_ID)
+        dump_info['strmDependceFlag'] = str(self.strmDependceFlag)
+        dump_info['urlFlag'] = str(self.urlFlag)
+        dump_info['OCRStrmFlag'] = str(self.OCRStrmFlag)
+        dump_info['strmPriority'] = str(self.strmPriority)
+        dump_info['dependsOn_ES_ID'] = str(self.dependsOn_ES_ID)
+        dump_info['urlLen'] = str(self.urlLen)
+        dump_info['url'] = self.url
+        dump_info['OCR_ES_ID'] = str(self.OCR_ES_ID)
+        if self.decConfigDescr is not None:
+            dump_info['decConfigDescr'] = self.decConfigDescr.dump()
+        if self.slCfgDescr is not None:
+            dump_info['slCfgDescr'] = self.slCfgDescr.dump()
+        # for i in xrange(len(self.ipiPtr)):
+        #     dump_info['ipiPtr_'+i] = self.ipiPtr[i].dump()
+        # for i in xrange(len(self.ipiPtr)):
+        #     dump_info['ipIDS_'+i] = self.ipIDS[i].dump()
+        # for i in xrange(len(self.ipiPtr)):
+        #     dump_info['ipmpDescrPtr_'+i] = self.ipmpDescrPtr[i].dump()
+        # for i in xrange(len(self.ipiPtr)):
+        #     dump_info['langDescr_'+i] = self.langDescr[i].dump()
+        # for i in xrange(len(self.ipiPtr)):
+        #     dump_info['qosDescr_'+i] = self.qosDescr[i].dump()
+        # for i in xrange(len(self.ipiPtr)):
+        #     dump_info['regDescr_'+i] = self.regDescr[i].dump()
+        # for i in xrange(len(self.ipiPtr)):
+        #     dump_info['extDescr_'+i] = self.extDescr[i].dump()
+        dump_info['odProfLevelIndic'] = str(self.odProfLevelIndic)
         return dump_info
 
     def __str__(self):
-        log_str = super(ESDescriptor, self).__str__()
-        return log_str
+        logstr = "%s\n\t\t\t\t\t\t\tES_ID = %08ld(0x%016lx)\n\t\t\t\t\t\t\t" \
+                 "strmDependceFlag = %08ld(0x%016lx)\n\t\t\t\t\t\t\t" \
+                 "urlFlag = %08ld(0x%016lx)\n\t\t\t\t\t\t\t" \
+                 "OCRStrmFlag = %08ld(0x%016lx)\n\t\t\t\t\t\t\t" \
+                 "strmPriority = %08ld(0x%016lx)\n\t\t\t\t\t\t\t" \
+                 "dependsOn_ES_ID = %08ld(0x%016lx)\n\t\t\t\t\t\t\t" \
+                 "urlLen = %08ld(0x%016lx)\n\t\t\t\t\t\t\t" \
+                 "url = %s\n\t\t\t\t\t\t\t" \
+                 "OCR_ES_ID = %08ld(0x%016lx)\n\t\t\t\t\t\t\t" \
+                 "odProfLevelIndic = %08ld(0x%016lx)\n\t\t\t\t\t\t\t" % \
+                 (str(super(ESDescriptor, self)), self.ES_ID, self.ES_ID,
+                  self.strmDependceFlag, self.strmDependceFlag, self.urlFlag, self.urlFlag,
+                  self.OCRStrmFlag, self.OCRStrmFlag, self.strmPriority, self.strmPriority,
+                  self.dependsOn_ES_ID, self.dependsOn_ES_ID, self.urlLen, self.urlLen,
+                  self.url, self.OCR_ES_ID, self.OCR_ES_ID, self.odProfLevelIndic,
+                  self.odProfLevelIndic)
+        if self.decConfigDescr is not None:
+            logstr += "decConfigDescr: %s\n\t\t\t\t\t\t\t" % str(self.decConfigDescr)
+        if self.slCfgDescr is not None:
+            logstr += "slCfgDescr: %s\n\t\t\t\t\t\t\t" % str(self.slCfgDescr)
+        for i in xrange(len(self.ipiPtr)):
+            logstr += "ipiPtr_%d: %s\n\t\t\t\t\t\t\t" % (i, str(self.ipiPtr[i]))
+        for i in xrange(len(self.ipiPtr)):
+            logstr += "ipIDS_%d: %s\n\t\t\t\t\t\t\t" % (i, str(self.ipIDS[i]))
+        for i in xrange(len(self.ipiPtr)):
+            logstr += "ipmpDescrPtr_%d: %s\n\t\t\t\t\t\t\t" % (i, str(self.ipmpDescrPtr[i]))
+        for i in xrange(len(self.ipiPtr)):
+            logstr += "langDescr_%d: %s\n\t\t\t\t\t\t\t" % (i, str(self.langDescr[i]))
+        for i in xrange(len(self.ipiPtr)):
+            logstr += "qosDescr_%d: %s\n\t\t\t\t\t\t\t" % (i, str(self.qosDescr[i]))
+        for i in xrange(len(self.ipiPtr)):
+            logstr += "regDescr_%d: %s\n\t\t\t\t\t\t\t" % (i, str(self.regDescr[i]))
+        for i in xrange(len(self.ipiPtr)):
+            logstr += "extDescr_%d: %s\n\t\t\t\t\t\t\t" % (i, str(self.extDescr[i]))
+
+        return logstr

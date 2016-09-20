@@ -111,7 +111,7 @@ class Root(object):
 
                     track.append_sample(sample)
 
-                    print sample
+                    # print sample
             self.tracks.append(track)
 
     def get_tracks(self):
@@ -138,12 +138,12 @@ class Root(object):
     def get_meta_data(self):
         if self.moov is None or self.ftyp is None:
             pass  # raise
-        meta_data = {}
+        meta_data = dict()
 
-        general = {}
+        general = dict()
         general['major_brand'] = '' if (self.ftyp is None) else self.ftyp.major_brand
-        general['minor_brand'] = '' if (self.ftyp is None) else self.ftyp.minor_brand
-        general['compatible_brands'] = '' if (self.ftyp is None) else self.ftyp.compatible_brands
+        general['minor_brand'] = '' if (self.ftyp is None) else str(self.ftyp.minor_brand)
+        general['compatible_brands'] = '' if (self.ftyp is None) else str(self.ftyp.compatible_brands)
         general.update(self.moov.get_general_meta_data())
         video_meta_data = self.moov.get_vide_meta_data()
         sound_meta_data = self.moov.get_soun_meta_data()
@@ -167,7 +167,7 @@ class Root(object):
         return 0 if self.moov is None else self.moov.get_nal_len_size(track_type)
 
     def dump(self):
-        dump_info = {}
+        dump_info = dict()
         if None != self.moov:
             dump_info['moov'] = self.moov.dump()
         if None != self.ftyp:

@@ -191,15 +191,15 @@ class Mvhd(FullBox, object):
         dump_info = FullBox.dump(self)
         dump_info['creation_time'] = self.creation_time_fmt
         dump_info['modification_time'] = self.modification_time_fmt
-        dump_info['timescale'] = self.timescale
-        dump_info['duration'] = self.duration
+        dump_info['timescale'] = str(self.timescale)
+        dump_info['duration'] = str(self.duration)
         dump_info['rate'] = self.rate_fmt
         dump_info['volume'] = self.volume_fmt
-        dump_info['reserved'] = self.reserved
-        dump_info['reserved1'] = self.reserved1
-        dump_info['matrix'] = self.matrix
-        dump_info['pre_defined'] = self.pre_defined
-        dump_info['next_track_ID'] = self.next_track_ID
+        dump_info['reserved'] = str(self.reserved)
+        dump_info['reserved1'] = str(self.reserved1)
+        dump_info['matrix'] = str(self.matrix)
+        dump_info['pre_defined'] = str(self.pre_defined)
+        dump_info['next_track_ID'] = str(self.next_track_ID)
         return dump_info
 
     def __str__(self):

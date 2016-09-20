@@ -15,7 +15,7 @@ __email__ = 'jason860306@gmail.com'
 # '$Source$'
 
 
-from base_descriptor import *
+from descr.base_descriptor import *
 
 
 class IPMPToolListDescriptor(BaseDescriptor, object):

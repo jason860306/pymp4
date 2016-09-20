@@ -16,7 +16,6 @@ __email__ = "jason860306@gmail.com"
 
 from boxes.avc1 import Avc1
 from boxes.avc2 import Avc2
-from boxes.avcc import AvcC
 from boxes.btrt import Btrt
 from boxes.co64 import Co64
 from boxes.ctts import Ctts
@@ -53,6 +52,7 @@ from boxes.trak import Trak
 from boxes.udta import Udta
 from boxes.vmhd import Vmhd
 from mp4boxdesc import *
+from video.avcc import AvcC
 
 # FourCC => BoxType
 MP4Boxes = {

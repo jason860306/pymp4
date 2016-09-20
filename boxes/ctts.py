@@ -87,14 +87,14 @@ class Ctts(FullBox, object):
 
     def dump(self):
         dump_info = FullBox.dump(self)
-        dump_info['entry_count'] = self.entry_count
+        dump_info['entry_count'] = str(self.entry_count)
 
-        samples = {}
+        samples = dict()
         sample_offset = zip(self.sample_count, self.sample_offset)
         # for i in range(len(sample_offset)):
         #     # cnt, offset, = sample_offset[i] # the key in dict must be unique
         #     samples['offset_{0}'.format(i)] = sample_offset[i]
-        dump_info['samples_offset'] = sample_offset
+        dump_info['samples_offset'] = str(sample_offset)
         return dump_info
 
     def __str__(self):

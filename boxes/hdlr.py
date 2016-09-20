@@ -84,9 +84,9 @@ class Hdlr(FullBox, object):
 
     def dump(self):
         dump_info = FullBox.dump(self)
-        dump_info['pre_defined'] = self.pre_defined
+        dump_info['pre_defined'] = str(self.pre_defined)
         dump_info['handler_type'] = self.handler_type
-        dump_info['reserved'] = self.reserved
+        dump_info['reserved'] = str(self.reserved)
         dump_info['name'] = self.name
         return dump_info
 

@@ -61,8 +61,8 @@ class SampeEntry(Box, object):
 
     def dump(self):
         dump_info = Box.dump(self)
-        dump_info['reserved'] = self.reserved
-        dump_info['data_reference_index'] = self.data_reference_index
+        dump_info['reserved'] = str(self.reserved)
+        dump_info['data_reference_index'] = str(self.data_reference_index)
         return dump_info
 
     def __str__(self):

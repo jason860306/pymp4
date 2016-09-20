@@ -113,9 +113,9 @@ class Tkhd(FullBox, object):
             FullBox.__init__(self, offset, box)
 
         self.creation_time = 0
-        self.creation_time_fmt = 0
+        self.creation_time_fmt = ''
         self.modification_time = 0
-        self.modification_time_fmt = 0
+        self.modification_time_fmt = ''
         self.track_ID = 0
         self.reserved = 0
         self.duration = 0
@@ -226,17 +226,17 @@ class Tkhd(FullBox, object):
         dump_info = FullBox.dump(self)
         dump_info['creation_time'] = self.creation_time_fmt
         dump_info['modification_time'] = self.modification_time_fmt
-        dump_info['track_ID'] = self.track_ID
-        dump_info['reserved'] = self.reserved
-        dump_info['duration'] = self.duration
-        dump_info['reserved1'] = self.reserved1
-        dump_info['layer'] = self.layer
-        dump_info['alternate_group'] = self.alternate_group
+        dump_info['track_ID'] = str(self.track_ID)
+        dump_info['reserved'] = str(self.reserved)
+        dump_info['duration'] = str(self.duration)
+        dump_info['reserved1'] = str(self.reserved1)
+        dump_info['layer'] = str(self.layer)
+        dump_info['alternate_group'] = str(self.alternate_group)
         dump_info['volume'] = self.volume_fmt
-        dump_info['reserved2'] = self.reserved2
-        dump_info['matrix'] = self.matrix
-        dump_info['width'] = self.width
-        dump_info['height'] = self.height
+        dump_info['reserved2'] = str(self.reserved2)
+        dump_info['matrix'] = str(self.matrix)
+        dump_info['width'] = str(self.width)
+        dump_info['height'] = str(self.height)
         return dump_info
 
     def __str__(self):

@@ -66,8 +66,8 @@ class Co64(FullBox, object):
 
     def dump(self):
         dump_info = FullBox.dump(self)
-        dump_info['entry_count'] = self.entry_count
-        dump_info['chunk_offset'] = self.chunk_offset
+        dump_info['entry_count'] = str(self.entry_count)
+        dump_info['chunk_offset'] = str(self.chunk_offset)
         return dump_info
 
     def __str__(self):

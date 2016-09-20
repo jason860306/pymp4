@@ -24,11 +24,11 @@ class JsonEnc(json.JSONEncoder, object):
 
     def default(self, obj):
         # convert object to a dict
-        dict = {}
-        dict['__class__'] = obj.__class__.__name__
-        dict['__module__'] = obj.__module__
-        dict.update(obj.__dict__)
-        return dict
+        tmp_dict = dict()
+        tmp_dict['__class__'] = obj.__class__.__name__
+        tmp_dict['__module__'] = obj.__module__
+        tmp_dict.update(obj.__dict__)
+        return tmp_dict
 
 
 class JsonDec(json.JSONDecoder, object):

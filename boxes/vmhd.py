@@ -65,8 +65,8 @@ class Vmhd(FullBox, object):
 
     def dump(self):
         dump_info = FullBox.dump(self)
-        dump_info['graphicsmode'] = self.graphicsmode
-        dump_info['opcolor'] = self.opcolor
+        dump_info['graphicsmode'] = str(self.graphicsmode)
+        dump_info['opcolor'] = str(self.opcolor)
         return dump_info
 
     def __str__(self):

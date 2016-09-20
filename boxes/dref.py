@@ -178,9 +178,9 @@ class Dref(FullBox, object):
 
     def dump(self):
         dump_info = FullBox.dump(self)
-        dump_info['entry_count'] = self.entry_count
+        dump_info['entry_count'] = str(self.entry_count)
         if None != self.data_entries:
-            entries = {}
+            entries = dict()
             for entry in self.data_entries:
                 entries[entry.type] = entry.dump()
             dump_info['data_entries'] = entries

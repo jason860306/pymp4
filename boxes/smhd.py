@@ -60,8 +60,8 @@ class Smhd(FullBox, object):
 
     def dump(self):
         dump_info = FullBox.dump(self)
-        dump_info['balance'] = self.balance
-        dump_info['reserved'] = self.reserved
+        dump_info['balance'] = str(self.balance)
+        dump_info['reserved'] = str(self.reserved)
         return dump_info
 
     def __str__(self):

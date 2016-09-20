@@ -246,6 +246,7 @@ class DecoderConfigDescriptor(BaseDescriptor, object):
 
         self.bufferSizeDB = file_strm.read_byte(3)
         self.offset += 3
+        # self.bufferSizeDB = int(self.bufferSizeDB, base=16)
 
         self.maxBitrate = file_strm.read_uint32()
         self.offset += UInt32ByteLen
@@ -350,8 +351,45 @@ class DecoderConfigDescriptor(BaseDescriptor, object):
 
     def dump(self):
         dump_info = super(DecoderConfigDescriptor, self).dump()
+        dump_info['objectTypeIndication'] = str(self.objectTypeIndication)
+        dump_info['streamType'] = str(self.streamType)
+        dump_info['upStream'] = str(self.upStream)
+        dump_info['reserved'] = str(self.reserved)
+        dump_info['bufferSizeDB'] = repr(self.bufferSizeDB)
+        dump_info['maxBitrate'] = str(self.maxBitrate)
+        dump_info['avgBitrate'] = str(self.avgBitrate)
+        if self.decSpecificInfo is not None:
+            decSpecInfo = dict()
+            for i in xrange(len(self.decSpecificInfo)):
+                decSpecInfo["decSpecificInfo_{0}".format(i)] = self.decSpecificInfo[i].dump()
+            dump_info['decSpecificInfo'] = decSpecInfo
+
+        if self.profileLevelIndicationIndexDescr is not None:
+            profLevelIndicIdxDescr = dict()
+            for i in xrange(len(self.profileLevelIndicationIndexDescr)):
+                profLevelIndicIdxDescr["profileLevelIndicationIndexDescr_{0}".format(i)] = \
+                    self.profileLevelIndicationIndexDescr[i].dump()
+            dump_info['profileLevelIndicationIndexDescr'] = profLevelIndicIdxDescr
+
         return dump_info
 
     def __str__(self):
-        log_str = super(DecoderConfigDescriptor, self).__str__()
-        return log_str
+        logstr = "%s\n\t\t\t\t\t\t\t\t" \
+                 "objectTypeIndication = %08ld(0x%016lx)\n\t\t\t\t\t\t\t\t" \
+                 "streamType = %08ld(0x%016lx)\n\t\t\t\t\t\t\t\t" \
+                 "upStream = %08ld(0x%016lx)\n\t\t\t\t\t\t\t\t" \
+                 "reserved = %08ld(0x%016lx)\n\t\t\t\t\t\t\t\t" \
+                 "bufferSizeDB = %s\n\t\t\t\t\t\t\t\t" \
+                 "maxBitrate = %08ld(0x%016lx)\n\t\t\t\t\t\t\t\t" \
+                 "avgBitrate = %08ld(0x%016lx)\n\t\t\t\t\t\t\t\t" \
+                 % (str(super(DecoderConfigDescriptor, self)), self.objectTypeIndication,
+                    self.objectTypeIndication, self.streamType, self.streamType,
+                    self.upStream, self.upStream, self.reserved, self.reserved,
+                    repr(self.bufferSizeDB), self.maxBitrate, self.maxBitrate,
+                    self.avgBitrate, self.avgBitrate)
+        for i in xrange(len(self.decSpecificInfo)):
+            logstr += 'decSpecificInfo_%d: %s\n\t\t\t\t\t\t\t\t' % (i, str(self.decSpecificInfo[i]))
+        for i in xrange(len(self.profileLevelIndicationIndexDescr)):
+            logstr += 'profileLevelIndicationIndexDescr_%d: %s\n\t\t\t\t\t\t\t\t' % \
+                      (i, str(self.profileLevelIndicationIndexDescr[i]))
+        return logstr
