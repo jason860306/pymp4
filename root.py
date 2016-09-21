@@ -14,6 +14,9 @@ __email__ = "jason860306@gmail.com"
 # '$Source$'
 
 
+from bitstring import BitStream
+
+from audio.adts import Adts
 from boxes.box import *
 from mp4boxes import *
 from sample import *
@@ -168,6 +171,31 @@ class Root(object):
 
     def get_es_header(self, track_type=SounTrackType):
         return 0 if self.moov is None else self.moov.get_es_header(track_type)
+
+    def get_adts_header(self, track_type=SounTrackType, raw_data_len=0):
+        if raw_data_len == 0:
+            return None
+
+        # a. get AudioSpecificConfig
+        asc_data = None
+        for es_header in self.get_es_header(track_type):
+            asc_data = es_header
+            break
+
+        # bit_strm = ConstBitStream(bytes=asc_data)  # , length=self.sizeOfInstance
+        # self.asc = AudioSpecificConfig()
+        # bit_strm = self.asc.decode(bit_strm)
+
+        # b. asc -> adts header
+        adts = Adts.asc2adts(asc_data, raw_data_len)
+        if adts is None:
+            return None
+
+        bit_strm = BitStream()
+        bit_strm = adts.encode(bit_strm, offset=len(asc_data))
+        if bit_strm is None:
+            return None
+        return bit_strm.bytes
 
     def dump(self):
         dump_info = dict()

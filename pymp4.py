@@ -83,15 +83,24 @@ class PyMp4(object):
                                 if nalu_offset >= sample.size:
                                     break
                     elif SounTrackType == trk.type:
-                        # 1. write AudioSpecificConfig
-                        for es_header in self.root.get_es_header(trk.type):
-                            es_file.write(es_header)
-                            break
-                            
+                        # # 1. write AudioSpecificConfig
+                        # for es_header in self.root.get_es_header(trk.type):
+                        #     es_file.write(es_header)
+                        #     break
+
                         # 2. AAC Payload
                         for sample in trk.get_samples():
+                            # get sample data
                             sample_data = self.root.get_sample_data(
                                 sample.offset, sample.size, self.file_strm, trk.type)
+                            # get adts header
+                            adts_header = self.root.get_adts_header(trk.type, sample.size)
+                            if adts_header is None:
+                                return
+
+                            # a. write adts header
+                            es_file.write(adts_header)
+                            # b. write sample data
                             es_file.write(sample_data)
 
     def dump(self, dump_type=DUMP_TYPE_JSON):
@@ -127,7 +136,7 @@ if __name__ == "__main__":
 
     pymp4 = PyMp4(file_name)
     pymp4.parse_mp4()
-    print "mp4info: %s\n" % str(pymp4)
+    # print "mp4info: %s\n" % str(pymp4)
 
     if arg_len == 3:
         dump_type = sys.argv[2]
