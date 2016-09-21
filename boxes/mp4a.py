@@ -97,6 +97,11 @@ class Mp4a(AudioSampleEntry, object):
 
         return file_strm
 
+    def get_es_header(self):
+        if self.esds is not None:
+            return self.esds.get_es_header()
+        return None
+
     def dump(self):
         dump_info = super(Mp4a, self).dump()
         dump_info['Esds'] = self.esds.dump()

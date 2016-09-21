@@ -98,6 +98,11 @@ class Esds(FullBox, object):
 
         return file_strm
 
+    def get_es_header(self):
+        if self.esDescr is not None:
+            return self.esDescr.get_es_header()
+        return None
+
     def dump(self):
         dump_info = super(Esds, self).dump()
         dump_info['ES_Descriptor'] = self.esDescr.dump()

@@ -52,17 +52,17 @@ class PyMp4(object):
                 with open(tmp_out_file, 'wb') as es_file:
                     if VideTrackType == trk.type:
                         # 1. write sps NAL
-                        for sps in self.root.get_sps(VideTrackType):
+                        for sps in self.root.get_sps(trk.type):
                             es_file.write(''.join(H264_START_CODE))
                             es_file.write(sps)
 
                         # 2. write pps NAL
-                        for pps in self.root.get_pps(VideTrackType):
+                        for pps in self.root.get_pps(trk.type):
                             es_file.write(''.join(H264_START_CODE))
                             es_file.write(pps)
 
                         # 3. write slice NAL
-                        nalu_byte_size = self.root.get_nal_len_size(VideTrackType)  # 1 or 2 or 4
+                        nalu_byte_size = self.root.get_nal_len_size(trk.type)  # 1 or 2 or 4
                         # nalu_byte_size = NALU_BYTE_SIZE[math.log(nalu_byte_size, 2)]
 
                         for sample in trk.get_samples():
@@ -83,6 +83,12 @@ class PyMp4(object):
                                 if nalu_offset >= sample.size:
                                     break
                     elif SounTrackType == trk.type:
+                        # 1. write AudioSpecificConfig
+                        for es_header in self.root.get_es_header(trk.type):
+                            es_file.write(es_header)
+                            break
+                            
+                        # 2. AAC Payload
                         for sample in trk.get_samples():
                             sample_data = self.root.get_sample_data(
                                 sample.offset, sample.size, self.file_strm, trk.type)

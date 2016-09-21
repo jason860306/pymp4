@@ -151,6 +151,10 @@ class Moov(Box, object):
         trk = self.get_track(track_type)
         return 0 if trk is None else trk.get_nal_len_size()
 
+    def get_es_header(self, track_type=SounTrackType):
+        trk = self.get_track(track_type)
+        return 0 if trk is None else trk.get_es_header()
+
     # def get_sample(self, sample_index, track_type=VideTrackType):
     #     trk = self.get_track(track_type)
     #     chunk_idx = trk.find_chunk_index(sample_index)

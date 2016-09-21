@@ -122,6 +122,9 @@ class Minf(Box, object):
     def get_nal_len_size(self):
         return 0 if (self.stbl is None) else self.stbl.get_nal_len_size()
 
+    def get_es_header(self):
+        return 0 if (self.stbl is None) else self.stbl.get_es_header()
+
     def dump(self):
         dump_info = Box.dump(self)
         if None != self.vmhd:

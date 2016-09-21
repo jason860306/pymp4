@@ -346,6 +346,11 @@ class DecoderConfigDescriptor(BaseDescriptor, object):
         elif DescrTag_profileLevelIndicationIndexDescrTag == tmp_descr.descr_tag:
             self.profileLevelIndicationIndexDescr.append(tmp_descr)
 
+    def get_es_header(self):
+        if self.decSpecificInfo is not None:
+            return [decSpecInfo.get_es_header() for decSpecInfo in self.decSpecificInfo]
+        return None
+
     def size(self):
         return super(DecoderConfigDescriptor, self).size()
 

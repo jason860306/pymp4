@@ -166,6 +166,9 @@ class Root(object):
     def get_nal_len_size(self, track_type=VideTrackType):
         return 0 if self.moov is None else self.moov.get_nal_len_size(track_type)
 
+    def get_es_header(self, track_type=SounTrackType):
+        return 0 if self.moov is None else self.moov.get_es_header(track_type)
+
     def dump(self):
         dump_info = dict()
         if None != self.moov:

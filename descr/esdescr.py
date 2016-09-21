@@ -441,6 +441,11 @@ class ESDescriptor(BaseDescriptor, object):
         elif DescrTag_ExtensionProfileLevelDescrTag == tmp_descr.descr_tag:
             self.extDescr.append(descr)
 
+    def get_es_header(self):
+        if self.decConfigDescr is not None:
+            return self.decConfigDescr.get_es_header()
+        return None
+
     def size(self):
         return super(ESDescriptor, self).size()
 

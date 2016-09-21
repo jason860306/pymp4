@@ -155,6 +155,9 @@ class Stbl(Box, object):
     def get_nal_len_size(self):
         return 0 if (self.stsd is None) else self.stsd.get_nal_len_size()
 
+    def get_es_header(self):
+        return 0 if (self.stsd is None) else self.stsd.get_es_header()
+
     def dump(self):
         dump_info = Box.dump(self)
         if None != self.stts:

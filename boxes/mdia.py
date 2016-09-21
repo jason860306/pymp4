@@ -121,6 +121,9 @@ class Mdia(Box, object):
     def get_nal_len_size(self):
         return 0 if (self.minf is None) else self.minf.get_nal_len_size()
 
+    def get_es_header(self):
+        return 0 if (self.minf is None) else self.minf.get_es_header()
+
     def dump(self):
         dump_info = Box.dump(self)
         dump_info[self.mdhd.type] = self.mdhd.dump()

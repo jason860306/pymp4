@@ -123,6 +123,14 @@ class Stsd(FullBox, object):
             if entry.type == FourCCMp4Avc1:
                 return entry.get_nal_len_size()
 
+    def get_es_header(self):
+        if self.sample_entries is None:
+            return None
+        for i in range(len(self.sample_entries)):
+            entry = self.sample_entries[i]
+            if entry.type == FourCCMp4Mp4a:
+                return entry.get_es_header()
+
     def dump(self):
         dump_info = FullBox.dump(self)
         dump_info['entry_count'] = str(self.entry_count)
